@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
-<meta name="keywords" content=" security">
-<title>Security | Bitmark Documentation</title>
+<meta name="keywords" content=" sdk, sdk doc">
+<title>Getting Started | Bitmark Documentation</title>
 
 <link rel="stylesheet" href="/css/syntax.css">
 
@@ -138,7 +138,7 @@
 
 
 
-  <a class="email" title="Submit feedback" href="#" onclick="javascript:window.location='mailto:support@bitmark.com?subject=Bitmark Inc feedback&body=I have some feedback about the Security page: ' + window.location.href;"><i class="fa fa-envelope-o"></i> Need help?</a>
+  <a class="email" title="Submit feedback" href="#" onclick="javascript:window.location='mailto:support@bitmark.com?subject=Bitmark Inc feedback&body=I have some feedback about the Getting Started page: ' + window.location.href;"><i class="fa fa-envelope-o"></i> Need help?</a>
 
 </li>
 
@@ -156,7 +156,7 @@
                                 searchInput: document.getElementById('search-input'),
                                 resultsContainer: document.getElementById('results-container'),
                                 dataSource: '/search.json',
-                                searchResultTemplate: '<li><a href="{url}" title="Security">{title}</a></li>',
+                                searchResultTemplate: '<li><a href="{url}" title="Getting Started">{title}</a></li>',
                     noResultsText: 'No results found.',
                             limit: 10,
                             fuzzy: true,
@@ -334,7 +334,7 @@
                   
                   
                   
-                  <li class="active"><a title="Security" href="/bitmark-references/bitmark-node-software/security">Security</a></li>
+                  <li><a title="Security" href="/bitmark-references/bitmark-node-software/security">Security</a></li>
                   
                   
                   
@@ -349,7 +349,7 @@
                   
                   
                   
-                  <li><a title="Getting Started" href="/bitmark-references/bitmark-sdk/getting-started">Getting Started</a></li>
+                  <li class="active"><a title="Getting Started" href="/bitmark-references/bitmark-sdk/getting-started">Getting Started</a></li>
                   
                   
                   
@@ -468,7 +468,7 @@
         <!-- Content Column -->
         <div class="col-md-9" id="tg-sb-content">
             <!-- <div class="post-header">
-   <h1 class="post-title-main">Security</h1>
+   <h1 class="post-title-main">Getting Started</h1>
 </div> -->
 
 
@@ -481,100 +481,136 @@
     
 
     <div class="row">
-        <div class="col-md-9"><h1 id="security-feature-of-the-bitmark-blockchain">Security feature of the Bitmark Blockchain</h1>
+        <div class="col-md-9"><h1 id="overview">Overview</h1>
 
-<p>The Bitmark Property System uses digital signatures and cryptographic
-hashes to secure its transactions and blocks.</p>
+<p>The Bitmark property system is an universal property system for conferring the same property rights to digital assets that have long existed for physical assets. This system records ownership claims for digital assets as digital property titles known as bitmark certificates on the Bitmark public blockchain. A digital asset can be any digital object, including files, applications, code, and data. In the digital world:</p>
 
-<h2 id="transactions">Transactions</h2>
+<p><strong>digital property = digital asset + bitmark certificate (property rights)</strong></p>
 
-<p>Individual transactions are secured by cryptographic
-signatures. Single signatures are used for basic transactions, while
-countersigned signatures are used for special transfers.</p>
+<p>For simplicity, <em>bitmark certificate</em> is shorten as <em>bitmark</em> in SDK design.</p>
 
-<p>The data in a transaction is packed in a specific order, depending on
-the transaction type.  An Ed25519 signature is performed over all data
-in the packed transaction and appended to form the submission to the
-block chain.</p>
+<p>You can work with the Bitmark blockchain to look up Bitmark certificates or even register and transfer digital properties using the Bitmark SDK, a collection of libraries for different programming languages and mobile platforms. In addition to providing language-specific bindings to the Bitmark APIs, the SDK also simplifies local key management for signing and encryption.</p>
 
-<p>In the case of a countersigned transaction, the signature is performed
-over the packed transaction <em>including</em> the first signature to form
-the complete transaction.  While this does make the signatures order
-sensitive, it does mean that the receiver of the transfer can verify
-the sender before signing.</p>
+<h1 id="getting-started">Getting Started</h1>
 
-<p>The Ed25519 signature algorithm details can be viewed at: https://ed25519.cr.yp.to/</p>
+<h2 id="installation">Installation</h2>
 
-<p>The important features for the Bitmark Block chain are:</p>
-<ul>
-  <li>high security signatures with collision resistance</li>
-  <li>small 32 byte keys</li>
-  <li>signature is only 64 bytes</li>
-  <li>fast verification</li>
+<ul class="uk-tab" data-uk-switcher="{connect:'#622ac73f-8178-49e3-8c15-a4c3ba5ddaf6'}">
+
+	<li class="uk-active"><a href="#">JS</a></li>
+
+	<li><a href="#">Swift</a></li>
+
+	<li><a href="#">Java</a></li>
+
+	<li><a href="#">Go</a></li>
+
 </ul>
 
-<h2 id="transaction-identifiers">Transaction Identifiers</h2>
+<ul id="622ac73f-8178-49e3-8c15-a4c3ba5ddaf6" class="uk-switcher uk-margin">
 
-<p>Transactions are securely incorporated into a block through the
-SHA3-256 algorithm, which is used to derive a 32-byte identifier for
-each transaction.  This secure hash is performed over all bytes,
-including the signatures of the packed transaction.  This is a NIST
-standard and is the replacement for the old SHA2 algorithm.
-The SHA3 algorithm is used here because it is fgaster and also
-has protection against a length extension attack that can be
-performed against SHA2.</p>
+	<li>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">npm</span> <span class="nx">install</span> <span class="nx">bitmark</span><span class="o">-</span><span class="nx">sdk</span><span class="o">-</span><span class="nx">js</span>
+</code></pre></div></div>
+</li>
 
-<p>For more details: https://en.wikipedia.org/wiki/SHA-3</p>
+	<li>
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pod</span> <span class="err">'</span><span class="kt">BitmarkSDK</span><span class="err">'</span>
+</code></pre></div></div>
+</li>
 
-<p>The reason for signing over the signature bytes is to protect against
-signature substitution.</p>
+	<li>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// From your build.gradle</span>
+<span class="n">repositories</span> <span class="o">{</span>
+    <span class="n">jcenter</span><span class="o">()</span>
+    <span class="n">maven</span> <span class="o">{</span> <span class="n">url</span> <span class="err">'</span><span class="nl">https:</span><span class="c1">//oss.sonatype.org/content/repositories/snapshots/' } // For snapshot version</span>
+<span class="o">}</span>
 
-<p>The Transaction Identifiers are merged into a single root hash using
-the Merkle Tree Algorithm: https://brilliant.org/wiki/merkle-tree/</p>
+<span class="n">dependencies</span> <span class="o">{</span>
+    <span class="n">implementation</span> <span class="err">'</span><span class="n">com</span><span class="o">.</span><span class="na">bitmark</span><span class="o">.</span><span class="na">sdk</span><span class="o">:</span><span class="n">java</span><span class="o">-</span><span class="nl">sdk:</span><span class="mf">2.1</span><span class="o">.</span><span class="mi">0</span><span class="err">'</span> <span class="c1">// Java SDK</span>
+    <span class="c1">// Or</span>
+    <span class="n">implementation</span> <span class="err">'</span><span class="n">com</span><span class="o">.</span><span class="na">bitmark</span><span class="o">.</span><span class="na">sdk</span><span class="o">:</span><span class="n">android</span><span class="o">-</span><span class="nl">sdk:</span><span class="mf">2.1</span><span class="o">.</span><span class="mi">0</span><span class="err">'</span> <span class="c1">// Android SDK</span>
+<span class="o">}</span>
+</code></pre></div></div>
+</li>
 
-<p>Since the Merkle Tree root hash is sensitive to missing or changed
-hashes and also to the order of the hashes in the tree it can be used
-to minimise the amount of data that is stored in the block header to
-secure the transactions.  The Bitmark Blockchain uses SHA3-256 for the
-Merkle Tree generation so that the result of the Merkle Tree
-calculation is that it is only necessary to store a single 32 byte value
-in the block header as opposed to an ordered list of every transaction
-identifier in the block.  Also reduces the amount of data that has to be
-read to calculate the block hash and the amount of disk storage used for
-storing the blocks.</p>
+	<li>
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">go</span> <span class="n">get</span> <span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">bitmark</span><span class="o">-</span><span class="n">inc</span><span class="o">/</span><span class="n">bitmark</span><span class="o">-</span><span class="n">sdk</span><span class="o">-</span><span class="k">go</span>
+</code></pre></div></div>
+</li>
 
-<h2 id="block-identifiers">Block Identifiers</h2>
+</ul>
 
-<p>The Argon2 algorithm creates security for the blocks themselves,
-though the Block Identifiers.</p>
+<h2 id="get-your-api-token">Get your API token</h2>
 
-<p>Block Identifiers are used both to link the previous block and as the
-Proof of Work for the block chain.  Since SHA3 is a fast algorithm
-that can be performed on minimal hardware it was decided to use a
-memory hard algorithm for the Block Identifiers to prevent the use of
-ASIC miners and to set the memory parameters to make GPUs uneconomic
-leaving CPUs as the best way to perform the Proof of Work.  This
-prevents existing owners of Bitcoin and Litecoin mining hardware from
-using their large mining systems from disrupting the chain.</p>
+<p>The API token is required to authenticate your requests to the Bitmark API.</p>
 
-<p>So the Argon2 was chosen as a modern high security memory hard hashing
-algorithm from: https://github.com/P-H-C/phc-winner-argon2</p>
+<p>Please contact our <a href="mailto:support@bitmark.com">support</a> to create your developer account and get the API token.</p>
 
-<p>The Block Header is made from the Argon2 Hash of the previous block,
-the root Merkle hash covering all transactions and the number of the
-block.  Other fields cover timestamp, difficulty and NONCE.  The
-difficulty is scaled differently from Bitcoin and allows for much
-lower hashing rates; while a modern CPU can run SHA2/SHA3 at many
-thousands of hashes per second, it can only perform one or two Argon2
-hashes per second because of the increase complexity of the Algorithm.
-The NONCE is used for the hashing program to adjust to find a hash that
-meets the difficulty.</p>
+<h2 id="configuration">Configuration</h2>
 
-<h2 id="proof-of-work-and-difficulty">Proof of Work and Difficulty</h2>
+<p>Before working with the Bitmark blockchain, you’ll need to configure the SDK for your API token and the Bitmark network that you’ll be using.</p>
 
-<p>As the network changes the hashing power will change as well, so the
-difficulty value is adjusted proportionally.  This is to ensure that
-over the long term there is a constant rate of block generated.</p>
+<p>Every code example in other sections presumes the SDK is already correctly initialized.</p>
+
+<ul class="uk-tab" data-uk-switcher="{connect:'#9857186a-c165-441d-9133-ca35e08093ed'}">
+
+	<li class="uk-active"><a href="#">JS</a></li>
+
+	<li><a href="#">Swift</a></li>
+
+	<li><a href="#">Java</a></li>
+
+	<li><a href="#">Go</a></li>
+
+</ul>
+
+<ul id="9857186a-c165-441d-9133-ca35e08093ed" class="uk-switcher uk-margin">
+
+	<li>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">sdk</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">bitmark-sdk-js</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">config</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">apiToken</span><span class="p">:</span> <span class="dl">"</span><span class="s2">api-token</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">network</span><span class="p">:</span> <span class="dl">"</span><span class="s2">testnet</span><span class="dl">"</span>
+<span class="p">};</span>
+
+<span class="nx">sdk</span><span class="p">.</span><span class="nx">init</span><span class="p">(</span><span class="nx">config</span><span class="p">);</span>
+</code></pre></div></div>
+</li>
+
+	<li>
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">import</span> <span class="kt">BitmarkSDK</span>
+
+<span class="kt">BitmarkSDK</span><span class="o">.</span><span class="nf">initialize</span><span class="p">(</span><span class="nv">config</span><span class="p">:</span> <span class="kt">SDKConfig</span><span class="p">(</span><span class="nv">apiToken</span><span class="p">:</span> <span class="s">"api-token"</span><span class="p">,</span>
+                                        <span class="nv">network</span><span class="p">:</span> <span class="o">.</span><span class="n">testnet</span><span class="p">,</span>
+                                        <span class="nv">urlSession</span><span class="p">:</span> <span class="kt">URLSession</span><span class="o">.</span><span class="n">shared</span><span class="p">))</span>
+</code></pre></div></div>
+</li>
+
+	<li>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">final</span> <span class="nc">GlobalConfiguration</span><span class="o">.</span><span class="na">Builder</span> <span class="n">builder</span> <span class="o">=</span> <span class="nc">GlobalConfiguration</span><span class="o">.</span><span class="na">builder</span><span class="o">().</span><span class="na">withApiToken</span><span class="o">(</span><span class="s">"api-token"</span><span class="o">).</span><span class="na">withNetwork</span><span class="o">(</span><span class="nc">Network</span><span class="o">.</span><span class="na">LIVE_NET</span><span class="o">);</span>
+<span class="nc">BitmarkSDK</span><span class="o">.</span><span class="na">init</span><span class="o">(</span><span class="n">builder</span><span class="o">);</span>
+</code></pre></div></div>
+</li>
+
+	<li>
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="n">sdk</span> <span class="s">"github.com/bitmark/bitmark-inc/bitmark-sdk-go"</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="n">config</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="n">sdk</span><span class="o">.</span><span class="n">Config</span><span class="p">{</span>
+		<span class="n">APIToken</span><span class="o">:</span> <span class="s">"YOUR API TOKEN"</span><span class="p">,</span>
+		<span class="n">Network</span><span class="o">:</span>  <span class="n">sdk</span><span class="o">.</span><span class="n">Testnet</span><span class="p">,</span>
+		<span class="n">HTTPClient</span><span class="o">:</span> <span class="o">&amp;</span><span class="n">http</span><span class="o">.</span><span class="n">Client</span><span class="p">{</span>
+			<span class="n">Timeout</span><span class="o">:</span> <span class="m">10</span> <span class="o">*</span> <span class="n">time</span><span class="o">.</span><span class="n">Second</span><span class="p">,</span>
+		<span class="p">},</span>
+	<span class="p">}</span>
+	<span class="n">sdk</span><span class="o">.</span><span class="n">Init</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div></div>
+</li>
+
+</ul>
 </div>
         
         <div class="col-md-3">

@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
-<meta name="keywords" content=" security">
-<title>Security | Bitmark Documentation</title>
+<meta name="keywords" content=" blockchain">
+<title>Bitmark Blockchain | Bitmark Documentation</title>
 
 <link rel="stylesheet" href="/css/syntax.css">
 
@@ -138,7 +138,7 @@
 
 
 
-  <a class="email" title="Submit feedback" href="#" onclick="javascript:window.location='mailto:support@bitmark.com?subject=Bitmark Inc feedback&body=I have some feedback about the Security page: ' + window.location.href;"><i class="fa fa-envelope-o"></i> Need help?</a>
+  <a class="email" title="Submit feedback" href="#" onclick="javascript:window.location='mailto:support@bitmark.com?subject=Bitmark Inc feedback&body=I have some feedback about the Bitmark Blockchain page: ' + window.location.href;"><i class="fa fa-envelope-o"></i> Need help?</a>
 
 </li>
 
@@ -156,7 +156,7 @@
                                 searchInput: document.getElementById('search-input'),
                                 resultsContainer: document.getElementById('results-container'),
                                 dataSource: '/search.json',
-                                searchResultTemplate: '<li><a href="{url}" title="Security">{title}</a></li>',
+                                searchResultTemplate: '<li><a href="{url}" title="Bitmark Blockchain">{title}</a></li>',
                     noResultsText: 'No results found.',
                             limit: 10,
                             fuzzy: true,
@@ -199,7 +199,7 @@
           
           
           
-          <li><a title="Bitmark Blockchain" href="/learning-bitmark/bitmark-blockchain">Bitmark Blockchain</a></li>
+          <li class="active"><a title="Bitmark Blockchain" href="/learning-bitmark/bitmark-blockchain">Bitmark Blockchain</a></li>
           
           
           
@@ -334,7 +334,7 @@
                   
                   
                   
-                  <li class="active"><a title="Security" href="/bitmark-references/bitmark-node-software/security">Security</a></li>
+                  <li><a title="Security" href="/bitmark-references/bitmark-node-software/security">Security</a></li>
                   
                   
                   
@@ -468,7 +468,7 @@
         <!-- Content Column -->
         <div class="col-md-9" id="tg-sb-content">
             <!-- <div class="post-header">
-   <h1 class="post-title-main">Security</h1>
+   <h1 class="post-title-main">Bitmark Blockchain</h1>
 </div> -->
 
 
@@ -481,100 +481,200 @@
     
 
     <div class="row">
-        <div class="col-md-9"><h1 id="security-feature-of-the-bitmark-blockchain">Security feature of the Bitmark Blockchain</h1>
+        <div class="col-md-9"><h1 id="bitmark-blockchain">Bitmark Blockchain</h1>
 
-<p>The Bitmark Property System uses digital signatures and cryptographic
-hashes to secure its transactions and blocks.</p>
+<h2 id="technical-overview">Technical Overview</h2>
 
-<h2 id="transactions">Transactions</h2>
+<p>The Bitmark blockchain is the property system for the digital generation.</p>
 
-<p>Individual transactions are secured by cryptographic
-signatures. Single signatures are used for basic transactions, while
-countersigned signatures are used for special transfers.</p>
+<p><img src="/assets/images/bitmark_processes_en_2500w.png" alt="Bitmark Blockchain" /></p>
 
-<p>The data in a transaction is packed in a specific order, depending on
-the transaction type.  An Ed25519 signature is performed over all data
-in the packed transaction and appended to form the submission to the
-block chain.</p>
+<p>The Bitmark property system was built with cutting-edge blockchain technology to match the needs of our borderless and global digital lives and futures.</p>
 
-<p>In the case of a countersigned transaction, the signature is performed
-over the packed transaction <em>including</em> the first signature to form
-the complete transaction.  While this does make the signatures order
-sensitive, it does mean that the receiver of the transfer can verify
-the sender before signing.</p>
+<p>It features some of the same strengths as other blockchains, such as the immutability of an ordered and distributed ledger. However, Bitmark is specialized for property transactions and has strengths related to that: by uniquely identifying property, encoding its title, and supporting transfers, Bitmark creates clear provenance and chain of ownership for unique digital assets. This decentralized structure empowers individuals by granting them personal control over their assets.</p>
 
-<p>The Ed25519 signature algorithm details can be viewed at: https://ed25519.cr.yp.to/</p>
+<p>To read more about the Bitmark property system, how it expands on the basic ideas of the blockchain, and how it uses a variety of blockchain records to manage digital property and data, please <a href="https://medium.com/clean-titles/defining-property-in-the-digital-environment-part-three-4c3ecbab5833">read our blog posts here</a>.</p>
 
-<p>The important features for the Bitmark Block chain are:</p>
+<p>For more details, read our Technical FAQ below or our <a href="/pages/bitmark-appendix/bitmark-papers.md">papers</a>.</p>
+
+<h2 id="technical-faq">Technical FAQ</h2>
+
+<p>The following questions and answers are drawn in part from our papers and provide more depth than the overview of the Bitmark property system found in our blog posts.</p>
+
+<p><strong>The Bitmark Blockchain</strong></p>
+
 <ul>
-  <li>high security signatures with collision resistance</li>
-  <li>small 32 byte keys</li>
-  <li>signature is only 64 bytes</li>
-  <li>fast verification</li>
+  <li>
+    <p><a href="#why-use-the-bitmark-blockchain-to-record-property">Why use the Bitmark Blockchain to record property?</a></p>
+  </li>
+  <li>
+    <p><a href="#why-not-just-use-bitcoin-or-ethereum-tokens-to-represent-property">Why not just use Bitcoin or Ethereum tokens to represent property?</a></p>
+  </li>
 </ul>
 
-<h2 id="transaction-identifiers">Transaction Identifiers</h2>
+<p><strong>Registering Bitmark Certificates</strong></p>
 
-<p>Transactions are securely incorporated into a block through the
-SHA3-256 algorithm, which is used to derive a 32-byte identifier for
-each transaction.  This secure hash is performed over all bytes,
-including the signatures of the packed transaction.  This is a NIST
-standard and is the replacement for the old SHA2 algorithm.
-The SHA3 algorithm is used here because it is fgaster and also
-has protection against a length extension attack that can be
-performed against SHA2.</p>
+<ul>
+  <li>
+    <p><a href="#how-are-property-owners-identified-in-bitmark">How are property owners identified in Bitmark?</a></p>
+  </li>
+  <li>
+    <p><a href="#how-is-property-registered-in-bitmark">How is property registered in Bitmark?</a></p>
+  </li>
+  <li>
+    <p><a href="#how-are-bitmark-miners-encouraged-to-publish-issue-records">How are Bitmark miners encouraged to publish issue records?</a></p>
+  </li>
+  <li>
+    <p><a href="#are-bitmark-certificates-private">Are bitmark certificates private?</a></p>
+  </li>
+  <li>
+    <p><a href="#how-does-the-bitmark-blockchain-protect-property">How does the Bitmark Blockchain protect property?</a></p>
+  </li>
+</ul>
 
-<p>For more details: https://en.wikipedia.org/wiki/SHA-3</p>
+<p><strong>Transferring bitmark certificates</strong></p>
 
-<p>The reason for signing over the signature bytes is to protect against
-signature substitution.</p>
+<ul>
+  <li>
+    <p><a href="#how-is-property-transferred-in-bitmark">How is property transferred in Bitmark?</a></p>
+  </li>
+  <li>
+    <p><a href="#how-are-bitmark-miners-encouraged-to-publish-transfer-records">How are Bitmark miners encouraged to publish transfer records?</a></p>
+  </li>
+</ul>
 
-<p>The Transaction Identifiers are merged into a single root hash using
-the Merkle Tree Algorithm: https://brilliant.org/wiki/merkle-tree/</p>
+<h3 id="the-bitmark-blockchain">The Bitmark Blockchain</h3>
 
-<p>Since the Merkle Tree root hash is sensitive to missing or changed
-hashes and also to the order of the hashes in the tree it can be used
-to minimise the amount of data that is stored in the block header to
-secure the transactions.  The Bitmark Blockchain uses SHA3-256 for the
-Merkle Tree generation so that the result of the Merkle Tree
-calculation is that it is only necessary to store a single 32 byte value
-in the block header as opposed to an ordered list of every transaction
-identifier in the block.  Also reduces the amount of data that has to be
-read to calculate the block hash and the amount of disk storage used for
-storing the blocks.</p>
+<h4 id="why-use-the-bitmark-blockchain-to-record-property">Why use the Bitmark Blockchain to record property?</h4>
 
-<h2 id="block-identifiers">Block Identifiers</h2>
+<p>You might own land, means of production, inventions, creative works, or other assets, but you also have a title to those assets. A property title is the legal instrument by which an entity claims ownership of an asset. It also serves as a “container” for transferring property rights from one owner to another. To be legally binding, title transfers must be publicly recorded in property systems such as county land registrars or a state departments of motor vehicles.</p>
 
-<p>The Argon2 algorithm creates security for the blocks themselves,
-though the Block Identifiers.</p>
+<p><img src="/assets/images/bitmark_ownership_en_2500w.png" alt="Bitmark Ownership" /></p>
 
-<p>Block Identifiers are used both to link the previous block and as the
-Proof of Work for the block chain.  Since SHA3 is a fast algorithm
-that can be performed on minimal hardware it was decided to use a
-memory hard algorithm for the Block Identifiers to prevent the use of
-ASIC miners and to set the memory parameters to make GPUs uneconomic
-leaving CPUs as the best way to perform the Proof of Work.  This
-prevents existing owners of Bitcoin and Litecoin mining hardware from
-using their large mining systems from disrupting the chain.</p>
+<p>In other words, people have traditionally said that assets with titles that have been publicly recorded are more valuable than those without. They are what grant basic rights, such as the ability to resell, rent, lend, and donate. The Bitmark Blockchain offers the opportunity to register titles for your digital assets.</p>
 
-<p>So the Argon2 was chosen as a modern high security memory hard hashing
-algorithm from: https://github.com/P-H-C/phc-winner-argon2</p>
+<h4 id="why-not-just-use-bitcoin-or-ethereum-tokens-to-represent-property">Why not just use Bitcoin or Ethereum tokens to represent property?</h4>
 
-<p>The Block Header is made from the Argon2 Hash of the previous block,
-the root Merkle hash covering all transactions and the number of the
-block.  Other fields cover timestamp, difficulty and NONCE.  The
-difficulty is scaled differently from Bitcoin and allows for much
-lower hashing rates; while a modern CPU can run SHA2/SHA3 at many
-thousands of hashes per second, it can only perform one or two Argon2
-hashes per second because of the increase complexity of the Algorithm.
-The NONCE is used for the hashing program to adjust to find a hash that
-meets the difficulty.</p>
+<p>Traditional cryptocurrency tokens can be split and rejoined, which is a bad model for property: you wouldn’t want to cut a painting into six parts, then put it back together! The fungibility of traditional cryptocurrency also is at odds with the necessity to record provenance for property. Finally, there’s no ability on traditional systems for a recipient to countersign to agree to the transfer of property.</p>
 
-<h2 id="proof-of-work-and-difficulty">Proof of Work and Difficulty</h2>
+<p>There are methods to get around some of this issues on Bitcoin, such as recording information in OP_RETURNS or directly encoding data in UTXOs. Similarly, specific smart contracts could have been created in Ethereum to create non-fungible tokens.</p>
 
-<p>As the network changes the hashing power will change as well, so the
-difficulty value is adjusted proportionally.  This is to ensure that
-over the long term there is a constant rate of block generated.</p>
+<p>However, we ultimately felt that a network designed specifically for registering property rights could minimize resource requirements and reduce security attack vectors. The question then became “Is registering, tracking, and trading digital property popular enough to warrant a specialized system?” History shows that the answer to that is clearly “yes”; we believe that it’s the most sustainable long-term strategy.</p>
+
+<h3 id="registering-bitmark-certificates">Registering Bitmark Certificates</h3>
+
+<h4 id="how-are-property-owners-identified-in-bitmark">How are property owners identified in Bitmark?</h4>
+
+<p>Each property owner in Bitmark is identified by a public key. They must then decide how to store their linked private key. They could choose to do so themselves, possibly using the Bitmark mobile app, or they could store it directly with Bitmark. They can also decide to link their public key to a real-world identity or to remain pseudonymous.</p>
+
+<h4 id="how-is-property-registered-in-bitmark">How is property registered in Bitmark?</h4>
+
+<p>Company easily checks the Bitmark blockchain for the corresponding bitmark certificate.</p>
+
+<p>An asset record contains the following information:</p>
+
+<ul>
+  <li>
+    <p>A fingerprint hash of the asset, with options delineated by the Bitmark Trade Service.</p>
+  </li>
+  <li>
+    <p>The registrant of the asset, defined by their public key.</p>
+  </li>
+  <li>
+    <p>The name of the asset, a short name of 64 UTF-8 characters or less</p>
+  </li>
+  <li>
+    <p>Optional metadata, consisting of key-value pairs.</p>
+  </li>
+  <li>
+    <p>A signature of a hash of the above fields, using the registrant’s private key.</p>
+  </li>
+</ul>
+
+<p>There can only be one asset record for each digital property on the Bitmark blockchain. It’s only placed on the blockchain when an issue record for the asset is verified and itself placed on the Bitmark blockchain. Later issue records for the same asset will point back to the original asset record.</p>
+
+<p>An issue record contains the following information:</p>
+
+<ul>
+  <li>
+    <p>An assetindex, which is a SHA3-512 hash of the asset’s fingerprint.</p>
+  </li>
+  <li>
+    <p>A nonce, which numbers this particular issuance of the asset.</p>
+  </li>
+  <li>
+    <p>The owner of the asset, defined by their public key.</p>
+  </li>
+  <li>
+    <p>A signature of a hash of the above fields, using the registrant’s private key.</p>
+  </li>
+</ul>
+
+<p>There can be multiple issue records for the same property, each defined by a different nonce, and each representing a different instance of the property. Typically, these represent “limited editions” of a digital asset or authorized copies of digital data.</p>
+
+<h4 id="how-are-bitmark-miners-encouraged-to-publish-issue-records">How are Bitmark miners encouraged to publish issue records?</h4>
+
+<p>Though a miner isn’t immediately paid for these issuances in his block, he’s still incentivized to mine the issue records because he’s given a bitmark certificate on the block. This will reward him when the digital properties in the block are later transferred.</p>
+
+<h4 id="how-does-the-bitmark-blockchain-protect-property">How does the Bitmark Blockchain protect property?</h4>
+
+<p>A decentralized system such as Bitmark allows almost anyone to issue bitmark certificates to just about anything. When legal disputes arise, the immutability of the blockchain allows it to serve as evidence in conflicting ownership claims. This permanent public record of ownership can also help deter bad actors. Encryption can be used to further protect digital assets that have been registered as bitmark certificates.</p>
+
+<p><img src="/assets/images/ownership_blockchain-digital_property_en_2500w.png" alt="Bitmark Blockchain protects Ownership" /></p>
+
+<h3 id="transferring-bitmark-certificates">Transferring bitmark certificates</h3>
+
+<h4 id="how-is-property-transferred-in-bitmark">How is property transferred in Bitmark?</h4>
+
+<p>Once an asset has been issued, trading it simply requires the owner to create a new transfer record that points back to the original issue record (or to the previous transfer record) and that shows the new owner of the asset. Because the blockchain is ordered and because it’s immutable, this creates a permanent chain of custody, reaching back to the asset’s origins.</p>
+
+<p><img src="/assets/images/bitmark_signature_chain_graphic_en_2500w.png" alt="Bitmark signature chain" /></p>
+
+<p>A transfer record contains the following information:</p>
+
+<ul>
+  <li>
+    <p>A link, which is a SHA3-512 hash of the asset’s previous record, creating the chain of ownership.</p>
+  </li>
+  <li>
+    <p>An owner, which is the public key of the recipient of the asset.</p>
+  </li>
+  <li>
+    <p>An optional payment, which lists the Bitcoin or Litecoin currency, an amount, and an address.</p>
+  </li>
+  <li>
+    <p>A signature of a hash of the above fields, using the previous owner’s private key.</p>
+  </li>
+  <li>
+    <p>An optional countersignature using the new owner’s private key.</p>
+  </li>
+</ul>
+
+<p>In order to create a transfer record, the previous owner must pay a small transfer fee. There is no option for instead performing a Hashcash calculation.</p>
+
+<h4 id="how-are-bitmark-miners-encouraged-to-publish-transfer-records">How are Bitmark miners encouraged to publish transfer records?</h4>
+
+<p>Transaction fees are required for transfer records. (They can also be optionally used for issue records.) They incentivize the miners to include records in their blocks. Because there is no cryptocurrency on the Bitmark blockchain itself, these fees are managed through interactions with cryptocurrency blockchains.</p>
+
+<p>Whereas most blockchains have a single, verified mempool, Bitmark has two mempools: a pending mempool and a verified mempool. After a Bitmark transaction is created and its signature and link are checked, it’s placed in the pending mempool. It will stay there for up to an hour or until its fee is paid.</p>
+
+<p>The placement of a record in the pending mempool marks the beginning of a five-step process where the Bitmark blockchain requests transaction fees and eventually sends them to miners (called “recorders” on the Bitmark blockchain):</p>
+
+<ol>
+  <li>
+    <p>After creating a transaction, the creator receives a payment request, which includes both a payment ID and a list of possible currencies (currently BTC Bitcoin and LTC Litecoin) and payment addresses.</p>
+  </li>
+  <li>
+    <p>The record creator pays the fee on one of those other blockchains and includes the payment ID in the payment transaction’s OP_RETURN. This fee should be 0.0002 BTC or 0.002 LTC</p>
+  </li>
+  <li>
+    <p>Bitmark watches those other blockchains; when it spots a payment it moves the associated Bitmark transaction from the pending mempool to the verified mempool, making it available for mining.</p>
+  </li>
+  <li>When a miner successfully mines a block, he includes his own payment addresses for all possible currencies.</li>
+  <li>Bitmark pays fees from the block to the miner at his linked addresses.</li>
+</ol>
+
+<p>Even though the Bitmark blockchain doesn’t transact currencies, it is able to leverage the advantages of cryptocurrencies by these links to other blockchains.</p>
 </div>
         
         <div class="col-md-3">

@@ -26,10 +26,21 @@
 
 
 {
-"title": "Basic Bitmark Blockchain Overview",
+"title": "Bitmark Blockchain Technical Overview",
 "tags": "",
 "keywords": "blockchain",
-"url": "/bitmark-references/bitmark-node-software/bitmark-blockchain",
+"url": "/bitmark-references/bitmark-node-software/bitmark-blockchain-technical-overview",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Bitmark Blockchain",
+"tags": "",
+"keywords": "blockchain",
+"url": "/learning-bitmark/bitmark-blockchain",
 "summary": ""
 }
 ,
@@ -40,7 +51,7 @@
 "title": "Bitmark-CLI Command Reference",
 "tags": "",
 "keywords": "cli, bitmark-cli, command line interface",
-"url": "/bitmark-references/bitmark-cli/bitmark-cli",
+"url": "/bitmark-references/bitmark-cli/bitmark-cli-command-reference",
 "summary": ""
 }
 ,
@@ -62,7 +73,7 @@
 "title": "Tutorial For Node Setup",
 "tags": "",
 "keywords": "node, node setup",
-"url": "/bitmark-references/node-setup/bitmark-node-setup",
+"url": "/bitmark-references/node-setup/tutorial-for-node-setup",
 "summary": ""
 }
 ,
@@ -70,10 +81,21 @@
 
 
 {
-"title": "Action",
+"title": "Bitmark Papers",
+"tags": "",
+"keywords": "papers",
+"url": "/bitmark-appendix/bitmark-papers",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Getting Started",
 "tags": "",
 "keywords": "sdk, sdk doc",
-"url": "/bitmark-references/bitmark-sdk/bitmark-sdk-document",
+"url": "/bitmark-references/bitmark-sdk/getting-started",
 "summary": ""
 }
 ,
@@ -81,7 +103,7 @@
 
 
 {
-"title": "Bitmark shares",
+"title": "Bitmark Shares",
 "tags": "",
 "keywords": "bitmark shares",
 "url": "/bitmark-appendix/bitmark-shares",
@@ -106,7 +128,7 @@
 "title": "Bitmark Glossary",
 "tags": "",
 "keywords": "terms, glossary",
-"url": "/bitmark-references/terms-and-glossary/bitmark-terms-and-glossary",
+"url": "/learning-bitmark/bitmark-terms-and-glossary",
 "summary": ""
 }
 ,
@@ -125,7 +147,7 @@
 
 
 {
-"title": "BUG BOUNTY PROGRAM",
+"title": "Bug Bounty Program",
 "tags": "",
 "keywords": "bug bounty",
 "url": "/learning-bitmark/contributing-to-bitmark/bug-bounty-program",
@@ -196,7 +218,7 @@
 "title": "Bitmark Mining",
 "tags": "",
 "keywords": "mining",
-"url": "/bitmark-references/bitmark-node-software/mining",
+"url": "/bitmark-references/bitmark-node-software/bitmark-mining",
 "summary": ""
 }
 ,
@@ -204,10 +226,10 @@
 
 
 {
-"title": "Node Modules",
+"title": "Storage",
 "tags": "",
 "keywords": "node modules, storage",
-"url": "/bitmark-references/bitmark-node-software/node-modules",
+"url": "/bitmark-references/bitmark-node-software/storage",
 "summary": ""
 }
 ,
@@ -215,10 +237,10 @@
 
 
 {
-"title": "Bitmark transaction payment",
+"title": "Bitmark CLI Payment",
 "tags": "",
 "keywords": "transaction payment",
-"url": "/learning-bitmark/quick-start/working-with-bitmarks/payment-for-bitmark-cli",
+"url": "/learning-bitmark/quick-start/working-with-bitmarks/bitmark-cli-payment",
 "summary": ""
 }
 ,
@@ -239,8 +261,8 @@
 {
 "title": "Bitmark Property System Introduction",
 "tags": "",
-"keywords": "introduction",
-"url": "/learning-bitmark/problem-we-are-trying-to-solve",
+"keywords": "introduction, property system",
+"url": "/learning-bitmark/bitmark-property-system-introduction",
 "summary": ""
 }
 ,
@@ -273,7 +295,7 @@
 "title": "RPC Communication",
 "tags": "",
 "keywords": "rpc",
-"url": "/bitmark-references/rpc-communication/rpc-communication",
+"url": "/bitmark-references/bitmark-node-software/rpc-communication",
 "summary": ""
 }
 ,
@@ -283,7 +305,7 @@
 
 
 {
-"title": "Security feature of the Bitmark Blockchain",
+"title": "Security",
 "tags": "",
 "keywords": "security",
 "url": "/bitmark-references/bitmark-node-software/security",
@@ -333,7 +355,7 @@
 
 
 {
-"title": "Bitmark shares",
+"title": "Using Bitmark Shares",
 "tags": "",
 "keywords": "bitmark shares",
 "url": "/learning-bitmark/quick-start/working-with-bitmarks/using-bitmark-shares",
@@ -381,6 +403,17 @@
 "tags": "",
 "keywords": "",
 "url": "/pages/learning-bitmark/quick-start/simple-solution-for-executing-transactions.html",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Bitmark Documentation",
+"tags": "",
+"keywords": "",
+"url": "/pages/",
 "summary": ""
 }
 ,
@@ -447,17 +480,6 @@
 "tags": "",
 "keywords": "",
 "url": "/pages/bitmark-references/node-setup/",
-"summary": ""
-}
-,
-
-
-
-{
-"title": "RPC Communication",
-"tags": "",
-"keywords": "",
-"url": "/pages/bitmark-references/rpc-communication/",
 "summary": ""
 }
 ,
