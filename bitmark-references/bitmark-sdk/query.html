@@ -298,7 +298,7 @@
                   
                   
                   
-                  <li><a title="Bitmark Blockchain Technical Overview" href="/bitmark-references/bitmark-node-software/bitmark-blockchain-technical-overview">Bitmark Blockchain Technical Overview</a></li>
+                  <li><a title="Bitmark Blockchain Overview" href="/bitmark-references/bitmark-node-software/bitmark-blockchain-overview">Bitmark Blockchain Overview</a></li>
                   
                   
                   
@@ -561,7 +561,7 @@
 
 <h3 id="query-for-a-specific-asset">Query for a specific asset</h3>
 
-<ul class="uk-tab" data-uk-switcher="{connect:'#c0660db1-001f-4ff6-8503-8c7ec42dbb09'}">
+<ul class="uk-tab" data-uk-switcher="{connect:'#28ea5d24-af99-4ea8-9a8d-cbcaaa155151'}">
 
 	<li class="uk-active"><a href="#">JS</a></li>
 
@@ -573,7 +573,7 @@
 
 </ul>
 
-<ul id="c0660db1-001f-4ff6-8503-8c7ec42dbb09" class="uk-switcher uk-margin">
+<ul id="28ea5d24-af99-4ea8-9a8d-cbcaaa155151" class="uk-switcher uk-margin">
 
 	<li>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">Asset</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nx">assetId</span><span class="p">);</span>
@@ -620,7 +620,7 @@
 
 <p>Use the account number of the registrant as the query argument.</p>
 
-<ul class="uk-tab" data-uk-switcher="{connect:'#ced720b8-7391-45ce-9c6b-2372705678bf'}">
+<ul class="uk-tab" data-uk-switcher="{connect:'#d3906f80-5eb6-45db-9de7-81749f602514'}">
 
 	<li class="uk-active"><a href="#">JS</a></li>
 
@@ -632,7 +632,7 @@
 
 </ul>
 
-<ul id="ced720b8-7391-45ce-9c6b-2372705678bf" class="uk-switcher uk-margin">
+<ul id="d3906f80-5eb6-45db-9de7-81749f602514" class="uk-switcher uk-margin">
 
 	<li>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">assetQueryParams</span> <span class="o">=</span> <span class="nx">Asset</span><span class="p">.</span><span class="nx">newAssetQueryBuilder</span><span class="p">()</span>
@@ -754,7 +754,7 @@
 
 <h3 id="query-for-a-specific-transaction">Query for a specific transaction</h3>
 
-<ul class="uk-tab" data-uk-switcher="{connect:'#23ba7457-841e-4d72-ae2d-b7ba89eee74e'}">
+<ul class="uk-tab" data-uk-switcher="{connect:'#4f5f2095-9c69-4e3c-a849-7b2035b40753'}">
 
 	<li class="uk-active"><a href="#">JS</a></li>
 
@@ -766,7 +766,7 @@
 
 </ul>
 
-<ul id="23ba7457-841e-4d72-ae2d-b7ba89eee74e" class="uk-switcher uk-margin">
+<ul id="4f5f2095-9c69-4e3c-a849-7b2035b40753" class="uk-switcher uk-margin">
 
 	<li>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">txResponse</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">Transaction</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nx">txId</span><span class="p">);</span>
@@ -807,7 +807,7 @@
 
 <p>A list of transaction records to show the ownership changes of a bitmark. If a bitmark is issued by user A, and then transferred to user B and C, the return will include 3 transactions with user A, B and C as transaction owners respectively.</p>
 
-<ul class="uk-tab" data-uk-switcher="{connect:'#6ecae45d-6eb7-4037-a699-031ca6a12337'}">
+<ul class="uk-tab" data-uk-switcher="{connect:'#ea9f3c3c-fc0f-462c-a0b0-ec932a25835d'}">
 
 	<li class="uk-active"><a href="#">JS</a></li>
 
@@ -819,7 +819,7 @@
 
 </ul>
 
-<ul id="6ecae45d-6eb7-4037-a699-031ca6a12337" class="uk-switcher uk-margin">
+<ul id="ea9f3c3c-fc0f-462c-a0b0-ec932a25835d" class="uk-switcher uk-margin">
 
 	<li>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">transactionQueryParams</span> <span class="o">=</span> <span class="nx">Transaction</span><span class="p">.</span><span class="nx">newTransactionQueryBuilder</span><span class="p">()</span>
@@ -868,7 +868,7 @@
 
 <!-- TODO: what does this mean? -->
 
-<ul class="uk-tab" data-uk-switcher="{connect:'#2bff5787-418c-4ff4-8222-7719d233003f'}">
+<ul class="uk-tab" data-uk-switcher="{connect:'#a4e75579-0dba-46fe-af82-f4f45d710af3'}">
 
 	<li class="uk-active"><a href="#">JS</a></li>
 
@@ -880,7 +880,7 @@
 
 </ul>
 
-<ul id="2bff5787-418c-4ff4-8222-7719d233003f" class="uk-switcher uk-margin">
+<ul id="a4e75579-0dba-46fe-af82-f4f45d710af3" class="uk-switcher uk-margin">
 
 	<li>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">transactionQueryParams</span> <span class="o">=</span> <span class="nx">Transaction</span><span class="p">.</span><span class="nx">newTransactionQueryBuilder</span><span class="p">()</span>
@@ -1035,7 +1035,7 @@
 
 <h3 id="query-for-a-specific-bitmark">Query for a specific bitmark</h3>
 
-<ul class="uk-tab" data-uk-switcher="{connect:'#574752f7-2249-41d0-b702-2eff433dfa61'}">
+<ul class="uk-tab" data-uk-switcher="{connect:'#2ad1156c-8a08-4d76-ad0d-ab7685ac3595'}">
 
 	<li class="uk-active"><a href="#">JS</a></li>
 
@@ -1047,7 +1047,7 @@
 
 </ul>
 
-<ul id="574752f7-2249-41d0-b702-2eff433dfa61" class="uk-switcher uk-margin">
+<ul id="2ad1156c-8a08-4d76-ad0d-ab7685ac3595" class="uk-switcher uk-margin">
 
 	<li>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">Bitmark</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nx">bitmarkId</span><span class="p">,</span> <span class="kc">false</span><span class="p">);</span> <span class="c1">// false: not include asset, true: include asset</span>
