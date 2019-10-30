@@ -5,8 +5,8 @@
         <description>Bitmark Inc. Documentation</description>
         <link>/</link>
         <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Tue, 29 Oct 2019 17:08:57 +0700</pubDate>
-        <lastBuildDate>Tue, 29 Oct 2019 17:08:57 +0700</lastBuildDate>
+        <pubDate>Wed, 30 Oct 2019 04:10:19 +0000</pubDate>
+        <lastBuildDate>Wed, 30 Oct 2019 04:10:19 +0000</lastBuildDate>
         <generator>Jekyll v3.8.5</generator>
         
         <item>
@@ -20,7 +20,7 @@
 &lt;p&gt;Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries&lt;/p&gt;
 
 </description>
-            <pubDate>Fri, 26 Feb 2016 00:00:00 +0700</pubDate>
+            <pubDate>Fri, 26 Feb 2016 00:00:00 +0000</pubDate>
             <link>/samplepost.html</link>
             <guid isPermaLink="true">/samplepost.html</guid>
             
@@ -46,7 +46,7 @@
 &lt;/ul&gt;
 
 </description>
-            <pubDate>Wed, 24 Feb 2016 00:00:00 +0700</pubDate>
+            <pubDate>Wed, 24 Feb 2016 00:00:00 +0000</pubDate>
             <link>/myupdate.html</link>
             <guid isPermaLink="true">/myupdate.html</guid>
             
@@ -60,7 +60,7 @@
             <description>&lt;p&gt;This is just a test post from the previous year.&lt;/p&gt;
 
 </description>
-            <pubDate>Sun, 12 Apr 2015 00:00:00 +0700</pubDate>
+            <pubDate>Sun, 12 Apr 2015 00:00:00 +0000</pubDate>
             <link>/test-post-from-last-year.html</link>
             <guid isPermaLink="true">/test-post-from-last-year.html</guid>
             
