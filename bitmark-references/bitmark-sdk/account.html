@@ -254,6 +254,12 @@
                   
                   
                   
+                  <li><a title="Bitmark Software Development Process" href="/learning-bitmark/contributing-to-bitmark/bitmark-software-development-process">Bitmark Software Development Process</a></li>
+                  
+                  
+                  
+                  
+                  
                   <li><a title="Bitmark Upgrade Proposal" href="/learning-bitmark/contributing-to-bitmark/bup">Bitmark Upgrade Proposal</a></li>
                   
                   
@@ -491,7 +497,7 @@
 
 <p>Create a new identity to participate Bitmark blockchain.</p>
 
-<ul class="uk-tab" data-uk-switcher="{connect:'#d92a5cd2-fd61-4e9f-8613-3479b268c6d8'}">
+<ul class="uk-tab" data-uk-switcher="{connect:'#01bcda52-e1db-4fcc-af37-99e60f8c10ff'}">
 
 	<li class="uk-active"><a href="#">JS</a></li>
 
@@ -503,7 +509,7 @@
 
 </ul>
 
-<ul id="d92a5cd2-fd61-4e9f-8613-3479b268c6d8" class="uk-switcher uk-margin">
+<ul id="01bcda52-e1db-4fcc-af37-99e60f8c10ff" class="uk-switcher uk-margin">
 
 	<li>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">account</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">sdk</span><span class="p">.</span><span class="nx">Account</span><span class="p">();</span>
@@ -543,7 +549,7 @@
   <li><strong>receiver</strong> of a bitmark transfer offer</li>
 </ul>
 
-<ul class="uk-tab" data-uk-switcher="{connect:'#b97ca0dc-e2ae-48f8-8a26-5e6090b4ad78'}">
+<ul class="uk-tab" data-uk-switcher="{connect:'#5ac1e3ee-0d81-4147-81c8-36ae45cbcbea'}">
 
 	<li class="uk-active"><a href="#">JS</a></li>
 
@@ -555,7 +561,7 @@
 
 </ul>
 
-<ul id="b97ca0dc-e2ae-48f8-8a26-5e6090b4ad78" class="uk-switcher uk-margin">
+<ul id="5ac1e3ee-0d81-4147-81c8-36ae45cbcbea" class="uk-switcher uk-margin">
 
 	<li>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">accountNumber</span> <span class="o">=</span> <span class="nx">account</span><span class="p">.</span><span class="nx">getAccountNumber</span><span class="p">();</span>
@@ -592,7 +598,7 @@
 
 <p>The seed is the more compact format of an exported account. See <a href="/bitmark-references/bitmark-sdk/store-seed">Store seed</a> to learn how to securely store seeds in mobile phones.</p>
 
-<ul class="uk-tab" data-uk-switcher="{connect:'#83e2cbeb-ea05-4962-9014-46bdb4682d59'}">
+<ul class="uk-tab" data-uk-switcher="{connect:'#760dfcd1-05df-4f01-9b04-b14cd7459317'}">
 
 	<li class="uk-active"><a href="#">JS</a></li>
 
@@ -604,7 +610,7 @@
 
 </ul>
 
-<ul id="83e2cbeb-ea05-4962-9014-46bdb4682d59" class="uk-switcher uk-margin">
+<ul id="760dfcd1-05df-4f01-9b04-b14cd7459317" class="uk-switcher uk-margin">
 
 	<li>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">seed</span> <span class="o">=</span> <span class="nx">account</span><span class="p">.</span><span class="nx">getSeed</span><span class="p">();</span>
@@ -637,7 +643,7 @@
 
 <p>The recovery phrase, which consists of 12 <a href="https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki">mnemonic words</a>, is superior for human interaction compared to the handling of seed. If you don’t custody the seeds of your users, make sure you present the recovery phrase to them and teach them <a href="https://help.trustwallet.com/hc/en-us/articles/360016509753-Best-Practices-for-Storing-Your-Recovery-Phrase">how to store it in a secure place</a>. Currently English and traditional Chinese phrases are supported.</p>
 
-<ul class="uk-tab" data-uk-switcher="{connect:'#c5581eb8-7304-40d3-b507-56f753ed1206'}">
+<ul class="uk-tab" data-uk-switcher="{connect:'#f2885a95-fea5-4271-bf83-cd22fc1eaaed'}">
 
 	<li class="uk-active"><a href="#">JS</a></li>
 
@@ -649,7 +655,7 @@
 
 </ul>
 
-<ul id="c5581eb8-7304-40d3-b507-56f753ed1206" class="uk-switcher uk-margin">
+<ul id="f2885a95-fea5-4271-bf83-cd22fc1eaaed" class="uk-switcher uk-margin">
 
 	<li>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// English version</span>
@@ -706,7 +712,7 @@
 
 <p>To instantiate an account from a given seed.</p>
 
-<ul class="uk-tab" data-uk-switcher="{connect:'#3234fa42-c4ef-4696-aaca-130930d26441'}">
+<ul class="uk-tab" data-uk-switcher="{connect:'#b0d13dcf-e4dc-4786-96f3-dadb9119525b'}">
 
 	<li class="uk-active"><a href="#">JS</a></li>
 
@@ -718,7 +724,7 @@
 
 </ul>
 
-<ul id="3234fa42-c4ef-4696-aaca-130930d26441" class="uk-switcher uk-margin">
+<ul id="b0d13dcf-e4dc-4786-96f3-dadb9119525b" class="uk-switcher uk-margin">
 
 	<li>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">account</span> <span class="o">=</span> <span class="nx">Account</span><span class="p">.</span><span class="nx">fromSeed</span><span class="p">(</span><span class="dl">"</span><span class="s2">9J87CAsHdFdoEu6N1unZk3sqhVBkVL8Z8</span><span class="dl">"</span><span class="p">);</span>
@@ -746,7 +752,7 @@
 
 <p>To instantiate an account from a given recovery phrase.</p>
 
-<ul class="uk-tab" data-uk-switcher="{connect:'#b7bde4ba-9890-48cc-a13a-40884f361a78'}">
+<ul class="uk-tab" data-uk-switcher="{connect:'#59aa7c69-0f14-4dbd-9198-2543b88039fb'}">
 
 	<li class="uk-active"><a href="#">JS</a></li>
 
@@ -758,7 +764,7 @@
 
 </ul>
 
-<ul id="b7bde4ba-9890-48cc-a13a-40884f361a78" class="uk-switcher uk-margin">
+<ul id="59aa7c69-0f14-4dbd-9198-2543b88039fb" class="uk-switcher uk-margin">
 
 	<li>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// English version</span>
@@ -814,7 +820,7 @@
 
 <p>An account can be used to sign arbitrary message, and any party with the received message and the corresponding signature can validate if the message was created by a known sender (authentication), and the message was not altered in transit (integrity). This functionality is usually useful when you have a server application which needs to authenticate if the requests are from valid users.</p>
 
-<ul class="uk-tab" data-uk-switcher="{connect:'#3c32ee42-dd80-4737-90dd-4487fc6aea1a'}">
+<ul class="uk-tab" data-uk-switcher="{connect:'#14f89f8b-2a0e-4aee-a609-ca5f9ee38f27'}">
 
 	<li class="uk-active"><a href="#">JS</a></li>
 
@@ -826,7 +832,7 @@
 
 </ul>
 
-<ul id="3c32ee42-dd80-4737-90dd-4487fc6aea1a" class="uk-switcher uk-margin">
+<ul id="14f89f8b-2a0e-4aee-a609-ca5f9ee38f27" class="uk-switcher uk-margin">
 
 	<li>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">account</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Account</span><span class="p">();</span>
@@ -884,7 +890,7 @@
 <p>The function returns an error to indicate whether a given account number is valid in current runtime environment, i.e.,
 the format is correct and its network matches to the network specified in the SDK config during initialization.</p>
 
-<ul class="uk-tab" data-uk-switcher="{connect:'#06b8d5c0-395a-4424-8079-0cffacfd17a3'}">
+<ul class="uk-tab" data-uk-switcher="{connect:'#8300fc7e-c62e-4529-a1e3-0e36dac1684c'}">
 
 	<li class="uk-active"><a href="#">JS</a></li>
 
@@ -896,7 +902,7 @@ the format is correct and its network matches to the network specified in the SD
 
 </ul>
 
-<ul id="06b8d5c0-395a-4424-8079-0cffacfd17a3" class="uk-switcher uk-margin">
+<ul id="8300fc7e-c62e-4529-a1e3-0e36dac1684c" class="uk-switcher uk-margin">
 
 	<li>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">isValid</span> <span class="o">=</span> <span class="nx">Account</span><span class="p">.</span><span class="nx">isValidAccountNumber</span><span class="p">(</span><span class="nx">accountNumber</span><span class="p">);</span>

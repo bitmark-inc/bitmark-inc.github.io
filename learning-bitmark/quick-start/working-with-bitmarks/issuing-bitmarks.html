@@ -254,6 +254,12 @@
                   
                   
                   
+                  <li><a title="Bitmark Software Development Process" href="/learning-bitmark/contributing-to-bitmark/bitmark-software-development-process">Bitmark Software Development Process</a></li>
+                  
+                  
+                  
+                  
+                  
                   <li><a title="Bitmark Upgrade Proposal" href="/learning-bitmark/contributing-to-bitmark/bup">Bitmark Upgrade Proposal</a></li>
                   
                   
@@ -483,61 +489,47 @@
     <div class="row">
         <div class="col-md-9"><h1 id="registering-bitmark-certificates">Registering Bitmark Certificates</h1>
 
-<p>Assets with titles that have been publicly recorded are more valuable than those without. They are what grant basic rights, such as the ability to resell, rent, lend, and donate. The Bitmark Blockchain offers the opportunity to register titles individuals’ digital assets. To do so, an individual could use the <a href="#registering-bitmark-certificates-using-the-bitmark-app">Bitmark App</a>, the <a href="#registering-bitmark-certificates-using-the-bitmark-sdk">Bitmark SDK</a>, or the <a href="#registering-bitmark-certificates-using-the-bitmark-cli">Bitmark CLI</a>.</p>
+<p>Assets with titles that have been publicly recorded are <a href="/learning-bitmark/bitmark-property-system-introduction">more valuable</a> than those without. They are what grant basic rights, such as the ability to resell, rent, lend, and donate the property. The Bitmark blockchain allows individuals to access these rights for digital assets by registering their titles as Bitmark Certificates. This can be done using the <a href="#registering-bitmark-certificates-using-the-bitmark-app">Bitmark App</a>, the <a href="#registering-bitmark-certificates-using-the-bitmark-sdk">Bitmark SDK</a>, or the <a href="#registering-bitmark-certificates-using-the-bitmark-cli">Bitmark-CLI</a>.</p>
 
-<p><br /></p>
-
-<blockquote>
-  <p>The process of registering Bitmark Certificates for a digital asset contains two steps</p>
-
-  <ul>
-    <li>
-      <p>Registering the asset - results in a <em>Asset Record</em> stored on the Bitmark blockchain.</p>
-    </li>
-    <li>
-      <p>Issuing bitmarks -  results in <em>Issue Records</em> linking to the corresponding asset record and stored on the Bitmark blockchain.</p>
-    </li>
-  </ul>
-</blockquote>
-
-<p><br />
-<br /></p>
-
-<h2 id="prerequisites">Prerequisites</h2>
-
-<p>A Bitmark Account is required for any user who want to interact with the Bitmark Property System. Please refer to the <a href="/learning-bitmark/quick-start/working-with-bitmarks/creating-bitmark-account">Bitmark Account</a> section for instructions on creating a new Bitmark Account.</p>
-
-<p><br />
-<br /></p>
-
-<h2 id="registering-bitmark-certificates-using-the-bitmark-app">Registering Bitmark Certificates using the Bitmark App</h2>
-
-<p>The Bitmark app registers legal property rights on the public Bitmark blockchain for individuals’ digital assets, including personal health and social data, creative works such as art, photography, and music, and other intellectual property. These legal rights determine who owns property and what can be done with it, whether the individual wants to keep it, sell it, or donate it.</p>
-
-<p><br /></p>
-
-<p>Here are the steps to register a new property using the Bitmark app:</p>
+<p>The process of registering a Bitmark Certificate for a digital asset occurs in two steps:</p>
 
 <ul>
   <li>
-    <p>On the PROPERTIES screen - Tap <strong>CREATE FIRST PROPERTY</strong> or <strong>+</strong></p>
+    <p>Registering the asset: this creates an <em>Asset Record</em>, which is stored on the Bitmark blockchain.</p>
+  </li>
+  <li>
+    <p>Issuing bitmarks: this creates <em>Issue Records</em> linking to the corresponding asset record, which are also stored on the Bitmark blockchain.</p>
+  </li>
+</ul>
+
+<p>This process registers legal property rights on the public Bitmark blockchain for an individual’s digital assets, including personal health and social data, creative works such as art, photography, and music, and other intellectual property. These legal rights determine who owns property and what can be done with it, whether the individual wants to keep it, sell it, or donate it.</p>
+
+<h2 id="prerequisites">Prerequisites</h2>
+
+<p>Any user who want to interact with the Bitmark Property System must have a Bitmark Account. Please refer to the <a href="/learning-bitmark/quick-start/working-with-bitmarks/creating-bitmark-account">Bitmark Account</a> section for instructions on creating a new Bitmark Account.</p>
+
+<h2 id="registering-bitmark-certificates-using-the-bitmark-app">Registering Bitmark Certificates using the Bitmark App</h2>
+
+<p>To register a new property using the Bitmark App:</p>
+
+<ul>
+  <li>
+    <p>On the <strong>PROPERTIES</strong> screen tap <strong>CREATE FIRST PROPERTY</strong> or <strong>+</strong></p>
 
     <blockquote>
-      <p>It opens the <strong>PROPERTIES &gt; REGISTER</strong> screen</p>
+      <p>This opens the <strong>PROPERTIES &gt; REGISTER</strong> screen.</p>
     </blockquote>
 
     <div style="background-color: #efefef; text-align: center;">
       <img src="/assets/images/RegisteringProperties_0.png" alt="Properties screen" title="Properties screen" width="250" style="padding: 20px" />
       <img src="/assets/images/RegisteringProperties_1.png" alt="Properties Register screen" title="Properties Register screen" width="250" style="padding: 20px" />
   </div>
-
-    <p><br /></p>
   </li>
   <li>
-    <p>Tap <strong>PHOTOS</strong> or <strong>FILES</strong> to browse the desired asset</p>
+    <p>Tap <strong>PHOTOS</strong> or <strong>FILES</strong> to browse the desired asset on your mobile device</p>
 
     <blockquote>
-      <p>The permission to access <code class="language-plaintext highlighter-rouge">Photos</code> and/or <code class="language-plaintext highlighter-rouge">Files</code> must be granted.</p>
+      <p>You must grant permission for access to <code class="language-plaintext highlighter-rouge">Photos</code> and/or <code class="language-plaintext highlighter-rouge">Files</code>.</p>
     </blockquote>
 
     <div style="background-color: #efefef; text-align: center;">
@@ -552,14 +544,14 @@
     <p>Fill in the required information</p>
 
     <blockquote>
-      <p>As soon as the desired asset is selected, the app computes the asset’s fingerprint and opens the <strong>REGISTER PROPERTY RIGHTS</strong> screen, which allows users to provide more detailed information about the asset.</p>
+      <p>As soon as the desired asset is selected, the App will compute the asset’s fingerprint and open the <strong>REGISTER PROPERTY RIGHTS</strong> screen, which allows users to provide more detailed information about the asset.</p>
 
       <ul>
         <li>
           <p>Currently, the <code class="language-plaintext highlighter-rouge">PROPERTY NAME</code> and <code class="language-plaintext highlighter-rouge">NUMBER OF BITMARKS TO ISSUE</code> fields are mandatory.</p>
         </li>
         <li>
-          <p>For each <code class="language-plaintext highlighter-rouge">Asset</code>, a user can issue multiple <code class="language-plaintext highlighter-rouge">Bitmark Certificates</code> - defined by  <code class="language-plaintext highlighter-rouge">number of bitmarks</code> in the <strong>REGISTER PROPERTY RIGHTS</strong> screen.</p>
+          <p>For each <code class="language-plaintext highlighter-rouge">Asset</code>, a user can issue multiple Bitmark Certificates, with the number defined by  <code class="language-plaintext highlighter-rouge">number of bitmarks</code> in the <strong>REGISTER PROPERTY RIGHTS</strong> screen.</p>
         </li>
       </ul>
     </blockquote>
@@ -568,16 +560,14 @@
       <img src="/assets/images/RegisteringProperties_5.png" alt="Register Property Rights screen" title="Register Property Rights screen" width="250" style="padding: 20px" />
       <img src="/assets/images/RegisteringProperties_6.PNG" alt="Fill in required information" title="Fill in required information" width="250" style="padding: 20px" />
   </div>
-
-    <p><br /></p>
   </li>
   <li>
     <p>Tap <strong>ISSUE</strong> button</p>
 
     <blockquote>
-      <p>As soon as users tap <strong>ISSUE</strong>, the app submits both the <code class="language-plaintext highlighter-rouge">Asset Registration</code> request and <code class="language-plaintext highlighter-rouge">bitmarks Issuance</code> transactions to the Bitmark network. After the submission is successful, the properties will be added to the <strong>PROPERTIES &gt; YOURS</strong> screen.</p>
+      <p>As soon as <strong>ISSUE</strong> is tapped, the App submits both the <code class="language-plaintext highlighter-rouge">Asset Registration</code> and <code class="language-plaintext highlighter-rouge">bitmarks Issuance</code> transactions to the Bitmark network. After the submission is successful, the properties will be added to the <strong>PROPERTIES &gt; YOURS</strong> screen.</p>
 
-      <p><strong>NOTE:</strong> It will take a while for the transactions to be confirmed on the Bitmark blockchain after submitted.</p>
+      <p><strong>NOTE:</strong> It will take a while for the transactions to be confirmed on the Bitmark blockchain after submission.</p>
     </blockquote>
 
     <div style="background-color: #efefef; text-align: center;">
@@ -588,22 +578,14 @@
   </li>
 </ul>
 
-<p><br /></p>
-
-<p><br />
-<br /></p>
-
 <h2 id="registering-bitmark-certificates-using-the-bitmark-sdk">Registering Bitmark Certificates using the Bitmark SDK</h2>
 
-<p>As a KIT for developers to interact with the Bitmark Property System, the Bitmark-SDKs provide interfaces for users to submit transactions to the Bitmark blockchain including the asset registration and bitmark issuance.</p>
-
-<p><br /></p>
-
-<p>Here are the steps to register Bitmark Certificates of an asset using the <strong>Bitmark JS SDK</strong>:</p>
+<p>To register a new property using the Bitmark JS SDK:</p>
 
 <ul>
+  <li><a href="https://github.com/bitmark-inc/docs/blob/shannona-patch-working-with-bitmark/learning-bitmark/quick-start/working-with-bitmarks/creating-bitmark-account.md#creating-a-bitmark-account-using-the-bitmark-sdk">Configure the SDK and create an account</a></li>
   <li>
-    <p>Register an asset:</p>
+    <p>Register an asset</p>
 
     <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="c1">// Create a Bitmark Account as the Issuer</span>
   <span class="kd">let</span> <span class="nx">account</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">sdk</span><span class="p">.</span><span class="nx">Account</span><span class="p">();</span>
@@ -622,11 +604,9 @@
 
   <span class="kd">let</span> <span class="nx">assetId</span> <span class="o">=</span> <span class="nx">assets</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">id</span><span class="p">;</span>
 </code></pre></div>    </div>
-
-    <p><br /></p>
   </li>
   <li>
-    <p>Issue the first bitmark</p>
+    <p>Issue the first Bitmark Certificate</p>
 
     <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="c1">// Build and sign the bitmark issuance request</span>
   <span class="kd">let</span> <span class="nx">issueParams</span> <span class="o">=</span> <span class="nx">sdk</span><span class="p">.</span><span class="nx">Bitmark</span><span class="p">.</span><span class="nx">newIssuanceParams</span><span class="p">(</span><span class="nx">assetId</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
@@ -637,52 +617,20 @@
 
   <span class="kd">let</span> <span class="nx">bitmarkId</span> <span class="o">=</span> <span class="nx">bitmarks</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">id</span><span class="p">;</span>
 </code></pre></div>    </div>
-
-    <p><br /></p>
   </li>
   <li>
-    <p>Verify the issuance transaction by querying for the bitmark by its bitmark Id</p>
+    <p>Verify the issuance transaction by querying for the Bitmark by its <code class="language-plaintext highlighter-rouge">bitmarkId</code></p>
 
     <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code>      <span class="k">await</span> <span class="nx">Bitmark</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nx">bitmarkId</span><span class="p">);</span>
 </code></pre></div>    </div>
   </li>
 </ul>
 
-<p><br />
-<br /></p>
+<h2 id="registering-bitmark-certificates-using-the-bitmark-cli">Registering Bitmark Certificates using the Bitmark-CLI</h2>
 
-<h2 id="registering-bitmark-certificates-using-the-bitmark-cli">Registering Bitmark Certificates using the Bitmark CLI</h2>
+<p>See <a href="https://github.com/bitmark-inc/docs/blob/shannona-patch-working-with-bitmark/learning-bitmark/quick-start/working-with-bitmarks/creating-bitmark-account.md#creating-a-bitmark-account-using-the-bitmark-cli">The Basics of Bitmark-CLI</a> for more information on the interface.</p>
 
-<p>The Bitmark CLI allows users to register Bitmark Certificates by submitting the transactions to its connected node, and then broadcasting to the network.</p>
-
-<p><br /></p>
-
-<blockquote>
-  <p>The basic structure of a Bitmark CLI command:
-  <code class="language-plaintext highlighter-rouge">bitmark-cli [global-options] command [command-options]</code></p>
-</blockquote>
-
-<p><br /></p>
-
-<blockquote>
-  <p>The Bitmark CLI determines which network to send the command by using the global option <code class="language-plaintext highlighter-rouge">--network</code> (abbreviation: <code class="language-plaintext highlighter-rouge">-n</code>). Option values:</p>
-
-  <ul>
-    <li>
-      <p><code class="language-plaintext highlighter-rouge">bitmark</code>:  the live network which uses live BTC or LTC to pay for the transactions.</p>
-    </li>
-    <li>
-      <p><code class="language-plaintext highlighter-rouge">testing</code>:  a network for testing newly developed programs, it uses testnet coins to pay for transactions.</p>
-    </li>
-    <li>
-      <p><code class="language-plaintext highlighter-rouge">local</code>: a special case for running a regression test network on the loopback interface.</p>
-    </li>
-  </ul>
-</blockquote>
-
-<p><br /></p>
-
-<p>Here are the steps to register a new Bitmark Certificate using the Bitmark CLI</p>
+<p>To register a new property using the Bitmark-CLI:</p>
 
 <ul>
   <li>
@@ -693,10 +641,11 @@
 </code></pre></div>    </div>
 
     <blockquote>
-      <p>The <code class="language-plaintext highlighter-rouge">fingerprint</code> command is to compute the hash of a file</p>
+      <p>The <code class="language-plaintext highlighter-rouge">fingerprint</code> command computes the hash of a file</p>
 
+      <p><strong>Command Options:</strong></p>
       <ul>
-        <li><code class="language-plaintext highlighter-rouge">file</code> - Define the file from which the hash is computed.</li>
+        <li><code class="language-plaintext highlighter-rouge">file</code> - The file from which the hash is computed.</li>
       </ul>
     </blockquote>
 
@@ -711,13 +660,8 @@
   </span><span class="p">}</span><span class="w">
 </span></code></pre></div>    </div>
   </li>
-</ul>
-
-<p><br /></p>
-
-<ul>
   <li>
-    <p>Issue the first bitmark</p>
+    <p>Issue the first Bitmark Certificate</p>
 
     <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nv">$ </span>bitmark-cli <span class="nt">-n</span> &lt;network&gt; <span class="nt">-i</span> &lt;identity&gt; <span class="se">\</span>
   create <span class="nt">-a</span> <span class="s1">'&lt;asset name&gt;'</span> <span class="se">\</span>
@@ -727,23 +671,26 @@
 </code></pre></div>    </div>
 
     <blockquote>
-      <p>The <code class="language-plaintext highlighter-rouge">create</code> command is to register an asset from a fingerprint along with issuing the corresponding bitmarks</p>
+      <p>The <code class="language-plaintext highlighter-rouge">create</code> command registers an asset from a fingerprint <em>and</em> issues the corresponding bitmarks</p>
 
+      <p><strong>Global Options:</strong></p>
+      <ul>
+        <li><code class="language-plaintext highlighter-rouge">identity</code> - The identity of the registrant’s Bitmark Account, which is stored in the Bitmark-CLI config file.</li>
+      </ul>
+
+      <p><strong>Command Options:</strong></p>
       <ul>
         <li>
-          <p><code class="language-plaintext highlighter-rouge">idenity</code> - The identity of the registrant’s Bitmark Account which is created and stored in the Bitmark CLI config file.</p>
+          <p><code class="language-plaintext highlighter-rouge">asset name</code> - The <code class="language-plaintext highlighter-rouge">name</code> field in the asset record.</p>
         </li>
         <li>
-          <p><code class="language-plaintext highlighter-rouge">asset name</code> - Define the <code class="language-plaintext highlighter-rouge">name</code> field in the asset record.</p>
+          <p><code class="language-plaintext highlighter-rouge">asset metadata</code> - The <code class="language-plaintext highlighter-rouge">metadata</code> field in the asset record.</p>
         </li>
         <li>
-          <p><code class="language-plaintext highlighter-rouge">asset metadata</code> - Define the <code class="language-plaintext highlighter-rouge">metadata</code> field in the asset record.</p>
+          <p><code class="language-plaintext highlighter-rouge">asset fingerprint</code> - The hash of the asset.</p>
         </li>
         <li>
-          <p><code class="language-plaintext highlighter-rouge">-f</code> option - Determine the hash of the asset.</p>
-        </li>
-        <li>
-          <p><code class="language-plaintext highlighter-rouge">-z</code> option - Determine that it is the issuance of the first bitmark of the asset.</p>
+          <p><code class="language-plaintext highlighter-rouge">-z</code> option - This is the first Bitmark issued for the asset.</p>
         </li>
       </ul>
     </blockquote>
@@ -769,33 +716,31 @@
   </span><span class="p">}</span><span class="w">
 </span></code></pre></div>    </div>
   </li>
-</ul>
-
-<p><br /></p>
-
-<ul>
   <li>
-    <p>Verify the status of the bitmark issuance transaction</p>
+    <p>Verify the status of the Bitmark issuance transaction</p>
 
     <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nv">$ </span>bitmark-cli <span class="nt">-n</span> &lt;network&gt;<span class="se">\</span>
     status <span class="nt">-t</span> &lt;txid&gt;
 </code></pre></div>    </div>
 
     <blockquote>
-      <p>The <code class="language-plaintext highlighter-rouge">create</code> command is to register an asset from a fingerprint along with issuing the corresponding bitmarks</p>
+      <p>The <code class="language-plaintext highlighter-rouge">status</code> commands checks if a Bitmark has been issued</p>
 
+      <p><strong>Command Options:</strong></p>
+      <ul>
+        <li><code class="language-plaintext highlighter-rouge">txid</code> — The transaction being verified, corresponding to the <code class="language-plaintext highlighter-rouge">issueIds</code> from the <code class="language-plaintext highlighter-rouge">create</code> command</li>
+      </ul>
+
+      <p><strong>Returns:</strong></p>
       <ul>
         <li>
-          <p><code class="language-plaintext highlighter-rouge">asset name</code> - Define the <code class="language-plaintext highlighter-rouge">name</code> field in the asset record.</p>
+          <p><code class="language-plaintext highlighter-rouge">Pending</code> - Not paid.</p>
         </li>
         <li>
-          <p><code class="language-plaintext highlighter-rouge">asset metadata</code> - Define the <code class="language-plaintext highlighter-rouge">metadata</code> field in the asset record.</p>
+          <p><code class="language-plaintext highlighter-rouge">Verified</code> - Paid but not confirmed on the blockchain.</p>
         </li>
         <li>
-          <p><code class="language-plaintext highlighter-rouge">-f</code> option - Determine the hash of the asset.</p>
-        </li>
-        <li>
-          <p><code class="language-plaintext highlighter-rouge">-z</code> option - Determine that it is the issuance of the first bitmark of the asset.</p>
+          <p><code class="language-plaintext highlighter-rouge">Confirmed</code> - Confirmed on the blockchain.</p>
         </li>
       </ul>
     </blockquote>
@@ -820,12 +765,9 @@
   </li>
 </ul>
 
-<p><br />
-<br /></p>
+<h2 id="exploring-bitmark-transactions-using-the-bitmark-registry-website">Exploring Bitmark transactions using the Bitmark Registry website</h2>
 
-<h2 id="explore-the-bitmark-transactions-using-the-bitmark-registry-website">Explore the Bitmark transactions using the Bitmark Registry website</h2>
-
-<p>Bitmark build a web application for users to explore all the transactions happened on the Bitmark blockchain at:</p>
+<p>Userse can explore all of the transactions on the Bitmark blockchain using the Bitmark Registry web application:</p>
 
 <ul>
   <li>

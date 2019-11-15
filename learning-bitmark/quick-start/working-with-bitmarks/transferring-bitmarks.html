@@ -254,6 +254,12 @@
                   
                   
                   
+                  <li><a title="Bitmark Software Development Process" href="/learning-bitmark/contributing-to-bitmark/bitmark-software-development-process">Bitmark Software Development Process</a></li>
+                  
+                  
+                  
+                  
+                  
                   <li><a title="Bitmark Upgrade Proposal" href="/learning-bitmark/contributing-to-bitmark/bup">Bitmark Upgrade Proposal</a></li>
                   
                   
@@ -483,53 +489,35 @@
     <div class="row">
         <div class="col-md-9"><h1 id="transferring-bitmark-certificates">Transferring Bitmark Certificates</h1>
 
-<p>Once an asset has been registered, trading it only requires the owner to create a new transfer record that points back to the original issue record (or to the previous transfer record) and that shows the new owner of the asset. Because the blockchain is ordered and because it’s immutable, this creates a permanent chain of custody, reaching back to the asset’s origins.</p>
+<p>Once an asset has been registered, the owner can trade it by creating a transfer record that points back to the original issue record (or to a previous transfer record) and that lists the new owner of the asset. Because the blockchain is ordered and because it’s immutable, this creates a permanent chain of custody reaching back to the asset’s origins.</p>
 
 <div style="background-color: #efefef; text-align: center;">
     <img src="/assets/images/TransferringBitmark_0.png" alt="Record chain" title="Record chain" style="padding: 20px" />
 </div>
 
-<p>Bitmark owners can transfer their Bitmark Certificates to others using</p>
-
-<ul>
-  <li>
-    <p>The <a href="#transferring-bitmarks-using-bitmark-app">Bitmark App</a></p>
-  </li>
-  <li>
-    <p>The <a href="#transferring-bitmarks-using-bitmark-sdk">Bitmark SDK</a></p>
-  </li>
-  <li>
-    <p>The <a href="#transferring-bitmarks-using-bitmark-cli">Bitmark CLI</a></p>
-  </li>
-</ul>
-
-<p><br />
-<br /></p>
+<p>Bitmark owners can transfer their Bitmark Certificates to others using the <a href="#transferring-bitmarks-using-the-bitmark-app">Bitmark App</a>, the <a href="#transferring-bitmarks-using-the-bitmark-sdk">Bitmark SDK</a>, or the <a href="#transferring-bitmarks-using-the-bitmark-cli">Bitmark-CLI</a>.</p>
 
 <h2 id="prerequisites">Prerequisites</h2>
 
 <ul>
   <li>
-    <p><a href="/learning-bitmark/quick-start/working-with-bitmarks/creating-bitmark-account">Bitmark Accounts</a> are created.</p>
+    <p><a href="/learning-bitmark/quick-start/working-with-bitmarks/creating-bitmark-account">Bitmark Accounts</a> must be created.</p>
   </li>
   <li>
-    <p><a href="/learning-bitmark/quick-start/working-with-bitmarks/issuing-bitmarks">Bitmark Certificates</a> are registered.</p>
+    <p><a href="/learning-bitmark/quick-start/working-with-bitmarks/issuing-bitmarks">Bitmark Certificates</a> must be registered.</p>
   </li>
   <li>
-    <p>In case of using the Bitmark CLI, <a href="/learning-bitmark/quick-start/working-with-bitmarks/bitmark-cli-payment">Payment on Bitmark CLI</a> tools need to be ready.</p>
+    <p>If using the Bitmark-CLI, <a href="/learning-bitmark/quick-start/working-with-bitmarks/bitmark-cli-payment">Payment on Bitmark-CLI</a> tools must be ready.</p>
   </li>
 </ul>
 
-<p><br />
-<br /></p>
+<h2 id="transferring-bitmarks-using-the-bitmark-app">Transferring bitmarks using the Bitmark App</h2>
 
-<h2 id="transferring-bitmarks-using-bitmark-app">Transferring bitmarks using Bitmark App</h2>
-
-<p>The Bitmark App allows a user to transfer a bitmark to another account by accessing the Property details screen and selecting the Transfer option.</p>
+<p>To transfer a Bitmark Certificate using the Bitmark App:</p>
 
 <ul>
   <li>
-    <p>From the <strong>Properties &gt; YOURS</strong> screen, tap on the desired property to open the Property details screen</p>
+    <p>On the <strong>PROPERTIES &gt; YOURS</strong> screen, tap on the desired property to open the <strong>PROPERTY DETAILS</strong> screen</p>
 
     <div style="background-color: #efefef; text-align: center;">
       <img src="/assets/images/TransferBitmark_1.png" alt="Properties screen" title="Properties screen" width="250" style="padding: 20px" />
@@ -539,7 +527,7 @@
     <p><br /></p>
   </li>
   <li>
-    <p>Tap on the <code class="language-plaintext highlighter-rouge">...</code> on the top right corner to open the options and select the <strong>TRANSFER</strong> option</p>
+    <p>Tap on the <code class="language-plaintext highlighter-rouge">...</code> at the top right corner to open the options and select the <strong>TRANSFER</strong> option</p>
 
     <div style="background-color: #efefef; text-align: center;">
       <img src="/assets/images/TransferBitmark_3.png" alt="Property options" title="Property options" width="250" style="padding: 20px" />
@@ -559,7 +547,7 @@
     <p><br /></p>
   </li>
   <li>
-    <p>Observe changes on the sender side - The property disappears</p>
+    <p>Observe changes on the sender side: the property disappears</p>
 
     <div style="background-color: #efefef; text-align: center;">
       <img src="/assets/images/TransferBitmark_7.png" alt="Transferred" title="Transferred" width="250" style="padding: 20px" />
@@ -590,15 +578,14 @@
 <p><br />
 <br /></p>
 
-<h2 id="transferring-bitmarks-using-bitmark-sdk">Transferring bitmarks using Bitmark SDK</h2>
+<h2 id="transferring-bitmarks-using-the-bitmark-sdk">Transferring bitmarks using the Bitmark SDK</h2>
 
-<p>As a KIT for developers to interact with the Bitmark Property System, the Bitmark-SDKs provide interfaces for users to submit transactions to the Bitmark blockchain including the bitmark transfer.</p>
-
-<p><br /></p>
-
-<p>Here are the steps to transfer bitmarks using the <strong>Bitmark JS SDK</strong>:</p>
+<p>To transfer a Bitmark Certificate using the Bitmark JS SDK:</p>
 
 <ul>
+  <li>
+    <p><a href="https://github.com/bitmark-inc/docs/blob/shannona-patch-working-with-bitmark/learning-bitmark/quick-start/working-with-bitmarks/creating-bitmark-account.md#creating-a-bitmark-account-using-the-bitmark-sdk">Configure the SDK and create an account (<code class="language-plaintext highlighter-rouge">sender</code>)</a> and/or <a href="https://github.com/bitmark-inc/docs/blob/shannona-patch-working-with-bitmark/learning-bitmark/quick-start/working-with-bitmarks/issuing-bitmarks.md#registering-bitmark-certificates-using-the-bitmark-sdk">register a Bitmark Certificate and retrieve its <code class="language-plaintext highlighter-rouge">bitmarkId</code></a></p>
+  </li>
   <li>
     <p>Submit a transfer transaction</p>
 
@@ -610,11 +597,6 @@
       <span class="kd">let</span> <span class="nx">txId</span> <span class="o">=</span> <span class="nx">txs</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">id</span><span class="p">;</span>
 </code></pre></div>    </div>
   </li>
-</ul>
-
-<p><br /></p>
-
-<ul>
   <li>
     <p>Verify the transfer transaction</p>
 
@@ -623,41 +605,13 @@
   </li>
 </ul>
 
-<p><br />
-<br /></p>
+<h2 id="transferring-bitmarks-using-the-bitmark-cli">Transferring bitmarks using the Bitmark-CLI</h2>
 
-<h2 id="transferring-bitmarks-using-bitmark-cli">Transferring bitmarks using Bitmark CLI</h2>
+<p>The Bitmark-CLI allows users to transfer bitmarks by submitting the transactions to its connected node and then broadcasting to the network.</p>
 
-<p>The Bitmark CLI allows users to transfer bitmarks by submitting the transactions to its connected node, and then broadcasting to the network.</p>
+<p>See <a href="https://github.com/bitmark-inc/docs/blob/shannona-patch-working-with-bitmark/learning-bitmark/quick-start/working-with-bitmarks/creating-bitmark-account.md#creating-a-bitmark-account-using-the-bitmark-cli">The Basics of Bitmark-CLI</a> for more information on the interface.</p>
 
-<p><br /></p>
-
-<blockquote>
-  <p>The basic structure of a Bitmark CLI command:
-  <code class="language-plaintext highlighter-rouge">bitmark-cli [global-options] command [command-options]</code></p>
-</blockquote>
-
-<p><br /></p>
-
-<blockquote>
-  <p>The Bitmark CLI determines which network to send the command by using the global option <code class="language-plaintext highlighter-rouge">--network</code> (abbreviation: <code class="language-plaintext highlighter-rouge">-n</code>). Option values:</p>
-
-  <ul>
-    <li>
-      <p><code class="language-plaintext highlighter-rouge">bitmark</code>:  the live network which uses live BTC or LTC to pay for the transactions.</p>
-    </li>
-    <li>
-      <p><code class="language-plaintext highlighter-rouge">testing</code>:  a network for testing newly developed programs, it uses testnet coins to pay for transactions.</p>
-    </li>
-    <li>
-      <p><code class="language-plaintext highlighter-rouge">local</code>: a special case for running a regression test network on the loopback interface.</p>
-    </li>
-  </ul>
-</blockquote>
-
-<p><br /></p>
-
-<p>Here are the steps to transfer a Bitmark Certificate using the Bitmark CLI</p>
+<p>To transfer a Bitmark Certificate using the Bitmark-CLI:</p>
 
 <ul>
   <li>
@@ -669,20 +623,23 @@
 </code></pre></div>    </div>
 
     <blockquote>
-      <p>The <code class="language-plaintext highlighter-rouge">transfer</code> command is to submit a transfer transaction to the network. The options:</p>
+      <p>The <code class="language-plaintext highlighter-rouge">transfer</code> command submits a transfer transaction to the network.</p>
 
+      <p><strong>Global Options:</strong></p>
       <ul>
-        <li>
-          <p><code class="language-plaintext highlighter-rouge">sender identity</code> - The identity of the sender’s Bitmark Account which is created and stored in the Bitmark CLI config file</p>
-        </li>
-        <li>
-          <p><code class="language-plaintext highlighter-rouge">receiver</code> - The identitifer of the recipient’s Bitmark Account. It can be the Bitmark Account Number or the Bitmark Account’s identity which is created and stored in the Bitmark CLI config file</p>
-        </li>
+        <li><code class="language-plaintext highlighter-rouge">sender identity</code> - The identity of the sender’s Bitmark Account, which is stored in the Bitmark-CLI config file</li>
       </ul>
 
-      <p><code class="language-plaintext highlighter-rouge">txid</code> - The id of the last transaction of the bitmark which is transferring.</p>
+      <p><strong>Command Options:</strong></p>
+      <ul>
+        <li><code class="language-plaintext highlighter-rouge">receiver</code> - The identifier of the recipient’s Bitmark Account. This can be a Bitmark Account Number or the Bitmark Account’s identity, if it’s stored in the Bitmark-CLI config file</li>
+      </ul>
 
-      <p><strong>NOTE:</strong> A transfer transaction on the Bitmark blockchain requires a transaction fee of 0.0002 BTC (20000 satoshis) or 0.002 LTC (200000 photons). Therefore, after the <code class="language-plaintext highlighter-rouge">transfer</code> command, the user needs to execute the payment for the transaction to be confirmed on the blockchain. The payment information is included in the output of the <code class="language-plaintext highlighter-rouge">transfer</code> command.</p>
+      <p><code class="language-plaintext highlighter-rouge">txid</code> - The id of the last transaction of the Bitmark that is being transferring.</p>
+
+      <p><strong>NOTE:</strong> A transfer transaction on the Bitmark blockchain requires a transaction fee of 0.0002 BTC (20000 satoshis) or 0.002 LTC (200000 photons). Therefore, after the <code class="language-plaintext highlighter-rouge">transfer</code> command, the user will need to execute the payment on the Bitcoin or Litecoin blockchain. This payment information is included in the output of the <code class="language-plaintext highlighter-rouge">transfer</code> command.</p>
+
+      <p>The transfer command also auto generates the <code class="language-plaintext highlighter-rouge">bitmark-wallet</code> commands for paying for the transaction and displays them at the end of the output.</p>
     </blockquote>
 
     <p><em>Example:</em></p>
@@ -717,18 +674,9 @@
     </span><span class="nl">"LTC"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bitmark-wallet --conf ${XDG_CONFIG_HOME}/bitmark-wallet/test/test-bitmark-wallet.conf ltc --testnet sendmany --hex-data 'd819cff364b9211093fe09c2b462bdd05154472a72fac91a882a8f1129674dc92ac5d2724c8d26b16d414de8fbc5c62e' 'mzkCaHJmu1gdnsL9jxW2bwqtw2MCCy66Ds,200000'"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span></code></pre></div>    </div>
-
-    <blockquote>
-      <p><strong>Note:</strong> The transfer command auto generates the Bitmark Wallet command to pay for the transaction and displays them at the end of the output.</p>
-    </blockquote>
   </li>
-</ul>
-
-<p><br /></p>
-
-<ul>
   <li>
-    <p>Paying for the bitmark transfer using the Bitmark-Wallet</p>
+    <p>Pay for the bitmark transfer using <code class="language-plaintext highlighter-rouge">bitmark-wallet</code></p>
 
     <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="c">#Run the bitcoind</span>
   <span class="nv">$ </span>bitcoind <span class="nt">-datadir</span><span class="o">=</span>&lt;bitcoind config <span class="nb">dir</span><span class="o">&gt;</span>
@@ -747,23 +695,19 @@
 </code></pre></div>    </div>
 
     <blockquote>
-      <p>To execute a bitcoin or litecoin transaction on the local environment, the bitcoind or litecoind need to be running.</p>
+      <p>To execute a bitcoin or litecoin transaction on the local environment, the <code class="language-plaintext highlighter-rouge">bitcoind</code> or <code class="language-plaintext highlighter-rouge">litecoind</code> daemon must be running.</p>
 
       <ul>
-        <li><code class="language-plaintext highlighter-rouge">payId</code> - The payment id for the share creation transaction, it is printed in the output of share creation command</li>
+        <li><code class="language-plaintext highlighter-rouge">payId</code> - The payment id for the transfer transaction, printed in the results as <code class="language-plaintext highlighter-rouge">payId</code></li>
+        <li><code class="language-plaintext highlighter-rouge">btc address</code> or <code class="language-plaintext highlighter-rouge">ltc address</code> - The address for payment, printed in the results as <code class="language-plaintext highlighter-rouge">address</code> under <code class="language-plaintext highlighter-rouge">BTC</code> or <code class="language-plaintext highlighter-rouge">LTC</code></li>
+        <li><code class="language-plaintext highlighter-rouge">btc amount</code> or <code class="language-plaintext highlighter-rouge">ltc amount</code> - The payment amount, printed in the results as <code class="language-plaintext highlighter-rouge">amount</code> under <code class="language-plaintext highlighter-rouge">BTC</code> or <code class="language-plaintext highlighter-rouge">LTC</code></li>
       </ul>
     </blockquote>
 
-    <p><br /></p>
-
-    <blockquote>
-      <p><strong>NOTE:</strong> The payment is able to be performed using another tool which allows users to add the exact hex data to an OP_RETURN as part of the coin transaction</p>
-    </blockquote>
-
-    <p><em>Example of paying by ltc:</em></p>
+    <p><em>Example — Paying by LTC:</em></p>
 
     <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="c"># run litecoind</span>
-  <span class="nv">$ </span>bitcoind <span class="nt">-datadir</span><span class="o">=</span>~/.config/litecoin/
+  <span class="nv">$ </span>litecoind <span class="nt">-datadir</span><span class="o">=</span>~/.config/litecoin/
 
   <span class="c"># Perform payment</span>
   <span class="nv">$ </span>bitmark-wallet <span class="nt">--conf</span> ~/.config/bitmark-wallet/test/test-bitmark-wallet.conf <span class="se">\</span>
@@ -778,30 +722,25 @@
   </span><span class="p">}</span><span class="w">
 </span></code></pre></div>    </div>
   </li>
-</ul>
-
-<p><br /></p>
-
-<ul>
   <li>
-    <p>Verifying the status of the share creation transaction</p>
+    <p>Verify the status of the transfer transaction</p>
 
     <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nv">$ </span>bitmark-cli <span class="nt">-n</span> &lt;network&gt; <span class="se">\</span>
     status <span class="nt">-t</span> &lt;transferId&gt;
 </code></pre></div>    </div>
 
     <blockquote>
-      <p>The <code class="language-plaintext highlighter-rouge">status</code> command is to query a transaction’s status. The options:</p>
+      <p>The <code class="language-plaintext highlighter-rouge">status</code> command queries a transaction’s status.</p>
 
+      <p><strong>Command Options:</strong></p>
       <ul>
-        <li><code class="language-plaintext highlighter-rouge">transferId</code> - The transfer transaction id which is printed as <code class="language-plaintext highlighter-rouge">transferId</code> in the output of the <code class="language-plaintext highlighter-rouge">transfer</code> command.</li>
+        <li><code class="language-plaintext highlighter-rouge">transferId</code> - The transfer transaction id, printed as <code class="language-plaintext highlighter-rouge">transferId</code> in the output of the <code class="language-plaintext highlighter-rouge">transfer</code> command.</li>
       </ul>
 
-      <p>The returned status:</p>
-
+      <p><strong>Returns:</strong></p>
       <ul>
         <li>
-          <p><code class="language-plaintext highlighter-rouge">Pending</code> - Has not been paid.</p>
+          <p><code class="language-plaintext highlighter-rouge">Pending</code> - Not paid.</p>
         </li>
         <li>
           <p><code class="language-plaintext highlighter-rouge">Verified</code> - Paid but not confirmed on the blockchain.</p>
@@ -832,19 +771,19 @@
     <p><br /></p>
   </li>
   <li>
-    <p>Verifying the bitmark’s provenance</p>
+    <p>Verify the Bitmark’s provenance</p>
 
     <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nv">$ </span>bitmark-cli <span class="nt">-n</span> &lt;network&gt; <span class="se">\</span>
     provenance <span class="nt">-t</span> &lt;transferID&gt;
 </code></pre></div>    </div>
 
     <blockquote>
-      <p>The <code class="language-plaintext highlighter-rouge">provenance</code> command returns all the transaction records from the transaction corresponding to the inputted txid back to the bitmark’s asset registration record. The options:</p>
+      <p>The <code class="language-plaintext highlighter-rouge">provenance</code> command returns all the transaction records related to an asset from the transaction corresponding to the txid back to the Bitmark’s asset registration record.</p>
 
+      <p><strong>Command options:</strong></p>
       <ul>
-        <li><code class="language-plaintext highlighter-rouge">transferID</code> - <code class="language-plaintext highlighter-rouge">transferId</code> - The transfer transaction id which is printed as <code class="language-plaintext highlighter-rouge">transferId</code> in the output of the <code class="language-plaintext highlighter-rouge">transfer</code> command.</li>
+        <li><code class="language-plaintext highlighter-rouge">transferID</code> - <code class="language-plaintext highlighter-rouge">transferId</code> - The transfer transaction id, printed as <code class="language-plaintext highlighter-rouge">transferId</code> in the output of the <code class="language-plaintext highlighter-rouge">transfer</code> command</li>
       </ul>
-
     </blockquote>
 
     <p><em>Example:</em></p>
@@ -899,12 +838,9 @@
   </li>
 </ul>
 
-<p><br />
-<br /></p>
+<h2 id="exploring-bitmark-transactions-using-the-bitmark-registry-website">Exploring Bitmark transactions using the Bitmark Registry website</h2>
 
-<h2 id="explore-the-bitmark-transactions-using-the-bitmark-registry-website">Explore the Bitmark transactions using the Bitmark Registry website</h2>
-
-<p>Bitmark build a web application for users to explore all the transactions happened on the Bitmark blockchain at:</p>
+<p>Users can explore all of the transactions on the Bitmark blockchain using the Bitmark Registry web application:</p>
 
 <ul>
   <li>

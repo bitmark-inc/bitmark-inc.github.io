@@ -254,6 +254,12 @@
                   
                   
                   
+                  <li><a title="Bitmark Software Development Process" href="/learning-bitmark/contributing-to-bitmark/bitmark-software-development-process">Bitmark Software Development Process</a></li>
+                  
+                  
+                  
+                  
+                  
                   <li><a title="Bitmark Upgrade Proposal" href="/learning-bitmark/contributing-to-bitmark/bup">Bitmark Upgrade Proposal</a></li>
                   
                   
@@ -481,125 +487,100 @@
     
 
     <div class="row">
-        <div class="col-md-9"><h1 id="bitmark-shares">Bitmark shares</h1>
+        <div class="col-md-9"><h1 id="working-with-bitmark-shares">Working with Bitmark shares</h1>
 
-<p>In some cases, the ownership of a property is shared between different parties or people. To support those cases, the Bitmark Property System provides a feature called the <strong><a href="https://docs.bitmark.com/bitmark-appendix/bitmark-shares">bitmark shares</a></strong>.</p>
+<p>In some cases, the ownership of a property is shared between different parties or people. To support these situations, the Bitmark Property System provides a feature called <strong><a href="https://docs.bitmark.com/bitmark-appendix/bitmark-shares">Bitmark shares</a></strong>.</p>
 
 <p>Any owner of a Bitmark Certificate is able to:</p>
 
 <ul>
-  <li>
-    <p><a href="#creating-bitmark-shares">Create bitmark shares</a> from that certificate (or bitmark).</p>
-  </li>
-  <li>
-    <p><a href="#granting-bitmark-shares-to-another-account">Grant bitmark shares</a> to another account.</p>
-  </li>
-  <li>
-    <p><a href="#swapping-bitmark-shares">Swap bitmark shares</a> with others.</p>
-  </li>
+  <li><a href="#creating-bitmark-shares">Create Bitmark shares</a> from that Bitmark Certificate.</li>
+  <li><a href="#granting-bitmark-shares-to-another-account">Grant Bitmark shares</a> to another account.</li>
+  <li><a href="#swapping-bitmark-shares">Swap Bitmark shares</a> with other accounts.</li>
 </ul>
 
-<p>Currently, only the Bitmark CLI supports performing those transactions of bitmark shares.</p>
+<p>Currently, only the Bitmark-CLI supports working with bitmark shares.</p>
 
 <blockquote>
-  <p><strong>NOTE:</strong> Transactions related to the bitmark share require a transaction fee. On the bitmark network, the fee can be pay by BTC or LTC</p>
+  <p><strong>NOTE:</strong> Transactions related to Bitmark shares require a transaction fee. On the bitmark network, the fee can be paid with BTC or LTC</p>
 
   <ul>
-    <li>
-      <p>Real BTC and/or LTC are used to pay for transaction fee on the Bitmark main chain</p>
-    </li>
-    <li>
-      <p>Testnet BTC and/or LTC are used to pay for transaction fee on the Bitmark testing chain</p>
-    </li>
+    <li>Real BTC and/or LTC are used to pay for transaction fee on the Bitmark main chain</li>
+    <li>Testnet BTC and/or LTC are used to pay for transaction fee on the Bitmark testing chain</li>
   </ul>
 </blockquote>
 
-<p><br />
-<br /></p>
+<h3 id="about-bitmark-shares-records">About Bitmark shares records</h3>
 
-<h2 id="bitmark-shares-related-records">Bitmark shares related records</h2>
+<p>Three records related to Bitmark shares are stored on the Bitmark blockchain.</p>
 
-<p>There are three records related to the Bitmark shares are stored on the Bitmark blockchain</p>
+<ul>
+  <li><em>Balance Record</em> - created by a bitmark owner to permanently set the total number of a particular share for a Bitmark Certificate.</li>
+  <li><em>Grant Record</em> - created by an owner to grant an amount of his share balance to another owner.</li>
+  <li><em>Swap Record</em> - created by two owners to simultaenously swap their shares of different Bitmark Certificates.</li>
+</ul>
+
+<h2 id="prerequisites">Prerequisites</h2>
+
+<p>The <code class="language-plaintext highlighter-rouge">bitmark-wallet</code> software is required for paying for transactions. Please refer to the <a href="/learning-bitmark/quick-start/working-with-bitmarks/bitmark-cli-payment">Payment on Bitmark CLI</a> document for instructions on installing it.</p>
+
+<p>See <a href="https://github.com/bitmark-inc/docs/blob/shannona-patch-working-with-bitmark/learning-bitmark/quick-start/working-with-bitmarks/creating-bitmark-account.md#creating-a-bitmark-account-using-the-bitmark-cli">The Basics of Bitmark-CLI</a> for more information on the interface.</p>
+
+<h2 id="creating-bitmark-shares">Creating Bitmark shares</h2>
+
+<p>Any Bitmark owner can divide a Bitmark Certificate into a number of shares by creating the shares and paying the associated fees. Additional commands can be used to verify the transaction.</p>
 
 <ul>
   <li>
-    <p><em>Balance Record</em> - created by a bitmark owner to permanently set the total number of a particular share for the bitmark.</p>
+    <p>The initial number of shares is not changeable once a Bitmark Certificate is divided.</p>
   </li>
   <li>
-    <p><em>Grant Record</em> - created by an owner to grant an amount of his share balance to another owner.</p>
+    <p>Once the Bitmark Certificate is converted into shares, it can no longer be transferred any more, though the shares can be granted or swapped. The provenance of the bitmark is concluded.</p>
   </li>
   <li>
-    <p><em>Swap Record</em> - created by two owners to swap their shares of different bitmarks together.</p>
+    <p>All of the created shares are alocated to the owner.</p>
+  </li>
+  <li>
+    <p>A share creation transaction costs 0.002 LTC or 0.0002 BTC as the transaction fee.</p>
   </li>
 </ul>
 
-<p><br />
-<br /></p>
+<h3 id="creating-bitmark-shares-from-a-bitmark-certificate">Creating Bitmark shares from a Bitmark Certificate</h3>
 
-<h2 id="prerequisites-of-working-with-bitmark-shares-using-the-bitmark-cli">Prerequisites of working with bitmark shares using the Bitmark CLI</h2>
-
-<p>Refer the <a href="/learning-bitmark/quick-start/working-with-bitmarks/bitmark-cli-payment">Payment on Bitmark CLI</a> document to:</p>
-
-<ul>
-  <li>Install the Bitmark-Wallet for transaction payments.</li>
-</ul>
-
-<p><br />
-<br /></p>
-
-<h2 id="creating-bitmark-shares">Creating bitmark shares</h2>
-
-<p>Any bitmark owner can divide a Bitmark certificate into a number of shares by creating the shares, then paying the associated fees. Additional commands can be used to verify the transaction.</p>
-
-<ul>
-  <li>
-    <p>The initial number of shares is not changeable after created.</p>
-  </li>
-  <li>
-    <p>Once the bitmark is converted into shares, the certificate cannot be transferred any more, though the shares can be granted or swaped. The provenance of the bitmark is concluded.</p>
-  </li>
-  <li>
-    <p>All the created shares are alocated to the owner.</p>
-  </li>
-  <li>
-    <p>A share creation transaction costs 0.002 LTC or 0.0002 BTC as the transaction fee</p>
-  </li>
-</ul>
-
-<p><br /></p>
-
-<h3 id="creating-bitmark-shares-from-a-bitmark">Creating bitmark shares from a bitmark</h3>
+<p>To create Bitmark shares using the Bitmark-CLI:</p>
 
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="nv">$ </span>bitmark-cli <span class="nt">-n</span> &lt;network&gt; <span class="nt">-i</span> &lt;identity&gt; <span class="se">\</span>
       share <span class="nt">-t</span> &lt;txid&gt; <span class="nt">-q</span> &lt;quantity&gt;
 </code></pre></div></div>
 
 <blockquote>
-  <p>The <code class="language-plaintext highlighter-rouge">share</code> command is to create shares of a bitmark. The options:</p>
+  <p>The <code class="language-plaintext highlighter-rouge">share</code> command creates shares for a Bitmark Certificate.</p>
 
+  <p><strong>Global Options:</strong></p>
+  <ul>
+    <li><code class="language-plaintext highlighter-rouge">identity</code> - The identity of the Bitmark Account of the Bitmark Certificate’s owner. The Bitmark Account and its identity are stored in the Bitmark-CLI config file.</li>
+  </ul>
+
+  <p><strong>Command Options:</strong></p>
   <ul>
     <li>
-      <p><code class="language-plaintext highlighter-rouge">identity</code> - The identity of the Bitmark Account of the Bitmark Certificate’s Owner. The Bitmark Account and its identity are created and stored in the Bitmark CLI config file.</p>
+      <p><code class="language-plaintext highlighter-rouge">txid</code> - The latest transaction id in the Bitmark’s provenance.</p>
     </li>
     <li>
-      <p><code class="language-plaintext highlighter-rouge">txid</code> - The latest transaction id in the bitmark’s provenance.</p>
-    </li>
-    <li>
-      <p><code class="language-plaintext highlighter-rouge">quantity</code> - The number of shares.</p>
+      <p><code class="language-plaintext highlighter-rouge">quantity</code> - The number of shares to be created.</p>
     </li>
   </ul>
 
-  <p>The returns:</p>
-
+  <p><strong>Returns</strong></p>
   <ul>
     <li>
       <p><code class="language-plaintext highlighter-rouge">txid</code> - The transaction id of the share creation.</p>
     </li>
     <li>
-      <p><code class="language-plaintext highlighter-rouge">shareId</code> - The share id which is also the bitmark id.</p>
+      <p><code class="language-plaintext highlighter-rouge">shareId</code> - The share id, which is also the Bitmark id.</p>
     </li>
     <li>
-      <p>The payment information (payId, currency, address, amount).</p>
+      <p>The payment information (<code class="language-plaintext highlighter-rouge">payId</code>, <code class="language-plaintext highlighter-rouge">currency</code>, <code class="language-plaintext highlighter-rouge">address</code>, <code class="language-plaintext highlighter-rouge">amount</code>).</p>
     </li>
   </ul>
 </blockquote>
@@ -635,9 +616,11 @@
     </span><span class="p">}</span><span class="w">
 </span></code></pre></div></div>
 
-<p><br /></p>
+<h3 id="paying-for-a-share-creation">Paying for a share creation</h3>
 
-<h3 id="paying-for-the-bitmark-share-creation-using-the-bitmark-wallet">Paying for the bitmark share creation using the Bitmark-Wallet</h3>
+<p>Paying for Bitmark share creation works the same way as <a href="https://github.com/bitmark-inc/docs/blob/shannona-patch-working-with-bitmark/learning-bitmark/quick-start/working-with-bitmarks/transferring-bitmarks.md#transferring-bitmarks-using-the-bitmark-cli">paying for a Bitmark Certificate transfer</a>.</p>
+
+<p>To do so using the Bitmark-CLI:</p>
 
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="c">#Run the bitcoind</span>
     <span class="nv">$ </span>bitcoind <span class="nt">-datadir</span><span class="o">=</span>&lt;bitcoind config <span class="nb">dir</span><span class="o">&gt;</span>
@@ -655,21 +638,14 @@
 
 </code></pre></div></div>
 
-<blockquote>
-  <p>To execute a bitcoin or litecoin transaction on the local environment, the bitcoind or litecoind need to be running.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt;To execute a bitcoin or litecoin transaction on the local environment, the bitcoind or litecoind daemon needs to be running.
+&gt;
+&gt; - `payId` - The payment id for transfer transaction, printed in the results as `payId`
+&gt; - `btc address` or `ltc address` - The address for payment, printed in the results as `address` under `BTC` or `LTC`
+&gt; - `btc amount` or `ltc amount` - The payment amount, printed in the results as `amount` under `BTC` or `LTC`
+</code></pre></div></div>
 
-  <ul>
-    <li><code class="language-plaintext highlighter-rouge">payId</code> - The payment id for the share creation transaction, it is printed in the output of share creation command</li>
-  </ul>
-</blockquote>
-
-<p><br /></p>
-
-<blockquote>
-  <p><strong>NOTE:</strong> The payment is able to be performed using another tool which allows users to add the exact hex data to an OP_RETURN as part of the coin transaction</p>
-</blockquote>
-
-<p><em>Example:</em></p>
+<p><em>Example — Paying with BTC:</em></p>
 
 <ul>
   <li>
@@ -678,13 +654,8 @@
     <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nv">$ </span>bitcoind <span class="nt">-datadir</span><span class="o">=</span><span class="k">${</span><span class="nv">HOME</span><span class="k">}</span>/.config/bitcoin/
 </code></pre></div>    </div>
   </li>
-</ul>
-
-<p><br /></p>
-
-<ul>
   <li>
-    <p>Pay for the transaction by bitcoin using the Bitmark-Wallet</p>
+    <p>Pay for the transaction with bitcoin using the Bitmark-Wallet</p>
 
     <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nv">$ </span>bitmark-wallet <span class="nt">--conf</span> <span class="k">${</span><span class="nv">XDG_CONFIG_HOME</span><span class="k">}</span>/bitmark-wallet/test/test-bitmark-wallet.conf <span class="se">\</span>
     btc <span class="nt">--testnet</span> <span class="se">\</span>
@@ -700,26 +671,26 @@
   </li>
 </ul>
 
-<p><br /></p>
+<h3 id="verifying-a-share-creation-transaction">Verifying a share creation transaction</h3>
 
-<h3 id="verifying-the-status-of-the-share-creation-transaction">Verifying the status of the share creation transaction</h3>
+<p>To verify the status of the share creation using Bitmark-CLI:</p>
 
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="nv">$ </span>bitmark-cli <span class="nt">-n</span> &lt;network&gt; <span class="se">\</span>
       status <span class="nt">-t</span> &lt;txid&gt;
 </code></pre></div></div>
 
 <blockquote>
-  <p>The <code class="language-plaintext highlighter-rouge">status</code> command is to query a transaction’s status. The options:</p>
+  <p>The <code class="language-plaintext highlighter-rouge">status</code> command queries a transaction’s status.</p>
 
+  <p><strong>Command Options:</strong></p>
   <ul>
-    <li><code class="language-plaintext highlighter-rouge">txid</code> - The transaction id which is printed in the output of the share creation command.</li>
+    <li><code class="language-plaintext highlighter-rouge">txid</code> - The transaction id, which is printed in the output of the share creation command.</li>
   </ul>
 
-  <p>The returned status:</p>
-
+  <p><strong>Returns:</strong></p>
   <ul>
     <li>
-      <p><code class="language-plaintext highlighter-rouge">Pending</code> - Has not been paid.</p>
+      <p><code class="language-plaintext highlighter-rouge">Pending</code> - Not paid.</p>
     </li>
     <li>
       <p><code class="language-plaintext highlighter-rouge">Verified</code> - Paid but not confirmed on the blockchain.</p>
@@ -749,18 +720,21 @@
 
 <p><br /></p>
 
-<h3 id="verifying-that-the-share-has-been-created-and-allocated-to-the-owner">Verifying that the share has been created and allocated to the owner</h3>
+<h3 id="verifying-the-share-creation-results">Verifying the share creation results</h3>
+
+<p>To verify a user’s share balance using Bitmark-CLI:</p>
 
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="nv">$ </span>bitmark-cli <span class="nt">-n</span> &lt;network&gt; <span class="se">\</span>
-      balance <span class="nt">-o</span> &lt;ownwer identity&gt;
+      balance <span class="nt">-o</span> &lt;owner identity&gt;
 
 </code></pre></div></div>
 
 <blockquote>
-  <p>The <code class="language-plaintext highlighter-rouge">owned</code> command is to list out all the bitmarks and shares are being owned by a user. The options:</p>
+  <p>The <code class="language-plaintext highlighter-rouge">owned</code> command lists all the bitmarks and shares that are owned by a user.</p>
 
+  <p><strong>Command Options:</strong></p>
   <ul>
-    <li><code class="language-plaintext highlighter-rouge">owner identity</code> - The identity of the owner of the bitmark from which the shares are created.</li>
+    <li><code class="language-plaintext highlighter-rouge">owner identity</code> - The identity of the owner whose shares are being listed (in this case, the owner of the Bitmark Certificate that was just converted into shares)</li>
   </ul>
 </blockquote>
 
@@ -781,17 +755,13 @@
     </span><span class="p">}</span><span class="w">
 </span></code></pre></div></div>
 
-<p><br />
-<br /></p>
+<h2 id="granting-bitmark-shares-to-another-account">Granting Bitmark shares to another account</h2>
 
-<h2 id="granting-bitmark-shares-to-another-account">Granting bitmark shares to another account</h2>
+<p>Any user with a non-zero share balance can grant shares from that balance to another account. This is a three-part process: initializing the granting of shares; countersigning the grant; and paying for the transaction. Afterward, the transaction can be verified.</p>
 
-<p>Any owner with a non-zero share balance can grant shares from that balance to another account. This is a three part process, initializing the granting of shares, a counter signature, and then a payment. Afterward, the transaction can be verified.</p>
+<h3 id="initializing-a-share-grant">Initializing a share grant</h3>
 
-<p><br />
-<br /></p>
-
-<h3 id="initializing-the-granting-of-shares">Initializing the granting of shares</h3>
+<p>To initialize a grant of shares using the Bitcoin-CLI:</p>
 
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="c"># The current owner initializes the grant shares transaction</span>
     <span class="nv">$ </span>bitmark-cli <span class="nt">-n</span> &lt;network&gt; <span class="nt">-i</span> &lt;current owner identity&gt; <span class="se">\</span>
@@ -799,20 +769,33 @@
 </code></pre></div></div>
 
 <blockquote>
-  <p>The <code class="language-plaintext highlighter-rouge">grant</code> account allows a bitmark shares owner to grant some of his share balance to another account. Only after the new owner signs to accept the shares, the grant transaction is created and submitted to the blockchain. The <code class="language-plaintext highlighter-rouge">grant</code> command options:</p>
+  <p>The <code class="language-plaintext highlighter-rouge">grant</code> command allows a Bitmark shares owner to grant some of his share balance to another account. Only after the new owner signs to accept the shares will the grant transaction be created and submitted to the blockchain.</p>
 
+  <p><strong>Global Options:</strong></p>
+  <ul>
+    <li><code class="language-plaintext highlighter-rouge">current owner identity</code> - The identity of the current share owner’s Bitmark Account, which is stored in the Bitmark-CLI config file.</li>
+  </ul>
+
+  <p><strong>Command Options:</strong></p>
   <ul>
     <li>
-      <p><code class="language-plaintext highlighter-rouge">current owner identity</code> - The identity of the current share owner’s Bitmark Account which is created and stored in the Bitmark CLI</p>
-    </li>
-    <li>
-      <p><code class="language-plaintext highlighter-rouge">receiver</code> - The identifier of the new owner of the granted shares. It can be the receiver’s Bitmark Account identity created by the Bitmark CLI or the receiver’s Bitmark Account Number.</p>
+      <p><code class="language-plaintext highlighter-rouge">receiver</code> - The identifier of the new owner of the granted shares. This can be the receiver’s Bitmark Account identity, stored by the Bitmark-CLI, or the receiver’s Bitmark Account Number.</p>
     </li>
     <li>
       <p><code class="language-plaintext highlighter-rouge">shareid</code> - The share id (share id = bitmark id).</p>
     </li>
     <li>
       <p><code class="language-plaintext highlighter-rouge">quantity</code> - The number of granted shares.</p>
+    </li>
+  </ul>
+
+  <p><strong>Returns:</strong></p>
+  <ul>
+    <li>
+      <p><code class="language-plaintext highlighter-rouge">identity</code> - The Bitmark Account Number of the current share owner.</p>
+    </li>
+    <li>
+      <p><code class="language-plaintext highlighter-rouge">grant</code> - The hex-data that needs to be signed by the new owner.</p>
     </li>
   </ul>
 </blockquote>
@@ -830,25 +813,11 @@
     </span><span class="p">}</span><span class="w">
 </span></code></pre></div></div>
 
-<blockquote>
-  <p>The returned fields:</p>
+<h3 id="countersigning-a-share-grant">Countersigning a share grant</h3>
 
-  <ul>
-    <li>
-      <p><code class="language-plaintext highlighter-rouge">identity</code> - The Bitmark Account Number of the current share owner.</p>
-    </li>
-    <li>
-      <p><code class="language-plaintext highlighter-rouge">grant</code> - The hex-data which needs to be signed by the new owner.</p>
-    </li>
-  </ul>
-</blockquote>
+<p>The share grant transaction requires two signatures. Therefore, after the current share owner initializes the grant, the new owner needs to sign to accept the shares.</p>
 
-<p><br />
-<br /></p>
-
-<h3 id="counter-signing-to-accept-the-shares-granting">Counter signing to accept the shares granting</h3>
-
-<p>A grant share transaction is a two signature transaction. Therefore, after the current share owner initializes the granting, the new owner needs to sign to accept the shares.</p>
+<p>To countersign a share grant using the Bitcoin-CLI:</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    # The receiver signs to accept the shares
     $ bitmark-cli -n &lt;network&gt; -i &lt;receiver identity&gt; \
@@ -856,18 +825,19 @@
 </code></pre></div></div>
 
 <blockquote>
-  <p>The <code class="language-plaintext highlighter-rouge">countersign</code> command is used to sign for a data. In this case, it is used by the <code class="language-plaintext highlighter-rouge">receiver</code> to sign to accept the shares.</p>
+  <p>The <code class="language-plaintext highlighter-rouge">countersign</code> command signs hex data. (In this case, it is used by the <code class="language-plaintext highlighter-rouge">receiver</code> to sign to accept granted shares.)</p>
 
+  <p><strong>Global Options:</strong></p>
   <ul>
     <li>
-      <p><code class="language-plaintext highlighter-rouge">receiver identity</code> - The identity of the Bitmark Account which is created and stored in the Bitmark CLI config file.</p>
+      <p><code class="language-plaintext highlighter-rouge">receiver identity</code> - The identity of the receiving Bitmark Account, which is stored in the Bitmark-CLI config file.</p>
     </li>
     <li>
-      <p><code class="language-plaintext highlighter-rouge">&lt;hex-data&gt;</code> - The grant data is returned by the <code class="language-plaintext highlighter-rouge">grant</code> command.</p>
+      <p><code class="language-plaintext highlighter-rouge">hex-data</code> - The <code class="language-plaintext highlighter-rouge">grant</code> data returned by the <code class="language-plaintext highlighter-rouge">grant</code> command.</p>
     </li>
   </ul>
 
-  <p><strong>NOTE:</strong> The grant shares transaction cost a transaction fee of 0.002 LTC (200000 photons) or 0.0002 BTC (20000 satoshis). Only when the fee is paid, the transaction is able to be confirmed on the blockchain.
+  <p><strong>NOTE:</strong> The share grant transaction cost a transaction fee of 0.002 LTC (200000 photons) or 0.0002 BTC (20000 satoshis). Only when the fee is paid, can the transaction be confirmed on the blockchain.
 The payment information is included in the <code class="language-plaintext highlighter-rouge">coutersign</code> command’s returns.</p>
 </blockquote>
 
@@ -928,7 +898,11 @@ The payment information is included in the <code class="language-plaintext highl
 <p><br />
 <br /></p>
 
-<h3 id="pay-for-the-granting-share-transaction-by-ltc">Pay for the granting share transaction by LTC</h3>
+<h3 id="paying-for-a-share-grant">Paying for a share grant</h3>
+
+<p>Payment for a share grant works just the same as payment for a transfer or for share creation.</p>
+
+<p><em>Example — Paying with LTC:</em></p>
 
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="nv">$ </span>bitmark-wallet <span class="nt">--conf</span> ~/.config/bitmark-wallet/test/test-bitmark-wallet.conf <span class="se">\</span>
       ltc <span class="nt">--testnet</span> <span class="se">\</span>
@@ -943,10 +917,9 @@ The payment information is included in the <code class="language-plaintext highl
     </span><span class="p">}</span><span class="w">
 </span></code></pre></div></div>
 
-<p><br />
-<br /></p>
+<h3 id="verifying-a-share-grant">Verifying a share grant</h3>
 
-<h3 id="verify-the-granting">Verify the granting</h3>
+<p>To verify a grant using the Bitcoin-CLI:</p>
 
 <ul>
   <li>
@@ -966,11 +939,6 @@ The payment information is included in the <code class="language-plaintext highl
   </span><span class="p">}</span><span class="w">
 </span></code></pre></div>    </div>
   </li>
-</ul>
-
-<p><br /></p>
-
-<ul>
   <li>
     <p>Check the sender’s balance</p>
 
@@ -988,11 +956,6 @@ The payment information is included in the <code class="language-plaintext highl
   </span><span class="p">}</span><span class="w">
 </span></code></pre></div>    </div>
   </li>
-</ul>
-
-<p><br /></p>
-
-<ul>
   <li>
     <p>Check the receiver’s balance</p>
 
@@ -1018,19 +981,15 @@ The payment information is included in the <code class="language-plaintext highl
   </li>
 </ul>
 
-<p><br />
-<br /></p>
+<h2 id="swapping-bitmark-shares">Swapping Bitmark shares</h2>
 
-<h2 id="swapping-bitmark-shares">Swapping bitmark shares</h2>
+<p>Owners of shares of two different bitmark Bitmark Certificates can simultaneously swap their shares.</p>
 
-<p>Owners of shares of two different bitmark Bitmark Certificates are able to swap their shares together.</p>
+<p>Similar to share granting, share swapping is a three-part process: one owner (the sender) initializes the swapping; the other owner (the receiver) countersigns to accept the swap and to execute the transaction; and then someone makes a payment. Afterward, the transaction can be verified.</p>
 
-<p>Similar to the share granting, the share swapping is a three part process, one owner (the sender) initializes the swapping, the other owner (the receiver) countersigns to accept the swapping as well as to execute the transaction, and then a payment. Afterward, the transaction can be verified.</p>
+<h3 id="initializing-a-share-swap">Initializing a share swap</h3>
 
-<p><br />
-<br /></p>
-
-<h3 id="the-sender-initializes-the-swapping-share-transaction">The sender initializes the swapping share transaction</h3>
+<p>To initialize a swap of shares using the Bitcoin-CLI:</p>
 
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="nv">$ </span>bitmark-cli <span class="nt">-n</span> &lt;network&gt; <span class="nt">-i</span> &lt;sender identity&gt; <span class="se">\</span>
       swap <span class="nt">-r</span> &lt;receiver&gt; <span class="nt">-s</span> &lt;shareId1&gt; <span class="nt">-q</span> &lt;quantity1&gt; <span class="se">\</span>
@@ -1040,33 +999,36 @@ The payment information is included in the <code class="language-plaintext highl
 </code></pre></div></div>
 
 <blockquote>
-  <p>The <code class="language-plaintext highlighter-rouge">swap</code> command is to initialize a swap shares request, the request needs to be sign by the sender. Once the receiver signs to accept the request, the swap shares transaction is created and submitted to the blockchain. The <code class="language-plaintext highlighter-rouge">swap</code> command options:</p>
+  <p>The <code class="language-plaintext highlighter-rouge">swap</code> command initializes a share swap request; this request must be signed by the sender. Once the receiver signs to accept the request, the share swap transaction is created and submitted to the blockchain.</p>
 
+  <p><strong>Global Options:</strong></p>
+  <ul>
+    <li><code class="language-plaintext highlighter-rouge">sender identity</code> - The identity of the sender’s Bitmark Account, which is stored in the Bitmark-CLI config file.</li>
+  </ul>
+
+  <p><strong>Command Options:</strong></p>
   <ul>
     <li>
-      <p><code class="language-plaintext highlighter-rouge">sender identity</code> - The identity of the sender’s Bitmark Account which is created and stored in the Bitmark CLI config file.</p>
+      <p><code class="language-plaintext highlighter-rouge">receiver</code> - The receiver’s identifier. It could be the receiver’s Bitmark Account Number or an identity that is stored in the Bitmark-CLI config file.</p>
     </li>
     <li>
-      <p><code class="language-plaintext highlighter-rouge">receiver</code> - The receiver’s identifier. It could be the receiver’s Bitmark Account Number or the identity which is created and stored in the Bitmark CLI.</p>
-    </li>
-    <li>
-      <p><code class="language-plaintext highlighter-rouge">shareId1</code> - The id of the shares of that the sender is swapping.</p>
+      <p><code class="language-plaintext highlighter-rouge">shareId1</code> - The id of the shares that the sender is swapping.</p>
     </li>
     <li>
       <p><code class="language-plaintext highlighter-rouge">quantity1</code> - The number of shares that the sender wants to swap with the receiver.</p>
     </li>
     <li>
-      <p><code class="language-plaintext highlighter-rouge">shareId2</code> - The id of the shares that the receiver is owning and for which the sender wants to swap.</p>
+      <p><code class="language-plaintext highlighter-rouge">shareId2</code> - The id of the shares that the receiver is swapping.</p>
     </li>
     <li>
-      <p><code class="language-plaintext highlighter-rouge">quantity2</code> - The number of the receiver’s shares for which the sender wants to swap.</p>
+      <p><code class="language-plaintext highlighter-rouge">quantity2</code> - The number of shares that the receiveer want to swap with the sender.</p>
     </li>
-    <li><code class="language-plaintext highlighter-rouge">block_number</code> - This provides a time-limit to let the request expire and become invalid. Every 30 blocks from the current block adds one hour of expiration.</li>
+    <li><code class="language-plaintext highlighter-rouge">block_number</code> - A time-limit after which the request expires and becomes invalid. Every 30 blocks from the current block adds one hour of expiration.</li>
     <li><a href="https://registry.bitmark.com">Bitmark Blockchain’s current block height</a></li>
     <li><a href="https://registry.test.bitmark.com">Bitmark Testnet Blockchain’s current block height</a></li>
   </ul>
 
-  <p><strong>Note:</strong> The <code class="language-plaintext highlighter-rouge">shareId1</code> and the <code class="language-plaintext highlighter-rouge">shareId2</code> are different. They are the ids of different shares which are generated from different Bitmark Certificates.</p>
+  <p><strong>Note:</strong> The <code class="language-plaintext highlighter-rouge">shareId1</code> and the <code class="language-plaintext highlighter-rouge">shareId2</code> are different. They are the ids of different shares, which are generated from different Bitmark Certificates.</p>
 </blockquote>
 
 <p><em>Example:</em></p>
@@ -1085,12 +1047,11 @@ The payment information is included in the <code class="language-plaintext highl
     </span><span class="p">}</span><span class="w">
 </span></code></pre></div></div>
 
-<p><br />
-<br /></p>
+<h4 id="countersigning-a-share-swap">Countersigning a share swap</h4>
 
-<h4 id="another-owner-countersign-to-accept-swapping-the-shares">Another owner countersign to accept swapping the shares</h4>
+<p>A share-swap transaction requires two signatures. The sender signs when running the <code class="language-plaintext highlighter-rouge">swap</code> command, after which the receiver must countersign. This process is the same as when countersigning a <code class="language-plaintext highlighter-rouge">grant</code> transaction.</p>
 
-<p>A swapping share transaction is a two signature transaction. Therefore, both the owners need to sign to transfer and accept the corresponding shares.</p>
+<p><em>Example:</em></p>
 
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="nv">$ </span>bitmark-cli <span class="nt">-n</span> testing <span class="nt">-i</span> second <span class="se">\</span>
       countersign <span class="nt">-t</span> <span class="se">\</span>
@@ -1128,10 +1089,11 @@ The payment information is included in the <code class="language-plaintext highl
     </span><span class="p">}</span><span class="w">
 </span></code></pre></div></div>
 
-<p><br />
-<br /></p>
+<h3 id="paying-for-a-share-swap">Paying for a share swap</h3>
 
-<h3 id="pay-for-the-swapping-share-transaction">Pay for the swapping share transaction</h3>
+<p>Paying for a share swap transaction works just the same as paying for a transfer, for share creation, or for a share grant.</p>
+
+<p><em>Example — Paying with LTC:</em></p>
 
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="nv">$ </span>bitmark-wallet <span class="nt">--conf</span> ~/.config/bitmark-wallet/test/test-bitmark-wallet.conf <span class="se">\</span>
       ltc <span class="nt">--testnet</span> <span class="se">\</span>
@@ -1146,14 +1108,13 @@ The payment information is included in the <code class="language-plaintext highl
     </span><span class="p">}</span><span class="w">
 </span></code></pre></div></div>
 
-<p><br />
-<br /></p>
+<h3 id="verifying-a-share-swap">Verifying a share swap</h3>
 
-<h3 id="verify-the-share-swapping">Verify the share swapping</h3>
+<p>To thoroughly check the results of a share swap using the Bitcoin-CLI:</p>
 
 <ul>
   <li>
-    <p>Check the swap shares transaction status</p>
+    <p>Check the share swap transaction status</p>
 
     <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nv">$ </span>bitmark-cli <span class="nt">-n</span> testing <span class="se">\</span>
     status <span class="nt">-t</span> <span class="se">\</span>
@@ -1170,13 +1131,8 @@ The payment information is included in the <code class="language-plaintext highl
   </span><span class="p">}</span><span class="w">
 </span></code></pre></div>    </div>
   </li>
-</ul>
-
-<p><br /></p>
-
-<ul>
   <li>
-    <p>Check the balance of the first owner</p>
+    <p>Check the balance of the sending user</p>
 
     <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nv">$ </span>bitmark-cli <span class="nt">-n</span> testing balance <span class="nt">-o</span> first
 </code></pre></div>    </div>
@@ -1198,13 +1154,8 @@ The payment information is included in the <code class="language-plaintext highl
   </span><span class="p">}</span><span class="w">
 </span></code></pre></div>    </div>
   </li>
-</ul>
-
-<p><br /></p>
-
-<ul>
   <li>
-    <p>Check the balance of the other owner</p>
+    <p>Check the balance of the receiving user</p>
 
     <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nv">$ </span>bitmark-cli <span class="nt">-n</span> testing balance <span class="nt">-o</span> second
 </code></pre></div>    </div>

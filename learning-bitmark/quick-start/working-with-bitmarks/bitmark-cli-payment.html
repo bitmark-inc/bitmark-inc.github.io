@@ -254,6 +254,12 @@
                   
                   
                   
+                  <li><a title="Bitmark Software Development Process" href="/learning-bitmark/contributing-to-bitmark/bitmark-software-development-process">Bitmark Software Development Process</a></li>
+                  
+                  
+                  
+                  
+                  
                   <li><a title="Bitmark Upgrade Proposal" href="/learning-bitmark/contributing-to-bitmark/bup">Bitmark Upgrade Proposal</a></li>
                   
                   
@@ -481,11 +487,13 @@
     
 
     <div class="row">
-        <div class="col-md-9"><h1 id="bitmark-transaction-payment">Bitmark transaction payment</h1>
+        <div class="col-md-9"><h1 id="paying-for-bitmark-transactions">Paying for Bitmark Transactions</h1>
 
-<p>Bitmark transaction fees can be paid in either Bitcoin or Litecoin cryptocurrencies.</p>
+<p>Bitmark transaction fees for transfers and share-related transactions can be paid in either Bitcoin (BTC) or Litecoin (LTC) cryptocurrencies.</p>
 
-<p>The Bitmark CLI submits transactions to its connected Bitmark Node via RPC. Once the server receives these transactions, it processes them and returns corresponding payment ids, amounts, and addresses. The transaction is only updated from Pending to Verified, making it ready to be mined, once a payment is executed, either in bitcoin or litecoin.</p>
+<p>The process is as follows:</p>
+
+<p>The Bitmark-CLI submits transactions to its connected Bitmark Node via RPC. Once the Node server receives a transaction, it processes the transaction, sets it as Pending, and returns corresponding payment IDs, amounts, and addresses. The transaction is only updated from Pending to Verified, making it ready to be mined, once a payment is executed, either in BTC or LTC.</p>
 
 <p>In order for bitcoin or litecoin payment to be correctly recognized, freeing up the Bitmark transaction, it must include:</p>
 
@@ -497,29 +505,26 @@
     <p>To the correct address</p>
   </li>
   <li>
-    <p>With the correct payment id added as bitcoin/litecoin OP_RETURN opcode.</p>
+    <p>With the correct payment ID added as a BTC/LTC OP_RETURN opcode.</p>
   </li>
 </ul>
 
-<p>Because common wallets do not support attaching the Bitmark blockchain payment identifier to the ltc/btc transactions, we provide an app called the Bitmark Wallet to pay for the Bitmark transactions come from the Bitmark CLI.</p>
+<p>Because common wallets do not support attaching the Bitmark blockchain payment identifier to the BTC/LTC transactions, Bitmark provides an app called the Bitmark Wallet to pay for Bitmark transactions that come from the Bitmark-CLI.</p>
 
-<p><br />
-<br /></p>
+<h3 id="about-the-bitmark-wallet">About the Bitmark Wallet</h3>
 
-<h2 id="bitmark-wallet">Bitmark Wallet</h2>
+<p>The Bitmark Wallet is a dual-currency wallet, supporting both bitcoin and litecoin. It allows a user to send multiple payments to different addresses and to attach a hex data item to a transaction using the OP_RETURN feature of BTC/LTC.</p>
 
-<p>The Bitmark Wallet is a dual currency wallet, supporting both bitcoin and litecoin. It allows sending multiple payments to different addresses and attaching a hex data item to a transaction using the OP_RETURN feature of bitcoin/litecoin.</p>
-
-<p>The wallet is a command-line tool which is written in Go and cannot work standalone, it can only send the bitcoin and litecoin transactions via a correct configured bitcoind and litecoind. Depending on the configuration of bitcoind and litecoind, the payment transactions are submitted to the mainnet coins or testnet coins.</p>
+<p>The wallet is a command-line tool which is written in Go and cannot work standalone; it can only send bitcoin and litecoin transactions via a correctly configured <code class="language-plaintext highlighter-rouge">bitcoind</code> and/or <code class="language-plaintext highlighter-rouge">litecoind</code>. Depending on the configuration of <code class="language-plaintext highlighter-rouge">bitcoind</code> and <code class="language-plaintext highlighter-rouge">litecoind</code>, the payment transactions are submitted as mainnet coins or testnet coins.</p>
 
 <p>Features:</p>
 
 <ul>
   <li>
-    <p>Submit btc/ltc transactions.</p>
+    <p>Submit BTC/LTC transactions.</p>
   </li>
   <li>
-    <p>Update the wallet from the btc/ltc block chain - for this it will query its local daemon to request any transctions belonging to its addresses.</p>
+    <p>Update the wallet from the BTC/LTC block chain by querying the local daemon to request any transctions belonging to its addresses.</p>
   </li>
   <li>
     <p>Display the wallet balance for each coin.</p>
@@ -530,55 +535,50 @@
 </ul>
 
 <blockquote>
-  <p><strong>NOTE:</strong>The Bitmark Wallet uses a master bip39 based recovery phrase which must be printed and kept safe.</p>
+  <p><strong>NOTE:</strong>The Bitmark Wallet uses a master bip39-based recovery phrase, which must be printed and kept safe.</p>
 </blockquote>
 
-<p><br />
-<br /></p>
+<h2 id="prerequisites">Prerequisites</h2>
 
-<h2 id="instructions-for-using-the-bitmark-wallet">Instructions for Using the Bitmark Wallet</h2>
-
-<p>The next sections explain the main actions involved with using the Bitmark wallet including how to:</p>
+<p>To use the Bitmark Wallet:</p>
 
 <ul>
   <li>
-    <p>Install the Bitmark Wallet.</p>
+    <p>Git must be installed.</p>
   </li>
   <li>
-    <p>Sync the wallet with the coins.</p>
+    <p>Go must be installed.</p>
   </li>
   <li>
-    <p>Run the wallet.</p>
+    <p>Python3 must be installed.</p>
   </li>
   <li>
-    <p>Get the testnet coins.</p>
+    <p><code class="language-plaintext highlighter-rouge">bitcoind</code>/<code class="language-plaintext highlighter-rouge">litecoind</code> must be installed.</p>
   </li>
 </ul>
 
-<p><br />
-<br /></p>
+<h2 id="using-the-bitmark-wallet">Using the Bitmark Wallet</h2>
 
-<h3 id="prerequisites-of-installing-the-bitmark-wallet">Prerequisites of installing the Bitmark Wallet</h3>
+<p>The main actions required to use the Bitmark wallet are:</p>
 
 <ul>
   <li>
-    <p>Git has been installed.</p>
+    <p>Installing the Bitmark Wallet.</p>
   </li>
   <li>
-    <p>Go has been installed.</p>
+    <p>Syncing the wallet with coins.</p>
   </li>
   <li>
-    <p>Python3 is installed.</p>
+    <p>Running the wallet.</p>
   </li>
   <li>
-    <p>bitcoind/litecoind have been installed.</p>
+    <p>Acquiring testnet coins.</p>
   </li>
 </ul>
-
-<p><br />
-<br /></p>
 
 <h3 id="installing-the-bitmark-wallet">Installing the Bitmark Wallet</h3>
+
+<p>To install the Bitmark wallet:</p>
 
 <ul>
   <li>
@@ -587,11 +587,6 @@
     <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>      <span class="nv">$git</span> clone https://github.com/bitmark-inc/bitmark-wallet.git
 </code></pre></div>    </div>
   </li>
-</ul>
-
-<p><br /></p>
-
-<ul>
   <li>
     <p>Install the Bitmark Wallet</p>
 
@@ -600,13 +595,8 @@
       <span class="nv">$go</span> <span class="nb">install</span>
 </code></pre></div>    </div>
   </li>
-</ul>
-
-<p><br /></p>
-
-<ul>
   <li>
-    <p>Create Bitmark Wallet’s config file</p>
+    <p>Create the Bitmark Wallet’s config file</p>
 
     <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>      <span class="nv">$ </span><span class="nb">touch</span> &lt;CONFIG DIR&gt;/bitmark-wallet/bitmark-wallet.conf
 </code></pre></div>    </div>
@@ -618,16 +608,13 @@
   </li>
 </ul>
 
-<p><br />
-<br /></p>
+<h3 id="connecting-the-bitmark-wallet">Connecting the Bitmark Wallet</h3>
 
-<h3 id="connect-the-bitmark-wallet-with-bitcoind-and-litecoind">Connect the Bitmark Wallet with bitcoind and litecoind</h3>
-
-<p>The Bitmark Wallet comunnicate with litecoind and bitcoind using RPC so the RPC needs to be enabled in the bitcoin.conf and litecoin.conf and the corresponding rpc username / password needs to be added into the Bitmark Wallet config file.</p>
+<p>The Bitmark Wallet communicates with <code class="language-plaintext highlighter-rouge">litecoind</code> and <code class="language-plaintext highlighter-rouge">bitcoind</code> using RPC, so RPC needs to be enabled in the <code class="language-plaintext highlighter-rouge">bitcoin.conf</code> and <code class="language-plaintext highlighter-rouge">litecoin.conf</code> and the corresponding RPC username and password needs to be added into the appropriate config files.</p>
 
 <ul>
   <li>
-    <p>Enable RPC in the coins config files</p>
+    <p>Enable RPC in the BTC and LTC config files</p>
 
     <pre><code class="language-#bitcoin.conf">
       # RPC server port
@@ -642,7 +629,7 @@
       rpcallowip = [::1]
 
       # authentication
-      rpcauth=&lt;rpc auth line for bitcoin&gt;
+      rpcauth=&lt;rpc auth line for bitcoin&gt; [to be filled in later]
 </code></pre>
 
     <pre><code class="language-#litecoin.conf">
@@ -658,16 +645,11 @@
       rpcallowip = [::1]
 
       # authentication
-      rpcauth=&lt;rpc auth line for bitcoin&gt;
+      rpcauth=&lt;rpc auth line for bitcoin&gt; [to be filled in later]
 </code></pre>
   </li>
-</ul>
-
-<p><br /></p>
-
-<ul>
   <li>
-    <p>Run the <a href="/pages/learning-bitmark/quick-start/working-with-bitmarks/samples/rpcauth.py">rpcauth.py</a> program to get the rpcauth lines and corresponding usernames &amp; passwords</p>
+    <p>Run the <a href="/pages/learning-bitmark/quick-start/working-with-bitmarks/samples/rpcauth.py"><code class="language-plaintext highlighter-rouge">rpcauth.py</code></a> program to get the <code class="language-plaintext highlighter-rouge">rpcauth</code> lines and corresponding usernames &amp; passwords</p>
 
     <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>      <span class="nv">$ </span>python3 rpcauth.py localhost
 </code></pre></div>    </div>
@@ -689,7 +671,7 @@
 
 <ul>
   <li>
-    <p>Copy the corresponding rpcauth lines and paste to the  litecoin and bitcoin config files</p>
+    <p>Copy the corresponding <code class="language-plaintext highlighter-rouge">rpcauth</code> lines and paste them into the litecoin and bitcoin config files</p>
 
     <p><em>Example:</em></p>
     <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  #In litecoin.conf:
@@ -704,13 +686,8 @@
       rpcauth=cotzntmnxllhcpsshvdzzuue:1c1671f8ffbdd8d845688dc450d2c4e1$ec4723c3a7c29d072c40749017d4d326576c68264595355fac8816d525220f7a
 </code></pre></div>    </div>
   </li>
-</ul>
-
-<p><br /></p>
-
-<ul>
   <li>
-    <p>Copy the btc and ltc prc usernames and passwords and paste to the corresponding fields in the bitmark-wallet.conf</p>
+    <p>Copy the BTC and LTC RPC usernames and passwords and paste them into the corresponding fields in the <code class="language-plaintext highlighter-rouge">bitmark-wallet.conf</code></p>
 
     <p><em>Example:</em>
   <code class="language-plaintext highlighter-rouge"># bitmark-wallet.conf
@@ -732,16 +709,13 @@
   </li>
 </ul>
 
-<p><br /></p>
-
 <blockquote>
-  <p><strong>NOTE:</strong> Transactions on the Bitmark blockchain need to be paid by real bitcoin and/or litecoin. And the transactions on the Bitmark testnet blockchain need to be paid by the testnet coins.</p>
+  <p><strong>NOTE:</strong> Transactions on the main Bitmark blockchain need to be paid with real bitcoin and/or litecoin; transactions on the Bitmark testnet blockchain need to be paid with testnet coins.</p>
 </blockquote>
 
-<p><br />
-<br /></p>
+<h3 id="running-the-bitmark-wallet">Running the Bitmark Wallet</h3>
 
-<h3 id="run-the-bitmark-wallet">Run the Bitmark Wallet</h3>
+<p>To use the Bitmark Wallet:</p>
 
 <ul>
   <li>
@@ -762,32 +736,21 @@
       <span class="nv">$ </span>litecoind <span class="nt">-datadir</span><span class="o">=</span><span class="k">${</span><span class="nv">HOME</span><span class="k">}</span>/.config/litecoin
 </code></pre></div>    </div>
   </li>
-</ul>
-
-<p><br /></p>
-
-<ul>
   <li>
-    <p>Init the bitmark wallet</p>
+    <p>Initialize the Bitmark Wallet</p>
 
     <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>      <span class="nv">$ </span> bitmark-wallet <span class="nt">--conf</span><span class="o">=</span>&lt;conf file&gt; init
 </code></pre></div>    </div>
 
     <p><em>Example:</em></p>
-    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>      <span class="c"># bitcoind</span>
-      <span class="nv">$ </span>bitmark-wallet <span class="nt">--conf</span><span class="o">=</span><span class="k">${</span><span class="nv">HOME</span><span class="k">}</span>/.config/bitmark-wallet/test/bitmark-wallet.conf init
+    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>      <span class="nv">$ </span>bitmark-wallet <span class="nt">--conf</span><span class="o">=</span><span class="k">${</span><span class="nv">HOME</span><span class="k">}</span>/.config/bitmark-wallet/test/bitmark-wallet.conf init
 </code></pre></div>    </div>
   </li>
-</ul>
-
-<p><br /></p>
-
-<ul>
   <li>
-    <p>Sync the wallet with the coins</p>
+    <p>Sync the Wallet</p>
 
     <blockquote>
-      <p>The syncing is to scan the blockchain from the block that was highest at the time it was last used to the current block height to see if any transactions matching any addresses in the wallet were sent.</p>
+      <p>Syncing scans the blockchain from the block that was highest at the time it was last used to the current block height to see if any transactions matching any addresses in the wallet were sent.</p>
     </blockquote>
 
     <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>      <span class="c"># bitcoin</span>
@@ -807,13 +770,8 @@
         ltc <span class="nb">sync</span> <span class="nt">--testnet</span>
 </code></pre></div>    </div>
   </li>
-</ul>
-
-<p><br /></p>
-
-<ul>
   <li>
-    <p>Generate the btc/ltc addresses</p>
+    <p>Generate BTC/LTC addresses for sending coins</p>
 
     <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>      <span class="c"># bitcoin</span>
       <span class="nv">$ </span>bitmark-wallet <span class="nt">--conf</span><span class="o">=</span>&lt;config file&gt; btc newaddress <span class="nt">--testnet</span>
@@ -834,10 +792,9 @@
   </li>
 </ul>
 
-<p><br />
-<br /></p>
+<h3 id="getting-testnet-coins">Getting testnet coins</h3>
 
-<h3 id="get-testnet-coins">Get testnet coins</h3>
+<p>To fund a mainnet wallet, you’ll need to send coins to the BTC or LTC address, but to fund a testnet wallet, you can simply request coins from a faucet.</p>
 
 <ul>
   <li>
@@ -847,6 +804,10 @@
     <p>Get some testnet bitcoins at https://coinfaucet.eu/en/btc-testnet/</p>
   </li>
 </ul>
+
+<h2 id="paying-for-the-transaction">Paying for the Transaction</h2>
+
+<p>Once your Bitcoin Wallet is set up, it can be used to pay for transactions. Instructions and examples can be found in the sections on <a href="/learning-bitmark/quick-start/working-with-bitmarks/transferring-bitmarks#transferring-bitmarks-using-the-bitmark-cli">Transferring Bitmarks</a>, <a href="/learning-bitmark/quick-start/working-with-bitmarks/using-bitmark-shares#paying-for-a-share-creation">Paying for a Share Creation</a>, <a href="https://github.com/bitmark-inc/docs/blob/shannona-patch-working-with-bitmark/learning-bitmark/quick-start/working-with-bitmarks/using-bitmark-shares.md#paying-for-a-share-grant">Paying for a Share Grant</a>, and <a href="/learning-bitmark/quick-start/working-with-bitmarks/using-bitmark-shares#paying-for-a-share-swap">Paying for a Share Swap</a>.</p>
 
 </div>
         

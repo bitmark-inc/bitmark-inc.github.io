@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
 <meta name="keywords" content=" node setup">
-<title>Run a Bitmark Node | Bitmark Documentation</title>
+<title>Running a Bitmark Node | Bitmark Documentation</title>
 
 <link rel="stylesheet" href="/css/syntax.css">
 
@@ -138,7 +138,7 @@
 
 
 
-  <a class="email" title="Submit feedback" href="#" onclick="javascript:window.location='mailto:support@bitmark.com?subject=Bitmark Inc feedback&body=I have some feedback about the Run a Bitmark Node page: ' + window.location.href;"><i class="fa fa-envelope-o"></i> Need help?</a>
+  <a class="email" title="Submit feedback" href="#" onclick="javascript:window.location='mailto:support@bitmark.com?subject=Bitmark Inc feedback&body=I have some feedback about the Running a Bitmark Node page: ' + window.location.href;"><i class="fa fa-envelope-o"></i> Need help?</a>
 
 </li>
 
@@ -156,7 +156,7 @@
                                 searchInput: document.getElementById('search-input'),
                                 resultsContainer: document.getElementById('results-container'),
                                 dataSource: '/search.json',
-                                searchResultTemplate: '<li><a href="{url}" title="Run a Bitmark Node">{title}</a></li>',
+                                searchResultTemplate: '<li><a href="{url}" title="Running a Bitmark Node">{title}</a></li>',
                     noResultsText: 'No results found.',
                             limit: 10,
                             fuzzy: true,
@@ -251,6 +251,12 @@
           <li class="subfolders">
               <a title="Contributing to Bitmark" href="">Contributing to Bitmark</a>
               <ul>
+                  
+                  
+                  
+                  <li><a title="Bitmark Software Development Process" href="/learning-bitmark/contributing-to-bitmark/bitmark-software-development-process">Bitmark Software Development Process</a></li>
+                  
+                  
                   
                   
                   
@@ -468,7 +474,7 @@
         <!-- Content Column -->
         <div class="col-md-9" id="tg-sb-content">
             <!-- <div class="post-header">
-   <h1 class="post-title-main">Run a Bitmark Node</h1>
+   <h1 class="post-title-main">Running a Bitmark Node</h1>
 </div> -->
 
 
@@ -481,77 +487,85 @@
     
 
     <div class="row">
-        <div class="col-md-9"><h1 id="run-a-bitmark-node">Run a Bitmark Node</h1>
+        <div class="col-md-9"><h1 id="running-a-bitmark-node">Running a Bitmark Node</h1>
 
-<h2 id="start-your-bitmark-node">Start your Bitmark Node</h2>
+<p>There are many ways to interact with the Bitmark blockchain. Some of them, such as using the <a href="https://a.bitmark.com/">Bitmark App</a>, are extremely easy and accessible. However, users who want the deepest interactions with the Bitmark blockchain will probably want to run their own Bitmark Node, which will grant them immediate, local acesss to the blockchain, and which can also give them the ability to act as a recorder, if desired.</p>
 
-<p>There are several way to run a Bitmark Node. A user can install services like bitmarkd, discovery and recorderd base on their own interested.  To install those services, the user needs to configure the settings and install dependencies before running each service. For the first time user,  a  docker container with a bitmark node and miner services is the quickest and easiest way to start with bitmark node.  We have setup environment and run  services  for users.</p>
+<h2 id="starting-your-bitmark-node">Starting your Bitmark Node</h2>
 
-<p>This section will guide you to start a bitmark node using docker container. Inside a bitmark node docker container, there are bitmarkd, recorderd, payment system and a user interface to control and monitor services.</p>
+<p>There are several way to run a Bitmark Node: services such as <code class="language-plaintext highlighter-rouge">bitmarkd</code>, <code class="language-plaintext highlighter-rouge">discovery</code> and <code class="language-plaintext highlighter-rouge">recorderd</code> can each be installed, based on a user’s specific interest. A user will need to configure specific settings and install dependencies before running each service. For the first-time user, a docker container with a bitmark node and miner services is the quickest and easiest way to get started.</p>
+
+<p>This section will guide you through the installation of a bitmark node using a docker container. The bitmark node docker container includes <code class="language-plaintext highlighter-rouge">bitmarkd</code>, <code class="language-plaintext highlighter-rouge">recorderd</code>, a payment system, and a user interface to control and monitor the services.</p>
 
 <h2 id="prerequisites">Prerequisites</h2>
 
 <ul>
-  <li><a href="https://docs.docker.com/install/">Docker</a> is installed in your system
+  <li><a href="https://docs.docker.com/install/">Docker</a> must be installed on your system.
     <ul>
-      <li>Windows user run docker on Hyper-V</li>
+      <li>Windows users must run docker on Hyper-V.</li>
     </ul>
   </li>
-  <li>You <a href="https://docs.docker.com/engine/reference/commandline/login/">log in</a> your docker with <a href="(https://hub.docker.com/)">docker hub</a> account</li>
-  <li>You have and know your <strong>public IP</strong> address</li>
-  <li>You have <strong>a bitcoin and a litecoin address</strong> for receiving mining reward</li>
-  <li>Your environment is open for incoming connections through port 2136.</li>
+  <li>You must <a href="https://docs.docker.com/engine/reference/commandline/login/">log in</a> to your docker with a <a href="(https://hub.docker.com/)">docker hub</a> account.</li>
+  <li>You must have and know your <strong>public IP</strong> address.</li>
+  <li>You must have <strong>a bitcoin and a litecoin address</strong> for receiving mining rewards.</li>
+  <li>Your environment must be open for incoming connections through port 2136.</li>
 </ul>
 
-<h2 id="installation">Installation</h2>
+<h2 id="installing-your-bitmark-node">Installing Your Bitmark Node</h2>
 
-<p>Downloaded script will help you to manage bitmark node container. The  installation of the script will pull down a latest bitmark node container image from docker hub and then start a bitmark node container for you.  To check what functions the script supports and how to run it, simply run <code class="language-plaintext highlighter-rouge">bash install-node-linux-mac.sh</code> on linux or mac.  or <code class="language-plaintext highlighter-rouge">bitmarkNode-HyperV.bat</code> on windows.</p>
+<p>A downloadable script will help you to install your Bitmark node. This script will pull down the latest bitmark-node container image from docker hub and then will start a bitmark node container for you.</p>
 
 <ul>
-  <li>Linux and mac users
+  <li>Linux and mac users:
     <ul>
-      <li><a href="https://bitmark-node-docker-scripts.s3-ap-northeast-1.amazonaws.com/install-node-linux-mac.sh">Download scripts for linux and mac</a></li>
+      <li><a href="https://bitmark-node-docker-scripts.s3-ap-northeast-1.amazonaws.com/install-node-linux-mac.sh">Download the scripts for Linux and Mac</a></li>
       <li>
-        <p>Execute bash install-node-linux-mac.sh [Your Public IP]. When run the script without providing [Your Public IP], the script will find your IP from Internet</p>
+        <p>Execute <code class="language-plaintext highlighter-rouge">bash install-node-linux-mac.sh [Your Public IP]</code>. (If you run the script without providing [Your Public IP], the script will find your IP from Internet.)</p>
 
         <p><code class="language-plaintext highlighter-rouge">bash install-node-linux-mac.sh  &lt;Your Public IP&gt;</code></p>
       </li>
-      <li>Follow script instruction and select “1)Installation”</li>
+      <li>Follow the script instruction and select “1) Installation”</li>
     </ul>
   </li>
-  <li>Windows users
+  <li>Windows users:
     <ul>
       <li>Ensure that Hyper-V is turned on</li>
-      <li><a href="https://s3-ap-northeast-1.amazonaws.com/bitmark-node-docker-scripts/bitmarkNode-HyperV.bat">Download script for windows</a></li>
+      <li><a href="https://s3-ap-northeast-1.amazonaws.com/bitmark-node-docker-scripts/bitmarkNode-HyperV.bat">Download the script for Windows</a></li>
       <li>
-        <p>Execute bitmarkNode-HyperV.bat [Your Public IP]. When run the script without providing [Your Public IP], the script find your IP from Internet</p>
+        <p><code class="language-plaintext highlighter-rouge">Execute bitmarkNode-HyperV.bat [Your Public IP]</code>. (If you run the script without providing [Your Public IP], the script will find your IP from Internet.)</p>
 
-        <p><code class="language-plaintext highlighter-rouge">bitmarkNode-HyperV.bat 117.166.111.123</code></p>
+        <p><code class="language-plaintext highlighter-rouge">bitmarkNode-HyperV.bat &lt;Your Public IP&gt;</code></p>
       </li>
-      <li>Follow script instruction and select “1)Installation”</li>
+      <li>Follow the script instruction and select “1) Installation”</li>
     </ul>
   </li>
-  <li>Execute docker ps in your command-line/shell to check if bitmark-node is running
+  <li>After installation:
+    <ul>
+      <li>Execute <code class="language-plaintext highlighter-rouge">docker ps</code> in your command-line/shell to check if bitmark-node is running
 <img src="https://i.imgur.com/l3dF4Hl.jpg" alt="docker ps result" /></li>
+    </ul>
+  </li>
 </ul>
 
-<h2 id="management-panel">Management Panel</h2>
+<h2 id="using-the-management-panel">Using the Management Panel</h2>
 
-<h3 id="step-1-open-a-node-management-webpage">Step 1: Open A Node-Management Webpage</h3>
-<p>+Access the node management webpage at http://127.0.0.1:9980</p>
+<p>Following installation, you will be able to manipulate the Bitmark daemons directly from WebUI, a node-management web page.</p>
+
+<h3 id="step-1-opening-a-node-management-webpage">Step 1: Opening A Node-Management Webpage</h3>
 <ul>
+  <li>Access the node management webpage at http://127.0.0.1:9980</li>
   <li>
-    <p>Input your BTC and LTC address for rewarding in a pop-up screen
+    <p>Input your BTC and LTC address for receiving mining rewards in a pop-up screen
 <img src="https://i.imgur.com/IRTlyjY.jpg?1" alt="Input your BTC&amp;LTC Address" /></p>
   </li>
-  <li>Notice: WebUI is an interface to control bitmark node services. User can only access WebUI through local network. Please notice that user can not access the port from internet due to security reason.
-    <h3 id="step-2-run-bitmarkd-and-recorderd">Step 2: Run bitmarkd and recorderd</h3>
+  <li>Notice: WebUI is an interface for controlling Bitmark node services. Users can only access it through a local network. The WebUI port cannot be  accessed from the internet due to security reasons.
+    <h3 id="step-2-running-bitmarkd-and-recorderd">Step 2: Running bitmarkd and recorderd</h3>
   </li>
-  <li>Startup screen
+  <li>On the startup screen:
     <ul>
-      <li>Run bitmarkd by click “start button” of “Bitmark Node (bitmarkd)”</li>
-      <li>After bitmarkd is running, run a recorderd by click “start button” of “Recorder Node (recorderd)”</li>
-      <li>If you don’t want to use your machine to help us on mining, you can stop recorderd.</li>
+      <li>Run <code class="language-plaintext highlighter-rouge">bitmarkd</code> by clicking the “start button” for “Bitmark Node (bitmarkd)”</li>
+      <li>After <code class="language-plaintext highlighter-rouge">bitmarkd</code> is running, run a <code class="language-plaintext highlighter-rouge">recorderd</code> by clicking the “start button” for “Recorder Node (recorderd)”</li>
+      <li>If you don’t want to use your machine to help Bitmark with mining, don’t run the <code class="language-plaintext highlighter-rouge">recorderd</code></li>
     </ul>
   </li>
 </ul>
@@ -559,22 +573,22 @@
 <p><img src="https://i.imgur.com/aeONALb.jpg" alt="startup screen" /></p>
 
 <ul>
-  <li>Running screen
+  <li>After the daemons are running:
     <ul>
-      <li>Wait for 5 connections to establish a distribute network</li>
-      <li>The “Current Block” shows the progress of blocks synchronization of the node</li>
-      <li>“Your Blocks” shows the blocks that this account has won</li>
+      <li>Wait for five connections, to establish a distributed network</li>
+      <li>The “Current Block” window shows the progress of the node’s block synchronization</li>
+      <li>The “Your Blocks” window shows the blocks that this account has won</li>
     </ul>
   </li>
 </ul>
 
 <p><img src="https://i.imgur.com/g9baqm8.jpg" alt="running screen" /></p>
 
-<p>If block does not start to  synchronize  with remote bitmark node over 20 minutes, check your network. Also see <a href="#important-notice-on-network">Important Notice On Network</a></p>
+<p>If blocks do not start to  synchronize with remote Bitmark nodes within 20 minutes, check your network. Also see <a href="#important-notice-on-network">Important Notice On Network</a></p>
 
 <h2 id="important-notice-on-network">Important Notice On Network</h2>
 
-<p>User must ensure the following ports to be accessible from Internet.</p>
+<p>For your Blockchain node to work, you must ensure that the following ports are accessible from tie Internet.</p>
 
 <table>
   <thead>
@@ -586,16 +600,16 @@
   <tbody>
     <tr>
       <td>2136</td>
-      <td>Port for connecting to other peer bitmarkd nod</td>
+      <td>Port for connecting to other bitmarkd nodes</td>
     </tr>
   </tbody>
 </table>
 
-<p>When running bitmark node container, user can make sure ports are opened with the following command in Linux and Mac.</p>
+<p>Linux and Mac users can open this port with the following command:</p>
 
 <p>netcat -v [Your Public IP] 2136</p>
 
-<p>For windows users, telnet can be used to test on an open port.</p>
+<p>Windows users can use <code class="language-plaintext highlighter-rouge">telnet</code> to test that a port is open:</p>
 
 <p>telnet [Your Public IP] 2136</p>
 </div>

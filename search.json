@@ -37,7 +37,7 @@
 
 
 {
-"title": "Bitmark Blockchain",
+"title": "Bitmark Blockchain Introduction",
 "tags": "",
 "keywords": "blockchain",
 "url": "/learning-bitmark/bitmark-blockchain",
@@ -169,7 +169,7 @@
 
 
 {
-"title": "Creating Bitmark Account",
+"title": "Creating Bitmark Accounts",
 "tags": "",
 "keywords": "create account",
 "url": "/learning-bitmark/quick-start/working-with-bitmarks/creating-bitmark-account",
@@ -316,7 +316,7 @@
 
 
 {
-"title": "Run a Bitmark Node",
+"title": "Running a Bitmark Node",
 "tags": "",
 "keywords": "node setup",
 "url": "/learning-bitmark/quick-start/simple-solution-for-node-setup",
@@ -498,7 +498,7 @@
 
 
 {
-"title": "Contribute to Bitmark",
+"title": "Contributing to Bitmark",
 "tags": "",
 "keywords": "",
 "url": "/pages/learning-bitmark/contributing-to-bitmark/",
@@ -520,45 +520,15 @@
 
 
 {
-"title": "Working with bitmarks",
+"title": "Working with Bitmarks",
 "tags": "",
 "keywords": "",
 "url": "/pages/learning-bitmark/quick-start/working-with-bitmarks/",
 "summary": ""
 }
-,
 
 
 
-
-
-{
-"title": "Sample post",
-"tags": "newsgetting_started",
-"keywords": "",
-"url": "/samplepost.html",
-"summary": "This is some summary frontmatter for my sample post."
-}
-,
-
-
-{
-"title": "Welcome to Jekyll!",
-"tags": "news",
-"keywords": "",
-"url": "/myupdate.html",
-"summary": ""
-}
-,
-
-
-{
-"title": "Test post from last year",
-"tags": "news",
-"keywords": "",
-"url": "/test-post-from-last-year.html",
-"summary": ""
-}
 
 
 

@@ -254,6 +254,12 @@
                   
                   
                   
+                  <li><a title="Bitmark Software Development Process" href="/learning-bitmark/contributing-to-bitmark/bitmark-software-development-process">Bitmark Software Development Process</a></li>
+                  
+                  
+                  
+                  
+                  
                   <li><a title="Bitmark Upgrade Proposal" href="/learning-bitmark/contributing-to-bitmark/bup">Bitmark Upgrade Proposal</a></li>
                   
                   
@@ -483,11 +489,11 @@
     <div class="row">
         <div class="col-md-9"><h1 id="bug-bounty-program">Bug Bounty Program</h1>
 
-<p><strong>Important:</strong> We only accept bug reports for <strong>bitmarkd</strong> project. Bug reports for web applications or any other project that is not <strong>bitmarkd</strong> will not be accepted and given any reward.</p>
+<p>Bitmark strives to make the Bitmark Property System safe and secure for everyone. We greatly value the work done by security researchers in improving the security of our products and service offerings, so we are committed to working with this community to verify, reproduce, and respond to legitimate reported vulnerabilities. We encourage the community to participate in our responsible reporting process.</p>
+
+<p><strong>Important:</strong> We only accept bug reports for the <strong><code class="language-plaintext highlighter-rouge">bitmarkd</code></strong> project. Bug reports for web applications or any other project that is not <strong><code class="language-plaintext highlighter-rouge">bitmarkd</code></strong> will not be accepted nor given any reward.</p>
 
 <p><a href="https://docs.google.com/forms/d/e/1FAIpQLSeVzZfd-DDQNuVVDMkwgu4VSxmPnvB6OLo_sw_9CH1w34xoZA/viewform">SUBMIT A BUG</a></p>
-
-<p>Bitmark strives to make the Bitmark system safe and secure for everyone. We greatly value the work done by security researchers in improving the security of our products and service offerings. We are committed to working with this community to verify, reproduce, and respond to legitimate reported vulnerabilities. We encourage the community to participate in our responsible reporting process.</p>
 
 <p>We offer rewards in Bitcoin:</p>
 
@@ -520,29 +526,30 @@
 
 <h2 id="how-to-report-a-bug">How to report a bug</h2>
 
-<h4 id="scope">Scope:</h4>
+<h3 id="determining-scope">Determining scope</h3>
 <p><a href="https://github.com/bitmark-inc/bitmarkd">Bitmarkd</a> is the codebase for the Bitmark blockchain.</p>
 
-<h5 id="bug-scope">Bug scope:</h5>
-<p>Only bugs in Scope are eligible for the bug bounty. A qualifying bug has to be a danger to the blockchain records, privacy or client operations. These include bugs in:</p>
+<h5 id="bug-scope">Bug scope</h5>
+<p>Only bugs in Scope are eligible for a bug bounty. A qualifying bug has to be a danger to the blockchain records, privacy, or client operations. These include bugs in:</p>
 <ol>
-  <li><strong>Protocol</strong>: Flaws in Protocol design, an example is incentive design flaw in Paper</li>
-  <li><strong>Implementation of client</strong>: Any implementation bugs in Bitmarkd to cause bad block, invalid assets, transaction failure bad operations, or crashing of the program</li>
-  <li><strong>Cryptography</strong>: Incorrectly implementation of Cryptographic algorithms</li>
-  <li><strong>Network Attacks</strong>: Attacks like Sybil attack</li>
-  <li>Any bugs that we consider important</li>
+  <li><strong>Protocol</strong>: Flaws in protocol design, an example being the incentive design flaw in the <a href="https://bitmark.com/assets/bitmark_technical-white-paper.pdf">white paper</a></li>
+  <li><strong>Implementation of client</strong>: Any implementation bug in <code class="language-plaintext highlighter-rouge">bitmarkd</code> that could cause cause bad block, invalid assets, transaction failure, bad operations, or program crashes</li>
+  <li><strong>Cryptography</strong>: Incorrect implementation of Cryptographic algorithms</li>
+  <li><strong>Network Attacks</strong>: Attacks such as Sybil attacks</li>
+  <li>Any bugs that Bitmark considers important</li>
 </ol>
 
 <h6 id="restrict-online-low-bandwidth-attack-to-these-two-nodes-only">Restrict online low-bandwidth attack to these two nodes only:</h6>
 <ul>
-  <li>node-d3.test.bitmark.com</li>
-  <li>node-a3.test.bitmark.com</li>
+  <li><code class="language-plaintext highlighter-rouge">node-d3.test.bitmark.com</code></li>
+  <li><code class="language-plaintext highlighter-rouge">node-a3.test.bitmark.com</code></li>
 </ul>
 
-<h5 id="bugs-in-third-party-packages">Bugs in third party packages:</h5>
-<p>It may or may not be rewarded by Bitmark. In theory, you should claim the bug(s) directly with the third party bounty program; however, we may also reward you for your effort.</p>
+<h5 id="bugs-in-third-party-packages">Bugs in third-party packages</h5>
+<p>Third-party package bugs may or may not be rewarded by Bitmark. In theory, you should claim the bug(s) directly with a third-party bounty program; however, we may also reward you for your efforts.</p>
 
-<h5 id="bugs-out-of-scope-include">Bugs out of scope include:</h5>
+<h5 id="out-of-scope-bugs">Out-of-scope bugs</h5>
+<p>Bugs that are out of scope include those that require:</p>
 <ul>
   <li>Physical access to a user’s device</li>
   <li>Social engineering</li>
@@ -550,28 +557,30 @@
   <li>DDoS / Fuzzing / High-Bandwidth Attack</li>
 </ul>
 
-<h5 id="submit">Submit</h5>
+<h3 id="submitting-a-bug">Submitting a bug</h3>
 <ul>
   <li>Submit your report to: <a href="https://docs.google.com/forms/d/e/1FAIpQLSeVzZfd-DDQNuVVDMkwgu4VSxmPnvB6OLo_sw_9CH1w34xoZA/viewform">Bug Bounty Submission Form</a></li>
 </ul>
 
-<h5 id="collect-rewards">Collect rewards</h5>
-<p>Rewards are considered according to the impact and severity of vulnerability, relation to scope and quality of report.</p>
+<h3 id="collecting-rewards">Collecting rewards</h3>
+<p>Rewards are considered based on the impact and severity of the vulnerability, with relation to the scope and quality of the report.</p>
 
 <ul>
-  <li>Only unknown and first submitted bug is considered eligible for a reward</li>
-  <li>Critical: key leaks</li>
-  <li>High: invalid block or corrupted database is high (at least high)</li>
-  <li>If the bug does not fit into the Critical or High criteria as defined above, it will be considered Medium, Low or Note</li>
-  <li>Detailed proof of concept has to be presented when claiming a Critical or High bug</li>
+  <li>Critical Bugs: key leaks</li>
+  <li>High Bugs (At Least): invalid block or corrupted database</li>
+  <li>
+    <p>If a bug does not fit into the Critical or High criteria as defined above, it will be considered Medium, Low, or Note</p>
+  </li>
+  <li>Only unknown and first-submitted bugs are considered eligible for a reward</li>
+  <li>A dtailed proof of concept has to be presented when claiming a Critical or High bug</li>
 </ul>
 
 <h2 id="disclosure-policy">Disclosure policy</h2>
-<p>Please discussed with us before disclosure of your finding bugs. Bitmark will endeavor to respond to reports within <strong>2-3 business days</strong> and will make every effort to quickly address reported vulnerabilities. To encourage responsible reporting, we commit that we will <strong>not take legal action</strong> against you or ask law enforcement to investigate you if you give us at least <strong>90 days</strong> from the time of your report to correct the issue before you make the reported vulnerability public.</p>
+<p>Please discuss with us before disclosure of your bugs. Bitmark will endeavor to respond to reports within <strong>2-3 business days</strong> and will make every effort to quickly address reported vulnerabilities. To encourage responsible reporting, we commit that we will <strong>not take legal action</strong> against you or ask law enforcement to investigate you if you give us at least <strong>90 days</strong> from the time of your report to correct the issue before you make the reported vulnerability public.</p>
 
 <p><a href="mailto:security@bitmark.com">CONTACT US</a></p>
 
-<h6 id="check-more">Check more:</h6>
+<h4 id="for-more-info">For more info</h4>
 <p>Read our <a href="https://bitmark.com/en/legal/governance-policy">Governance policy</a>, or view the <a href="https://bitmark.com/en/developers/github">Bitmark Github</a> repo if you are interested in contributing code.</p>
 </div>
         

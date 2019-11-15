@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
 <meta name="keywords" content=" create account">
-<title>Creating Bitmark Account | Bitmark Documentation</title>
+<title>Creating Bitmark Accounts | Bitmark Documentation</title>
 
 <link rel="stylesheet" href="/css/syntax.css">
 
@@ -138,7 +138,7 @@
 
 
 
-  <a class="email" title="Submit feedback" href="#" onclick="javascript:window.location='mailto:support@bitmark.com?subject=Bitmark Inc feedback&body=I have some feedback about the Creating Bitmark Account page: ' + window.location.href;"><i class="fa fa-envelope-o"></i> Need help?</a>
+  <a class="email" title="Submit feedback" href="#" onclick="javascript:window.location='mailto:support@bitmark.com?subject=Bitmark Inc feedback&body=I have some feedback about the Creating Bitmark Accounts page: ' + window.location.href;"><i class="fa fa-envelope-o"></i> Need help?</a>
 
 </li>
 
@@ -156,7 +156,7 @@
                                 searchInput: document.getElementById('search-input'),
                                 resultsContainer: document.getElementById('results-container'),
                                 dataSource: '/search.json',
-                                searchResultTemplate: '<li><a href="{url}" title="Creating Bitmark Account">{title}</a></li>',
+                                searchResultTemplate: '<li><a href="{url}" title="Creating Bitmark Accounts">{title}</a></li>',
                     noResultsText: 'No results found.',
                             limit: 10,
                             fuzzy: true,
@@ -251,6 +251,12 @@
           <li class="subfolders">
               <a title="Contributing to Bitmark" href="">Contributing to Bitmark</a>
               <ul>
+                  
+                  
+                  
+                  <li><a title="Bitmark Software Development Process" href="/learning-bitmark/contributing-to-bitmark/bitmark-software-development-process">Bitmark Software Development Process</a></li>
+                  
+                  
                   
                   
                   
@@ -468,7 +474,7 @@
         <!-- Content Column -->
         <div class="col-md-9" id="tg-sb-content">
             <!-- <div class="post-header">
-   <h1 class="post-title-main">Creating Bitmark Account</h1>
+   <h1 class="post-title-main">Creating Bitmark Accounts</h1>
 </div> -->
 
 
@@ -481,58 +487,44 @@
     
 
     <div class="row">
-        <div class="col-md-9"><h1 id="creating-bitmark-account">Creating Bitmark Account</h1>
+        <div class="col-md-9"><h1 id="creating-bitmark-accounts">Creating Bitmark Accounts</h1>
 
-<p>Any user interacting with the Bitmark Property System requires a Bitmark Account. It can be created using the <a href="#creating-bitmark-account-using-the-bitmark-app">Bitmark App</a>, the <a href="#creating-bitmark-account-using-the-bitmark-sdk">Bitmark SDK</a>, or the <a href="#creating-bitmark-account-using-the-bitmark-cli">Bitmark CLI</a>.</p>
+<p>Any user interacting with the Bitmark Property System requires a Bitmark Account. It can be created using the <a href="#creating-a-bitmark-account-using-the-bitmark-app">Bitmark App</a>, the <a href="#creating-a-bitmark-account-using-the-bitmark-sdk">Bitmark SDK</a>, or the <a href="#creating-a-bitmark-account-using-the-bitmark-cli">Bitmark-CLI</a>.</p>
 
-<p>After creating the Account, a user will often want to recover the seed (which is the private key that can be used to control the Account) and the recovery phrase (which is a set of 12 mnemonic words that can be used to regenerate the seed).</p>
+<p>After creating an Account, a user will often want to recover the seed (which is the private key that can be used to control the Account) and the recovery phrase (which is a set of 12 mnemonic words that can be used to regenerate the seed).</p>
 
-<p><br />
-<br /></p>
+<h3 id="about-the-bitmark-account-number">About the Bitmark Account Number</h3>
 
-<h2 id="bitmark-account-number">Bitmark Account Number</h2>
+<p>Property owners in Bitmark system are identified by their Ed25519 public keys. These public keys are represented in the Bitmark Property System by Bitmark Account Numbers, which encode the Ed25519 key in based58 format.</p>
 
-<p>Property owners in Bitmark system are identified by their Ed25519 public keys. These public keys are represented by the Bitmark account numbers, which are in based58 format.</p>
-
+<p><em>Example — Bitmark Account Number on <a href="https://registry.bitmark.com/account/bqSUHTVRYnrUPBEU48riv9UwDmdRnHm9Mf9LWYuYEa7JKtqgKw">Livenet</a>:</em></p>
 <blockquote>
-  <ul>
-    <li>
-      <p><strong>Example:</strong> Bitmark Account Number on <a href="https://registry.bitmark.com/account/bqSUHTVRYnrUPBEU48riv9UwDmdRnHm9Mf9LWYuYEa7JKtqgKw">Livenet</a></p>
-
-      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>`bqSUHTVRYnrUPBEU48riv9UwDmdRnHm9Mf9LWYuYEa7JKtqgKw`
-</code></pre></div>      </div>
-    </li>
-    <li>
-      <p><strong>Example:</strong> Bitmark Account Number on <a href="https://registry.test.bitmark.com/account/fABCJxXc8aYGoj1yLLXmsGdWEo1Y5cZE9Ko5DrHhy4HvgGYMAu/owned">Testnet</a></p>
-
-      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>`fABCJxXc8aYGoj1yLLXmsGdWEo1Y5cZE9Ko5DrHhy4HvgGYMAu`
-</code></pre></div>      </div>
-    </li>
-  </ul>
+  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  `bqSUHTVRYnrUPBEU48riv9UwDmdRnHm9Mf9LWYuYEa7JKtqgKw`
+</code></pre></div>  </div>
 </blockquote>
 
-<p><br />
-<br /></p>
+<p><em>Example — Bitmark Account Number on <a href="https://registry.test.bitmark.com/account/fABCJxXc8aYGoj1yLLXmsGdWEo1Y5cZE9Ko5DrHhy4HvgGYMAu/owned">Testnet</a>:</em></p>
+<blockquote>
+  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  `fABCJxXc8aYGoj1yLLXmsGdWEo1Y5cZE9Ko5DrHhy4HvgGYMAu`
+</code></pre></div>  </div>
+</blockquote>
 
-<h2 id="creating-bitmark-account-using-the-bitmark-app">Creating Bitmark Account using the Bitmark App</h2>
+<h2 id="creating-a-bitmark-account-using-the-bitmark-app">Creating a Bitmark Account using the Bitmark App</h2>
 
-<p>Bitmark App is a simple mobile app which allows anyone to protect their legal rights to their data and other digital assets by registering them as properties on the Bitmark blockchain.</p>
-
-<p><br />
-Here are the steps to create a new Bitmark Account using the Bitmark App:</p>
+<p>To create a Bitmark Account using the Bitmark App:</p>
 
 <ul>
   <li>
     <p>Download and install the <a href="https://play.google.com/store/apps/details?id=com.bitmark.registry">Android</a> or <a href="https://apps.apple.com/us/app/bitmark-property-registry/id1429427796">iOS</a> Bitmark App</p>
   </li>
   <li>
-    <p>Open the app</p>
+    <p>Open the App</p>
   </li>
   <li>
-    <p>Start creating a new Bitmark Account by tapping the <strong>Create New Account</strong> option</p>
+    <p>Tap the <strong>CREATE NEW ACCOUNT</strong> option</p>
 
     <blockquote>
-      <p>There are options to enable Touch/Face ID and Notification while creating a new account</p>
+      <p>While creating an account, users can enable Touch/Face ID and Notification options.</p>
     </blockquote>
 
     <div style="background-color: #efefef; text-align: center;">
@@ -544,18 +536,14 @@ Here are the steps to create a new Bitmark Account using the Bitmark App:</p>
     <p><br /></p>
   </li>
   <li>
-    <p>Check for the Account Number by accessing <strong>Account &gt; SETTINGS</strong></p>
+    <p>Look up the Account Number by accessing <strong>ACCOUNT &gt; SETTINGS</strong>; record it</p>
 
     <blockquote>
       <p>The Bitmark App allows users to</p>
 
       <ul>
-        <li>
-          <p><strong>Copy</strong> the Account Number to clipboard directly by tapping on it</p>
-        </li>
-        <li>
-          <p><strong>Display</strong> the Account Number as a QR Code by tapping on the QR Code icon.</p>
-        </li>
+        <li><strong>Copy</strong> the Account Number to clipboard directly by tapping on it; or</li>
+        <li><strong>Display</strong> the Account Number as a QR Code by tapping on the QR Code icon.</li>
       </ul>
     </blockquote>
 
@@ -567,7 +555,7 @@ Here are the steps to create a new Bitmark Account using the Bitmark App:</p>
     <p><br /></p>
   </li>
   <li>
-    <p>Backup the Recovery Phrase by selecting <strong>Account &gt; SETTINGS &gt; WRITE DOWN RECOVERY PHRASE</strong></p>
+    <p>Backup the Recovery Phrase by selecting <strong>ACCOUNT &gt; SETTINGS &gt; WRITE DOWN RECOVERY PHRASE</strong></p>
 
     <div style="background-color: #efefef; text-align: center;">
       <img src="/assets/images/RecoveryPhrase_0.png" alt="Write down Recovery Phrase option" title="Write down Recovery Phrase option" width="250" style="padding: 20px" />
@@ -577,25 +565,15 @@ Here are the steps to create a new Bitmark Account using the Bitmark App:</p>
   </li>
 </ul>
 
-<p><br />
-<br /></p>
+<h2 id="creating-a-bitmark-account-using-the-bitmark-sdk">Creating a Bitmark Account using the Bitmark SDK</h2>
 
-<h2 id="creating-bitmark-account-using-the-bitmark-sdk">Creating Bitmark Account using the Bitmark SDK</h2>
+<p>This section introduces a simple way to create a new Bitmark Account using the Bitmark JS SDK. For a detailed explanation, further functions, and other languages please consult the <a href="https://github.com/bitmark-inc/docs/blob/master/bitmark-references/bitmark-sdk/bitmark-sdk-document.md">Bitmark SDK</a> documents.</p>
 
-<p>The Bitmark SDK is a collection of libraries for different programming languages and mobile platforms. In addition to providing language-specific bindings to the Bitmark APIs, the SDK simplifies local key management for signing and encryption.</p>
-
-<blockquote>
-  <p>In this section we introduce a very simple way to create a new Bitmark Account using the <strong>Bitmark JS SDK</strong>.<br />
-For the detailed explanation, further, functions and other languages - Please look at the <a href="https://github.com/bitmark-inc/docs/blob/master/bitmark-references/bitmark-sdk/bitmark-sdk-document.md">Bitmark SDK</a> section.</p>
-</blockquote>
-
-<p><br /></p>
-
-<p>Here are the steps to install the Bitmark-SDK, initialize its configuration, then create a new Bitmark Account and export the related information:</p>
+<p>To initialize the Bitmark JS SDK, create a Bitmark Account, and export the related information:</p>
 
 <ul>
   <li>
-    <p>Install Bitmark JS SDK</p>
+    <p>Install the Bitmark JS SDK</p>
 
     <p><code class="language-plaintext highlighter-rouge"># npm install bitmark-sdk</code></p>
   </li>
@@ -613,85 +591,62 @@ For the detailed explanation, further, functions and other languages - Please lo
 </code></pre></div>    </div>
 
     <blockquote>
-      <p>The SDK supports two options for the network, each requires the corresponding API tokens</p>
+      <p>The SDK supports two options for the network, each requiring a corresponding API tokens:</p>
 
       <ul>
         <li>
-          <p>“livenet” - all the requests are submitted to the public Bitmark blockchain which is the main chain.</p>
+          <p>“livenet” - all requests are submitted to the public Bitmark blockchain, which is the main chain.</p>
         </li>
         <li>
-          <p>“testnet” - all the requests are submitted to the testing Bitmark blockchain which is normally used for testing and developing activities.</p>
+          <p>“testnet” - all  requests are submitted to the testing Bitmark blockchain, which is normally used for testing and development activities.</p>
         </li>
       </ul>
     </blockquote>
   </li>
-</ul>
-
-<p><br /></p>
-
-<ul>
   <li>
-    <p>Create a new Bitmark account:</p>
+    <p>Create a new Bitmark account</p>
 
     <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kd">let</span> <span class="nx">account</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">sdk</span><span class="p">.</span><span class="nx">Account</span><span class="p">();</span>
 </code></pre></div>    </div>
   </li>
   <li>
-    <p>Get the Account number:</p>
+    <p>Retrieve the Account number</p>
 
     <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kd">let</span> <span class="nx">account_number</span> <span class="o">=</span> <span class="nx">account</span><span class="p">.</span><span class="nx">getAccountNumber</span><span class="p">();</span>
 </code></pre></div>    </div>
   </li>
-  <li>Get the Account seed:
+  <li>Retrieve the Account seed
     <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kd">let</span> <span class="nx">seed</span> <span class="o">=</span> <span class="nx">account</span><span class="p">.</span><span class="nx">getSeed</span><span class="p">();</span>
 </code></pre></div>    </div>
   </li>
-  <li>Get the Account recovery phrase:
+  <li>Retrieve the Account recovery phrase
     <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kd">let</span> <span class="nx">phrase</span> <span class="o">=</span> <span class="nx">account</span><span class="p">.</span><span class="nx">getRecoveryPhrase</span><span class="p">();</span>
 </code></pre></div>    </div>
   </li>
 </ul>
 
-<p><br />
-<br /></p>
+<h2 id="creating-a-bitmark-account-using-the-bitmark-cli">Creating a Bitmark Account using the Bitmark-CLI</h2>
 
-<h2 id="creating-bitmark-account-using-the-bitmark-cli">Creating Bitmark Account using the Bitmark CLI</h2>
+<p>This section introduces simple commands to create a new Bitmark Account using the Bitmark-CLI. For the command structures, detailed explanations, and other functions please refer the <a href="https://github.com/bitmark-inc/docs/blob/master/bitmark-references/bitmark-cli/bitmark-cli.md">Bitmark-CLI</a> documents.</p>
 
-<p>Bitmark CLI is a command line tool which allows a user to interact with the Bitmark blockchain by connecting to one or several nodes in the network. All the transactions are submitted directly to one of the connected nodes and consequently be verified by the node before be forwarded to the network.</p>
+<h3 id="the-basics-of-bitmark-cli">The Basics of Bitmark-CLI</h3>
 
-<blockquote>
-  <p>In this section, we introduce very simple commands to create a new Bitmark Account using the Bitmark-CLI
-For the command structures, detailed explanation, other functions - Please refer the <a href="https://github.com/bitmark-inc/docs/blob/master/bitmark-references/bitmark-cli/bitmark-cli.md">Bitmark CLI</a> section.</p>
-</blockquote>
+<p>All Bitmark-CLI commands follow the same basic structure:</p>
 
-<p><br /></p>
+<p><code class="language-plaintext highlighter-rouge">$ bitmark-cli [global-options] command [command-options]</code></p>
 
-<blockquote>
-  <p>The basic structure of a Bitmark CLI command:<br />
-  <code class="language-plaintext highlighter-rouge">bitmark-cli [global-options] command [command-options]</code></p>
-</blockquote>
+<p>You will need to send the Bitmark-CLI the global option <code class="language-plaintext highlighter-rouge">--network</code> (abbreviation: <code class="language-plaintext highlighter-rouge">-n</code>) to identify the network that you are sending the command to.</p>
 
-<p><br /></p>
+<p><strong>Network Options:</strong></p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">bitmark</code>:  the live network, which uses live BTC or LTC to pay for the transactions.</li>
+  <li><code class="language-plaintext highlighter-rouge">testing</code>:  a network for testing newly developed programs, which uses testnet coins to pay for transactions.</li>
+  <li><code class="language-plaintext highlighter-rouge">local</code>: a special case for running a regression test network on the loopback interface.</li>
+</ul>
 
-<blockquote>
-  <p>The Bitmark CLI determines which network to send the command by using the global option <code class="language-plaintext highlighter-rouge">--network</code> (abbreviation: <code class="language-plaintext highlighter-rouge">-n</code>). Option values:</p>
+<h3 id="creating-the-account">Creating the Account</h3>
 
-  <ul>
-    <li>
-      <p><code class="language-plaintext highlighter-rouge">bitmark</code>:  the live network which uses live BTC or LTC to pay for the transactions.</p>
-    </li>
-    <li>
-      <p><code class="language-plaintext highlighter-rouge">testing</code>:  a network for testing newly developed programs, it uses testnet coins to pay for transactions.</p>
-    </li>
-    <li>
-      <p><code class="language-plaintext highlighter-rouge">local</code>: a special case for running a regression test network on the loopback interface.</p>
-    </li>
-  </ul>
-</blockquote>
-
-<p><br /></p>
-
-<p>Here are the steps to create a new Bitmark Account using the Bitmark CLI:</p>
+<p>To create a Bitmark Account using the BitmarkCLI:</p>
 
 <ul>
   <li>
@@ -705,24 +660,19 @@ For the command structures, detailed explanation, other functions - Please refer
 </code></pre></div>    </div>
 
     <blockquote>
-      <p>The <code class="language-plaintext highlighter-rouge">setup</code> command is used to initialize the Bitmark-CLI config file. The command options:</p>
+      <p>The <code class="language-plaintext highlighter-rouge">setup</code> command initializes the Bitmark-CLI config file.</p>
 
+      <p><strong>Global Options:</strong></p>
       <ul>
-        <li>
-          <p><code class="language-plaintext highlighter-rouge">network</code> - The network to which the command is sent.</p>
-        </li>
-        <li>
-          <p><code class="language-plaintext highlighter-rouge">identity</code> - The identity of the Bitmark-CLI user.</p>
-        </li>
-        <li>
-          <p><code class="language-plaintext highlighter-rouge">node</code> - The Bitmark node, to which the Bitmark-CLI connects, all the transactions performed on the Bitmark-CLI are submitted to this node.</p>
-        </li>
-        <li>
-          <p><code class="language-plaintext highlighter-rouge">description</code> - The idententity’s description. The command above creates a user with the identity as first and the description as first user.</p>
-        </li>
-        <li>
-          <p><code class="language-plaintext highlighter-rouge">-n</code> (abbr. of –new) - Indicate the action of creating a new account.</p>
-        </li>
+        <li><code class="language-plaintext highlighter-rouge">network</code> - The network to which the command is sent.</li>
+        <li><code class="language-plaintext highlighter-rouge">identity</code> - The identity of the Bitmark-CLI user.</li>
+      </ul>
+
+      <p><strong>Command Options:</strong></p>
+      <ul>
+        <li><code class="language-plaintext highlighter-rouge">node</code> - The Bitmark node to which the Bitmark-CLI connects and submits its transactions.</li>
+        <li><code class="language-plaintext highlighter-rouge">description</code> - The identity’s description.</li>
+        <li><code class="language-plaintext highlighter-rouge">-n</code> (abbr. of –new) - A new account is being created.</li>
       </ul>
     </blockquote>
 
@@ -731,19 +681,16 @@ For the command structures, detailed explanation, other functions - Please refer
     <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nv">$ </span>bitmark-cli <span class="nt">-n</span> testing <span class="nt">-i</span> first <span class="se">\</span>
   setup <span class="nt">-c</span> 128.199.89.154:2130 <span class="nt">-d</span> <span class="s1">'first user'</span> <span class="nt">-n</span>
 </code></pre></div>    </div>
+    <blockquote>
+      <p>This command creates a user on the testing network using the node 128.199.89.154:2130 with the user having an identity of “first” and a description of “first user”.</p>
+    </blockquote>
   </li>
-</ul>
-
-<p><br /></p>
-
-<ul>
   <li>Add an additional Bitmark account
     <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nv">$ </span>bitmark-cli <span class="nt">-n</span> &lt;network&gt; <span class="nt">-i</span> &lt;identity&gt; <span class="se">\</span>
  add <span class="nt">-d</span> <span class="s1">'&lt;description&gt;'</span> <span class="nt">-n</span>
 </code></pre></div>    </div>
-
     <blockquote>
-      <p>The <code class="language-plaintext highlighter-rouge">add</code> command is to add a new user after the Bitmark-CLI configuration was initialized. 
+      <p>The <code class="language-plaintext highlighter-rouge">add</code> command adds a new user after the Bitmark-CLI configuration was initialized. 
 The command options have the same meanings as in the <code class="language-plaintext highlighter-rouge">setup</code> command.</p>
     </blockquote>
 
@@ -752,17 +699,12 @@ The command options have the same meanings as in the <code class="language-plain
  add <span class="nt">-d</span> <span class="s1">'second user'</span> <span class="nt">-n</span>
 </code></pre></div>    </div>
   </li>
-</ul>
-
-<p><br /></p>
-
-<ul>
   <li>Check the account numbers
     <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nv">$ </span>bitmark-cli <span class="nt">-n</span> &lt;network&gt; list
 </code></pre></div>    </div>
 
     <blockquote>
-      <p>The <code class="language-plaintext highlighter-rouge">list</code> command is to list all the users of the Bitmark-CLI.</p>
+      <p>The <code class="language-plaintext highlighter-rouge">list</code> command lists all the users of the Bitmark-CLI.</p>
     </blockquote>
 
     <p><em>Example:</em></p>
@@ -773,17 +715,12 @@ The command options have the same meanings as in the <code class="language-plain
   SK second   fPWWkW45o12er6oP4EveaURHXstkSXR3odWCgpaDvEvxoR3woC  "second user"
 </code></pre></div>    </div>
   </li>
-</ul>
-
-<p><br /></p>
-
-<ul>
   <li>Get the account seed and recovery phrase for an identity
     <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nv">$ </span>bitmark-cli <span class="nt">-n</span> &lt;network&gt; <span class="nt">-i</span> &lt;identity&gt; seed
 </code></pre></div>    </div>
 
     <blockquote>
-      <p>The <code class="language-plaintext highlighter-rouge">seed</code> command is to print out all the information of a Bitmark-CLI user. Because sensitive data is included, the user password is required.</p>
+      <p>The <code class="language-plaintext highlighter-rouge">seed</code> command prints out all the information about a Bitmark-CLI user.</p>
     </blockquote>
 
     <p><em>Example:</em></p>
@@ -802,20 +739,12 @@ The command options have the same meanings as in the <code class="language-plain
   </li>
 </ul>
 
-<p><br /></p>
+<p><strong>NOTE:</strong></p>
 
-<blockquote>
-  <p><strong>NOTE:</strong></p>
-
-  <ul>
-    <li>
-      <p>The account creation commands require users to provide and confirm password</p>
-    </li>
-    <li>
-      <p>All the identity-required commands ask for the account password.</p>
-    </li>
-  </ul>
-</blockquote>
+<ul>
+  <li>The account creation commands require users to provide and confirm a password.</li>
+  <li>All identity-required commands ask for the account password. For example, the <code class="language-plaintext highlighter-rouge">seed</code> command requires it because it outputs sensitive data.</li>
+</ul>
 
 </div>
         
