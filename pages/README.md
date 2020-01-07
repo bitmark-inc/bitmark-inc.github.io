@@ -7,8 +7,6 @@
 
 **[Bitmark Blockchain Introduction](/pages/learning-bitmark/bitmark-blockchain.md)**
 
-**[Bitmark Blockchain](/pages/learning-bitmark/bitmark-blockchain.md)**
-
 **[Quick Start](/pages/learning-bitmark/quick-start/README.md)**
 * [Running a Bitmark Node](/pages/learning-bitmark/quick-start/simple-solution-for-node-setup.md)
 * [Creating Bitmark Accounts](/pages/learning-bitmark/quick-start/working-with-bitmarks/creating-bitmark-account.md)
@@ -26,7 +24,7 @@
 
 ## [Bitmark References](/pages/bitmark-references/README.md#bitmark-references)
 
-**[Tutorial For Node Setup](/pages/bitmark-references/node-setup/bitmark-node-setup.md)**
+**[Bitmark Node Setup](/pages/bitmark-references/node-setup/bitmark-node-setup.md)**
 
 **[Bitmark Node Software](/pages/bitmark-references/bitmark-node-software/README.md)**
 * [Bitmark Blockchain Technical Overview](/pages/bitmark-references/bitmark-node-software/bitmark-blockchain-technical-overview.md)

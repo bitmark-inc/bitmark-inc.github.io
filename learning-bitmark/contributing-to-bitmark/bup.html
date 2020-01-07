@@ -10,11 +10,11 @@
 
 <link rel="stylesheet" href="/css/syntax.css">
 
-<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css">
 <!--<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">-->
 <link rel="stylesheet" href="/css/modern-business.css">
 <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/bootstrap.min.3.3.7.css" crossorigin="anonymous">
 <link rel="stylesheet" href="/css/customstyles.css">
 <link rel="stylesheet" href="/css/boxshadowproperties.css">
 <!-- most color styles are extracted out to here -->
@@ -45,7 +45,7 @@
 <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
 
-<link rel="alternate" type="application/rss+xml" title="docs" href="/feed.xml">
+<link rel="alternate" type="application/rss+xml" title="docs" href="http://localhost:4000/feed.xml">
 
     <script>
         $(document).ready(function() {
@@ -66,7 +66,7 @@
                 }
             });
 
-            // expand first level at indexes [0,3,7] 
+            // expand first level at indexes [0,3,7]
             $("#mysidebar").navgoco('toggle', true, 0, 3, 7);
 
             $("#collapseAll").click(function(e) {
@@ -91,7 +91,7 @@
         $(document).ready(function() {
             $("#tg-sb-link").click(function() {
                 $("#tg-sb-sidebar").toggle();
-                $("#tg-sb-content").toggleClass('col-md-9');
+                $("#tg-sb-content").toggleClass('col-md-8');
                 $("#tg-sb-content").toggleClass('col-md-12');
                 $("#tg-sb-icon").toggleClass('fa-toggle-on');
                 $("#tg-sb-icon").toggleClass('fa-toggle-off');
@@ -112,7 +112,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="fa fa-home fa-lg navbar-brand" href="/index.html">&nbsp;<span class="projectTitle"> Home</span></a>
+            <a class="navbar-brand" href="/index.html"><span class="projectTitle home-logo"><img src="/assets/images/Bitmark_Logo-desktop_white.svg" alt="Bitmark logo"/><!-- Home --></span></a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
@@ -178,7 +178,7 @@
         
         
             <!-- Sidebar Column -->
-            <div class="col-md-3" id="tg-sb-sidebar">
+            <div class="col-md-4" id="tg-sb-sidebar">
                 
 
 <ul id="mysidebar" class="nav">
@@ -187,19 +187,19 @@
   
   
   <li>
-      <a title="Learning Bitmark" href="#">Learning Bitmark</a>
+      <a title="Learning the Bitmark Property System" href="#">Learning the Bitmark Property System</a>
       <ul>
           
           
           
-          <li><a title="Bitmark Property System" href="/learning-bitmark/bitmark-property-system-introduction">Bitmark Property System</a></li>
+          <li><a title="Property System Introduction" href="/learning-bitmark/bitmark-property-system-introduction">Property System Introduction</a></li>
           
           
           
           
           
           
-          <li><a title="Bitmark Blockchain" href="/learning-bitmark/bitmark-blockchain">Bitmark Blockchain</a></li>
+          <li><a title="Blockchain Introduction" href="/learning-bitmark/bitmark-blockchain">Blockchain Introduction</a></li>
           
           
           
@@ -209,13 +209,13 @@
                   
                   
                   
-                  <li><a title="Run a Bitmark Node" href="/learning-bitmark/quick-start/simple-solution-for-node-setup">Run a Bitmark Node</a></li>
+                  <li><a title="Running a Node" href="/learning-bitmark/quick-start/simple-solution-for-node-setup">Running a Node</a></li>
                   
                   
                   
                   
                   
-                  <li><a title="Creating Bitmark Account" href="/learning-bitmark/quick-start/working-with-bitmarks/creating-bitmark-account">Creating Bitmark Account</a></li>
+                  <li><a title="Creating an Account" href="/learning-bitmark/quick-start/working-with-bitmarks/creating-bitmark-account">Creating an Account</a></li>
                   
                   
                   
@@ -239,7 +239,7 @@
                   
                   
                   
-                  <li><a title="Bitmark-CLI Payment" href="/learning-bitmark/quick-start/working-with-bitmarks/bitmark-cli-payment">Bitmark-CLI Payment</a></li>
+                  <li><a title="Paying for Transactions from the CLI" href="/learning-bitmark/quick-start/working-with-bitmarks/bitmark-cli-payment">Paying for Transactions from the CLI</a></li>
                   
                   
                   
@@ -254,13 +254,13 @@
                   
                   
                   
-                  <li><a title="Bitmark Software Development Process" href="/learning-bitmark/contributing-to-bitmark/bitmark-software-development-process">Bitmark Software Development Process</a></li>
+                  <li><a title="Software Development Process" href="/learning-bitmark/contributing-to-bitmark/bitmark-software-development-process">Software Development Process</a></li>
                   
                   
                   
                   
                   
-                  <li class="active"><a title="Bitmark Upgrade Proposal" href="/learning-bitmark/contributing-to-bitmark/bup">Bitmark Upgrade Proposal</a></li>
+                  <li class="active"><a title="Bitmark Upgrade Proposals" href="/learning-bitmark/contributing-to-bitmark/bup">Bitmark Upgrade Proposals</a></li>
                   
                   
                   
@@ -278,7 +278,7 @@
           
           
           
-          <li><a title="Bitmark Terms and Glossary" href="/learning-bitmark/bitmark-terms-and-glossary">Bitmark Terms and Glossary</a></li>
+          <li><a title="Terms and Glossary" href="/learning-bitmark/bitmark-terms-and-glossary">Terms and Glossary</a></li>
           
           
           
@@ -289,7 +289,7 @@
       
   
   <li>
-      <a title="Bitmark References" href="#">Bitmark References</a>
+      <a title="References" href="#">References</a>
       <ul>
           
           
@@ -299,12 +299,12 @@
           
           
           <li class="subfolders">
-              <a title="Bitmark Node Software" href="">Bitmark Node Software</a>
+              <a title="Node Software" href="">Node Software</a>
               <ul>
                   
                   
                   
-                  <li><a title="Bitmark Blockchain Overview" href="/bitmark-references/bitmark-node-software/bitmark-blockchain-overview">Bitmark Blockchain Overview</a></li>
+                  <li><a title="Blockchain" href="/bitmark-references/bitmark-node-software/bitmark-blockchain-overview">Blockchain</a></li>
                   
                   
                   
@@ -328,7 +328,7 @@
                   
                   
                   
-                  <li><a title="Bitmark Mining" href="/bitmark-references/bitmark-node-software/bitmark-mining">Bitmark Mining</a></li>
+                  <li><a title="Mining" href="/bitmark-references/bitmark-node-software/bitmark-mining">Mining</a></li>
                   
                   
                   
@@ -350,7 +350,7 @@
           
           
           <li class="subfolders">
-              <a title="Bitmark SDK" href="">Bitmark SDK</a>
+              <a title="SDK" href="">SDK</a>
               <ul>
                   
                   
@@ -401,7 +401,7 @@
           
           
           <li class="subfolders">
-              <a title="Bitmark CLI" href="">Bitmark CLI</a>
+              <a title="CLI" href="">CLI</a>
               <ul>
                   
                   
@@ -428,7 +428,7 @@
       
   
   <li>
-      <a title="Bitmark Appendix" href="#">Bitmark Appendix</a>
+      <a title="Appendix" href="#">Appendix</a>
       <ul>
           
           
@@ -447,7 +447,7 @@
           
           
           
-          <li><a title="Bitmark Papers" href="/bitmark-appendix/bitmark-papers">Bitmark Papers</a></li>
+          <li><a title="White Papers" href="/bitmark-appendix/bitmark-papers">White Papers</a></li>
           
           
           
@@ -472,7 +472,7 @@
         
 
         <!-- Content Column -->
-        <div class="col-md-9" id="tg-sb-content">
+        <div class="col-md-8" id="tg-sb-content">
             <!-- <div class="post-header">
    <h1 class="post-title-main">Bitmark Upgrade Proposal</h1>
 </div> -->
@@ -544,7 +544,7 @@ $('#toc').on('click', 'a', function() {
 <footer>
             <div class="row">
                 <div class="col-lg-12 footer">
-               	&copy;2019 Bitmark Inc. All rights reserved.
+               	&copy;2020 Bitmark Inc. All rights reserved.
 				<br/> Powered by <a href="https://jekyllrb.com/">Jekyll</a>
 <!-- <p><img src="/assets/images/company_logo.png" alt="Company logo"/></p>
                 </div>

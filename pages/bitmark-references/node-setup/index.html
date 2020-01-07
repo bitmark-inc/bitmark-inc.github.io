@@ -6,15 +6,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
 <meta name="keywords" content=" ">
-<title>Tutorial For Node Setup | Bitmark Documentation</title>
+<title>Bitmark Node Installation | Bitmark Documentation</title>
 
 <link rel="stylesheet" href="/css/syntax.css">
 
-<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css">
 <!--<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">-->
 <link rel="stylesheet" href="/css/modern-business.css">
 <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/bootstrap.min.3.3.7.css" crossorigin="anonymous">
 <link rel="stylesheet" href="/css/customstyles.css">
 <link rel="stylesheet" href="/css/boxshadowproperties.css">
 <!-- most color styles are extracted out to here -->
@@ -45,7 +45,7 @@
 <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
 
-<link rel="alternate" type="application/rss+xml" title="docs" href="/feed.xml">
+<link rel="alternate" type="application/rss+xml" title="docs" href="http://localhost:4000/feed.xml">
 
     <script>
         $(document).ready(function() {
@@ -66,7 +66,7 @@
                 }
             });
 
-            // expand first level at indexes [0,3,7] 
+            // expand first level at indexes [0,3,7]
             $("#mysidebar").navgoco('toggle', true, 0, 3, 7);
 
             $("#collapseAll").click(function(e) {
@@ -91,7 +91,7 @@
         $(document).ready(function() {
             $("#tg-sb-link").click(function() {
                 $("#tg-sb-sidebar").toggle();
-                $("#tg-sb-content").toggleClass('col-md-9');
+                $("#tg-sb-content").toggleClass('col-md-8');
                 $("#tg-sb-content").toggleClass('col-md-12');
                 $("#tg-sb-icon").toggleClass('fa-toggle-on');
                 $("#tg-sb-icon").toggleClass('fa-toggle-off');
@@ -112,7 +112,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="fa fa-home fa-lg navbar-brand" href="/index.html">&nbsp;<span class="projectTitle"> Home</span></a>
+            <a class="navbar-brand" href="/index.html"><span class="projectTitle home-logo"><img src="/assets/images/Bitmark_Logo-desktop_white.svg" alt="Bitmark logo"/><!-- Home --></span></a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
@@ -138,7 +138,7 @@
 
 
 
-  <a class="email" title="Submit feedback" href="#" onclick="javascript:window.location='mailto:support@bitmark.com?subject=Bitmark Inc feedback&body=I have some feedback about the Tutorial For Node Setup page: ' + window.location.href;"><i class="fa fa-envelope-o"></i> Need help?</a>
+  <a class="email" title="Submit feedback" href="#" onclick="javascript:window.location='mailto:support@bitmark.com?subject=Bitmark Inc feedback&body=I have some feedback about the Bitmark Node Installation page: ' + window.location.href;"><i class="fa fa-envelope-o"></i> Need help?</a>
 
 </li>
 
@@ -156,7 +156,7 @@
                                 searchInput: document.getElementById('search-input'),
                                 resultsContainer: document.getElementById('results-container'),
                                 dataSource: '/search.json',
-                                searchResultTemplate: '<li><a href="{url}" title="Tutorial For Node Setup">{title}</a></li>',
+                                searchResultTemplate: '<li><a href="{url}" title="Bitmark Node Installation">{title}</a></li>',
                     noResultsText: 'No results found.',
                             limit: 10,
                             fuzzy: true,
@@ -178,7 +178,7 @@
         
         
             <!-- Sidebar Column -->
-            <div class="col-md-3" id="tg-sb-sidebar">
+            <div class="col-md-4" id="tg-sb-sidebar">
                 
 
 <ul id="mysidebar" class="nav">
@@ -199,9 +199,9 @@
         
 
         <!-- Content Column -->
-        <div class="col-md-9" id="tg-sb-content">
+        <div class="col-md-8" id="tg-sb-content">
             <!-- <div class="post-header">
-   <h1 class="post-title-main">Tutorial For Node Setup</h1>
+   <h1 class="post-title-main">Bitmark Node Installation</h1>
 </div> -->
 
 
@@ -215,26 +215,26 @@
 
     <div class="row">
         <div class="col-md-9">
-<h1 id="tutorial-for-node-setup"><a href="/bitmark-references/node-setup/tutorial-for-node-setup#tutorial-for-node-setup">Tutorial For Node Setup</a></h1>
+<h1 id="bitmark-node-installation"><a href="/bitmark-references/node-setup/tutorial-for-node-setup#tutorial-for-node-setup">Bitmark Node Installation</a></h1>
 
 <h2 id="prerequisites"><a href="/bitmark-references/node-setup/tutorial-for-node-setup#prerequisites">Prerequisites</a></h2>
 
-<h2 id="meeting-prerequisites"><a href="/bitmark-references/node-setup/tutorial-for-node-setup#meeting-prerequisites">Meeting Prerequisites</a></h2>
+<h2 id="installing-the-prerequisite-packages"><a href="/bitmark-references/node-setup/tutorial-for-node-setup#installing-the-prerequisite-packages">Installing the Prerequisite Packages</a></h2>
 
 <ul>
+  <li><a href="/bitmark-references/node-setup/tutorial-for-node-setup#installing-packages-on-debian">Installing packages on Debian</a></li>
   <li><a href="/bitmark-references/node-setup/tutorial-for-node-setup#installing-packages-on-freebsd">Installing packages on FreeBSD</a></li>
   <li><a href="/bitmark-references/node-setup/tutorial-for-node-setup#installing-packages-on-macosx">Installing packages on MacOSX</a></li>
   <li><a href="/bitmark-references/node-setup/tutorial-for-node-setup#installing-packages-on-ubuntu">Installing packages on Ubuntu</a></li>
-  <li><a href="/bitmark-references/node-setup/tutorial-for-node-setup#installing-packages-on-debian">Installing packages on Debian</a></li>
 </ul>
 
-<h2 id="setup-for-running-a-node"><a href="/bitmark-references/node-setup/tutorial-for-node-setup#set-up-for-running-a-node">Setup For Running A Node</a></h2>
+<h2 id="downloading-and-installing-a-bitmark-node"><a href="/bitmark-references/node-setup/tutorial-for-node-setup#downloading-and-installing-a-bitmark-node">Downloading and Installing a Bitmark Node</a></h2>
+
+<h2 id="setting-up-and-running-a-bitmark-node"><a href="/bitmark-references/node-setup/tutorial-for-node-setup#setting-up-and-running-a-bitmark-node">Setting Up and Running a Bitmark Node</a></h2>
 
 <ul>
-  <li><a href="/bitmark-references/node-setup/tutorial-for-node-setup#compilation-commands-for-all-operating-systems">Compilation Commands For All Operating Systems</a></li>
-  <li><a href="/bitmark-references/node-setup/tutorial-for-node-setup#setup-directory">Set up directory</a></li>
-  <li><a href="/bitmark-references/node-setup/tutorial-for-node-setup#setup-and-run-bitmarkd">Set up and run bitmarkd</a></li>
-  <li><a href="/bitmark-references/node-setup/tutorial-for-node-setup#setup-and-run-recorderd-the-mining-program">Set up and run recorderd (the mining program)</a></li>
+  <li><a href="/bitmark-references/node-setup/tutorial-for-node-setup#setting-up-and-running-bitmarkd">Setting up and running bitmarkd</a></li>
+  <li><a href="/bitmark-references/node-setup/tutorial-for-node-setup#setting-up-and-running-recorderd">Setting up and running recorderd</a></li>
 </ul>
 
 </div>
@@ -280,7 +280,7 @@ $('#toc').on('click', 'a', function() {
 <footer>
             <div class="row">
                 <div class="col-lg-12 footer">
-               	&copy;2019 Bitmark Inc. All rights reserved.
+               	&copy;2020 Bitmark Inc. All rights reserved.
 				<br/> Powered by <a href="https://jekyllrb.com/">Jekyll</a>
 <!-- <p><img src="/assets/images/company_logo.png" alt="Company logo"/></p>
                 </div>

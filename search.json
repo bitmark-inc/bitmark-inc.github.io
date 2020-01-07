@@ -26,7 +26,7 @@
 
 
 {
-"title": "Bitmark Blockchain Overview",
+"title": "Bitmark Blockchain Technical Overview",
 "tags": "",
 "keywords": "blockchain",
 "url": "/bitmark-references/bitmark-node-software/bitmark-blockchain-overview",
@@ -70,7 +70,7 @@
 
 
 {
-"title": "Tutorial For Node Setup",
+"title": "Bitmark Node Installation",
 "tags": "",
 "keywords": "node, node setup",
 "url": "/bitmark-references/node-setup/tutorial-for-node-setup",
@@ -136,7 +136,7 @@
 
 
 {
-"title": "Block Verification and Synchronization",
+"title": "Block Validation and Synchronization",
 "tags": "",
 "keywords": "blockchain, verification, sync, synchronization",
 "url": "/bitmark-references/bitmark-node-software/block-verification-and-synchronization",
@@ -215,7 +215,7 @@
 
 
 {
-"title": "Bitmark Mining",
+"title": "Block Mining",
 "tags": "",
 "keywords": "mining",
 "url": "/bitmark-references/bitmark-node-software/bitmark-mining",
@@ -226,7 +226,7 @@
 
 
 {
-"title": "Storage",
+"title": "Storage Databases",
 "tags": "",
 "keywords": "node modules, storage",
 "url": "/bitmark-references/bitmark-node-software/storage",
@@ -305,7 +305,7 @@
 
 
 {
-"title": "Security",
+"title": "Blockchain Security",
 "tags": "",
 "keywords": "security",
 "url": "/bitmark-references/bitmark-node-software/security",
@@ -476,7 +476,7 @@
 
 
 {
-"title": "Tutorial For Node Setup",
+"title": "Bitmark Node Installation",
 "tags": "",
 "keywords": "",
 "url": "/pages/bitmark-references/node-setup/",
