@@ -6,15 +6,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
 <meta name="keywords" content=" node, node setup">
-<title>Tutorial For Node Setup | Bitmark Documentation</title>
+<title>Bitmark Node Installation | Bitmark Documentation</title>
 
 <link rel="stylesheet" href="/css/syntax.css">
 
-<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css">
 <!--<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">-->
 <link rel="stylesheet" href="/css/modern-business.css">
 <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/bootstrap.min.3.3.7.css" crossorigin="anonymous">
 <link rel="stylesheet" href="/css/customstyles.css">
 <link rel="stylesheet" href="/css/boxshadowproperties.css">
 <!-- most color styles are extracted out to here -->
@@ -45,7 +45,7 @@
 <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
 
-<link rel="alternate" type="application/rss+xml" title="docs" href="/feed.xml">
+<link rel="alternate" type="application/rss+xml" title="docs" href="http://localhost:4000/feed.xml">
 
     <script>
         $(document).ready(function() {
@@ -66,7 +66,7 @@
                 }
             });
 
-            // expand first level at indexes [0,3,7] 
+            // expand first level at indexes [0,3,7]
             $("#mysidebar").navgoco('toggle', true, 0, 3, 7);
 
             $("#collapseAll").click(function(e) {
@@ -91,7 +91,7 @@
         $(document).ready(function() {
             $("#tg-sb-link").click(function() {
                 $("#tg-sb-sidebar").toggle();
-                $("#tg-sb-content").toggleClass('col-md-9');
+                $("#tg-sb-content").toggleClass('col-md-8');
                 $("#tg-sb-content").toggleClass('col-md-12');
                 $("#tg-sb-icon").toggleClass('fa-toggle-on');
                 $("#tg-sb-icon").toggleClass('fa-toggle-off');
@@ -112,7 +112,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="fa fa-home fa-lg navbar-brand" href="/index.html">&nbsp;<span class="projectTitle"> Home</span></a>
+            <a class="navbar-brand" href="/index.html"><span class="projectTitle home-logo"><img src="/assets/images/Bitmark_Logo-desktop_white.svg" alt="Bitmark logo"/><!-- Home --></span></a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
@@ -138,7 +138,7 @@
 
 
 
-  <a class="email" title="Submit feedback" href="#" onclick="javascript:window.location='mailto:support@bitmark.com?subject=Bitmark Inc feedback&body=I have some feedback about the Tutorial For Node Setup page: ' + window.location.href;"><i class="fa fa-envelope-o"></i> Need help?</a>
+  <a class="email" title="Submit feedback" href="#" onclick="javascript:window.location='mailto:support@bitmark.com?subject=Bitmark Inc feedback&body=I have some feedback about the Bitmark Node Installation page: ' + window.location.href;"><i class="fa fa-envelope-o"></i> Need help?</a>
 
 </li>
 
@@ -156,7 +156,7 @@
                                 searchInput: document.getElementById('search-input'),
                                 resultsContainer: document.getElementById('results-container'),
                                 dataSource: '/search.json',
-                                searchResultTemplate: '<li><a href="{url}" title="Tutorial For Node Setup">{title}</a></li>',
+                                searchResultTemplate: '<li><a href="{url}" title="Bitmark Node Installation">{title}</a></li>',
                     noResultsText: 'No results found.',
                             limit: 10,
                             fuzzy: true,
@@ -178,7 +178,7 @@
         
         
             <!-- Sidebar Column -->
-            <div class="col-md-3" id="tg-sb-sidebar">
+            <div class="col-md-4" id="tg-sb-sidebar">
                 
 
 <ul id="mysidebar" class="nav">
@@ -187,19 +187,19 @@
   
   
   <li>
-      <a title="Learning Bitmark" href="#">Learning Bitmark</a>
+      <a title="Learning the Bitmark Property System" href="#">Learning the Bitmark Property System</a>
       <ul>
           
           
           
-          <li><a title="Bitmark Property System" href="/learning-bitmark/bitmark-property-system-introduction">Bitmark Property System</a></li>
+          <li><a title="Property System Introduction" href="/learning-bitmark/bitmark-property-system-introduction">Property System Introduction</a></li>
           
           
           
           
           
           
-          <li><a title="Bitmark Blockchain" href="/learning-bitmark/bitmark-blockchain">Bitmark Blockchain</a></li>
+          <li><a title="Blockchain Introduction" href="/learning-bitmark/bitmark-blockchain">Blockchain Introduction</a></li>
           
           
           
@@ -209,13 +209,13 @@
                   
                   
                   
-                  <li><a title="Run a Bitmark Node" href="/learning-bitmark/quick-start/simple-solution-for-node-setup">Run a Bitmark Node</a></li>
+                  <li><a title="Running a Node" href="/learning-bitmark/quick-start/simple-solution-for-node-setup">Running a Node</a></li>
                   
                   
                   
                   
                   
-                  <li><a title="Creating Bitmark Account" href="/learning-bitmark/quick-start/working-with-bitmarks/creating-bitmark-account">Creating Bitmark Account</a></li>
+                  <li><a title="Creating an Account" href="/learning-bitmark/quick-start/working-with-bitmarks/creating-bitmark-account">Creating an Account</a></li>
                   
                   
                   
@@ -239,7 +239,7 @@
                   
                   
                   
-                  <li><a title="Bitmark-CLI Payment" href="/learning-bitmark/quick-start/working-with-bitmarks/bitmark-cli-payment">Bitmark-CLI Payment</a></li>
+                  <li><a title="Paying for Transactions from the CLI" href="/learning-bitmark/quick-start/working-with-bitmarks/bitmark-cli-payment">Paying for Transactions from the CLI</a></li>
                   
                   
                   
@@ -254,13 +254,13 @@
                   
                   
                   
-                  <li><a title="Bitmark Software Development Process" href="/learning-bitmark/contributing-to-bitmark/bitmark-software-development-process">Bitmark Software Development Process</a></li>
+                  <li><a title="Software Development Process" href="/learning-bitmark/contributing-to-bitmark/bitmark-software-development-process">Software Development Process</a></li>
                   
                   
                   
                   
                   
-                  <li><a title="Bitmark Upgrade Proposal" href="/learning-bitmark/contributing-to-bitmark/bup">Bitmark Upgrade Proposal</a></li>
+                  <li><a title="Bitmark Upgrade Proposals" href="/learning-bitmark/contributing-to-bitmark/bup">Bitmark Upgrade Proposals</a></li>
                   
                   
                   
@@ -278,7 +278,7 @@
           
           
           
-          <li><a title="Bitmark Terms and Glossary" href="/learning-bitmark/bitmark-terms-and-glossary">Bitmark Terms and Glossary</a></li>
+          <li><a title="Terms and Glossary" href="/learning-bitmark/bitmark-terms-and-glossary">Terms and Glossary</a></li>
           
           
           
@@ -289,7 +289,7 @@
       
   
   <li>
-      <a title="Bitmark References" href="#">Bitmark References</a>
+      <a title="References" href="#">References</a>
       <ul>
           
           
@@ -299,12 +299,12 @@
           
           
           <li class="subfolders">
-              <a title="Bitmark Node Software" href="">Bitmark Node Software</a>
+              <a title="Node Software" href="">Node Software</a>
               <ul>
                   
                   
                   
-                  <li><a title="Bitmark Blockchain Overview" href="/bitmark-references/bitmark-node-software/bitmark-blockchain-overview">Bitmark Blockchain Overview</a></li>
+                  <li><a title="Blockchain" href="/bitmark-references/bitmark-node-software/bitmark-blockchain-overview">Blockchain</a></li>
                   
                   
                   
@@ -328,7 +328,7 @@
                   
                   
                   
-                  <li><a title="Bitmark Mining" href="/bitmark-references/bitmark-node-software/bitmark-mining">Bitmark Mining</a></li>
+                  <li><a title="Mining" href="/bitmark-references/bitmark-node-software/bitmark-mining">Mining</a></li>
                   
                   
                   
@@ -350,7 +350,7 @@
           
           
           <li class="subfolders">
-              <a title="Bitmark SDK" href="">Bitmark SDK</a>
+              <a title="SDK" href="">SDK</a>
               <ul>
                   
                   
@@ -401,7 +401,7 @@
           
           
           <li class="subfolders">
-              <a title="Bitmark CLI" href="">Bitmark CLI</a>
+              <a title="CLI" href="">CLI</a>
               <ul>
                   
                   
@@ -428,7 +428,7 @@
       
   
   <li>
-      <a title="Bitmark Appendix" href="#">Bitmark Appendix</a>
+      <a title="Appendix" href="#">Appendix</a>
       <ul>
           
           
@@ -447,7 +447,7 @@
           
           
           
-          <li><a title="Bitmark Papers" href="/bitmark-appendix/bitmark-papers">Bitmark Papers</a></li>
+          <li><a title="White Papers" href="/bitmark-appendix/bitmark-papers">White Papers</a></li>
           
           
           
@@ -472,9 +472,9 @@
         
 
         <!-- Content Column -->
-        <div class="col-md-9" id="tg-sb-content">
+        <div class="col-md-8" id="tg-sb-content">
             <!-- <div class="post-header">
-   <h1 class="post-title-main">Tutorial For Node Setup</h1>
+   <h1 class="post-title-main">Bitmark Node Installation</h1>
 </div> -->
 
 
@@ -487,46 +487,31 @@
     
 
     <div class="row">
-        <div class="col-md-9"><h1 id="tutorial-for-node-setup">Tutorial For Node Setup</h1>
+        <div class="col-md-9"><h1 id="bitmark-node-installation">Bitmark Node Installation</h1>
 
-<p>A full-node of bitmarkd consists of a bitmard, a recorderd, a payment system, a litecoind, and a bitcoind services. For a beginner, it is easy and fast to run a bitmark-node-docker which wrapped all components and settings. For a developer or someone who wants to study the main program, the person can run bitmarkd or recorderd service directly. 
-Bitmarkd project is the main program of bitmark node. It consists bitmarkd service for verifying and recording transactions in the Bitmark blockchain and recorderd service for computing the Bitmark proof-of-work algorithm that allows nodes to compete to win blocks on the Bitmark blockchain.</p>
+<p>The <a href="../../learning-bitmark/quick-start">Bitmark Quickstart</a> includes a tutorial on <a href="/learning-bitmark/quick-start/simple-solution-for-node-setup">installing the Bitmark Property System using docker</a>. That setup is intended for beginners who want to make it fast and easy to run the Bitmark Property System using a <code class="language-plaintext highlighter-rouge">docker</code> container that wraps all components and settings. Developers, or people who want to study the main program, may instead choose to run <code class="language-plaintext highlighter-rouge">bitmarkd</code> or <code class="language-plaintext highlighter-rouge">recorderd</code> services directly.</p>
 
-<p>This tutorial explains how to set up the bitmarkd service and/or the recorderd service, by hand.</p>
+<p>A full-node of bitmarkd consists of a <code class="language-plaintext highlighter-rouge">bitmarkd</code>, a <code class="language-plaintext highlighter-rouge">recorderd</code>, a payment system, a <code class="language-plaintext highlighter-rouge">litecoind</code>, and a <code class="language-plaintext highlighter-rouge">bitcoind</code>. The <code class="language-plaintext highlighter-rouge">bitmarkd</code> service  verifies and records transactions on the Bitmark blockchain while the <code class="language-plaintext highlighter-rouge">recorderd</code> service computes the Bitmark proof-of-work algorithm that allows nodes to compete to win blocks on the Bitmark blockchain.</p>
+
+<p>This tutorial explains how to set up the <code class="language-plaintext highlighter-rouge">bitmarkd</code> and/or the <code class="language-plaintext highlighter-rouge">recorderd</code> services by hand.</p>
 
 <h2 id="prerequisites">Prerequisites</h2>
 
 <ul>
-  <li>Install the go language package for the system</li>
-  <li>Configure environment variables for go system</li>
-  <li>Install the ZMQ4 and Argon2 libraries</li>
+  <li>You must install the go language package for your system.</li>
+  <li>You must configure environmental variables for the go system.</li>
+  <li>You must install the ZMQ4 and Argon2 libraries.</li>
 </ul>
 
-<h3 id="meeting-prerequisites">Meeting PreRequisites</h3>
+<h2 id="installing-the-prerequisite-packages">Installing the Prerequisite Packages</h2>
 
-<h4 id="installing-packages-on-freebsd">Installing Packages on FreeBSD</h4>
+<p>Installing the required packages requires specific commabds on Debian, FreeBSD, macOS, and Ubuntu.</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pkg install libzmq4 libargon2
-</code></pre></div></div>
+<h3 id="installing-packages-on-debian">Installing Packages on Debian</h3>
 
-<h4 id="installing-packages-on-macosx">Installing Packages on MacOSX</h4>
+<p><em>Tested on Stretch (Debian 9).</em></p>
 
-<p>(be sure that homebrew is installed correctly)</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew tap bitmark-inc/bitmark
-brew install argon2
-brew install zeromq43
-</code></pre></div></div>
-
-<h4 id="installing-packages-on-ubuntu">Installing Packages on Ubuntu</h4>
-<p>(tested on version 18.04)</p>
-
-<p>Install following packages
-   <code class="language-plaintext highlighter-rouge">sudo apt install libargon2-0-dev uuid-dev libzmq3-dev</code></p>
-
-<h4 id="installing-packages-on-debian">Installing Packages on Debian</h4>
-<p>(tested on version 9)</p>
-
-<p>First we need to add access to testing package’s repo as well as to our current version, in this case stable.</p>
+<p>First, ensure that the system has access to both the current version of Debian (<code class="language-plaintext highlighter-rouge">stable</code>) and <code class="language-plaintext highlighter-rouge">testing</code>.</p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>root@debian-bitmarkd:/# cat /etc/apt/sources.list.d/stable.list
 deb     http://ftp.de.debian.org/debian/    stable main contrib non-free
 deb-src http://ftp.de.debian.org/debian/    stable main contrib non-free
@@ -538,74 +523,107 @@ deb-src http://ftp.de.debian.org/debian/    testing main contrib non-free
 deb     http://security.debian.org/         testing/updates  main contrib non-free
 </code></pre></div></div>
 
-<p>Now install libargon2 using:</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt-get -t testing install libargon2-dev libargon2-1
+<p>Now. install <code class="language-plaintext highlighter-rouge">libargon2</code> from <code class="language-plaintext highlighter-rouge">testing</code>:</p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="nv">$ </span>apt-get <span class="nt">-t</span> testing <span class="nb">install </span>libargon2-dev libargon2-1
 </code></pre></div></div>
 
-<p>For the other packages, install from stable or testing, both versions work:</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt install uuid-dev libzmq3-dev
+<p>For the other packages, install from <code class="language-plaintext highlighter-rouge">stable</code> or <code class="language-plaintext highlighter-rouge">testing</code> as you prefer; both versions work:</p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="nv">$ </span>apt <span class="nb">install </span>uuid-dev libzmq3-dev
+</code></pre></div></div>
+<h3 id="installing-packages-on-freebsd">Installing Packages on FreeBSD</h3>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="nv">$ </span>pkg <span class="nb">install </span>libzmq4 libargon2
 </code></pre></div></div>
 
-<h2 id="set-up-for-running-a-node">Set Up For Running A Node</h2>
+<h3 id="installing-packages-on-macosx">Installing Packages on MacOSX</h3>
 
-<h3 id="compilation-commands-for-all-operating-systems">Compilation Commands For All Operating Systems</h3>
-<p>To compile use use the git command to clone the repository and the go command to compile all commands. The process requires that the Go installation be 1.12 or later as the build process uses Go Modules.</p>
+<p><em>Be sure that homebrew is installed correctly before beginning.</em></p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/bitmark-inc/bitmarkd
-cd bitmarkd
-go install -v ./...
+<p>Then:</p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="nv">$ </span>brew tap bitmark-inc/bitmark
+    <span class="nv">$ </span>brew <span class="nb">install </span>argon2
+    <span class="nv">$ </span>brew <span class="nb">install </span>zeromq43
 </code></pre></div></div>
 
-<h3 id="setup-directory">Setup Directory</h3>
+<h3 id="installing-packages-on-ubuntu">Installing Packages on Ubuntu</h3>
 
-<p>Ensure that the ${HOME}/go/bin directory is on the path before continuing. The commands below assume that a checked out and compiled version of the system exists in the ${HOME}/bitmarkd directory.</p>
+<p><em>Tested on Ubuntu 18.04.</em></p>
 
-<h3 id="setup-and-run-bitmarkd">Setup and Run bitmarkd</h3>
-
-<p>Create the configuration directory, copy sample configuration, edit it to set up IP addresses, ports and local bitcoin testnet connection. The sample configuration has some embedded instructions for quick setup and only a few items near the beginning of the file need to be set for basic use.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mkdir -p ~/.config/bitmarkd
-cp ~/bitmarkd/command/bitmarkd/bitmarkd.conf.sample  ~/.config/bitmarkd/bitmarkd.conf
-${EDITOR} ~/.config/bitmarkd/bitmarkd.conf
-</code></pre></div></div>
-<p>To see the bitmarkd sub-commands:</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bitmarkd --config-file="${HOME}/.config/bitmarkd/bitmarkd.conf" help
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="nv">$ </span>apt <span class="nb">install </span>libargon2-0-dev uuid-dev libzmq3-dev
 </code></pre></div></div>
 
-<p>Generate key files and certificates.</p>
+<h2 id="downloading-and-installing-a-bitmark-node">Downloading and Installing a Bitmark Node</h2>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bitmarkd --config-file="${HOME}/.config/bitmarkd/bitmarkd.conf" gen-peer-identity "${HOME}/.config/bitmarkd/
-bitmarkd --config-file="${HOME}/.config/bitmarkd/bitmarkd.conf" gen-rpc-cert "${HOME}/.config/bitmarkd/
-bitmarkd --config-file="${HOME}/.config/bitmarkd/bitmarkd.conf" gen-proof-identity "${HOME}/.config/bitmarkd/
+<p>Download the Bitmark Node repository using the <code class="language-plaintext highlighter-rouge">git</code> command:</p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="nv">$ </span>git clone https://github.com/bitmark-inc/bitmarkd
 </code></pre></div></div>
-<p>Start the program.</p>
+<p>Afterward, compile the repo using <code class="language-plaintext highlighter-rouge">go</code>. This process requires that the Go installation be 1.12 or later, as the build process uses Go Modules.</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bitmarkd --config-file="${HOME}/.config/bitmarkd/bitmarkd.conf" start
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="nv">$ </span><span class="nb">cd </span>bitmarkd
+    <span class="nv">$ </span>go <span class="nb">install</span> <span class="nt">-v</span> ./...
 </code></pre></div></div>
 
-<h3 id="setup-and-run-recorderd-the-mining-program">Setup and Run Recorderd (the mining program)</h3>
+<h2 id="setting-up-and-running-a-bitmark-node">Setting Up and Running a Bitmark Node</h2>
 
-<p>This is similar to the bitmarkd steps above. For mining on the local bitmarkd the sample configuration should work without changes.</p>
+<p>Ensure that the <code class="language-plaintext highlighter-rouge">${HOME}/go/bin</code> directory is part of your shell’s <code class="language-plaintext highlighter-rouge">${PATH}</code> before continuing.</p>
+
+<p>The commands below assume you checked out and compiled your Bitmark Node into the ${HOME}/bitmarkd directory.</p>
+
+<h3 id="setting-up-and-running-bitmarkd">Setting up and running <code class="language-plaintext highlighter-rouge">bitmarkd</code></h3>
+
+<p>Create the configuration directory and copy the sample configuration:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="nv">$ </span><span class="nb">mkdir</span> <span class="nt">-p</span> ~/.config/bitmarkd
+    <span class="nv">$ </span><span class="nb">cp</span> ~/bitmarkd/command/bitmarkd/bitmarkd.conf.sample  ~/.config/bitmarkd/bitmarkd.conf
+</code></pre></div></div>
+
+<p>Afteward, edit the <code class="language-plaintext highlighter-rouge">bitmarkd.conf</code> to set up appropriate IP addresses, ports, and local bitcoin testnet connection. The sample configuration has some embedded instructions for quick setup, and only a few items near the beginning of the file need to be changed for basic use.</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="nv">$ </span><span class="k">${</span><span class="nv">EDITOR</span><span class="k">}</span> ~/.config/bitmarkd/bitmarkd.conf
+</code></pre></div></div>
+
+<p>Generate key files and certificates:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="nv">$ </span>bitmarkd <span class="nt">--config-file</span><span class="o">=</span><span class="s2">"</span><span class="k">${</span><span class="nv">HOME</span><span class="k">}</span><span class="s2">/.config/bitmarkd/bitmarkd.conf"</span> gen-peer-identity <span class="s2">"</span><span class="k">${</span><span class="nv">HOME</span><span class="k">}</span><span class="s2">/.config/bitmarkd/
+    </span><span class="nv">$ </span><span class="s2">bitmarkd --config-file="</span><span class="k">${</span><span class="nv">HOME</span><span class="k">}</span>/.config/bitmarkd/bitmarkd.conf<span class="s2">" gen-rpc-cert "</span><span class="k">${</span><span class="nv">HOME</span><span class="k">}</span>/.config/bitmarkd/
+    <span class="nv">$ </span>bitmarkd <span class="nt">--config-file</span><span class="o">=</span><span class="s2">"</span><span class="k">${</span><span class="nv">HOME</span><span class="k">}</span><span class="s2">/.config/bitmarkd/bitmarkd.conf"</span> gen-proof-identity <span class="s2">"</span><span class="k">${</span><span class="nv">HOME</span><span class="k">}</span><span class="s2">/.config/bitmarkd/
+</span></code></pre></div></div>
+
+<p>Finally, start the program.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    $ bitmarkd --config-file="${HOME}/.config/bitmarkd/bitmarkd.conf" start
+</code></pre></div></div>
+
+<p>For more information on <code class="language-plaintext highlighter-rouge">bitmarkd</code> sub-commands, run the following command:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    $ bitmarkd --config-file="${HOME}/.config/bitmarkd/bitmarkd.conf" help
+</code></pre></div></div>
+
+<h3 id="setting-up-and-running-recorderd">Setting up and running <code class="language-plaintext highlighter-rouge">recorderd</code></h3>
+
+<p><code class="language-plaintext highlighter-rouge">recorderd</code> is the mining program for the Bitmark Property System, which can optionally be run to support the Bitmark blockchain (and to earn bitmarks on blocks).</p>
+
+<p>Setting up <code class="language-plaintext highlighter-rouge">recorderd</code> is similar to setting up <code class="language-plaintext highlighter-rouge">bitmarkd</code>.</p>
+
+<p>First, setup and edit your configuration file. For mining using the local <code class="language-plaintext highlighter-rouge">bitmarkd</code>, the sample configuration should work without changes.</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mkdir -p ~/.config/recorderd
 cp ~/bitmarkd/command/recorderd/recorderd.conf.sample  ~/.config/recorderd/recorderd.conf
 ${EDITOR} ~/.config/recorderd/recorderd.conf
 </code></pre></div></div>
 
-<p>To see the recorderd sub-commands:</p>
+<p>Generate key files and certificates:</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>recorderd --config-file="${HOME}/.config/recorderd/recorderd.conf" help
-</code></pre></div></div>
-
-<p>Generate key files and certificates.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>recorderd --config-file="${HOME}/.config/recorderd/recorderd.conf" generate-identity "${HOME}/.config/recorderd/
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    $ recorderd --config-file="${HOME}/.config/recorderd/recorderd.conf" generate-identity "${HOME}/.config/recorderd/
 </code></pre></div></div>
 
 <p>Start the program.</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>recorderd --config-file="${HOME}/.config/recorderd/recorderd.conf" start
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    $ recorderd --config-file="${HOME}/.config/recorderd/recorderd.conf" start
+</code></pre></div></div>
+
+<p>For more information on <code class="language-plaintext highlighter-rouge">recorderd</code> sub-commands, run the following command:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    $ recorderd --config-file="${HOME}/.config/recorderd/recorderd.conf" help
 </code></pre></div></div>
 </div>
         
@@ -650,7 +668,7 @@ $('#toc').on('click', 'a', function() {
 <footer>
             <div class="row">
                 <div class="col-lg-12 footer">
-               	&copy;2019 Bitmark Inc. All rights reserved.
+               	&copy;2020 Bitmark Inc. All rights reserved.
 				<br/> Powered by <a href="https://jekyllrb.com/">Jekyll</a>
 <!-- <p><img src="/assets/images/company_logo.png" alt="Company logo"/></p>
                 </div>

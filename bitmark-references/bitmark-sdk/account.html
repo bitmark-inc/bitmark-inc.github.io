@@ -10,11 +10,11 @@
 
 <link rel="stylesheet" href="/css/syntax.css">
 
-<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css">
 <!--<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">-->
 <link rel="stylesheet" href="/css/modern-business.css">
 <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/bootstrap.min.3.3.7.css" crossorigin="anonymous">
 <link rel="stylesheet" href="/css/customstyles.css">
 <link rel="stylesheet" href="/css/boxshadowproperties.css">
 <!-- most color styles are extracted out to here -->
@@ -45,7 +45,7 @@
 <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
 
-<link rel="alternate" type="application/rss+xml" title="docs" href="/feed.xml">
+<link rel="alternate" type="application/rss+xml" title="docs" href="http://localhost:4000/feed.xml">
 
     <script>
         $(document).ready(function() {
@@ -66,7 +66,7 @@
                 }
             });
 
-            // expand first level at indexes [0,3,7] 
+            // expand first level at indexes [0,3,7]
             $("#mysidebar").navgoco('toggle', true, 0, 3, 7);
 
             $("#collapseAll").click(function(e) {
@@ -91,7 +91,7 @@
         $(document).ready(function() {
             $("#tg-sb-link").click(function() {
                 $("#tg-sb-sidebar").toggle();
-                $("#tg-sb-content").toggleClass('col-md-9');
+                $("#tg-sb-content").toggleClass('col-md-8');
                 $("#tg-sb-content").toggleClass('col-md-12');
                 $("#tg-sb-icon").toggleClass('fa-toggle-on');
                 $("#tg-sb-icon").toggleClass('fa-toggle-off');
@@ -112,7 +112,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="fa fa-home fa-lg navbar-brand" href="/index.html">&nbsp;<span class="projectTitle"> Home</span></a>
+            <a class="navbar-brand" href="/index.html"><span class="projectTitle home-logo"><img src="/assets/images/Bitmark_Logo-desktop_white.svg" alt="Bitmark logo"/><!-- Home --></span></a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
@@ -178,7 +178,7 @@
         
         
             <!-- Sidebar Column -->
-            <div class="col-md-3" id="tg-sb-sidebar">
+            <div class="col-md-4" id="tg-sb-sidebar">
                 
 
 <ul id="mysidebar" class="nav">
@@ -187,19 +187,19 @@
   
   
   <li>
-      <a title="Learning Bitmark" href="#">Learning Bitmark</a>
+      <a title="Learning the Bitmark Property System" href="#">Learning the Bitmark Property System</a>
       <ul>
           
           
           
-          <li><a title="Bitmark Property System" href="/learning-bitmark/bitmark-property-system-introduction">Bitmark Property System</a></li>
+          <li><a title="Property System Introduction" href="/learning-bitmark/bitmark-property-system-introduction">Property System Introduction</a></li>
           
           
           
           
           
           
-          <li><a title="Bitmark Blockchain" href="/learning-bitmark/bitmark-blockchain">Bitmark Blockchain</a></li>
+          <li><a title="Blockchain Introduction" href="/learning-bitmark/bitmark-blockchain">Blockchain Introduction</a></li>
           
           
           
@@ -209,13 +209,13 @@
                   
                   
                   
-                  <li><a title="Run a Bitmark Node" href="/learning-bitmark/quick-start/simple-solution-for-node-setup">Run a Bitmark Node</a></li>
+                  <li><a title="Running a Node" href="/learning-bitmark/quick-start/simple-solution-for-node-setup">Running a Node</a></li>
                   
                   
                   
                   
                   
-                  <li><a title="Creating Bitmark Account" href="/learning-bitmark/quick-start/working-with-bitmarks/creating-bitmark-account">Creating Bitmark Account</a></li>
+                  <li><a title="Creating an Account" href="/learning-bitmark/quick-start/working-with-bitmarks/creating-bitmark-account">Creating an Account</a></li>
                   
                   
                   
@@ -239,7 +239,7 @@
                   
                   
                   
-                  <li><a title="Bitmark-CLI Payment" href="/learning-bitmark/quick-start/working-with-bitmarks/bitmark-cli-payment">Bitmark-CLI Payment</a></li>
+                  <li><a title="Paying for Transactions from the CLI" href="/learning-bitmark/quick-start/working-with-bitmarks/bitmark-cli-payment">Paying for Transactions from the CLI</a></li>
                   
                   
                   
@@ -254,13 +254,13 @@
                   
                   
                   
-                  <li><a title="Bitmark Software Development Process" href="/learning-bitmark/contributing-to-bitmark/bitmark-software-development-process">Bitmark Software Development Process</a></li>
+                  <li><a title="Software Development Process" href="/learning-bitmark/contributing-to-bitmark/bitmark-software-development-process">Software Development Process</a></li>
                   
                   
                   
                   
                   
-                  <li><a title="Bitmark Upgrade Proposal" href="/learning-bitmark/contributing-to-bitmark/bup">Bitmark Upgrade Proposal</a></li>
+                  <li><a title="Bitmark Upgrade Proposals" href="/learning-bitmark/contributing-to-bitmark/bup">Bitmark Upgrade Proposals</a></li>
                   
                   
                   
@@ -278,7 +278,7 @@
           
           
           
-          <li><a title="Bitmark Terms and Glossary" href="/learning-bitmark/bitmark-terms-and-glossary">Bitmark Terms and Glossary</a></li>
+          <li><a title="Terms and Glossary" href="/learning-bitmark/bitmark-terms-and-glossary">Terms and Glossary</a></li>
           
           
           
@@ -289,7 +289,7 @@
       
   
   <li>
-      <a title="Bitmark References" href="#">Bitmark References</a>
+      <a title="References" href="#">References</a>
       <ul>
           
           
@@ -299,12 +299,12 @@
           
           
           <li class="subfolders">
-              <a title="Bitmark Node Software" href="">Bitmark Node Software</a>
+              <a title="Node Software" href="">Node Software</a>
               <ul>
                   
                   
                   
-                  <li><a title="Bitmark Blockchain Overview" href="/bitmark-references/bitmark-node-software/bitmark-blockchain-overview">Bitmark Blockchain Overview</a></li>
+                  <li><a title="Blockchain" href="/bitmark-references/bitmark-node-software/bitmark-blockchain-overview">Blockchain</a></li>
                   
                   
                   
@@ -328,7 +328,7 @@
                   
                   
                   
-                  <li><a title="Bitmark Mining" href="/bitmark-references/bitmark-node-software/bitmark-mining">Bitmark Mining</a></li>
+                  <li><a title="Mining" href="/bitmark-references/bitmark-node-software/bitmark-mining">Mining</a></li>
                   
                   
                   
@@ -350,7 +350,7 @@
           
           
           <li class="subfolders">
-              <a title="Bitmark SDK" href="">Bitmark SDK</a>
+              <a title="SDK" href="">SDK</a>
               <ul>
                   
                   
@@ -401,7 +401,7 @@
           
           
           <li class="subfolders">
-              <a title="Bitmark CLI" href="">Bitmark CLI</a>
+              <a title="CLI" href="">CLI</a>
               <ul>
                   
                   
@@ -428,7 +428,7 @@
       
   
   <li>
-      <a title="Bitmark Appendix" href="#">Bitmark Appendix</a>
+      <a title="Appendix" href="#">Appendix</a>
       <ul>
           
           
@@ -447,7 +447,7 @@
           
           
           
-          <li><a title="Bitmark Papers" href="/bitmark-appendix/bitmark-papers">Bitmark Papers</a></li>
+          <li><a title="White Papers" href="/bitmark-appendix/bitmark-papers">White Papers</a></li>
           
           
           
@@ -472,7 +472,7 @@
         
 
         <!-- Content Column -->
-        <div class="col-md-9" id="tg-sb-content">
+        <div class="col-md-8" id="tg-sb-content">
             <!-- <div class="post-header">
    <h1 class="post-title-main">Account</h1>
 </div> -->
@@ -497,7 +497,7 @@
 
 <p>Create a new identity to participate Bitmark blockchain.</p>
 
-<ul class="uk-tab" data-uk-switcher="{connect:'#01bcda52-e1db-4fcc-af37-99e60f8c10ff'}">
+<ul class="uk-tab" data-uk-switcher="{connect:'#a3bdfb45-6ee2-4055-8746-7e06bd65459f'}">
 
 	<li class="uk-active"><a href="#">JS</a></li>
 
@@ -509,7 +509,7 @@
 
 </ul>
 
-<ul id="01bcda52-e1db-4fcc-af37-99e60f8c10ff" class="uk-switcher uk-margin">
+<ul id="a3bdfb45-6ee2-4055-8746-7e06bd65459f" class="uk-switcher uk-margin">
 
 	<li>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">account</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">sdk</span><span class="p">.</span><span class="nx">Account</span><span class="p">();</span>
@@ -549,7 +549,7 @@
   <li><strong>receiver</strong> of a bitmark transfer offer</li>
 </ul>
 
-<ul class="uk-tab" data-uk-switcher="{connect:'#5ac1e3ee-0d81-4147-81c8-36ae45cbcbea'}">
+<ul class="uk-tab" data-uk-switcher="{connect:'#995e887c-5b34-4229-b56e-4f8e35548fce'}">
 
 	<li class="uk-active"><a href="#">JS</a></li>
 
@@ -561,7 +561,7 @@
 
 </ul>
 
-<ul id="5ac1e3ee-0d81-4147-81c8-36ae45cbcbea" class="uk-switcher uk-margin">
+<ul id="995e887c-5b34-4229-b56e-4f8e35548fce" class="uk-switcher uk-margin">
 
 	<li>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">accountNumber</span> <span class="o">=</span> <span class="nx">account</span><span class="p">.</span><span class="nx">getAccountNumber</span><span class="p">();</span>
@@ -598,7 +598,7 @@
 
 <p>The seed is the more compact format of an exported account. See <a href="/bitmark-references/bitmark-sdk/store-seed">Store seed</a> to learn how to securely store seeds in mobile phones.</p>
 
-<ul class="uk-tab" data-uk-switcher="{connect:'#760dfcd1-05df-4f01-9b04-b14cd7459317'}">
+<ul class="uk-tab" data-uk-switcher="{connect:'#91556688-f08c-4b53-a0fb-6fcb0578c38c'}">
 
 	<li class="uk-active"><a href="#">JS</a></li>
 
@@ -610,7 +610,7 @@
 
 </ul>
 
-<ul id="760dfcd1-05df-4f01-9b04-b14cd7459317" class="uk-switcher uk-margin">
+<ul id="91556688-f08c-4b53-a0fb-6fcb0578c38c" class="uk-switcher uk-margin">
 
 	<li>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">seed</span> <span class="o">=</span> <span class="nx">account</span><span class="p">.</span><span class="nx">getSeed</span><span class="p">();</span>
@@ -643,7 +643,7 @@
 
 <p>The recovery phrase, which consists of 12 <a href="https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki">mnemonic words</a>, is superior for human interaction compared to the handling of seed. If you don’t custody the seeds of your users, make sure you present the recovery phrase to them and teach them <a href="https://help.trustwallet.com/hc/en-us/articles/360016509753-Best-Practices-for-Storing-Your-Recovery-Phrase">how to store it in a secure place</a>. Currently English and traditional Chinese phrases are supported.</p>
 
-<ul class="uk-tab" data-uk-switcher="{connect:'#f2885a95-fea5-4271-bf83-cd22fc1eaaed'}">
+<ul class="uk-tab" data-uk-switcher="{connect:'#d53017d4-8e10-4c2a-afb5-7b75dcda138d'}">
 
 	<li class="uk-active"><a href="#">JS</a></li>
 
@@ -655,7 +655,7 @@
 
 </ul>
 
-<ul id="f2885a95-fea5-4271-bf83-cd22fc1eaaed" class="uk-switcher uk-margin">
+<ul id="d53017d4-8e10-4c2a-afb5-7b75dcda138d" class="uk-switcher uk-margin">
 
 	<li>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// English version</span>
@@ -712,7 +712,7 @@
 
 <p>To instantiate an account from a given seed.</p>
 
-<ul class="uk-tab" data-uk-switcher="{connect:'#b0d13dcf-e4dc-4786-96f3-dadb9119525b'}">
+<ul class="uk-tab" data-uk-switcher="{connect:'#2bcdc76b-df0a-4a1f-ac97-6b9b333aafb2'}">
 
 	<li class="uk-active"><a href="#">JS</a></li>
 
@@ -724,7 +724,7 @@
 
 </ul>
 
-<ul id="b0d13dcf-e4dc-4786-96f3-dadb9119525b" class="uk-switcher uk-margin">
+<ul id="2bcdc76b-df0a-4a1f-ac97-6b9b333aafb2" class="uk-switcher uk-margin">
 
 	<li>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">account</span> <span class="o">=</span> <span class="nx">Account</span><span class="p">.</span><span class="nx">fromSeed</span><span class="p">(</span><span class="dl">"</span><span class="s2">9J87CAsHdFdoEu6N1unZk3sqhVBkVL8Z8</span><span class="dl">"</span><span class="p">);</span>
@@ -752,7 +752,7 @@
 
 <p>To instantiate an account from a given recovery phrase.</p>
 
-<ul class="uk-tab" data-uk-switcher="{connect:'#59aa7c69-0f14-4dbd-9198-2543b88039fb'}">
+<ul class="uk-tab" data-uk-switcher="{connect:'#2406a7ca-83d4-4037-b9f5-a804415897e2'}">
 
 	<li class="uk-active"><a href="#">JS</a></li>
 
@@ -764,7 +764,7 @@
 
 </ul>
 
-<ul id="59aa7c69-0f14-4dbd-9198-2543b88039fb" class="uk-switcher uk-margin">
+<ul id="2406a7ca-83d4-4037-b9f5-a804415897e2" class="uk-switcher uk-margin">
 
 	<li>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// English version</span>
@@ -820,7 +820,7 @@
 
 <p>An account can be used to sign arbitrary message, and any party with the received message and the corresponding signature can validate if the message was created by a known sender (authentication), and the message was not altered in transit (integrity). This functionality is usually useful when you have a server application which needs to authenticate if the requests are from valid users.</p>
 
-<ul class="uk-tab" data-uk-switcher="{connect:'#14f89f8b-2a0e-4aee-a609-ca5f9ee38f27'}">
+<ul class="uk-tab" data-uk-switcher="{connect:'#7fcae270-238b-41e0-b7e1-677e6960ca43'}">
 
 	<li class="uk-active"><a href="#">JS</a></li>
 
@@ -832,7 +832,7 @@
 
 </ul>
 
-<ul id="14f89f8b-2a0e-4aee-a609-ca5f9ee38f27" class="uk-switcher uk-margin">
+<ul id="7fcae270-238b-41e0-b7e1-677e6960ca43" class="uk-switcher uk-margin">
 
 	<li>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">account</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Account</span><span class="p">();</span>
@@ -890,7 +890,7 @@
 <p>The function returns an error to indicate whether a given account number is valid in current runtime environment, i.e.,
 the format is correct and its network matches to the network specified in the SDK config during initialization.</p>
 
-<ul class="uk-tab" data-uk-switcher="{connect:'#8300fc7e-c62e-4529-a1e3-0e36dac1684c'}">
+<ul class="uk-tab" data-uk-switcher="{connect:'#41efdb34-6ade-4539-86c2-ba5c18bc6d17'}">
 
 	<li class="uk-active"><a href="#">JS</a></li>
 
@@ -902,7 +902,7 @@ the format is correct and its network matches to the network specified in the SD
 
 </ul>
 
-<ul id="8300fc7e-c62e-4529-a1e3-0e36dac1684c" class="uk-switcher uk-margin">
+<ul id="41efdb34-6ade-4539-86c2-ba5c18bc6d17" class="uk-switcher uk-margin">
 
 	<li>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">isValid</span> <span class="o">=</span> <span class="nx">Account</span><span class="p">.</span><span class="nx">isValidAccountNumber</span><span class="p">(</span><span class="nx">accountNumber</span><span class="p">);</span>
@@ -968,7 +968,7 @@ $('#toc').on('click', 'a', function() {
 <footer>
             <div class="row">
                 <div class="col-lg-12 footer">
-               	&copy;2019 Bitmark Inc. All rights reserved.
+               	&copy;2020 Bitmark Inc. All rights reserved.
 				<br/> Powered by <a href="https://jekyllrb.com/">Jekyll</a>
 <!-- <p><img src="/assets/images/company_logo.png" alt="Company logo"/></p>
                 </div>

@@ -10,11 +10,11 @@
 
 <link rel="stylesheet" href="/css/syntax.css">
 
-<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css">
 <!--<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">-->
 <link rel="stylesheet" href="/css/modern-business.css">
 <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/bootstrap.min.3.3.7.css" crossorigin="anonymous">
 <link rel="stylesheet" href="/css/customstyles.css">
 <link rel="stylesheet" href="/css/boxshadowproperties.css">
 <!-- most color styles are extracted out to here -->
@@ -45,7 +45,7 @@
 <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
 
-<link rel="alternate" type="application/rss+xml" title="docs" href="/feed.xml">
+<link rel="alternate" type="application/rss+xml" title="docs" href="http://localhost:4000/feed.xml">
 
     <script>
         $(document).ready(function() {
@@ -66,7 +66,7 @@
                 }
             });
 
-            // expand first level at indexes [0,3,7] 
+            // expand first level at indexes [0,3,7]
             $("#mysidebar").navgoco('toggle', true, 0, 3, 7);
 
             $("#collapseAll").click(function(e) {
@@ -91,7 +91,7 @@
         $(document).ready(function() {
             $("#tg-sb-link").click(function() {
                 $("#tg-sb-sidebar").toggle();
-                $("#tg-sb-content").toggleClass('col-md-9');
+                $("#tg-sb-content").toggleClass('col-md-8');
                 $("#tg-sb-content").toggleClass('col-md-12');
                 $("#tg-sb-icon").toggleClass('fa-toggle-on');
                 $("#tg-sb-icon").toggleClass('fa-toggle-off');
@@ -112,7 +112,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="fa fa-home fa-lg navbar-brand" href="/index.html">&nbsp;<span class="projectTitle"> Home</span></a>
+            <a class="navbar-brand" href="/index.html"><span class="projectTitle home-logo"><img src="/assets/images/Bitmark_Logo-desktop_white.svg" alt="Bitmark logo"/><!-- Home --></span></a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
@@ -178,7 +178,7 @@
         
         
             <!-- Sidebar Column -->
-            <div class="col-md-3" id="tg-sb-sidebar">
+            <div class="col-md-4" id="tg-sb-sidebar">
                 
 
 <ul id="mysidebar" class="nav">
@@ -199,7 +199,7 @@
         
 
         <!-- Content Column -->
-        <div class="col-md-9" id="tg-sb-content">
+        <div class="col-md-8" id="tg-sb-content">
             <!-- <div class="post-header">
    <h1 class="post-title-main">Bitmark Documentation</h1>
 </div> -->
@@ -223,8 +223,6 @@
 
 <p><strong><a href="/pages/learning-bitmark/bitmark-blockchain.md">Bitmark Blockchain Introduction</a></strong></p>
 
-<p><strong><a href="/pages/learning-bitmark/bitmark-blockchain.md">Bitmark Blockchain</a></strong></p>
-
 <p><strong><a href="/pages/learning-bitmark/quick-start/README.md">Quick Start</a></strong></p>
 <ul>
   <li><a href="/pages/learning-bitmark/quick-start/simple-solution-for-node-setup.md">Running a Bitmark Node</a></li>
@@ -246,7 +244,7 @@
 
 <h2 id="bitmark-references"><a href="/pages/bitmark-references/README.md#bitmark-references">Bitmark References</a></h2>
 
-<p><strong><a href="/pages/bitmark-references/node-setup/bitmark-node-setup.md">Tutorial For Node Setup</a></strong></p>
+<p><strong><a href="/pages/bitmark-references/node-setup/bitmark-node-setup.md">Bitmark Node Setup</a></strong></p>
 
 <p><strong><a href="/pages/bitmark-references/bitmark-node-software/README.md">Bitmark Node Software</a></strong></p>
 <ul>
@@ -328,7 +326,7 @@ $('#toc').on('click', 'a', function() {
 <footer>
             <div class="row">
                 <div class="col-lg-12 footer">
-               	&copy;2019 Bitmark Inc. All rights reserved.
+               	&copy;2020 Bitmark Inc. All rights reserved.
 				<br/> Powered by <a href="https://jekyllrb.com/">Jekyll</a>
 <!-- <p><img src="/assets/images/company_logo.png" alt="Company logo"/></p>
                 </div>

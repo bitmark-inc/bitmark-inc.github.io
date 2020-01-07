@@ -10,11 +10,11 @@
 
 <link rel="stylesheet" href="/css/syntax.css">
 
-<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css">
 <!--<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">-->
 <link rel="stylesheet" href="/css/modern-business.css">
 <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/bootstrap.min.3.3.7.css" crossorigin="anonymous">
 <link rel="stylesheet" href="/css/customstyles.css">
 <link rel="stylesheet" href="/css/boxshadowproperties.css">
 <!-- most color styles are extracted out to here -->
@@ -45,7 +45,7 @@
 <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
 
-<link rel="alternate" type="application/rss+xml" title="docs" href="/feed.xml">
+<link rel="alternate" type="application/rss+xml" title="docs" href="http://localhost:4000/feed.xml">
 
     <script>
         $(document).ready(function() {
@@ -66,7 +66,7 @@
                 }
             });
 
-            // expand first level at indexes [0,3,7] 
+            // expand first level at indexes [0,3,7]
             $("#mysidebar").navgoco('toggle', true, 0, 3, 7);
 
             $("#collapseAll").click(function(e) {
@@ -91,7 +91,7 @@
         $(document).ready(function() {
             $("#tg-sb-link").click(function() {
                 $("#tg-sb-sidebar").toggle();
-                $("#tg-sb-content").toggleClass('col-md-9');
+                $("#tg-sb-content").toggleClass('col-md-8');
                 $("#tg-sb-content").toggleClass('col-md-12');
                 $("#tg-sb-icon").toggleClass('fa-toggle-on');
                 $("#tg-sb-icon").toggleClass('fa-toggle-off');
@@ -112,7 +112,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="fa fa-home fa-lg navbar-brand" href="/index.html">&nbsp;<span class="projectTitle"> Home</span></a>
+            <a class="navbar-brand" href="/index.html"><span class="projectTitle home-logo"><img src="/assets/images/Bitmark_Logo-desktop_white.svg" alt="Bitmark logo"/><!-- Home --></span></a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
@@ -178,7 +178,7 @@
         
         
             <!-- Sidebar Column -->
-            <div class="col-md-3" id="tg-sb-sidebar">
+            <div class="col-md-4" id="tg-sb-sidebar">
                 
 
 <ul id="mysidebar" class="nav">
@@ -187,19 +187,19 @@
   
   
   <li>
-      <a title="Learning Bitmark" href="#">Learning Bitmark</a>
+      <a title="Learning the Bitmark Property System" href="#">Learning the Bitmark Property System</a>
       <ul>
           
           
           
-          <li><a title="Bitmark Property System" href="/learning-bitmark/bitmark-property-system-introduction">Bitmark Property System</a></li>
+          <li><a title="Property System Introduction" href="/learning-bitmark/bitmark-property-system-introduction">Property System Introduction</a></li>
           
           
           
           
           
           
-          <li><a title="Bitmark Blockchain" href="/learning-bitmark/bitmark-blockchain">Bitmark Blockchain</a></li>
+          <li><a title="Blockchain Introduction" href="/learning-bitmark/bitmark-blockchain">Blockchain Introduction</a></li>
           
           
           
@@ -209,13 +209,13 @@
                   
                   
                   
-                  <li><a title="Run a Bitmark Node" href="/learning-bitmark/quick-start/simple-solution-for-node-setup">Run a Bitmark Node</a></li>
+                  <li><a title="Running a Node" href="/learning-bitmark/quick-start/simple-solution-for-node-setup">Running a Node</a></li>
                   
                   
                   
                   
                   
-                  <li><a title="Creating Bitmark Account" href="/learning-bitmark/quick-start/working-with-bitmarks/creating-bitmark-account">Creating Bitmark Account</a></li>
+                  <li><a title="Creating an Account" href="/learning-bitmark/quick-start/working-with-bitmarks/creating-bitmark-account">Creating an Account</a></li>
                   
                   
                   
@@ -239,7 +239,7 @@
                   
                   
                   
-                  <li><a title="Bitmark-CLI Payment" href="/learning-bitmark/quick-start/working-with-bitmarks/bitmark-cli-payment">Bitmark-CLI Payment</a></li>
+                  <li><a title="Paying for Transactions from the CLI" href="/learning-bitmark/quick-start/working-with-bitmarks/bitmark-cli-payment">Paying for Transactions from the CLI</a></li>
                   
                   
                   
@@ -254,13 +254,13 @@
                   
                   
                   
-                  <li><a title="Bitmark Software Development Process" href="/learning-bitmark/contributing-to-bitmark/bitmark-software-development-process">Bitmark Software Development Process</a></li>
+                  <li><a title="Software Development Process" href="/learning-bitmark/contributing-to-bitmark/bitmark-software-development-process">Software Development Process</a></li>
                   
                   
                   
                   
                   
-                  <li><a title="Bitmark Upgrade Proposal" href="/learning-bitmark/contributing-to-bitmark/bup">Bitmark Upgrade Proposal</a></li>
+                  <li><a title="Bitmark Upgrade Proposals" href="/learning-bitmark/contributing-to-bitmark/bup">Bitmark Upgrade Proposals</a></li>
                   
                   
                   
@@ -278,7 +278,7 @@
           
           
           
-          <li><a title="Bitmark Terms and Glossary" href="/learning-bitmark/bitmark-terms-and-glossary">Bitmark Terms and Glossary</a></li>
+          <li><a title="Terms and Glossary" href="/learning-bitmark/bitmark-terms-and-glossary">Terms and Glossary</a></li>
           
           
           
@@ -289,7 +289,7 @@
       
   
   <li>
-      <a title="Bitmark References" href="#">Bitmark References</a>
+      <a title="References" href="#">References</a>
       <ul>
           
           
@@ -299,12 +299,12 @@
           
           
           <li class="subfolders">
-              <a title="Bitmark Node Software" href="">Bitmark Node Software</a>
+              <a title="Node Software" href="">Node Software</a>
               <ul>
                   
                   
                   
-                  <li><a title="Bitmark Blockchain Overview" href="/bitmark-references/bitmark-node-software/bitmark-blockchain-overview">Bitmark Blockchain Overview</a></li>
+                  <li><a title="Blockchain" href="/bitmark-references/bitmark-node-software/bitmark-blockchain-overview">Blockchain</a></li>
                   
                   
                   
@@ -328,7 +328,7 @@
                   
                   
                   
-                  <li><a title="Bitmark Mining" href="/bitmark-references/bitmark-node-software/bitmark-mining">Bitmark Mining</a></li>
+                  <li><a title="Mining" href="/bitmark-references/bitmark-node-software/bitmark-mining">Mining</a></li>
                   
                   
                   
@@ -350,7 +350,7 @@
           
           
           <li class="subfolders">
-              <a title="Bitmark SDK" href="">Bitmark SDK</a>
+              <a title="SDK" href="">SDK</a>
               <ul>
                   
                   
@@ -401,7 +401,7 @@
           
           
           <li class="subfolders">
-              <a title="Bitmark CLI" href="">Bitmark CLI</a>
+              <a title="CLI" href="">CLI</a>
               <ul>
                   
                   
@@ -428,7 +428,7 @@
       
   
   <li>
-      <a title="Bitmark Appendix" href="#">Bitmark Appendix</a>
+      <a title="Appendix" href="#">Appendix</a>
       <ul>
           
           
@@ -447,7 +447,7 @@
           
           
           
-          <li><a title="Bitmark Papers" href="/bitmark-appendix/bitmark-papers">Bitmark Papers</a></li>
+          <li><a title="White Papers" href="/bitmark-appendix/bitmark-papers">White Papers</a></li>
           
           
           
@@ -472,7 +472,7 @@
         
 
         <!-- Content Column -->
-        <div class="col-md-9" id="tg-sb-content">
+        <div class="col-md-8" id="tg-sb-content">
             <!-- <div class="post-header">
    <h1 class="post-title-main">Payment Verification</h1>
 </div> -->
@@ -489,42 +489,42 @@
     <div class="row">
         <div class="col-md-9"><h1 id="payment-verification">Payment Verification</h1>
 
-<p>In this section, we will introduce</p>
+<p>This section introduces:</p>
 
 <ul>
-  <li>How does the payment flow look like</li>
-  <li>How does bitmarkd validate a transaction which requires a payment from bitcoin / litecoin blockchain</li>
+  <li>What the Bitmark payment flow looks like</li>
+  <li>How <code class="language-plaintext highlighter-rouge">bitmarkd</code> validates a transaction that requires a payment from the Bitcoin or Litecoin blockchain</li>
 </ul>
 
-<h2 id="flow">Flow</h2>
+<h2 id="overview">Overview</h2>
 
-<p>When a user submit a new transaction to the blockchain by RPC, bitmarkd will process it and return a transaction detail that inlcudes payment information.</p>
+<p>When a user submits a new transaction to the Bitmark blockchain via RPC, <code class="language-plaintext highlighter-rouge">bitmarkd</code> will process it and return transaction details that include payment information.</p>
 
-<p>Someone needs to pay for the bitmark transaction by either bitcoin or litecoin blockchain according to the payment information. In the payment transaction, it must include the payment id by using <code class="language-plaintext highlighter-rouge">OP_RETURN</code> opcode.</p>
+<p>Someone then needs to pay for the Bitmark transaction using either the Bitcoin or Litecoin blockchain, in accordance with the payment information. This transaction must include the payment id returned by <code class="language-plaintext highlighter-rouge">bitmarkd</code> as part of the cryptocurrency transaction’s <code class="language-plaintext highlighter-rouge">OP_RETURN</code> opcode.</p>
 
-<p>Once bitmark blockchain detects a payment transaction from either blockchain, the target bitmark transaction will be marked as verified and wait for miners to put it into a block.</p>
+<p>Once the Bitmark blockchain detects a payment transaction from either blockchain, it marks the target Bitmark transaction as verified and waits for miners to put it into a block.</p>
 
 <h2 id="reservoir-module">Reservoir Module</h2>
 
-<p>Reservoir is module that is used to validating and storing transactions.</p>
+<p>Reservoir is the module that is used for validating and storing transactions.</p>
 
 <h3 id="processing-a-new-transaction">Processing a new transaction</h3>
 
-<p>When a new transaction is submitted to the blockchain by RPC, it will be processed either by <code class="language-plaintext highlighter-rouge">StoreIssues</code> or <code class="language-plaintext highlighter-rouge">StoreTransfer</code> according to the type of the transaction. The processing includes the transaction existence checking as well as generating a payment id which is bound to transactions from this request.</p>
+<p>When a new transaction is submitted to the Bitmark blockchain by RPC, it will be processed either by <code class="language-plaintext highlighter-rouge">StoreIssues</code> or <code class="language-plaintext highlighter-rouge">StoreTransfer</code>, according to the type of the transaction. This processing checks for the existence of the transaction and also generates a payment id.</p>
 
-<h3 id="generate-a-payment-id">Generate a payment id</h3>
+<h3 id="generating-a-payment-id">Generating a payment id</h3>
 
-<p>In the <code class="language-plaintext highlighter-rouge">StoreIssues</code> function, every issue transaction record in the request will be packed into a binary data. These packed data will be concatenated together and be hashed by SHA3 algorithem. The result of that hashing will become the payment id. <code class="language-plaintext highlighter-rouge">StoreTransfer</code> works in the same way. The only different is that there will be only one transaction record in a transfer request.</p>
+<p>The <code class="language-plaintext highlighter-rouge">StoreIssues</code> function packs issue records as binary data. This packed data is concatenated together and hashed by the SHA3 algorithm. The result of that hashing becomes the payment id. <code class="language-plaintext highlighter-rouge">StoreTransfer</code> works in the same way for transfer records; the only difference is that there will only be one transaction record in a transfer request.</p>
 
-<h3 id="change-the-state-of-a-paid-transaction">Change the state of a paid transaction</h3>
+<h3 id="changing-the-state-of-a-paid-transaction">Changing the state of a paid transaction</h3>
 
-<p>When bitmarkd detects a payment transaction from either blockchain, it will invoke function <code class="language-plaintext highlighter-rouge">SetTransferVerified</code> from reservoir. The target bitmark transaction will be marked as verified and wait for the miner to put it into a block.</p>
+<p>When <code class="language-plaintext highlighter-rouge">bitmarkd</code> detects a payment transaction from either blockchain, it invokes the function <code class="language-plaintext highlighter-rouge">SetTransferVerified</code> from Reservoir. The target Bitmark transaction is marked as verified and made available for miners to put it into a block.</p>
 
-<h3 id="structures">Structures</h3>
+<h3 id="pending-and-verified-structures">Pending and Verified Structures</h3>
 
-<p>In order to maintain all the transaction states in the bitmarkd, we use the following structures to manage all transactions in the bitmarkd.</p>
+<p>The following structures manage all of the payment-related transaction states in <code class="language-plaintext highlighter-rouge">bitmarkd</code>. They assist <code class="language-plaintext highlighter-rouge">bitmarkd</code> in validating payments for transactions.</p>
 
-<p>First, when a transaction comes in, reservoir will check them and save them into pending structures. If it is a valid new transaction, it will be saved in <code class="language-plaintext highlighter-rouge">pendingIndex</code> with its transaction id as a key. Based on the types of transaction, it will also add another record with its payment id as key. These structures assist bitmarkd validating the payments for transactions.</p>
+<p><strong>Pending Stuctures.</strong> When a transaction initially comes in, Reservoir checks it and saves it into pending structures. If it is a valid new transaction, it will be saved in <code class="language-plaintext highlighter-rouge">pendingIndex</code> with its transaction id as a key. Reservoir will also add another record with its payment id as key, based on the type of transaction.</p>
 
 <div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pendingTransactions</span> <span class="k">map</span><span class="p">[</span><span class="n">pay</span><span class="o">.</span><span class="n">PayId</span><span class="p">]</span><span class="o">*</span><span class="n">transactionPaymentData</span>
 <span class="n">pendingFreeIssues</span>   <span class="k">map</span><span class="p">[</span><span class="n">pay</span><span class="o">.</span><span class="n">PayId</span><span class="p">]</span><span class="o">*</span><span class="n">issueFreeData</span>
@@ -532,7 +532,7 @@
 <span class="n">pendingIndex</span>        <span class="k">map</span><span class="p">[</span><span class="n">merkle</span><span class="o">.</span><span class="n">Digest</span><span class="p">]</span><span class="n">pay</span><span class="o">.</span><span class="n">PayId</span>
 </code></pre></div></div>
 
-<p>Once the system detect a payment transaction from the bitcoin or litecoin blockchain, those paid pending transactions will be moved to verified structures.</p>
+<p><strong>Verified Structures.</strong> Once the Bitmark blockchain detects a payment transaction from the Bitcoin or Litecoin blockchain, pending transactions are be moved to verified structures.</p>
 
 <div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">verifiedTransactions</span> <span class="k">map</span><span class="p">[</span><span class="n">pay</span><span class="o">.</span><span class="n">PayId</span><span class="p">]</span><span class="o">*</span><span class="n">transactionData</span>
 <span class="n">verifiedFreeIssues</span>   <span class="k">map</span><span class="p">[</span><span class="n">pay</span><span class="o">.</span><span class="n">PayId</span><span class="p">]</span><span class="o">*</span><span class="n">issueFreeData</span>
@@ -540,35 +540,33 @@
 <span class="n">verifiedIndex</span>        <span class="k">map</span><span class="p">[</span><span class="n">merkle</span><span class="o">.</span><span class="n">Digest</span><span class="p">]</span><span class="n">pay</span><span class="o">.</span><span class="n">PayId</span>
 </code></pre></div></div>
 
-<p>Verified transactions will be collected periodically and form a block foundation. The block data will be broadcasted to a recorderd so that a block can be generated.</p>
+<p>Verified transactions are collected periodically to form a block foundation. The block data is broadcasted to a <code class="language-plaintext highlighter-rouge">recorderd</code> so that a block can be generated.</p>
 
 <h2 id="payment-module">Payment Module</h2>
 
-<p>Payment module defines how bitmarkd handles payment transactions from bitcoin / litecoin blockchain. When payment module is initialised, a background process will be launched to check blockchain transactions using the mechansim that is set in the configuration file.</p>
+<p>The payment module defines how <code class="language-plaintext highlighter-rouge">bitmarkd</code> handles payment transactions from the Bitcoin and Litecoin blockchains. When the payment module is initialized, a background process is launched to check blockchain transactions using a mechanism defined in the configuration file.</p>
 
-<h3 id="payment-validation">Payment Validation</h3>
-
-<p>There are three mechanisms that you can choose for the bitmarkd to validate payments for transactions.</p>
+<p>There are three mechanisms that can be used to allow <code class="language-plaintext highlighter-rouge">bitmarkd</code> to validate payments for transactions.</p>
 
 <ol>
-  <li>Directly RPC</li>
-  <li>Discovery Service</li>
-  <li>Bitcoin peer-to-peer protocol (WIP)</li>
+  <li>Using RPC APIs</li>
+  <li>Using Discovery Service</li>
+  <li>Using Bitcoin peer-to-peer protocol (WIP)</li>
 </ol>
 
-<h3 id="directly-rpc">Directly RPC</h3>
+<h3 id="using-rpc-apis">Using RPC APIs</h3>
 
-<p>Bitcoin / Litecoin daemon provides RPC api for people to invoke and query transactions on it. This is the simplest way to monitoring transactions from the bitcoin blockchain. In this method, bitmarkd will check the block header periodically. When a block reaches certain confirmation, bitmarkd will pull the block data and scan all transactions in it. If a transaction contains an OP_RETURN starts with <code class="language-plaintext highlighter-rouge">6a30</code>, it will be treated as a potential payment transaction and send to reservoir for validating pending transactions.</p>
+<p>The Bitcoin and Litecoin daemons provide RPC APIs that can be used to invoke and query transactions on those blockchains. This is the simplest way to monitor transactions from the Bitcoin and Litecoin blockchains. Using this method, <code class="language-plaintext highlighter-rouge">bitmarkd</code> will check the block header for the cryptocurrency blockchains periodically. When a block reaches certain confirmation, <code class="language-plaintext highlighter-rouge">bitmarkd</code> will pull the block data and scan all transactions in it. If a transaction contains an <code class="language-plaintext highlighter-rouge">OP_RETURN</code> starting with <code class="language-plaintext highlighter-rouge">6a30</code>, it will be treated as a potential payment transaction and sent to Reservoir for pending transaction validation.</p>
 
-<p>There are some drawback for this method. Node runners need to host a full-node for both bitcoin and litecoin blockchain. It will occupy storages and computation power from your because you have to save all block data and validation the healthiness of blockchains.</p>
+<p>The main drawback of this method is that Bitmark node runners will need to host a full node for both the Bitcoin and Litecoin blockchains. This consumes both computational power and storage because it requires recording of each blockchain’s block data and validation of the healthiness of both chains.</p>
 
-<h3 id="discovery-service">Discovery Service</h3>
+<h3 id="using-discovery-service">Using Discovery Service</h3>
 
-<p>The discovery is another open-sourced service that is built on top of blockchain nodes. It watches and extracts all potential payment transactions from both blockchains simultaneously. It also provides an abstract interface using zeromq PUBSUB pattern so that bitmarkd can only listen to related transaction without traversal the whole blocks.</p>
+<p>Discovery is an open-source service that is built on top of blockchain nodes. It watches and extracts all potential payment transactions from both the Bitcoina dn Litecoin blockchains simultaneously. It also provides an abstract interface using the zeromq PUBSUB pattern, so that <code class="language-plaintext highlighter-rouge">bitmarkd</code> can listen to only related transaction, without traversal of whole blocks.</p>
 
-<h3 id="bitcoin-peer-to-peer-protocol-wip">Bitcoin peer-to-peer protocol (WIP)</h3>
+<h3 id="using-bitcoin-peer-to-peer-protocol-wip">Using Bitcoin peer-to-peer protocol (WIP)</h3>
 
-<p>Bitcoin P2P protocol is the mechansim that bitcoin daemons communicate to each other in the network. By using this protocol, bitmarkd don’t really need to rely on certain centralized nodes. It makes the validation process be decentralised. Learning from the SPV client, we only keep block headers for blockchains. For all detected payment transaction, it will send to reservoir by function <code class="language-plaintext highlighter-rouge">SetTransferVerified</code>. Therefore, it reduces huge storage cost comparing to host a full-node for bitcoin and litecoin.</p>
+<p>Bitcoin P2P protocol is the mechanism that Bitcoin daemons use to communicate with each other on the network. By using this protocol, <code class="language-plaintext highlighter-rouge">bitmarkd</code> doesn’t need to rely on specific centralized nodes. instead, the validation process is decentralised. With lessons learned from the SPV client, Bitmark only keeps block headers for blockchains. All detected payment transactions are then sent to Reservoir by the function <code class="language-plaintext highlighter-rouge">SetTransferVerified</code>. This dramatically reduces storage costs compared to hosting a full node for Bitcoin and Litecoin.</p>
 </div>
         
         <div class="col-md-3">
@@ -612,7 +610,7 @@ $('#toc').on('click', 'a', function() {
 <footer>
             <div class="row">
                 <div class="col-lg-12 footer">
-               	&copy;2019 Bitmark Inc. All rights reserved.
+               	&copy;2020 Bitmark Inc. All rights reserved.
 				<br/> Powered by <a href="https://jekyllrb.com/">Jekyll</a>
 <!-- <p><img src="/assets/images/company_logo.png" alt="Company logo"/></p>
                 </div>

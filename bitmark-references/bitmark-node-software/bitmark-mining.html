@@ -6,15 +6,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
 <meta name="keywords" content=" mining">
-<title>Bitmark Mining | Bitmark Documentation</title>
+<title>Block Mining | Bitmark Documentation</title>
 
 <link rel="stylesheet" href="/css/syntax.css">
 
-<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css">
 <!--<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">-->
 <link rel="stylesheet" href="/css/modern-business.css">
 <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/bootstrap.min.3.3.7.css" crossorigin="anonymous">
 <link rel="stylesheet" href="/css/customstyles.css">
 <link rel="stylesheet" href="/css/boxshadowproperties.css">
 <!-- most color styles are extracted out to here -->
@@ -45,7 +45,7 @@
 <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
 
-<link rel="alternate" type="application/rss+xml" title="docs" href="/feed.xml">
+<link rel="alternate" type="application/rss+xml" title="docs" href="http://localhost:4000/feed.xml">
 
     <script>
         $(document).ready(function() {
@@ -66,7 +66,7 @@
                 }
             });
 
-            // expand first level at indexes [0,3,7] 
+            // expand first level at indexes [0,3,7]
             $("#mysidebar").navgoco('toggle', true, 0, 3, 7);
 
             $("#collapseAll").click(function(e) {
@@ -91,7 +91,7 @@
         $(document).ready(function() {
             $("#tg-sb-link").click(function() {
                 $("#tg-sb-sidebar").toggle();
-                $("#tg-sb-content").toggleClass('col-md-9');
+                $("#tg-sb-content").toggleClass('col-md-8');
                 $("#tg-sb-content").toggleClass('col-md-12');
                 $("#tg-sb-icon").toggleClass('fa-toggle-on');
                 $("#tg-sb-icon").toggleClass('fa-toggle-off');
@@ -112,7 +112,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="fa fa-home fa-lg navbar-brand" href="/index.html">&nbsp;<span class="projectTitle"> Home</span></a>
+            <a class="navbar-brand" href="/index.html"><span class="projectTitle home-logo"><img src="/assets/images/Bitmark_Logo-desktop_white.svg" alt="Bitmark logo"/><!-- Home --></span></a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
@@ -138,7 +138,7 @@
 
 
 
-  <a class="email" title="Submit feedback" href="#" onclick="javascript:window.location='mailto:support@bitmark.com?subject=Bitmark Inc feedback&body=I have some feedback about the Bitmark Mining page: ' + window.location.href;"><i class="fa fa-envelope-o"></i> Need help?</a>
+  <a class="email" title="Submit feedback" href="#" onclick="javascript:window.location='mailto:support@bitmark.com?subject=Bitmark Inc feedback&body=I have some feedback about the Block Mining page: ' + window.location.href;"><i class="fa fa-envelope-o"></i> Need help?</a>
 
 </li>
 
@@ -156,7 +156,7 @@
                                 searchInput: document.getElementById('search-input'),
                                 resultsContainer: document.getElementById('results-container'),
                                 dataSource: '/search.json',
-                                searchResultTemplate: '<li><a href="{url}" title="Bitmark Mining">{title}</a></li>',
+                                searchResultTemplate: '<li><a href="{url}" title="Block Mining">{title}</a></li>',
                     noResultsText: 'No results found.',
                             limit: 10,
                             fuzzy: true,
@@ -178,7 +178,7 @@
         
         
             <!-- Sidebar Column -->
-            <div class="col-md-3" id="tg-sb-sidebar">
+            <div class="col-md-4" id="tg-sb-sidebar">
                 
 
 <ul id="mysidebar" class="nav">
@@ -187,19 +187,19 @@
   
   
   <li>
-      <a title="Learning Bitmark" href="#">Learning Bitmark</a>
+      <a title="Learning the Bitmark Property System" href="#">Learning the Bitmark Property System</a>
       <ul>
           
           
           
-          <li><a title="Bitmark Property System" href="/learning-bitmark/bitmark-property-system-introduction">Bitmark Property System</a></li>
+          <li><a title="Property System Introduction" href="/learning-bitmark/bitmark-property-system-introduction">Property System Introduction</a></li>
           
           
           
           
           
           
-          <li><a title="Bitmark Blockchain" href="/learning-bitmark/bitmark-blockchain">Bitmark Blockchain</a></li>
+          <li><a title="Blockchain Introduction" href="/learning-bitmark/bitmark-blockchain">Blockchain Introduction</a></li>
           
           
           
@@ -209,13 +209,13 @@
                   
                   
                   
-                  <li><a title="Run a Bitmark Node" href="/learning-bitmark/quick-start/simple-solution-for-node-setup">Run a Bitmark Node</a></li>
+                  <li><a title="Running a Node" href="/learning-bitmark/quick-start/simple-solution-for-node-setup">Running a Node</a></li>
                   
                   
                   
                   
                   
-                  <li><a title="Creating Bitmark Account" href="/learning-bitmark/quick-start/working-with-bitmarks/creating-bitmark-account">Creating Bitmark Account</a></li>
+                  <li><a title="Creating an Account" href="/learning-bitmark/quick-start/working-with-bitmarks/creating-bitmark-account">Creating an Account</a></li>
                   
                   
                   
@@ -239,7 +239,7 @@
                   
                   
                   
-                  <li><a title="Bitmark-CLI Payment" href="/learning-bitmark/quick-start/working-with-bitmarks/bitmark-cli-payment">Bitmark-CLI Payment</a></li>
+                  <li><a title="Paying for Transactions from the CLI" href="/learning-bitmark/quick-start/working-with-bitmarks/bitmark-cli-payment">Paying for Transactions from the CLI</a></li>
                   
                   
                   
@@ -254,13 +254,13 @@
                   
                   
                   
-                  <li><a title="Bitmark Software Development Process" href="/learning-bitmark/contributing-to-bitmark/bitmark-software-development-process">Bitmark Software Development Process</a></li>
+                  <li><a title="Software Development Process" href="/learning-bitmark/contributing-to-bitmark/bitmark-software-development-process">Software Development Process</a></li>
                   
                   
                   
                   
                   
-                  <li><a title="Bitmark Upgrade Proposal" href="/learning-bitmark/contributing-to-bitmark/bup">Bitmark Upgrade Proposal</a></li>
+                  <li><a title="Bitmark Upgrade Proposals" href="/learning-bitmark/contributing-to-bitmark/bup">Bitmark Upgrade Proposals</a></li>
                   
                   
                   
@@ -278,7 +278,7 @@
           
           
           
-          <li><a title="Bitmark Terms and Glossary" href="/learning-bitmark/bitmark-terms-and-glossary">Bitmark Terms and Glossary</a></li>
+          <li><a title="Terms and Glossary" href="/learning-bitmark/bitmark-terms-and-glossary">Terms and Glossary</a></li>
           
           
           
@@ -289,7 +289,7 @@
       
   
   <li>
-      <a title="Bitmark References" href="#">Bitmark References</a>
+      <a title="References" href="#">References</a>
       <ul>
           
           
@@ -299,12 +299,12 @@
           
           
           <li class="subfolders">
-              <a title="Bitmark Node Software" href="">Bitmark Node Software</a>
+              <a title="Node Software" href="">Node Software</a>
               <ul>
                   
                   
                   
-                  <li><a title="Bitmark Blockchain Overview" href="/bitmark-references/bitmark-node-software/bitmark-blockchain-overview">Bitmark Blockchain Overview</a></li>
+                  <li><a title="Blockchain" href="/bitmark-references/bitmark-node-software/bitmark-blockchain-overview">Blockchain</a></li>
                   
                   
                   
@@ -328,7 +328,7 @@
                   
                   
                   
-                  <li class="active"><a title="Bitmark Mining" href="/bitmark-references/bitmark-node-software/bitmark-mining">Bitmark Mining</a></li>
+                  <li class="active"><a title="Mining" href="/bitmark-references/bitmark-node-software/bitmark-mining">Mining</a></li>
                   
                   
                   
@@ -350,7 +350,7 @@
           
           
           <li class="subfolders">
-              <a title="Bitmark SDK" href="">Bitmark SDK</a>
+              <a title="SDK" href="">SDK</a>
               <ul>
                   
                   
@@ -401,7 +401,7 @@
           
           
           <li class="subfolders">
-              <a title="Bitmark CLI" href="">Bitmark CLI</a>
+              <a title="CLI" href="">CLI</a>
               <ul>
                   
                   
@@ -428,7 +428,7 @@
       
   
   <li>
-      <a title="Bitmark Appendix" href="#">Bitmark Appendix</a>
+      <a title="Appendix" href="#">Appendix</a>
       <ul>
           
           
@@ -447,7 +447,7 @@
           
           
           
-          <li><a title="Bitmark Papers" href="/bitmark-appendix/bitmark-papers">Bitmark Papers</a></li>
+          <li><a title="White Papers" href="/bitmark-appendix/bitmark-papers">White Papers</a></li>
           
           
           
@@ -472,9 +472,9 @@
         
 
         <!-- Content Column -->
-        <div class="col-md-9" id="tg-sb-content">
+        <div class="col-md-8" id="tg-sb-content">
             <!-- <div class="post-header">
-   <h1 class="post-title-main">Bitmark Mining</h1>
+   <h1 class="post-title-main">Block Mining</h1>
 </div> -->
 
 
@@ -487,11 +487,11 @@
     
 
     <div class="row">
-        <div class="col-md-9"><h1 id="bitmark-mining">Bitmark Mining</h1>
+        <div class="col-md-9"><h1 id="block-mining">Block Mining</h1>
 
 <h2 id="overview">Overview</h2>
 
-<p>Mining on the Bitmark blockchain requires an understanding of hashing and difficulty, as well as the communication, verification, and reward protocols.</p>
+<p>Mining on the Bitmark blockchain requires an understanding of hashing and difficulty, as well as of the communication, verification, and reward protocols.</p>
 
 <h2 id="block-diagram">Block Diagram</h2>
 
@@ -502,26 +502,30 @@
         +--------------+  zero mq protocol   +---------------+
 </code></pre></div></div>
 
-<p>The mining procedure for Bitmark occurs through interactions between <code class="language-plaintext highlighter-rouge">bitmarkd</code> and <code class="language-plaintext highlighter-rouge">recorderd</code>. The hashing procedure relates to <code class="language-plaintext highlighter-rouge">bitmarkd</code> and <code class="language-plaintext highlighter-rouge">recorderd</code> only. The <code class="language-plaintext highlighter-rouge">recorderd</code> is a program that performs hashing, it receives jobs from <code class="language-plaintext highlighter-rouge">bitmarkd</code> and tries to find possible hashes that meets a certain criteria, if a hash is found, the <code class="language-plaintext highlighter-rouge">recorderd</code> sends a message back to <code class="language-plaintext highlighter-rouge">bitmarkd</code> and requests a validation.</p>
-
-<p>When <code class="language-plaintext highlighter-rouge">bitmarkd</code> receives this message from <code class="language-plaintext highlighter-rouge">recorderd</code>, the <code class="language-plaintext highlighter-rouge">bitmarkd</code> validates the hash from this special message and returns the result to the <code class="language-plaintext highlighter-rouge">recorderd</code>.</p>
-
-<p>If <code class="language-plaintext highlighter-rouge">bitmarkd</code> receives no valid hashes from other nodes or from <code class="language-plaintext highlighter-rouge">recorderd</code>, then the <code class="language-plaintext highlighter-rouge">bitmarkd</code> will periodically send hash tasks to <code class="language-plaintext highlighter-rouge">recorderd</code> (currently every 1 minute), until a valid hash is found or received.</p>
+<p>The mining procedure for Bitmark occurs through interactions between <code class="language-plaintext highlighter-rouge">bitmarkd</code> and <code class="language-plaintext highlighter-rouge">recorderd</code>:</p>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">bitmarkd</code> sends a job to <code class="language-plaintext highlighter-rouge">recorderd</code>, requesting a hash that meets certain criteria.</li>
+  <li><code class="language-plaintext highlighter-rouge">recorderd</code> tries to find possible hashes that meets those criteria.</li>
+  <li>If a hash is found, <code class="language-plaintext highlighter-rouge">recorderd</code> sends a message back to <code class="language-plaintext highlighter-rouge">bitmarkd</code> and requests a validation.</li>
+  <li>When <code class="language-plaintext highlighter-rouge">bitmarkd</code> receives this message from <code class="language-plaintext highlighter-rouge">recorderd</code>, it validates the hash and returns the result to <code class="language-plaintext highlighter-rouge">recorderd</code>.</li>
+  <li>If <code class="language-plaintext highlighter-rouge">bitmarkd</code> receives no valid hashes from other nodes or from <code class="language-plaintext highlighter-rouge">recorderd</code>, then it will periodically send hash tasks to <code class="language-plaintext highlighter-rouge">recorderd</code> (currently every 1 minute), until a valid hash is found or received.</li>
+</ol>
 
 <h2 id="hashing">Hashing</h2>
 
-<p>Hashing is the transformation of a string of characters into an unique value or key that represents the original string. There are different hash implementations with a wide range of algorithm, if the hash implementation is well designed, it turns to be very difficult to guess what is the original data from a given hash value.</p>
+<p>Hashing is the transformation of a string of characters into an unique value or key that represents the original string. There are different hash implementations using a wide range of algorithms; if the hash implementation is well designed, it is very difficult to guess the original data from a given hash value.</p>
 
-<p>At bitmark we use <code class="language-plaintext highlighter-rouge">argon2</code> to compute the hashing, the <code class="language-plaintext highlighter-rouge">argon2</code> has some benefits such as a memory hard algorithm that provides resistance against GPU and ASIC hardware for computation as well as it provides a hash of 256 bits long.</p>
+<p>The Bitmark blockchain uses <code class="language-plaintext highlighter-rouge">argon2</code> to compute its hashing; <code class="language-plaintext highlighter-rouge">argon2</code> has some benefits, such as a memory-hard algorithm that provides resistance against GPU and ASIC hardware computation and the production of a hash that is 256 bits long.</p>
 
-<p>The <code class="language-plaintext highlighter-rouge">argon2</code> user-land software provides a wide range of parameters, here there is an example:</p>
+<p>The <code class="language-plaintext highlighter-rouge">argon2</code> user-land software supports a wide range of parameters.</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>printf '%s' 'hello world' | argon2 'hello world' -d -l 32 -m 17 -t 4 -p 1 -r | awk '{for(i=length($1);i&gt;0;i-=2)x=x substr($1,i-1,2);print x}'
+<p>Example:</p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">printf</span> <span class="s1">'%s'</span> <span class="s1">'hello world'</span> | argon2 <span class="s1">'hello world'</span> <span class="nt">-d</span> <span class="nt">-l</span> 32 <span class="nt">-m</span> 17 <span class="nt">-t</span> 4 <span class="nt">-p</span> 1 <span class="nt">-r</span> | <span class="nb">awk</span> <span class="s1">'{for(i=length($1);i&gt;0;i-=2)x=x substr($1,i-1,2);print x}'</span>
 
 f8a17bc25cb53e848e2d09811ade4b8a037f628443661b88611faf5d9a5a1f33
 </code></pre></div></div>
 
-<p>The hash of a block is made from following information, hashes through <code class="language-plaintext highlighter-rouge">argon2</code> algorithm:</p>
+<p>The hash of a block is made from the following information, hashed through the <code class="language-plaintext highlighter-rouge">argon2</code> algorithm:</p>
 
 <ol>
   <li>
@@ -552,39 +556,39 @@ f8a17bc25cb53e848e2d09811ade4b8a037f628443661b88611faf5d9a5a1f33
   <li>
     <p>nonce</p>
 
-    <p>random string to make the hash fits the difficuty</p>
+    <p>random string to make the hash fit the difficuty</p>
   </li>
 </ol>
 
 <h2 id="difficulty">Difficulty</h2>
 
-<p>Difficulty is decided by blockchain consensus rules, higher difficulty means harder to find a valid hash, when a hash meets difficulty, it means the hash value is less than or equal to the difficulty level. Usually the difficulty level is represented by a number.</p>
+<p>As described in the <a href="/bitmark-references/bitmark-node-software/bitmark-blockchain-overview#block-hashing-argon2-difficulty-proof-of-work-">Bitmark Blockchain Technical Overview</a>, difficulty is decided by blockchain consensus rules. A higher difficulty means that it is harder for a miner to find a valid hash; when a hash meets a difficulty, that means that the hash value is less than or equal to the difficulty level. Usually, the difficulty level is represented by a number.</p>
 
-<p>For example, when difficulty is 2, it means the hash of a block should contains at least 10 (8+2) leading zeros, so if a block hash is “012345678901234567890123456789012” does not meet criteria of this difficulty because only one leading zero. If another block hash is “00000000001234567890123456789012”, then it meets difficulty criteria because it contains 10 leading zeros.</p>
+<p>For example, when difficulty is 2, the hash of a block should contains at least 10 (8+2) leading zeros. A block hash of “012345678901234567890123456789012” would not meet this difficulty criteria because it only has one leading zero, but a block hash of “00000000001234567890123456789012” would because it contains 10 leading zeros.</p>
 
-<p>The hash is considered as a fixed 256 bits value and it is composed by two parts:</p>
+<p>The hash is a fixed 256-bit value that is composed of two parts:</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[8 bits] [248 bits]
-exponent mantissa
+[exponent] [mantissa]
 </code></pre></div></div>
 
-<p>Difficulty value is encoded by 64 bits, including 8 bits of exponent and 56 bits of mantissa.</p>
+<p>Difficulty value is encoded in 64 bits, including 8 bits of exponent and 56 bits of mantissa.</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[56 bits] [8 bits]
-mantissa  exponent = 64 bits unsigned value
+[mantissa]  [exponent] = 64 bits unsigned value
 </code></pre></div></div>
 
-<p>The mantissa bits are normalized, the most significant bit is 1 and can be dropped, leaving the 56 bits to store; these bits are right shifted by exponent +8 from the most significant bit.</p>
+<p>The mantissa bits are normalized: the most significant bit is 1 and can be dropped, leaving 56 bits to store; these bits are right shifted by exponent +8 from the most significant bit.</p>
 
-<p>The difficulty <code class="language-plaintext highlighter-rouge">One</code> is defined as <code class="language-plaintext highlighter-rouge">00 ff  ff ff  ff ff  ff ff</code>, represents 256 bits value <code class="language-plaintext highlighter-rouge">0ff ffff ffff ffff 8000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000</code>.</p>
+<p>The difficulty <code class="language-plaintext highlighter-rouge">One</code> is defined as <code class="language-plaintext highlighter-rouge">00 ff  ff ff  ff ff  ff ff</code>, represents the 256-bit value <code class="language-plaintext highlighter-rouge">0ff ffff ffff ffff 8000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000</code>.</p>
 
-<p>The <code class="language-plaintext highlighter-rouge">Two</code> is the double of difficulty <code class="language-plaintext highlighter-rouge">One</code>: <code class="language-plaintext highlighter-rouge">01ffffffffffffff</code>, represents 256 bits value <code class="language-plaintext highlighter-rouge">007fffffffffffffc00000000000000000000000000000000000000000000000</code>.</p>
+<p>The difficulty <code class="language-plaintext highlighter-rouge">Two</code> is  double the difficulty of <code class="language-plaintext highlighter-rouge">One</code>: <code class="language-plaintext highlighter-rouge">01ffffffffffffff</code>, which represents 256-bit value <code class="language-plaintext highlighter-rouge">007fffffffffffffc00000000000000000000000000000000000000000000000</code>.</p>
 
 <h2 id="communication">Communication</h2>
 
-<p>The <code class="language-plaintext highlighter-rouge">bitmarkd</code> sends hashing job to <code class="language-plaintext highlighter-rouge">recorderd</code>. Each <code class="language-plaintext highlighter-rouge">bitmarkd</code> has a job queue to keep the records of what job has been sent to <code class="language-plaintext highlighter-rouge">recorderd</code>. If <code class="language-plaintext highlighter-rouge">recorderd</code> finds a possible hash that might fits the difficulty, it sends the result back to <code class="language-plaintext highlighter-rouge">bitmarkd</code>, and <code class="language-plaintext highlighter-rouge">bitmarkd</code> returns the result verified back to <code class="language-plaintext highlighter-rouge">recorderd</code>.</p>
+<p><code class="language-plaintext highlighter-rouge">bitmarkd</code> sends a hashing job to <code class="language-plaintext highlighter-rouge">recorderd</code>. Each <code class="language-plaintext highlighter-rouge">bitmarkd</code> has a job queue that lists the records of what job have been sent to <code class="language-plaintext highlighter-rouge">recorderd</code>. If <code class="language-plaintext highlighter-rouge">recorderd</code> finds a possible hash that might fits the difficulty, it sends the result back to <code class="language-plaintext highlighter-rouge">bitmarkd</code>, and <code class="language-plaintext highlighter-rouge">bitmarkd</code> returns the validated result  to <code class="language-plaintext highlighter-rouge">recorderd</code>.</p>
 
-<p>Here is the message format send from <code class="language-plaintext highlighter-rouge">recorderd</code> to <code class="language-plaintext highlighter-rouge">bitmarkd</code>:</p>
+<p>The following message format is used to send from <code class="language-plaintext highlighter-rouge">recorderd</code> to <code class="language-plaintext highlighter-rouge">bitmarkd</code>:</p>
 
 <ol>
   <li>
@@ -595,16 +599,16 @@ mantissa  exponent = 64 bits unsigned value
   <li>
     <p>job</p>
 
-    <p><code class="language-plaintext highlighter-rouge">bitmarkd</code> provides the job’s number in the queue</p>
+    <p>the job’s number in the queue, provided by <code class="language-plaintext highlighter-rouge">bitmarkd</code></p>
   </li>
   <li>
     <p>packed</p>
 
-    <p>nonce that may makes hash meets difficulty</p>
+    <p>a nonce that may make hash meet difficulty</p>
   </li>
 </ol>
 
-<p>Here is the message format send from <code class="language-plaintext highlighter-rouge">bitmarkd</code> to <code class="language-plaintext highlighter-rouge">recorderd</code>:</p>
+<p>The following message format is used to send from  <code class="language-plaintext highlighter-rouge">bitmarkd</code> to <code class="language-plaintext highlighter-rouge">recorderd</code>:</p>
 
 <ol>
   <li>
@@ -615,31 +619,31 @@ mantissa  exponent = 64 bits unsigned value
   <li>
     <p>ok</p>
 
-    <p>a string value of “true” and “false”, it is used to denote hash is valid or not</p>
+    <p>a string value of “true” and “false”, it is used to denote if hash is valid or not</p>
   </li>
 </ol>
 
-<p>For example, if <code class="language-plaintext highlighter-rouge">recorderd</code> receives a message of <code class="language-plaintext highlighter-rouge">job:2479 ok:false</code>, it means job number 2479 doesn’t meet difficulty criteria. If <code class="language-plaintext highlighter-rouge">recorderd</code> receives a message of ``job:3000 ok:true`, it means job number 3000 meets difficulty criteria.</p>
+<p>For example, if <code class="language-plaintext highlighter-rouge">recorderd</code> receives a message of <code class="language-plaintext highlighter-rouge">job:2479 ok:false</code>, it means job number 2479 doesn’t meet difficulty criteria. If <code class="language-plaintext highlighter-rouge">recorderd</code> receives a message of <code class="language-plaintext highlighter-rouge">job:3000 ok:true</code>, it means job number 3000 meets the difficulty criteria.</p>
 
-<h2 id="block-verification-and-broadcast">Block Verification and Broadcast</h2>
+<h2 id="verification-and-broadcast">Verification and Broadcast</h2>
 
-<p><code class="language-plaintext highlighter-rouge">bitmarkd</code> receives blocks from other nodes or from <code class="language-plaintext highlighter-rouge">recorderd</code>, every received block needs to pass following verifications:</p>
+<p><code class="language-plaintext highlighter-rouge">bitmarkd</code> receives blocks from other nodes or from <code class="language-plaintext highlighter-rouge">recorderd</code>; each received block needs to pass the following verifications:</p>
 
 <ol>
-  <li>block hash meets difficulty</li>
-  <li>block header information is same as block data</li>
-  <li>block header correct information of previous block hash</li>
-  <li>payment information is valid</li>
-  <li>compare to local block number, incoming block number is incremented by 1</li>
+  <li>block hash must meet difficulty</li>
+  <li>block header information must be same as block data</li>
+  <li>block header must contain correct information of previous block hash</li>
+  <li>payment information must be valid</li>
+  <li>compared to local block number, incoming block number must be incremented by 1</li>
 </ol>
 
-<p><code class="language-plaintext highlighter-rouge">bitmarkd</code> discards incoming block if any of verification fails, the block that passes verifications is stored in the <code class="language-plaintext highlighter-rouge">bitmarkd</code> and broadcast to all connected nodes.</p>
+<p><code class="language-plaintext highlighter-rouge">bitmarkd</code> discards incoming block if any of verification fails; a block that passes verifications is stored in <code class="language-plaintext highlighter-rouge">bitmarkd</code> and broadcast to all connected nodes.</p>
 
 <h2 id="reward">Reward</h2>
 
-<p>Miner account is stored inside every block. In bitmark, the reward is not given to miner when the block is mined, the reward is given to miner when transaction in miner’s block is transferred. The miner is rewarded 0.001 LTC for every transfer of digital asset, which means if a miner mines a block with popular digital asset, the miner gets more rewards.</p>
+<p>Miner account information is stored inside each block. However, on the Bitmark blockchain, a mining reward is not given to a miner when the block is mined; instead, the reward is given to a miner when transactions in the miner’s block are transferred. The miner is rewarded 0.001 LTC for every transfer of a digital asset, which means if a miner mines a block with popular digital assets, they get more rewards.</p>
 
-<p>For example, miner A mines a block number of 1000, and this block contains a digital asset ownership. After some period of time, owner of the digital asset transfers this ownership to another account, once the transaction has be put into blockchain, miner A receives mining fee of 0.001 LTC. If the new owner of that digital asset transfer again, then miner A is rewarded additional 0.001 LTC.</p>
+<p>For example, miner A mines block number 1000, and this block contains a digital asset. After some period of time, the owner of the digital asset transfers the asset to another account. Once the transfer record has been put into the blockchain, miner A receives a mining fee of 0.001 LTC. If the new owner of that digital asset transfer again, then miner A is rewarded an additional 0.001 LTC.</p>
 </div>
         
         <div class="col-md-3">
@@ -683,7 +687,7 @@ $('#toc').on('click', 'a', function() {
 <footer>
             <div class="row">
                 <div class="col-lg-12 footer">
-               	&copy;2019 Bitmark Inc. All rights reserved.
+               	&copy;2020 Bitmark Inc. All rights reserved.
 				<br/> Powered by <a href="https://jekyllrb.com/">Jekyll</a>
 <!-- <p><img src="/assets/images/company_logo.png" alt="Company logo"/></p>
                 </div>

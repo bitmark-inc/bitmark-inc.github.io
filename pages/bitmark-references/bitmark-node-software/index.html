@@ -10,11 +10,11 @@
 
 <link rel="stylesheet" href="/css/syntax.css">
 
-<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css">
 <!--<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">-->
 <link rel="stylesheet" href="/css/modern-business.css">
 <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/bootstrap.min.3.3.7.css" crossorigin="anonymous">
 <link rel="stylesheet" href="/css/customstyles.css">
 <link rel="stylesheet" href="/css/boxshadowproperties.css">
 <!-- most color styles are extracted out to here -->
@@ -45,7 +45,7 @@
 <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
 
-<link rel="alternate" type="application/rss+xml" title="docs" href="/feed.xml">
+<link rel="alternate" type="application/rss+xml" title="docs" href="http://localhost:4000/feed.xml">
 
     <script>
         $(document).ready(function() {
@@ -66,7 +66,7 @@
                 }
             });
 
-            // expand first level at indexes [0,3,7] 
+            // expand first level at indexes [0,3,7]
             $("#mysidebar").navgoco('toggle', true, 0, 3, 7);
 
             $("#collapseAll").click(function(e) {
@@ -91,7 +91,7 @@
         $(document).ready(function() {
             $("#tg-sb-link").click(function() {
                 $("#tg-sb-sidebar").toggle();
-                $("#tg-sb-content").toggleClass('col-md-9');
+                $("#tg-sb-content").toggleClass('col-md-8');
                 $("#tg-sb-content").toggleClass('col-md-12');
                 $("#tg-sb-icon").toggleClass('fa-toggle-on');
                 $("#tg-sb-icon").toggleClass('fa-toggle-off');
@@ -112,7 +112,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="fa fa-home fa-lg navbar-brand" href="/index.html">&nbsp;<span class="projectTitle"> Home</span></a>
+            <a class="navbar-brand" href="/index.html"><span class="projectTitle home-logo"><img src="/assets/images/Bitmark_Logo-desktop_white.svg" alt="Bitmark logo"/><!-- Home --></span></a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
@@ -178,7 +178,7 @@
         
         
             <!-- Sidebar Column -->
-            <div class="col-md-3" id="tg-sb-sidebar">
+            <div class="col-md-4" id="tg-sb-sidebar">
                 
 
 <ul id="mysidebar" class="nav">
@@ -199,7 +199,7 @@
         
 
         <!-- Content Column -->
-        <div class="col-md-9" id="tg-sb-content">
+        <div class="col-md-8" id="tg-sb-content">
             <!-- <div class="post-header">
    <h1 class="post-title-main">Bitmark Node Software</h1>
 </div> -->
@@ -217,7 +217,7 @@
         <div class="col-md-9">
 <h1 id="bitmark-node-software">Bitmark Node Software</h1>
 
-<h2 id="bitmark-blockchain-overview"><a href="/bitmark-references/bitmark-node-software/bitmark-blockchain-overview">Bitmark Blockchain Overview</a></h2>
+<h2 id="bitmark-blockchain-technical-overview"><a href="/bitmark-references/bitmark-node-software/bitmark-blockchain-overview">Bitmark Blockchain Technical Overview</a></h2>
 
 <ul>
   <li><a href="/bitmark-references/bitmark-node-software/bitmark-blockchain-overview#definitions">Definitions</a></li>
@@ -226,35 +226,34 @@
       <li><a href="/bitmark-references/bitmark-node-software/bitmark-blockchain-overview#asset-record">Asset Record</a></li>
       <li><a href="/bitmark-references/bitmark-node-software/bitmark-blockchain-overview#issue-record">Issue Record</a></li>
       <li><a href="/bitmark-references/bitmark-node-software/bitmark-blockchain-overview#transfer-record">Transfer Record</a></li>
-      <li><a href="/bitmark-references/bitmark-node-software/bitmark-blockchain-overview#transactions-share">Transactions: Share</a>
-        <ul>
-          <li><a href="/bitmark-references/bitmark-node-software/bitmark-blockchain-overview#bitmark-share">Bitmark Share</a></li>
-          <li><a href="/bitmark-references/bitmark-node-software/bitmark-blockchain-overview#share-grant">Share Grant</a></li>
-          <li><a href="/bitmark-references/bitmark-node-software/bitmark-blockchain-overview#share-swap">Share Swap</a></li>
-        </ul>
-      </li>
-      <li><a href="bitmark-blockchain-overview.mdd#transactions-block-ownership-record">Transactions: Block ownership record</a>
-        <ul>
-          <li><a href="bitmark-blockchain-overview.mdd#block-foundation">Block Foundation</a></li>
-          <li><a href="/bitmark-references/bitmark-node-software/bitmark-blockchain-overview#block-owner-transfer">Block Owner Transfer</a></li>
-        </ul>
-      </li>
-      <li><a href="/bitmark-references/bitmark-node-software/bitmark-blockchain-overview#blockchain-structure">Blockchain structure</a>
-        <ul>
-          <li><a href="/bitmark-references/bitmark-node-software/bitmark-blockchain-overview#block-header">Block Header</a></li>
-          <li><a href="/bitmark-references/bitmark-node-software/bitmark-blockchain-overview#merkle-tree">Merkle tree</a></li>
-          <li><a href="/bitmark-references/bitmark-node-software/bitmark-blockchain-overview#block-hashing-argon2-difficulty-proof-of-work-">Block Hashing (argon2, difficulty, proof of work ...)</a></li>
-        </ul>
-      </li>
+    </ul>
+  </li>
+  <li><a href="/bitmark-references/bitmark-node-software/bitmark-blockchain-overview#transactions-share">Transactions: Share</a>
+    <ul>
+      <li><a href="/bitmark-references/bitmark-node-software/bitmark-blockchain-overview#share-balance-record">Share Balance Record</a></li>
+      <li><a href="/bitmark-references/bitmark-node-software/bitmark-blockchain-overview#share-grant-record">Share Grant Record</a></li>
+      <li><a href="/bitmark-references/bitmark-node-software/bitmark-blockchain-overview#share-swap-record">Share Swap Record</a></li>
+    </ul>
+  </li>
+  <li><a href="/bitmark-references/bitmark-node-software/bitmark-blockchain-overview#transactions-block-ownership-record">Transactions: Block ownership record</a>
+    <ul>
+      <li><a href="/bitmark-references/bitmark-node-software/bitmark-blockchain-overview#block-foundation-record">Block Foundation Record</a></li>
+      <li><a href="/bitmark-references/bitmark-node-software/bitmark-blockchain-overview#block-owner-transfer-record">Block Owner Transfer Record</a></li>
+    </ul>
+  </li>
+  <li><a href="/bitmark-references/bitmark-node-software/bitmark-blockchain-overview#blockchain-structure">Blockchain Structure</a>
+    <ul>
+      <li><a href="/bitmark-references/bitmark-node-software/bitmark-blockchain-overview#block-header">Block Header</a></li>
+      <li><a href="/bitmark-references/bitmark-node-software/bitmark-blockchain-overview#merkle-tree">Merkle Tree</a></li>
+      <li><a href="/bitmark-references/bitmark-node-software/bitmark-blockchain-overview#block-hashing-argon2-difficulty-proof-of-work-">Block Hashing (argon2, difficulty, proof of work ...)</a></li>
     </ul>
   </li>
 </ul>
 
-<h2 id="block-verification-and-synchronization"><a href="/bitmark-references/bitmark-node-software/block-verification-and-synchronization#block-verification-and-synchronization">Block Verification and Synchronization</a></h2>
+<h2 id="block-validation-and-synchronization"><a href="/bitmark-references/bitmark-node-software/block-verification-and-synchronization#block-verification-and-synchronization">Block Validation and Synchronization</a></h2>
 
 <ul>
-  <li><a href="/bitmark-references/bitmark-node-software/block-verification-and-synchronization#bitmark-block">Bitmark Block</a></li>
-  <li><a href="/bitmark-references/bitmark-node-software/block-verification-and-synchronization#different-types-of-transactions">Different types of transactions</a></li>
+  <li><a href="/bitmark-references/bitmark-node-software/block-verification-and-synchronization#block-structure">Block Structure</a></li>
   <li><a href="/bitmark-references/bitmark-node-software/block-verification-and-synchronization#block-validation">Block Validation</a></li>
   <li><a href="/bitmark-references/bitmark-node-software/block-verification-and-synchronization#block-synchronization">Block Synchronization</a>
     <ul>
@@ -264,9 +263,7 @@
   </li>
 </ul>
 
-<h2 id="storage"><a href="/bitmark-references/bitmark-node-software/storage#storage">Storage</a></h2>
-
-<h2 id="bitmark-mining"><a href="/bitmark-references/bitmark-node-software/bitmark-mining##bitmark-mining">Bitmark Mining</a></h2>
+<h2 id="block-mining"><a href="/bitmark-references/bitmark-node-software/bitmark-mining##bitmark-mining">Block Mining</a></h2>
 
 <ul>
   <li><a href="/bitmark-references/bitmark-node-software/bitmark-mining#overview">Overview</a></li>
@@ -274,33 +271,52 @@
   <li><a href="/bitmark-references/bitmark-node-software/bitmark-mining#hashing">Hashing</a></li>
   <li><a href="/bitmark-references/bitmark-node-software/bitmark-mining#difficulty">Difficulty</a></li>
   <li><a href="/bitmark-references/bitmark-node-software/bitmark-mining#communication">Communication</a></li>
-  <li><a href="/bitmark-references/bitmark-node-software/bitmark-mining#block-verification-and-broadcast">Block Verification and Broadcast</a></li>
+  <li><a href="/bitmark-references/bitmark-node-software/bitmark-mining#verification-and-broadcast">Verification and Broadcast</a></li>
   <li><a href="/bitmark-references/bitmark-node-software/bitmark-mining#reward">Reward</a></li>
+</ul>
+
+<h2 id="rpc-communication"><a href="/bitmark-references/bitmark-node-software/rpc-communication">RPC Communication</a></h2>
+
+<ul>
+  <li><a href="/bitmark-references/bitmark-node-software/rpc-communication#overview">Overview</a></li>
+  <li><a href="/bitmark-references/bitmark-node-software/rpc-communication#rpc-flow">RPC Flow</a>
+    <ul>
+      <li><a href="/bitmark-references/bitmark-node-software/rpc-communication#initializing">Initializing</a></li>
+      <li><a href="/bitmark-references/bitmark-node-software/rpc-communication#processing-messages">Processing Messages</a></li>
+    </ul>
+  </li>
 </ul>
 
 <h2 id="payment-verification"><a href="/bitmark-references/bitmark-node-software/payment-verification#payment-verification">Payment Verification</a></h2>
 
 <ul>
-  <li><a href="/bitmark-references/bitmark-node-software/payment-verification#flow">Flow</a></li>
+  <li><a href="/bitmark-references/bitmark-node-software/payment-verification#overview">Overview</a></li>
   <li><a href="/bitmark-references/bitmark-node-software/payment-verification#reservoir-module">Reservoir Module</a>
     <ul>
-      <li><a href="/bitmark-references/bitmark-node-software/payment-verification#processing-a-new-transaction">Processing a new transaction</a></li>
-      <li><a href="/bitmark-references/bitmark-node-software/payment-verification#generate-a-payment-id">Generate a payment id</a></li>
-      <li><a href="/bitmark-references/bitmark-node-software/payment-verification#change-the-state-of-a-paid-transaction">Change the state of a paid transaction</a></li>
-      <li><a href="/bitmark-references/bitmark-node-software/payment-verification#structures">Structures</a></li>
+      <li><a href="/bitmark-references/bitmark-node-software/payment-verification#processing-a-new-transaction">Processing a New Transaction</a></li>
+      <li><a href="/bitmark-references/bitmark-node-software/payment-verification#generating-a-payment-id">Generating a Payment Id</a></li>
+      <li><a href="/bitmark-references/bitmark-node-software/payment-verification#changing-the-state-of-a-paid-transaction">Changing the State of a Paid Transaction</a></li>
+      <li><a href="/bitmark-references/bitmark-node-software/payment-verification#pending-and-verified-structures">Pending and Verified Structures</a></li>
     </ul>
   </li>
   <li><a href="/bitmark-references/bitmark-node-software/payment-verification#payment-module">Payment Module</a>
     <ul>
-      <li><a href="/bitmark-references/bitmark-node-software/payment-verification#payment-validation">Payment Validation</a></li>
-      <li><a href="/bitmark-references/bitmark-node-software/payment-verification#directly-rpc">Directly RPC</a></li>
-      <li><a href="/bitmark-references/bitmark-node-software/payment-verification#discovery-service">Discovery Service</a></li>
-      <li><a href="/bitmark-references/bitmark-node-software/payment-verification#bitcoin-peer-to-peer-protocol-wip">Bitcoin peer-to-peer protocol (WIP)</a></li>
+      <li><a href="/bitmark-references/bitmark-node-software/payment-verification#using-rpc-apis">Using RPC APIs</a></li>
+      <li><a href="/bitmark-references/bitmark-node-software/payment-verification#using-discovery-service">Using Discovery Service</a></li>
+      <li><a href="/bitmark-references/bitmark-node-software/payment-verification#using-bitcoin-peer-to-peer-protocol-wip">Using Bitcoin Peer-to-Peer Protocol (WIP)</a></li>
     </ul>
   </li>
 </ul>
 
-<h2 id="security-feature-of-the-bitmark-blockchain"><a href="/bitmark-references/bitmark-node-software/security#security-feature-of-the-bitmark-blockchain">Security feature of the Bitmark Blockchain</a></h2>
+<h2 id="storage-databases"><a href="/bitmark-references/bitmark-node-software/storage">Storage Databases</a></h2>
+
+<ul>
+  <li><a href="/bitmark-references/bitmark-node-software/storage#blocks-db">Blocks DB</a></li>
+  <li><a href="/bitmark-references/bitmark-node-software/storage#index-db">Index DB</a></li>
+  <li><a href="/bitmark-references/bitmark-node-software/storage#use-cases">Use Cases</a></li>
+</ul>
+
+<h2 id="blockchain-security"><a href="/bitmark-references/bitmark-node-software/security#security-feature-of-the-bitmark-blockchain">Blockchain Security</a></h2>
 
 <ul>
   <li><a href="/bitmark-references/bitmark-node-software/security#transactions">Transactions</a></li>
@@ -352,7 +368,7 @@ $('#toc').on('click', 'a', function() {
 <footer>
             <div class="row">
                 <div class="col-lg-12 footer">
-               	&copy;2019 Bitmark Inc. All rights reserved.
+               	&copy;2020 Bitmark Inc. All rights reserved.
 				<br/> Powered by <a href="https://jekyllrb.com/">Jekyll</a>
 <!-- <p><img src="/assets/images/company_logo.png" alt="Company logo"/></p>
                 </div>
