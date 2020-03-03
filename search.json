@@ -15,7 +15,29 @@
 
 
 {
-"title": "Action",
+"title": "Account",
+"tags": "",
+"keywords": "account, sdk",
+"url": "/bitmark-references/bitmark-sdk/account",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Actions",
+"tags": "",
+"keywords": "action, sdk, register asset, issue bitmark, transfer bitmark",
+"url": "/bitmark-references/bitmark-sdk/action",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Actions",
 "tags": "",
 "keywords": "action, sdk, register asset, issue bitmark, transfer bitmark",
 "url": "/bitmark-references/bitmark-sdk/action",
@@ -61,6 +83,17 @@
 {
 "title": "Bitmark versus Ethereum",
 "tags": "",
+"keywords": "ethereum, bitmark vs ethereum",
+"url": "/read-our-papers/bitmark-eth-comparison",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Bitmark versus Ethereum",
+"tags": "",
 "keywords": "ethereum, bitmarkvsethereum",
 "url": "/bitmark-appendix/bitmark-eth-comparison",
 "summary": ""
@@ -92,10 +125,32 @@
 
 
 {
+"title": "Bitmark Protocol FAQ",
+"tags": "",
+"keywords": "faq",
+"url": "/browser-our-faq/bitmark-protocol-faq",
+"summary": ""
+}
+,
+
+
+
+{
 "title": "Getting Started",
 "tags": "",
 "keywords": "sdk, sdk doc",
 "url": "/bitmark-references/bitmark-sdk/getting-started",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Bitmark Shares",
+"tags": "",
+"keywords": "bitmark shares",
+"url": "/bitmark-appendix/bitmark-shares",
 "summary": ""
 }
 ,
@@ -136,10 +191,54 @@
 
 
 {
+"title": "Block Mining",
+"tags": "",
+"keywords": "mining",
+"url": "/explore-the-protocol-docs/block-mining",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Block Validation and Synchronization",
+"tags": "",
+"keywords": "blockchain, verification, sync, synchronization",
+"url": "/explore-the-protocol-docs/block-verification-and-synchronization",
+"summary": ""
+}
+,
+
+
+
+{
 "title": "Block Validation and Synchronization",
 "tags": "",
 "keywords": "blockchain, verification, sync, synchronization",
 "url": "/bitmark-references/bitmark-node-software/block-verification-and-synchronization",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Blockchain Overview",
+"tags": "",
+"keywords": "blockchain",
+"url": "/explore-the-protocol-docs/blockchain-overview",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Blockchain Security",
+"tags": "",
+"keywords": "security",
+"url": "/explore-the-protocol-docs/blockchain-security",
 "summary": ""
 }
 ,
@@ -169,6 +268,61 @@
 
 
 {
+"title": "bitmark-cli Command Reference",
+"tags": "",
+"keywords": "CLI, bitmark-cli, command line interface",
+"url": "/register-and-control-data/cli/bitmark-cli-command-reference",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "CLI payment",
+"tags": "",
+"keywords": "transaction payment",
+"url": "/register-and-control-data/cli/cli-payment",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "CLI quick setup",
+"tags": "",
+"keywords": "CLI, bitmark-cli, command line interface, quick setup",
+"url": "/register-and-control-data/cli/cli-quick-setup",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Contribute to the Protocol",
+"tags": "",
+"keywords": "governance, security program, Bitmark Upgrade Proposal",
+"url": "/contribute-to-the-protocol",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Control access",
+"tags": "",
+"keywords": "control access",
+"url": "/register-and-control-data/control-access",
+"summary": ""
+}
+,
+
+
+
+{
 "title": "Creating Bitmark Accounts",
 "tags": "",
 "keywords": "create account",
@@ -182,7 +336,29 @@
 
 
 {
-"title": "Official Documentation for working with Bitmark",
+"title": "SDK Getting Started",
+"tags": "",
+"keywords": "sdk, sdk installation, sdk configuration",
+"url": "/register-and-control-data/getting-started",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Glossary",
+"tags": "",
+"keywords": "terms, glossary",
+"url": "/explore-the-protocol-docs/glossary",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Official Bitmark Documentation",
 "tags": "",
 "keywords": "homepage, home",
 "url": "/index.html",
@@ -197,6 +373,17 @@
 "tags": "",
 "keywords": "register bitmark certificates",
 "url": "/learning-bitmark/quick-start/working-with-bitmarks/issuing-bitmarks",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Account Migration",
+"tags": "",
+"keywords": "sdk, migration",
+"url": "/bitmark-references/bitmark-sdk/migration",
 "summary": ""
 }
 ,
@@ -251,6 +438,17 @@
 "title": "Payment Verification",
 "tags": "",
 "keywords": "payment, payment verification",
+"url": "/explore-the-protocol-docs/payment-verification",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Payment Verification",
+"tags": "",
+"keywords": "payment, payment verification",
 "url": "/bitmark-references/bitmark-node-software/payment-verification",
 "summary": ""
 }
@@ -270,7 +468,29 @@
 
 
 {
-"title": "Query",
+"title": "Query the Registry",
+"tags": "",
+"keywords": "query registry",
+"url": "/register-and-control-data/query-the-registry",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Queries",
+"tags": "",
+"keywords": "sdk, query",
+"url": "/bitmark-references/bitmark-sdk/query",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Queries",
 "tags": "",
 "keywords": "sdk, query",
 "url": "/bitmark-references/bitmark-sdk/query",
@@ -292,10 +512,43 @@
 
 
 {
+"title": "Register data",
+"tags": "",
+"keywords": "register bitmark data",
+"url": "/register-and-control-data/register-data",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "RPC Communication",
+"tags": "",
+"keywords": "rpc",
+"url": "/explore-the-protocol-docs/rpc-communication",
+"summary": ""
+}
+,
+
+
+
+{
 "title": "RPC Communication",
 "tags": "",
 "keywords": "rpc",
 "url": "/bitmark-references/bitmark-node-software/rpc-communication",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Run a Node",
+"tags": "",
+"keywords": "node",
+"url": "/register-and-control-data/run-a-node",
 "summary": ""
 }
 ,
@@ -316,6 +569,17 @@
 
 
 {
+"title": "Share rights",
+"tags": "",
+"keywords": "share rights",
+"url": "/register-and-control-data/share-rights",
+"summary": ""
+}
+,
+
+
+
+{
 "title": "Running a Bitmark Node",
 "tags": "",
 "keywords": "node setup",
@@ -329,7 +593,29 @@
 
 
 {
-"title": "Store Seed",
+"title": "Storage Databases",
+"tags": "",
+"keywords": "node modules, storage",
+"url": "/explore-the-protocol-docs/storage-databases",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Storing a Seed",
+"tags": "",
+"keywords": "sdk, store seed",
+"url": "/bitmark-references/bitmark-sdk/store-seed",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Storing a Seed",
 "tags": "",
 "keywords": "sdk, store seed",
 "url": "/bitmark-references/bitmark-sdk/store-seed",
@@ -340,6 +626,17 @@
 
 
 
+
+
+
+{
+"title": "Transfer rights",
+"tags": "",
+"keywords": "transfer rights",
+"url": "/register-and-control-data/transfer-rights",
+"summary": ""
+}
+,
 
 
 
@@ -366,10 +663,32 @@
 
 
 {
-"title": "Web Socket",
+"title": "Receiving WebSocket Events",
 "tags": "",
 "keywords": "sdk, web socket",
 "url": "/bitmark-references/bitmark-sdk/websocket",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Receiving WebSocket Events",
+"tags": "",
+"keywords": "sdk, web socket",
+"url": "/bitmark-references/bitmark-sdk/websocket",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "White Papers",
+"tags": "",
+"keywords": "papers",
+"url": "/read-our-papers/white-papers",
 "summary": ""
 }
 ,
@@ -443,7 +762,7 @@
 
 
 {
-"title": "Bitmark-CLI",
+"title": "Bitmark CLI",
 "tags": "",
 "keywords": "",
 "url": "/pages/bitmark-references/bitmark-cli/",
@@ -480,6 +799,28 @@
 "tags": "",
 "keywords": "",
 "url": "/pages/bitmark-references/node-setup/",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Browse our FAQ",
+"tags": "",
+"keywords": "",
+"url": "/pages/browse-our-faq/",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Explore the Protocol Docs",
+"tags": "",
+"keywords": "",
+"url": "/pages/explore-the-protocol-docs/",
 "summary": ""
 }
 ,
@@ -524,6 +865,50 @@
 "tags": "",
 "keywords": "",
 "url": "/pages/learning-bitmark/quick-start/working-with-bitmarks/",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Read our Papers",
+"tags": "",
+"keywords": "",
+"url": "/pages/read-our-papers/",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Register &amp;amp; Control data",
+"tags": "",
+"keywords": "",
+"url": "/pages/register-and-control-data/",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Bitmark SDK",
+"tags": "",
+"keywords": "",
+"url": "/pages/register-and-control-data/sdk/",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "How to run spelling check?",
+"tags": "",
+"keywords": "",
+"url": "/tools/",
 "summary": ""
 }
 
