@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="keywords" content=" node">
+<title>Run a Node | Bitmark Documentation</title>
+
+<link rel="stylesheet" href="/css/syntax.css">
+
+<link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css">
+<!--<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">-->
+<link rel="stylesheet" href="/css/modern-business.css">
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="/css/bootstrap.min.3.3.7.css" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/customstyles.css">
+<link rel="stylesheet" href="/css/boxshadowproperties.css">
+<!-- most color styles are extracted out to here -->
+<link rel="stylesheet" href="/css/theme-blue.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="/js/jquery.navgoco.min.js"></script>
+
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<!-- Anchor.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.2.0/anchor.min.js"></script>
+<script src="/js/toc.js"></script>
+<script src="/js/customscripts.js"></script>
+
+<link rel="shortcut icon" href="/assets/images/favicon.ico">
+
+<link rel="stylesheet" href="/css/uikit.min.css" />
+<script src="/js/uikit.min.js"></script>
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<link rel="alternate" type="application/rss+xml" title="docs" href="http://localhost:4000/feed.xml">
+
+    <script>
+        $(document).ready(function() {
+            // Initialize navgoco with default options
+            $("#mysidebar").navgoco({
+                caretHtml: '',
+                accordion: false,
+                openClass: 'active', // open
+                save: false, // leave false or nav highlighting doesn't work right
+                cookie: {
+                    name: 'navgoco',
+                    expires: false,
+                    path: '/'
+                },
+                slide: {
+                    duration: 250,
+                    easing: 'swing'
+                }
+            });
+
+            // expand first level at indexes [0,3,7]
+            $("#mysidebar").navgoco('toggle', true, 0, 3, 7);
+
+            $("#collapseAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', false);
+            });
+
+            $("#expandAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', true);
+            });
+
+        });
+
+    </script>
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
+    <script>
+        $(document).ready(function() {
+            $("#tg-sb-link").click(function() {
+                $("#tg-sb-sidebar").toggle();
+                $("#tg-sb-content").toggleClass('col-md-8');
+                $("#tg-sb-content").toggleClass('col-md-12');
+                $("#tg-sb-icon").toggleClass('fa-toggle-on');
+                $("#tg-sb-icon").toggleClass('fa-toggle-off');
+            });
+        });
+    </script>
+    
+
+</head>
+<body>
+<!-- Navigation -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container topnavlinks">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/index.html"><span class="projectTitle home-logo"><img src="/assets/images/Bitmark_Logo-desktop_white.svg" alt="Bitmark logo"/><!-- Home --></span></a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <!-- toggle sidebar button -->
+                <li><a id="tg-sb-link" href="#"><i id="tg-sb-icon" class="fa fa-toggle-on"></i> Nav</a></li>
+                <!-- entries without drop-downs appear here -->
+
+
+
+
+                
+                
+                
+                <li><a href="https://github.com/bitmark-inc/docs" target="_blank" rel="noopener">GitHub</a></li>
+                
+                
+                
+                <!-- entries with drop-downs appear here -->
+                <!-- conditional logic to control which topnav appears for the audience defined in the configuration file.-->
+                
+                
+			<li>
+
+
+
+  <a class="email" title="Submit feedback" href="#" onclick="javascript:window.location='mailto:support@bitmark.com?subject=Bitmark Inc feedback&body=I have some feedback about the Run a Node page: ' + window.location.href;"><i class="fa fa-envelope-o"></i> Need help?</a>
+
+</li>
+
+		
+                <!--comment out this block if you want to hide search-->
+                <li>
+                    <!--start search-->
+                    <div id="search-demo-container">
+                        <input type="text" id="search-input" placeholder="search...">
+                        <ul id="results-container"></ul>
+                    </div>
+                    <script src="/js/jekyll-search.js" type="text/javascript"></script>
+                    <script type="text/javascript">
+                            SimpleJekyllSearch.init({
+                                searchInput: document.getElementById('search-input'),
+                                resultsContainer: document.getElementById('results-container'),
+                                dataSource: '/search.json',
+                                searchResultTemplate: '<li><a href="{url}" title="Run a Node">{title}</a></li>',
+                    noResultsText: 'No results found.',
+                            limit: 10,
+                            fuzzy: true,
+                    })
+                    </script>
+                    <!--end search-->
+                </li>
+            </ul>
+        </div>
+        </div>
+        <!-- /.container -->
+</nav>
+
+<!-- Page Content -->
+<div class="container">
+  <div id="main">
+    <!-- Content Row -->
+    <div class="row">
+        
+        
+            <!-- Sidebar Column -->
+            <div class="col-md-4" id="tg-sb-sidebar">
+                
+
+<ul id="mysidebar" class="nav">
+  <li class="sidebarTitle"> </li>
+  
+  
+  
+  <li>
+      <a title="Register & Control data" href="#">Register & Control data</a>
+      <ul>
+          
+          
+          
+          <li><a title="Register data" href="/register-and-control-data/register-data">Register data</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Control access" href="/register-and-control-data/control-access">Control access</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Transfer rights" href="/register-and-control-data/transfer-rights">Transfer rights</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Share rights" href="/register-and-control-data/share-rights">Share rights</a></li>
+          
+          
+          
+          
+          
+          
+          <li class="active"><a title="Run a Node" href="/register-and-control-data/run-a-node">Run a Node</a></li>
+          
+          
+          
+          
+      </ul>
+   </li>
+     
+      
+  
+  <li>
+      <a title="Explore the Protocol Docs" href="#">Explore the Protocol Docs</a>
+      <ul>
+          
+          
+          
+          <li><a title="Blockchain Overview" href="/explore-the-protocol-docs/blockchain-overview">Blockchain Overview</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Block Validation and Synchronization" href="/explore-the-protocol-docs/block-verification-and-synchronization">Block Validation and Synchronization</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Block Mining" href="/explore-the-protocol-docs/block-mining">Block Mining</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Payment Verification" href="/explore-the-protocol-docs/payment-verification">Payment Verification</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Storage Databases" href="/explore-the-protocol-docs/storage-databases">Storage Databases</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Blockchain Security" href="/explore-the-protocol-docs/blockchain-security">Blockchain Security</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="RPC Communication" href="/explore-the-protocol-docs/rpc-communication">RPC Communication</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Glossary" href="/explore-the-protocol-docs/glossary">Glossary</a></li>
+          
+          
+          
+          
+      </ul>
+   </li>
+     
+      
+  
+  <li>
+      <a title="Read our Papers" href="#">Read our Papers</a>
+      <ul>
+          
+          
+          
+          <li><a title="Bitmark versus Ethereum" href="/read-our-papers/bitmark-eth-comparison">Bitmark versus Ethereum</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="White Papers" href="/read-our-papers//white-papers">White Papers</a></li>
+          
+          
+          
+          
+      </ul>
+   </li>
+     
+      
+  
+  <li>
+      <a title="Contribute to the Protocol" href="#">Contribute to the Protocol</a>
+      <ul>
+          
+          
+          
+          <li><a title="Contribute to the Protocol" href="/contribute-to-the-protocol">Contribute to the Protocol</a></li>
+          
+          
+          
+          
+      </ul>
+   </li>
+     
+      
+  
+  <li>
+      <a title="Browse our FAQ" href="#">Browse our FAQ</a>
+      <ul>
+          
+          
+          
+          <li><a title="Bitmark Protocol FAQ" href="/browser-our-faq/bitmark-protocol-faq">Bitmark Protocol FAQ</a></li>
+          
+          
+          
+          
+      </ul>
+   </li>
+     
+      
+      
+      <!-- if you aren't using the accordion, uncomment this block:
+         <p class="external">
+             <a href="#" id="collapseAll">Collapse All</a> | <a href="#" id="expandAll">Expand All</a>
+         </p>
+         -->
+</ul>
+
+<!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
+<script>$("li.active").parents('li').toggleClass("active");</script>
+
+            </div>
+            
+        
+
+        <!-- Content Column -->
+        <div class="col-md-8" id="tg-sb-content">
+            <!-- <div class="post-header">
+   <h1 class="post-title-main">Run a Node</h1>
+</div> -->
+
+
+
+<div class="post-content">
+
+   
+
+    
+    
+
+    <div class="row">
+        <div class="col-md-9"><h1 id="run-a-node">Run a Node</h1>
+
+<p>A full-node of bitmarkd consists of a <code class="language-plaintext highlighter-rouge">bitmarkd</code>, a <code class="language-plaintext highlighter-rouge">recorderd</code>, a payment system, a <code class="language-plaintext highlighter-rouge">litecoind</code>, and a <code class="language-plaintext highlighter-rouge">bitcoind</code>. The <code class="language-plaintext highlighter-rouge">bitmarkd</code> service  verifies and records transactions on the Bitmark blockchain while the <code class="language-plaintext highlighter-rouge">recorderd</code> service computes the Bitmark proof-of-work algorithm that allows nodes to compete to win blocks on the Bitmark blockchain.</p>
+
+<p>This tutorial explains how to set up the <code class="language-plaintext highlighter-rouge">bitmarkd</code> and/or the <code class="language-plaintext highlighter-rouge">recorderd</code> services by hand.</p>
+
+<h2 id="prerequisites">Prerequisites</h2>
+
+<ul>
+  <li>You must have and know your <strong>public IP</strong> address.</li>
+  <li>You must have <strong>a Bitcoin and a Litecoin address</strong> for receiving mining rewards.</li>
+  <li>Your environment must be open for incoming connections through port 2136.</li>
+  <li>Hardware minimum requirements:
+    <ul>
+      <li>memory &gt;= 2 GB</li>
+      <li>free disk space &gt;= 20 GB</li>
+      <li>broadband Internet connection with upload speeds of at least 400 kilobits (50 kilobytes) per second</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="installing-a-bitmark-node-and-generating-required-keys-and-certificates">Installing a Bitmark Node and Generating Required Keys and Certificates</h2>
+
+<p>Bitmark nodes can be installed on a variety of different operating systems, with pre-built packages available for FreeBSD, Ubuntu, and macOS.</p>
+
+<p>If some special functionality is required, or there are no available packages yet for your OS, a Bitmark node can also be compiled from source files. For more information, see <a href="###-Building-From-Source">Building From Source</a>.</p>
+
+<h3 id="freebsd">FreeBSD</h3>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>pkg <span class="nb">install </span>bitmark
+<span class="nv">$ </span>service bitmarkd keygen
+<span class="nv">$ </span>service recorderd keygen
+</code></pre></div></div>
+
+<h3 id="ubuntu">Ubuntu</h3>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>add-apt-repository <span class="nt">-y</span> ppa:bitmark/bitmarkd
+<span class="nv">$ </span>apt update
+<span class="nv">$ </span>apt <span class="nb">install </span>bitmarkd
+</code></pre></div></div>
+
+<h3 id="macos">macOS</h3>
+
+<p>You need to install Brew:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>/usr/bin/ruby <span class="nt">-e</span> <span class="s2">"</span><span class="si">$(</span>curl <span class="nt">-fsSL</span> https://raw.githubusercontent.com/Homebrew/install/master/install<span class="si">)</span><span class="s2">"</span>
+</code></pre></div></div>
+
+<p>Visit the <a href="https://brew.sh/">Brew</a> site for more information on the installation and configuration options.</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>brew tap bitmark-inc/bitmark
+<span class="nv">$ </span>brew <span class="nb">install </span>bitmarkd
+</code></pre></div></div>
+
+<h3 id="building-from-source">Building From Source</h3>
+
+<p><a href="https://github.com/bitmark-inc/bitmarkd#operating-system-specific-setup-commands">See detailed instructions here.</a></p>
+
+<h2 id="setting-up-and-running-bitmarkd">Setting up and running <code class="language-plaintext highlighter-rouge">bitmarkd</code></h2>
+
+<p>The installation includes a sample configuration which has some embedded instructions for quick setup, and only a few items near the beginning of the file need to be changed for basic use. The sample configuration could be found at:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>OS</th>
+      <th>Sample configuration file path</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>FreeBSD</td>
+      <td><code class="language-plaintext highlighter-rouge">/usr/local/etc/bitmarkd.sample</code></td>
+    </tr>
+    <tr>
+      <td>Ubuntu</td>
+      <td><code class="language-plaintext highlighter-rouge">/etc/bitmarkd.sample</code></td>
+    </tr>
+    <tr>
+      <td>MacOSX</td>
+      <td><code class="language-plaintext highlighter-rouge">/usr/local/etc/bitmarkd/bitmarkd.sample</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Copy the sample configuration.</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">cp</span> <span class="k">${</span><span class="nv">SAMPLE_CONFIGURATION_PATH</span><span class="k">}</span>  ~/.bitmarkd.conf
+</code></pre></div></div>
+
+<p>Edit the <code class="language-plaintext highlighter-rouge">bitmarkd.conf</code> to set up appropriate chain, cryptocurrencies addresses, IP addresses, and ports.</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="k">${</span><span class="nv">EDITOR</span><span class="k">}</span> ~/.bitmarkd.conf	
+</code></pre></div></div>
+
+<p>Finally, start the program.</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>bitmarkd <span class="nt">--config-file</span><span class="o">=</span>~/.bitmarkd.conf start
+</code></pre></div></div>
+
+<p>For more information on <code class="language-plaintext highlighter-rouge">bitmarkd</code> sub-commands, run the following command:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>bitmarkd <span class="nt">--config-file</span><span class="o">=</span>~/.bitmarkd.conf <span class="nb">help</span>
+</code></pre></div></div>
+
+<h2 id="setting-up-and-running-recorderd">Setting up and running <code class="language-plaintext highlighter-rouge">recorderd</code></h2>
+
+<p><code class="language-plaintext highlighter-rouge">recorderd</code> is the mining program for the Bitmark Property System, which can optionally be run to support the Bitmark blockchain (and to earn bitmarks on blocks).</p>
+
+<p>Setting up <code class="language-plaintext highlighter-rouge">recorderd</code> is similar to setting up <code class="language-plaintext highlighter-rouge">bitmarkd</code>.</p>
+
+<p>First, setup and edit your configuration file. For mining using the local <code class="language-plaintext highlighter-rouge">bitmarkd</code>, the sample configuration should work without changes.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>OS</th>
+      <th>Sample configuration file path</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>FreeBSD</td>
+      <td><code class="language-plaintext highlighter-rouge">/usr/local/etc/recorderd.conf</code></td>
+    </tr>
+    <tr>
+      <td>Ubuntu</td>
+      <td><code class="language-plaintext highlighter-rouge">/etc/recorderd.conf</code></td>
+    </tr>
+    <tr>
+      <td>MacOSX</td>
+      <td><code class="language-plaintext highlighter-rouge">/usr/local/etc/recorderd/recorderd.conf</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Copy the sample configuration.</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">cp</span> <span class="k">${</span><span class="nv">SAMPLE_CONFIGURATION_PATH</span><span class="k">}</span>  ~/.recorderd.conf
+</code></pre></div></div>
+
+<p>Start the program.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ recorderd --config-file=~/.recorderd.conf start
+</code></pre></div></div>
+
+<p>For more information on <code class="language-plaintext highlighter-rouge">recorderd</code> sub-commands, run the following command:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>recorderd <span class="nt">--config-file</span><span class="o">=</span>~/.recorderd.conf <span class="nb">help</span>
+</code></pre></div></div>
+</div>
+        
+        <div class="col-md-3">
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+  // Handler for .ready() called.
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 10);
+  return false
+})
+  
+});
+</script>
+
+<div id="toc" class="affix"></div>
+</div>
+        
+    </div>
+
+    
+
+    <div class="tags">
+        
+    </div>
+
+
+
+
+</div>
+
+<hr class="shaded"/>
+
+<footer>
+            <div class="row">
+                <div class="col-lg-12 footer">
+               	&copy;2020 Bitmark Inc. All rights reserved.
+				<br/> Powered by <a href="https://jekyllrb.com/">Jekyll</a>
+<!-- <p><img src="/assets/images/company_logo.png" alt="Company logo"/></p>
+                </div>
+            </div> -->
+</footer>
+
+
+        </div>
+    <!-- /.row -->
+</div>
+<!-- /.container -->
+</div>
+<!-- /#main -->
+    </div>
+
+</body>
+
+</html>

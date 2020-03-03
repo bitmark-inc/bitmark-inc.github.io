@@ -45,7 +45,7 @@
 <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
 
-<link rel="alternate" type="application/rss+xml" title="docs" href="/feed.xml">
+<link rel="alternate" type="application/rss+xml" title="docs" href="http://localhost:4000/feed.xml">
 
     <script>
         $(document).ready(function() {
@@ -390,9 +390,9 @@
 
 <p>Each asset can be described by a name and by metadata (both optional) and must be uniquely identified by its fingerprint. If an asset record with the same fingerprint value already exists in the blockchain, the new asset record is rejected from incorporation in the blockchain.</p>
 
-<p>An asset record won’t be added to the blockchain without an accompanying bitmark issuance (see the next section for more info). Such an “orphaned” asset records will vanish after three days.</p>
+<p>An asset record won’t be added to the blockchain without an accompanying bitmark issuances (see the next section for more info). Such an “orphaned” asset records will vanish after three days.</p>
 
-<ul class="uk-tab" data-uk-switcher="{connect:'#4b019717-8323-421e-a0d3-0331a9cecbcc'}">
+<ul class="uk-tab" data-uk-switcher="{connect:'#8486ab37-ffe9-4ecd-beee-b23fc95ec2a0'}">
 
 	<li class="uk-active"><a href="#">JS</a></li>
 
@@ -404,7 +404,7 @@
 
 </ul>
 
-<ul id="4b019717-8323-421e-a0d3-0331a9cecbcc" class="uk-switcher uk-margin">
+<ul id="8486ab37-ffe9-4ecd-beee-b23fc95ec2a0" class="uk-switcher uk-margin">
 
 	<li>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">params</span> <span class="o">=</span> <span class="nx">Asset</span><span class="p">.</span><span class="nx">newRegistrationParams</span><span class="p">(</span><span class="nx">assetName</span><span class="p">,</span> <span class="nx">metadata</span><span class="p">);</span>
@@ -466,7 +466,7 @@
 
 <p>After an asset is registered, you can issue bitmarks with a permanent reference to the corresponding asset record.</p>
 
-<ul class="uk-tab" data-uk-switcher="{connect:'#2a07a863-4df8-4f2e-96b7-fdcec8a880c8'}">
+<ul class="uk-tab" data-uk-switcher="{connect:'#d62d6c96-9676-4dba-a8ec-a739e0c21bb9'}">
 
 	<li class="uk-active"><a href="#">JS</a></li>
 
@@ -478,7 +478,7 @@
 
 </ul>
 
-<ul id="2a07a863-4df8-4f2e-96b7-fdcec8a880c8" class="uk-switcher uk-margin">
+<ul id="d62d6c96-9676-4dba-a8ec-a739e0c21bb9" class="uk-switcher uk-margin">
 
 	<li>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">params</span> <span class="o">=</span> <span class="nx">Bitmark</span><span class="p">.</span><span class="nx">newIssuanceParams</span><span class="p">(</span><span class="nx">assetId</span><span class="p">,</span> <span class="nx">quantity</span> <span class="o">=</span> <span class="mi">100</span><span class="p">);</span>
@@ -545,7 +545,7 @@
 
 <p>The sender can transfer a bitmark to another account without additional consent.</p>
 
-<ul class="uk-tab" data-uk-switcher="{connect:'#ed6a539a-2f0d-46da-b8ad-09c67627a762'}">
+<ul class="uk-tab" data-uk-switcher="{connect:'#503c46e7-6ad0-43ec-9a08-1107ada860c6'}">
 
 	<li class="uk-active"><a href="#">JS</a></li>
 
@@ -557,7 +557,7 @@
 
 </ul>
 
-<ul id="ed6a539a-2f0d-46da-b8ad-09c67627a762" class="uk-switcher uk-margin">
+<ul id="503c46e7-6ad0-43ec-9a08-1107ada860c6" class="uk-switcher uk-margin">
 
 	<li>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">params</span> <span class="o">=</span> <span class="nx">Bitmark</span><span class="p">.</span><span class="nx">newTransferParams</span><span class="p">(</span><span class="nx">receiverAccountNumber</span><span class="p">);</span>
@@ -621,7 +621,7 @@
 
 <p>The current owner of a bitmark can propose a transfer offer to another account. The actual ownership transfer won’t happen until the receiver accepts the offer.</p>
 
-<ul class="uk-tab" data-uk-switcher="{connect:'#f29c1e0b-e8a5-43d3-a81e-aee1ff74a9d1'}">
+<ul class="uk-tab" data-uk-switcher="{connect:'#439d16fc-cfc6-400c-b5f9-c46156c0be1f'}">
 
 	<li class="uk-active"><a href="#">JS</a></li>
 
@@ -633,7 +633,7 @@
 
 </ul>
 
-<ul id="f29c1e0b-e8a5-43d3-a81e-aee1ff74a9d1" class="uk-switcher uk-margin">
+<ul id="439d16fc-cfc6-400c-b5f9-c46156c0be1f" class="uk-switcher uk-margin">
 
 	<li>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">params</span> <span class="o">=</span> <span class="nx">Bitmark</span><span class="p">.</span><span class="nx">newTransferOfferParams</span><span class="p">(</span><span class="nx">receiverAccountNumber</span><span class="p">);</span>
@@ -693,7 +693,7 @@
 <p>The receiver needs to query if there are any bitmark transfer offers waiting for their countersignature.
 For the details of query execution, please refer to <a href="/bitmark-references/bitmark-sdk/query##Bitmark">Query Bitmark</a>.</p>
 
-<ul class="uk-tab" data-uk-switcher="{connect:'#cd766f8e-9d4a-44ab-bda1-982944453787'}">
+<ul class="uk-tab" data-uk-switcher="{connect:'#d6051f8e-ced4-42ab-85dd-badefdbab583'}">
 
 	<li class="uk-active"><a href="#">JS</a></li>
 
@@ -705,7 +705,7 @@ For the details of query execution, please refer to <a href="/bitmark-references
 
 </ul>
 
-<ul id="cd766f8e-9d4a-44ab-bda1-982944453787" class="uk-switcher uk-margin">
+<ul id="d6051f8e-ced4-42ab-85dd-badefdbab583" class="uk-switcher uk-margin">
 
 	<li>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">bitmarkQueryParams</span> <span class="o">=</span> <span class="nx">Bitmark</span><span class="p">.</span><span class="nx">newBitmarkQueryBuilder</span><span class="p">()</span>
@@ -755,7 +755,7 @@ For the details of query execution, please refer to <a href="/bitmark-references
 
 <p>The status of the bitmark will change from <code class="language-plaintext highlighter-rouge">offering</code> to <code class="language-plaintext highlighter-rouge">transferring</code>.</p>
 
-<ul class="uk-tab" data-uk-switcher="{connect:'#8709de31-1e6a-4732-8e03-128499606b03'}">
+<ul class="uk-tab" data-uk-switcher="{connect:'#f25c5402-039c-41c1-9df6-457689fe58b4'}">
 
 	<li class="uk-active"><a href="#">JS</a></li>
 
@@ -767,7 +767,7 @@ For the details of query execution, please refer to <a href="/bitmark-references
 
 </ul>
 
-<ul id="8709de31-1e6a-4732-8e03-128499606b03" class="uk-switcher uk-margin">
+<ul id="f25c5402-039c-41c1-9df6-457689fe58b4" class="uk-switcher uk-margin">
 
 	<li>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">transferOfferResponseParams</span> <span class="o">=</span> <span class="nx">Bitmark</span><span class="p">.</span><span class="nx">newTransferResponseParams</span><span class="p">(</span><span class="nx">BITMARK_CONSTANTS</span><span class="p">.</span><span class="nx">TRANSFER_OFFER_RESPONSE_TYPES</span><span class="p">.</span><span class="nx">ACCEPT</span><span class="p">);</span>
@@ -819,7 +819,7 @@ For the details of query execution, please refer to <a href="/bitmark-references
 <p>The receiver can also reject a bitmark transfer offer.
 The status of the bitmark will reverted to <code class="language-plaintext highlighter-rouge">settled</code>, and the sender can create a new transfer offer.</p>
 
-<ul class="uk-tab" data-uk-switcher="{connect:'#6fc72235-1073-492c-a31b-a87a102deb15'}">
+<ul class="uk-tab" data-uk-switcher="{connect:'#ebdf8184-f524-47ac-900a-468791afa695'}">
 
 	<li class="uk-active"><a href="#">JS</a></li>
 
@@ -831,7 +831,7 @@ The status of the bitmark will reverted to <code class="language-plaintext highl
 
 </ul>
 
-<ul id="6fc72235-1073-492c-a31b-a87a102deb15" class="uk-switcher uk-margin">
+<ul id="ebdf8184-f524-47ac-900a-468791afa695" class="uk-switcher uk-margin">
 
 	<li>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">transferOfferResponseParams</span> <span class="o">=</span> <span class="nx">Bitmark</span><span class="p">.</span><span class="nx">newTransferResponseParams</span><span class="p">(</span><span class="nx">BITMARK_CONSTANTS</span><span class="p">.</span><span class="nx">TRANSFER_OFFER_RESPONSE_TYPES</span><span class="p">.</span><span class="nx">REJECT</span><span class="p">);</span>
@@ -884,7 +884,7 @@ The status of the bitmark will reverted to <code class="language-plaintext highl
 
 <p>Similar to the case of the receiver rejecting the offer, the status of the bitmark will be set to <code class="language-plaintext highlighter-rouge">settled</code> again, and the bitmark becomes available for a new transfer.</p>
 
-<ul class="uk-tab" data-uk-switcher="{connect:'#043a4ef4-c758-42c9-84aa-93d4e0103869'}">
+<ul class="uk-tab" data-uk-switcher="{connect:'#35247976-e3b5-451c-b58d-bd69a4817e6f'}">
 
 	<li class="uk-active"><a href="#">JS</a></li>
 
@@ -896,7 +896,7 @@ The status of the bitmark will reverted to <code class="language-plaintext highl
 
 </ul>
 
-<ul id="043a4ef4-c758-42c9-84aa-93d4e0103869" class="uk-switcher uk-margin">
+<ul id="35247976-e3b5-451c-b58d-bd69a4817e6f" class="uk-switcher uk-margin">
 
 	<li>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">transferOfferResponseParams</span> <span class="o">=</span> <span class="nx">Bitmark</span><span class="p">.</span><span class="nx">newTransferResponseParams</span><span class="p">(</span><span class="nx">BITMARK_CONSTANTS</span><span class="p">.</span><span class="nx">TRANSFER_OFFER_RESPONSE_TYPES</span><span class="p">.</span><span class="nx">CANCEL</span><span class="p">);</span>
