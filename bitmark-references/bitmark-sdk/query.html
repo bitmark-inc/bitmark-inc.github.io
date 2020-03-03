@@ -322,6 +322,13 @@
       <a title="Contribute to the Protocol" href="#">Contribute to the Protocol</a>
       <ul>
           
+          
+          
+          <li><a title="Contribute to the Protocol" href="/contribute-to-the-protocol">Contribute to the Protocol</a></li>
+          
+          
+          
+          
       </ul>
    </li>
      
@@ -455,7 +462,7 @@
 
 <h3 id="querying-for-a-specific-asset">Querying for a specific asset</h3>
 
-<ul class="uk-tab" data-uk-switcher="{connect:'#46f48ea7-d063-4a2f-85c6-80f186b24d59'}">
+<ul class="uk-tab" data-uk-switcher="{connect:'#1621adc4-6fea-4e14-8b21-467e01e7c71a'}">
 
 	<li class="uk-active"><a href="#">JS</a></li>
 
@@ -467,7 +474,7 @@
 
 </ul>
 
-<ul id="46f48ea7-d063-4a2f-85c6-80f186b24d59" class="uk-switcher uk-margin">
+<ul id="1621adc4-6fea-4e14-8b21-467e01e7c71a" class="uk-switcher uk-margin">
 
 	<li>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">Asset</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nx">assetId</span><span class="p">);</span>
@@ -514,7 +521,7 @@
 
 <p>To retrieve a set of all assets registered by a specific account, use the account number of the registrant as the query argument.</p>
 
-<ul class="uk-tab" data-uk-switcher="{connect:'#aab57c91-e09f-44d7-9339-523326a4d8c0'}">
+<ul class="uk-tab" data-uk-switcher="{connect:'#c26ebdb7-2939-4261-ae26-df9aec9f3208'}">
 
 	<li class="uk-active"><a href="#">JS</a></li>
 
@@ -526,7 +533,7 @@
 
 </ul>
 
-<ul id="aab57c91-e09f-44d7-9339-523326a4d8c0" class="uk-switcher uk-margin">
+<ul id="c26ebdb7-2939-4261-ae26-df9aec9f3208" class="uk-switcher uk-margin">
 
 	<li>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">assetQueryParams</span> <span class="o">=</span> <span class="nx">Asset</span><span class="p">.</span><span class="nx">newAssetQueryBuilder</span><span class="p">()</span>
@@ -587,7 +594,7 @@
 
 <p>Actions that are applied to the same bitmark will create a chain of transactions linked by <code class="language-plaintext highlighter-rouge">previous_id</code> (See <a href="###-Record-data-structure">Record data structure</a>).</p>
 
-<p><img src="/pages/bitmark-references/bitmark-sdk/record_tx.png" alt="a chain of transaction records" /></p>
+<p><img src="/pages/register-and-control-data/sdk/record_tx.png" alt="a chain of transaction records" /></p>
 
 <h3 id="record-data-structure-1">Record data structure</h3>
 
@@ -648,7 +655,7 @@
 
 <h3 id="querying-for-a-specific-transaction">Querying for a specific transaction</h3>
 
-<ul class="uk-tab" data-uk-switcher="{connect:'#96d66100-4f8f-4202-a765-1b3bca050a75'}">
+<ul class="uk-tab" data-uk-switcher="{connect:'#a9aa61be-a041-4a6c-9c8e-642855183ad0'}">
 
 	<li class="uk-active"><a href="#">JS</a></li>
 
@@ -660,7 +667,7 @@
 
 </ul>
 
-<ul id="96d66100-4f8f-4202-a765-1b3bca050a75" class="uk-switcher uk-margin">
+<ul id="a9aa61be-a041-4a6c-9c8e-642855183ad0" class="uk-switcher uk-margin">
 
 	<li>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">txResponse</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">Transaction</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nx">txId</span><span class="p">);</span>
@@ -701,7 +708,7 @@
 
 <p>To retrieve the set of transactions that make up provenance of a bitmark, use a bitmark as an argument. This will produce a list of transaction records that show the ownership changes of a bitmark. If a bitmark is issued by user A, and then transferred to user B then to user C, the return will include three transactions with user A, B, and C as transaction owners respectively.</p>
 
-<ul class="uk-tab" data-uk-switcher="{connect:'#b378c044-3371-4994-85f3-eb7ebf288670'}">
+<ul class="uk-tab" data-uk-switcher="{connect:'#d5bed995-86a4-4613-aea7-387bfa5dcd7b'}">
 
 	<li class="uk-active"><a href="#">JS</a></li>
 
@@ -713,7 +720,7 @@
 
 </ul>
 
-<ul id="b378c044-3371-4994-85f3-eb7ebf288670" class="uk-switcher uk-margin">
+<ul id="d5bed995-86a4-4613-aea7-387bfa5dcd7b" class="uk-switcher uk-margin">
 
 	<li>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">transactionQueryParams</span> <span class="o">=</span> <span class="nx">Transaction</span><span class="p">.</span><span class="nx">newTransactionQueryBuilder</span><span class="p">()</span>
@@ -763,7 +770,7 @@
 <p>To retrieve the set of transactions initiated by the same account, use the account ID as an argument.
 <!-- TODO: what does this mean? --></p>
 
-<ul class="uk-tab" data-uk-switcher="{connect:'#60e87195-fdce-4b5b-be9b-a3c4472cd5f2'}">
+<ul class="uk-tab" data-uk-switcher="{connect:'#9b2844a5-5036-43fd-bbed-717505b01948'}">
 
 	<li class="uk-active"><a href="#">JS</a></li>
 
@@ -775,7 +782,7 @@
 
 </ul>
 
-<ul id="60e87195-fdce-4b5b-be9b-a3c4472cd5f2" class="uk-switcher uk-margin">
+<ul id="9b2844a5-5036-43fd-bbed-717505b01948" class="uk-switcher uk-margin">
 
 	<li>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">transactionQueryParams</span> <span class="o">=</span> <span class="nx">Transaction</span><span class="p">.</span><span class="nx">newTransactionQueryBuilder</span><span class="p">()</span>
@@ -826,11 +833,11 @@
 
 <p>When a bitmark is issued, the corresponding bitmark and transaction record are created.</p>
 
-<p><img src="/pages/bitmark-references/bitmark-sdk/record_bitmark_issue.png" alt="bitmark record at the time of issuance" /></p>
+<p><img src="/pages/register-and-control-data/sdk/record_bitmark_issue.png" alt="bitmark record at the time of issuance" /></p>
 
 <p>When a bitmark is transferred, more transaction records are added to the property chain and the bitmark record is updated.</p>
 
-<p><img src="/pages/bitmark-references/bitmark-sdk/record_bitmark_transfer.png" alt="bitmark record after transfer" /></p>
+<p><img src="/pages/register-and-control-data/sdk/record_bitmark_transfer.png" alt="bitmark record after transfer" /></p>
 
 <h3 id="record-data-structure-2">Record data structure</h3>
 
@@ -889,7 +896,7 @@
   </tbody>
 </table>
 
-<p><img src="/pages/bitmark-references/bitmark-sdk/bitmark_status.png" alt="Bitmark status diagram" /></p>
+<p><img src="/pages/register-and-control-data/sdk/bitmark_status.png" alt="Bitmark status diagram" /></p>
 
 <h4 id="offer-data-structure">Offer data structure</h4>
 
@@ -930,7 +937,7 @@
 
 <h3 id="querying-for-a-specific-bitmark">Querying for a specific bitmark</h3>
 
-<ul class="uk-tab" data-uk-switcher="{connect:'#baf31128-4df7-45c3-a1d1-4b5dfa39d2a4'}">
+<ul class="uk-tab" data-uk-switcher="{connect:'#4323baa0-4409-462c-99a1-5b4dfe215d53'}">
 
 	<li class="uk-active"><a href="#">JS</a></li>
 
@@ -942,7 +949,7 @@
 
 </ul>
 
-<ul id="baf31128-4df7-45c3-a1d1-4b5dfa39d2a4" class="uk-switcher uk-margin">
+<ul id="4323baa0-4409-462c-99a1-5b4dfe215d53" class="uk-switcher uk-margin">
 
 	<li>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">Bitmark</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nx">bitmarkId</span><span class="p">,</span> <span class="kc">false</span><span class="p">);</span> <span class="c1">// false: not include asset, true: include asset</span>
@@ -994,7 +1001,7 @@
 
 <h4 id="bitmarks-offered-from-the-specific-sender">Bitmarks offered from the specific sender</h4>
 
-<p>To list the bitmarks that are offered by a sender, use that account as an argument. The sender can take action on these bitmarks (synchronise as cancel an offer).</p>
+<p>To list the bitmarks that are offered by a sender, use that account as an argument. The sender can take action on these bitmarks (such as cancel an offer).</p>
 
 <!-- TODO: examples -->
 
