@@ -45,7 +45,7 @@
 <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
 
-<link rel="alternate" type="application/rss+xml" title="docs" href="http://localhost:4000/feed.xml">
+<link rel="alternate" type="application/rss+xml" title="docs" href="/feed.xml">
 
     <script>
         $(document).ready(function() {
@@ -405,7 +405,7 @@
 
 <p>Bitmark nodes can be installed on a variety of different operating systems, with pre-built packages available for FreeBSD, Ubuntu, and macOS.</p>
 
-<p>If some special functionality is required, or there are no available packages yet for your OS, a Bitmark node can also be compiled from source files. For more information, see <a href="###-Building-From-Source">Building From Source</a>.</p>
+<p>If some special functionality is required, or there are no available packages yet for your OS, a Bitmark node can also be compiled from source files. For more information, see <a href="#building-from-source">Building From Source</a>.</p>
 
 <h3 id="freebsd">FreeBSD</h3>
 
@@ -438,7 +438,7 @@
 
 <p><a href="https://github.com/bitmark-inc/bitmarkd#operating-system-specific-setup-commands">See detailed instructions here.</a></p>
 
-<h2 id="setting-up-and-running-bitmarkd">Setting up and running <code class="language-plaintext highlighter-rouge">bitmarkd</code></h2>
+<h2 id="setting-up-and-running-bitmarkd">Setting up and running bitmarkd</h2>
 
 <p>The installation includes a sample configuration which has some embedded instructions for quick setup, and only a few items near the beginning of the file need to be changed for basic use. The sample configuration could be found at:</p>
 
@@ -459,7 +459,7 @@
       <td><code class="language-plaintext highlighter-rouge">/etc/bitmarkd.sample</code></td>
     </tr>
     <tr>
-      <td>MacOSX</td>
+      <td>macOS</td>
       <td><code class="language-plaintext highlighter-rouge">/usr/local/etc/bitmarkd/bitmarkd.sample</code></td>
     </tr>
   </tbody>
@@ -485,7 +485,7 @@
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>bitmarkd <span class="nt">--config-file</span><span class="o">=</span>~/.bitmarkd.conf <span class="nb">help</span>
 </code></pre></div></div>
 
-<h2 id="setting-up-and-running-recorderd">Setting up and running <code class="language-plaintext highlighter-rouge">recorderd</code></h2>
+<h2 id="setting-up-and-running-recorderd">Setting up and running recorderd</h2>
 
 <p><code class="language-plaintext highlighter-rouge">recorderd</code> is the mining program for the Bitmark Property System, which can optionally be run to support the Bitmark blockchain (and to earn bitmarks on blocks).</p>
 
@@ -510,7 +510,7 @@
       <td><code class="language-plaintext highlighter-rouge">/etc/recorderd.conf</code></td>
     </tr>
     <tr>
-      <td>MacOSX</td>
+      <td>macOS</td>
       <td><code class="language-plaintext highlighter-rouge">/usr/local/etc/recorderd/recorderd.conf</code></td>
     </tr>
   </tbody>
