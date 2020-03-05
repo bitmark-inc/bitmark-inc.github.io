@@ -382,8 +382,6 @@
     <div class="row">
         <div class="col-md-9"><h1 id="bitmark-node-installation">Bitmark Node Installation</h1>
 
-<p>That setup is intended for beginners who want to make it fast and easy to run the Bitmark Property System using a <code class="language-plaintext highlighter-rouge">docker</code> container that wraps all components and settings. Developers, or people who want to study the main program, may instead choose to run <code class="language-plaintext highlighter-rouge">bitmarkd</code> or <code class="language-plaintext highlighter-rouge">recorderd</code> services directly.</p>
-
 <p>A full-node of bitmarkd consists of a <code class="language-plaintext highlighter-rouge">bitmarkd</code>, a <code class="language-plaintext highlighter-rouge">recorderd</code>, a payment system, a <code class="language-plaintext highlighter-rouge">litecoind</code>, and a <code class="language-plaintext highlighter-rouge">bitcoind</code>. The <code class="language-plaintext highlighter-rouge">bitmarkd</code> service  verifies and records transactions on the Bitmark blockchain while the <code class="language-plaintext highlighter-rouge">recorderd</code> service computes the Bitmark proof-of-work algorithm that allows nodes to compete to win blocks on the Bitmark blockchain.</p>
 
 <p>This tutorial explains how to set up the <code class="language-plaintext highlighter-rouge">bitmarkd</code> and/or the <code class="language-plaintext highlighter-rouge">recorderd</code> services by hand.</p>
@@ -391,107 +389,102 @@
 <h2 id="prerequisites">Prerequisites</h2>
 
 <ul>
-  <li>You must install the go language package for your system.</li>
-  <li>You must configure environmental variables for the go system.</li>
-  <li>You must install the ZMQ4 and Argon2 libraries.</li>
+  <li>You must have and know your <strong>public IP</strong> address.</li>
+  <li>You must have <strong>a Bitcoin and a Litecoin address</strong> for receiving mining rewards.</li>
+  <li>Your environment must be open for incoming connections through port 2136.</li>
+  <li>Hardware minimum requirements:
+    <ul>
+      <li>memory &gt;= 2 GB</li>
+      <li>free disk space &gt;= 20 GB</li>
+      <li>broadband Internet connection with upload speeds of at least 400 kilobits (50 kilobytes) per second</li>
+    </ul>
+  </li>
 </ul>
 
-<h2 id="installing-the-prerequisite-packages">Installing the Prerequisite Packages</h2>
+<h2 id="installing-a-bitmark-node-and-generating-required-keys-and-certificates">Installing a Bitmark Node and Generating Required Keys and Certificates</h2>
 
-<p>Installing the required packages requires specific commands on Debian, FreeBSD, macOS, and Ubuntu.</p>
+<p>Bitmark nodes can be installed on a variety of different operating systems, with pre-built packages available for FreeBSD, Ubuntu, and macOS.</p>
 
-<h3 id="installing-packages-on-debian">Installing Packages on Debian</h3>
+<p>If some special functionality is required, or there are no available packages yet for your OS, a Bitmark node can also be compiled from source files. For more information, see <a href="#building-from-source">Building From Source</a>.</p>
 
-<p><em>Tested on Stretch (Debian 9).</em></p>
+<h3 id="freebsd">FreeBSD</h3>
 
-<p>First, ensure that the system has access to both the current version of Debian (<code class="language-plaintext highlighter-rouge">stable</code>) and <code class="language-plaintext highlighter-rouge">testing</code>.</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>root@debian-bitmarkd:/# cat /etc/apt/sources.list.d/stable.list
-deb     http://ftp.de.debian.org/debian/    stable main contrib non-free
-deb-src http://ftp.de.debian.org/debian/    stable main contrib non-free
-deb     http://security.debian.org/         stable/updates  main contrib non-free
-
-root@debian-bitmarkd:/# cat /etc/apt/sources.list.d/testing.list
-deb     http://ftp.de.debian.org/debian/    testing main contrib non-free
-deb-src http://ftp.de.debian.org/debian/    testing main contrib non-free
-deb     http://security.debian.org/         testing/updates  main contrib non-free
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>pkg <span class="nb">install </span>bitmark
+<span class="nv">$ </span>service bitmarkd keygen
+<span class="nv">$ </span>service recorderd keygen
 </code></pre></div></div>
 
-<p>Now. install <code class="language-plaintext highlighter-rouge">libargon2</code> from <code class="language-plaintext highlighter-rouge">testing</code>:</p>
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="nv">$ </span>apt-get <span class="nt">-t</span> testing <span class="nb">install </span>libargon2-dev libargon2-1
+<h3 id="ubuntu">Ubuntu</h3>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>add-apt-repository <span class="nt">-y</span> ppa:bitmark/bitmarkd
+<span class="nv">$ </span>apt update
+<span class="nv">$ </span>apt <span class="nb">install </span>bitmarkd
 </code></pre></div></div>
 
-<p>For the other packages, install from <code class="language-plaintext highlighter-rouge">stable</code> or <code class="language-plaintext highlighter-rouge">testing</code> as you prefer; both versions work:</p>
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="nv">$ </span>apt <span class="nb">install </span>uuid-dev libzmq3-dev
-</code></pre></div></div>
-<h3 id="installing-packages-on-freebsd">Installing Packages on FreeBSD</h3>
+<h3 id="macos">macOS</h3>
 
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="nv">$ </span>pkg <span class="nb">install </span>libzmq4 libargon2
-</code></pre></div></div>
+<p>You need to install Brew:</p>
 
-<h3 id="installing-packages-on-macos">Installing Packages on macOS</h3>
-
-<p><em>Be sure that Homebrew is installed correctly before beginning.</em></p>
-
-<p>Then:</p>
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="nv">$ </span>brew tap bitmark-inc/bitmark
-    <span class="nv">$ </span>brew <span class="nb">install </span>argon2
-    <span class="nv">$ </span>brew <span class="nb">install </span>zeromq43
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>/usr/bin/ruby <span class="nt">-e</span> <span class="s2">"</span><span class="si">$(</span>curl <span class="nt">-fsSL</span> https://raw.githubusercontent.com/Homebrew/install/master/install<span class="si">)</span><span class="s2">"</span>
 </code></pre></div></div>
 
-<h3 id="installing-packages-on-ubuntu">Installing Packages on Ubuntu</h3>
+<p>Visit the <a href="https://brew.sh/">Brew</a> site for more information on the installation and configuration options.</p>
 
-<p><em>Tested on Ubuntu 18.04.</em></p>
-
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="nv">$ </span>apt <span class="nb">install </span>libargon2-0-dev uuid-dev libzmq3-dev
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>brew tap bitmark-inc/bitmark
+<span class="nv">$ </span>brew <span class="nb">install </span>bitmarkd
 </code></pre></div></div>
 
-<h2 id="downloading-and-installing-a-bitmark-node">Downloading and Installing a Bitmark Node</h2>
+<h3 id="building-from-source">Building From Source</h3>
 
-<p>Download the Bitmark Node repository using the <code class="language-plaintext highlighter-rouge">git</code> command:</p>
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="nv">$ </span>git clone https://github.com/bitmark-inc/bitmarkd
+<p><a href="https://github.com/bitmark-inc/bitmarkd#operating-system-specific-setup-commands">See detailed instructions here.</a></p>
+
+<h2 id="setting-up-and-running-bitmarkd">Setting up and running <code class="language-plaintext highlighter-rouge">bitmarkd</code></h2>
+
+<p>The installation includes a sample configuration which has some embedded instructions for quick setup, and only a few items near the beginning of the file need to be changed for basic use. The sample configuration could be found at:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>OS</th>
+      <th>Sample configuration file path</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>FreeBSD</td>
+      <td><code class="language-plaintext highlighter-rouge">/usr/local/etc/bitmarkd.sample</code></td>
+    </tr>
+    <tr>
+      <td>Ubuntu</td>
+      <td><code class="language-plaintext highlighter-rouge">/etc/bitmarkd.sample</code></td>
+    </tr>
+    <tr>
+      <td>macOS</td>
+      <td><code class="language-plaintext highlighter-rouge">/usr/local/etc/bitmarkd/bitmarkd.sample</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Copy the sample configuration.</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">cp</span> <span class="k">${</span><span class="nv">SAMPLE_CONFIGURATION_PATH</span><span class="k">}</span>  ~/.bitmarkd.conf
 </code></pre></div></div>
-<p>Afterward, compile the repo using <code class="language-plaintext highlighter-rouge">go</code>. This process requires that the Go installation be 1.12 or later, as the build process uses Go Modules.</p>
 
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="nv">$ </span><span class="nb">cd </span>bitmarkd
-    <span class="nv">$ </span>go <span class="nb">install</span> <span class="nt">-v</span> ./...
+<p>Edit the <code class="language-plaintext highlighter-rouge">bitmarkd.conf</code> to set up appropriate chain, cryptocurrencies addresses, IP addresses, and ports.</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="k">${</span><span class="nv">EDITOR</span><span class="k">}</span> ~/.bitmarkd.conf	
 </code></pre></div></div>
-
-<h2 id="setting-up-and-running-a-bitmark-node">Setting Up and Running a Bitmark Node</h2>
-
-<p>Ensure that the <code class="language-plaintext highlighter-rouge">${HOME}/go/bin</code> directory is part of your shell’s <code class="language-plaintext highlighter-rouge">${PATH}</code> before continuing.</p>
-
-<p>The commands below assume you checked out and compiled your Bitmark Node into the ${HOME}/bitmarkd directory.</p>
-
-<h3 id="setting-up-and-running-bitmarkd">Setting up and running <code class="language-plaintext highlighter-rouge">bitmarkd</code></h3>
-
-<p>Create the configuration directory and copy the sample configuration:</p>
-
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="nv">$ </span><span class="nb">mkdir</span> <span class="nt">-p</span> ~/.config/bitmarkd
-    <span class="nv">$ </span><span class="nb">cp</span> ~/bitmarkd/command/bitmarkd/bitmarkd.conf.sample  ~/.config/bitmarkd/bitmarkd.conf
-</code></pre></div></div>
-
-<p>Afterward, edit the <code class="language-plaintext highlighter-rouge">bitmarkd.conf</code> to set up appropriate IP addresses, ports, and local bitcoin testnet connection. The sample configuration has some embedded instructions for quick setup, and only a few items near the beginning of the file need to be changed for basic use.</p>
-
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="nv">$ </span><span class="k">${</span><span class="nv">EDITOR</span><span class="k">}</span> ~/.config/bitmarkd/bitmarkd.conf
-</code></pre></div></div>
-
-<p>Generate key files and certificates:</p>
-
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="nv">$ </span>bitmarkd <span class="nt">--config-file</span><span class="o">=</span><span class="s2">"</span><span class="k">${</span><span class="nv">HOME</span><span class="k">}</span><span class="s2">/.config/bitmarkd/bitmarkd.conf"</span> gen-peer-identity <span class="s2">"</span><span class="k">${</span><span class="nv">HOME</span><span class="k">}</span><span class="s2">/.config/bitmarkd/
-    </span><span class="nv">$ </span><span class="s2">bitmarkd --config-file="</span><span class="k">${</span><span class="nv">HOME</span><span class="k">}</span>/.config/bitmarkd/bitmarkd.conf<span class="s2">" gen-rpc-cert "</span><span class="k">${</span><span class="nv">HOME</span><span class="k">}</span>/.config/bitmarkd/
-    <span class="nv">$ </span>bitmarkd <span class="nt">--config-file</span><span class="o">=</span><span class="s2">"</span><span class="k">${</span><span class="nv">HOME</span><span class="k">}</span><span class="s2">/.config/bitmarkd/bitmarkd.conf"</span> gen-proof-identity <span class="s2">"</span><span class="k">${</span><span class="nv">HOME</span><span class="k">}</span><span class="s2">/.config/bitmarkd/
-</span></code></pre></div></div>
 
 <p>Finally, start the program.</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    $ bitmarkd --config-file="${HOME}/.config/bitmarkd/bitmarkd.conf" start
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ bitmarkd --config-file=~/.bitmarkd.conf start
 </code></pre></div></div>
 
 <p>For more information on <code class="language-plaintext highlighter-rouge">bitmarkd</code> sub-commands, run the following command:</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    $ bitmarkd --config-file="${HOME}/.config/bitmarkd/bitmarkd.conf" help
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ bitmarkd --config-file=~/.bitmarkd.conf help
 </code></pre></div></div>
 
-<h3 id="setting-up-and-running-recorderd">Setting up and running <code class="language-plaintext highlighter-rouge">recorderd</code></h3>
+<h2 id="setting-up-and-running-recorderd">Setting up and running <code class="language-plaintext highlighter-rouge">recorderd</code></h2>
 
 <p><code class="language-plaintext highlighter-rouge">recorderd</code> is the mining program for the Bitmark Property System, which can optionally be run to support the Bitmark blockchain (and to earn bitmarks on blocks).</p>
 
@@ -499,24 +492,42 @@ deb     http://security.debian.org/         testing/updates  main contrib non-fr
 
 <p>First, setup and edit your configuration file. For mining using the local <code class="language-plaintext highlighter-rouge">bitmarkd</code>, the sample configuration should work without changes.</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mkdir -p ~/.config/recorderd
-cp ~/bitmarkd/command/recorderd/recorderd.conf.sample  ~/.config/recorderd/recorderd.conf
-${EDITOR} ~/.config/recorderd/recorderd.conf
-</code></pre></div></div>
+<table>
+  <thead>
+    <tr>
+      <th>OS</th>
+      <th>Sample configuration file path</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>FreeBSD</td>
+      <td><code class="language-plaintext highlighter-rouge">/usr/local/etc/recorderd.conf</code></td>
+    </tr>
+    <tr>
+      <td>Ubuntu</td>
+      <td><code class="language-plaintext highlighter-rouge">/etc/recorderd.conf</code></td>
+    </tr>
+    <tr>
+      <td>macOS</td>
+      <td><code class="language-plaintext highlighter-rouge">/usr/local/etc/recorderd/recorderd.conf</code></td>
+    </tr>
+  </tbody>
+</table>
 
-<p>Generate key files and certificates:</p>
+<p>Copy the sample configuration.</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    $ recorderd --config-file="${HOME}/.config/recorderd/recorderd.conf" generate-identity "${HOME}/.config/recorderd/
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">cp</span> <span class="k">${</span><span class="nv">SAMPLE_CONFIGURATION_PATH</span><span class="k">}</span>  ~/.recorderd.conf
 </code></pre></div></div>
 
 <p>Start the program.</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    $ recorderd --config-file="${HOME}/.config/recorderd/recorderd.conf" start
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ recorderd --config-file=~/.recorderd.conf start
 </code></pre></div></div>
 
 <p>For more information on <code class="language-plaintext highlighter-rouge">recorderd</code> sub-commands, run the following command:</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    $ recorderd --config-file="${HOME}/.config/recorderd/recorderd.conf" help
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ recorderd --config-file=~/.recorderd.conf help
 </code></pre></div></div>
 </div>
         

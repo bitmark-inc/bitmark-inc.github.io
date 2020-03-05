@@ -205,7 +205,7 @@
 "title": "Block Validation and Synchronization",
 "tags": "",
 "keywords": "blockchain, verification, sync, synchronization",
-"url": "/explore-the-protocol-docs/block-verification-and-synchronization",
+"url": "/bitmark-references/bitmark-node-software/block-verification-and-synchronization",
 "summary": ""
 }
 ,
@@ -216,7 +216,7 @@
 "title": "Block Validation and Synchronization",
 "tags": "",
 "keywords": "blockchain, verification, sync, synchronization",
-"url": "/bitmark-references/bitmark-node-software/block-verification-and-synchronization",
+"url": "/explore-the-protocol-docs/block-verification-and-synchronization",
 "summary": ""
 }
 ,
@@ -438,7 +438,7 @@
 "title": "Payment Verification",
 "tags": "",
 "keywords": "payment, payment verification",
-"url": "/explore-the-protocol-docs/payment-verification",
+"url": "/bitmark-references/bitmark-node-software/payment-verification",
 "summary": ""
 }
 ,
@@ -449,7 +449,7 @@
 "title": "Payment Verification",
 "tags": "",
 "keywords": "payment, payment verification",
-"url": "/bitmark-references/bitmark-node-software/payment-verification",
+"url": "/explore-the-protocol-docs/payment-verification",
 "summary": ""
 }
 ,
@@ -526,7 +526,7 @@
 "title": "RPC Communication",
 "tags": "",
 "keywords": "rpc",
-"url": "/explore-the-protocol-docs/rpc-communication",
+"url": "/bitmark-references/bitmark-node-software/rpc-communication",
 "summary": ""
 }
 ,
@@ -537,7 +537,7 @@
 "title": "RPC Communication",
 "tags": "",
 "keywords": "rpc",
-"url": "/bitmark-references/bitmark-node-software/rpc-communication",
+"url": "/explore-the-protocol-docs/rpc-communication",
 "summary": ""
 }
 ,
