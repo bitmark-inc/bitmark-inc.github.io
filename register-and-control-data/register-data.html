@@ -382,17 +382,13 @@
     <div class="row">
         <div class="col-md-9"><h1 id="register-data">Register data</h1>
 
-<p>Assets with titles that have been publicly recorded are more valuable than those without. They are what grant basic rights, such as the ability to resell, rent, lend, and donate the property. The Bitmark blockchain allows individuals to access these rights for digital assets by registering their titles as Bitmark Certificates (or bitmarks). This can be done using the SDK and the CLI.</p>
+<p>Assets with titles that have been publicly recorded are more valuable than those without. They are what grant basic rights, such as the ability to resell, rent, lend, and donate the property. The Bitmark blockchain allows individuals to access these rights for digital assets by registering their titles as Bitmark Certificates (or bitmarks). This can be done using the <a href="#register-data-using-the-sdk">SDK</a> and the <a href="#register-data-using-the-cli">CLI</a>.</p>
 
 <p>The process of registering a Bitmark Certificate for a digital asset occurs in two steps:</p>
 
 <ul>
-  <li>
-    <p>Registering the asset: this creates an <em>Asset Record</em>, which is stored on the Bitmark blockchain.</p>
-  </li>
-  <li>
-    <p>Issuing bitmarks: this creates <em>Issue Records</em> linking to the corresponding asset record, which are also stored on the Bitmark blockchain.</p>
-  </li>
+  <li>Registering the asset: this creates an <em>Asset Record</em>, which is stored on the Bitmark blockchain.</li>
+  <li>Issuing bitmarks: this creates <em>Issue Records</em> linking to the corresponding asset record, which are also stored on the Bitmark blockchain.</li>
 </ul>
 
 <p>This process registers legal property rights on the public Bitmark blockchain for an individual’s digital assets, including personal health and social data, creative works such as art, photography, and music, and other intellectual property. These legal rights determine who owns property and what can be done with it, whether the individual wants to keep it, sell it, or donate it.</p>
@@ -411,21 +407,13 @@
   <li><a href="/register-and-control-data/cli/cli-payment#installing-and-configuring-the-bitmark-wallet">Install and configure the Bitmark Wallet</a></li>
 </ul>
 
-<h2 id="issue-the-first-bitmark">Issue the first bitmark</h2>
+<h2 id="register-data-using-the-sdk">Register data using the SDK</h2>
 
-<p>The first step to create a digital property is to register assets</p>
+<h3 id="register-an-asset">Register an asset</h3>
 
-<ul>
-  <li>Each asset can be described by name and metadata (both optional), and can be uniquely identified by its fingerprint.</li>
-  <li>If an asset record with the same fingerprint value already exists in the blockchain, the new asset record is rejected from incorporation in the blockchain.</li>
-  <li>An asset record won’t be added to the blockchain without accompanying bitmark issuances. The “orphaned” asset records will be vanished after 3 days.</li>
-</ul>
+<p>An asset record requires an accompanying bitmark issuance to be added to the blockchain. This first issuance is free of charge, but additional issuances for the same asset require a fee.</p>
 
-<p>For any asset there is a special issue that is free of cost. Even if an asset already exists a different Bitmark account can create a free issue for it.</p>
-
-<h3 id="using-the-sdk">Using the SDK</h3>
-
-<ul class="uk-tab" data-uk-switcher="{connect:'#681bd3d8-187e-4801-9928-be7fefc470c1'}">
+<ul class="uk-tab" data-uk-switcher="{connect:'#96a75708-4bcd-47ee-a9ac-282d2c4dc1cd'}">
 
 	<li class="uk-active"><a href="#">JS</a></li>
 
@@ -437,7 +425,7 @@
 
 </ul>
 
-<ul id="681bd3d8-187e-4801-9928-be7fefc470c1" class="uk-switcher uk-margin">
+<ul id="96a75708-4bcd-47ee-a9ac-282d2c4dc1cd" class="uk-switcher uk-margin">
 
 	<li>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//Configure the SDK</span>
@@ -600,97 +588,11 @@
 
 </ul>
 
-<h3 id="using-the-cli">Using the CLI</h3>
+<h3 id="issue-more-bitmarks">Issue more bitmarks</h3>
 
-<ul class="uk-tab" data-uk-switcher="{connect:'#53366176-86ed-42b7-b16b-bfb690767033'}">
+<p>After an asset is registered, users can issue additional bitmarks with a permanent reference to the corresponding asset record. SDK users pay for those issuances using the SDK credit system.</p>
 
-	<li class="uk-active"><a href="#">Command</a></li>
-
-	<li><a href="#">Example</a></li>
-
-	<li><a href="#">Output</a></li>
-
-</ul>
-
-<ul id="53366176-86ed-42b7-b16b-bfb690767033" class="uk-switcher uk-margin">
-
-	<li>
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Create an identity</span>
-<span class="nv">$ </span>bitmark-cli <span class="nt">-i</span> IDENTITY <span class="nt">-n</span> &lt;<span class="nb">local</span>|testing|bitmark&gt; add <span class="nt">-d</span> <span class="s1">'DESCRIPTION OF IDENTITY'</span> <span class="nt">--new</span>
-
-<span class="c"># Compute the asset hash</span>
-<span class="nv">$ </span>bitmark-cli <span class="nt">-n</span> &lt;<span class="nb">local</span>|testing|bitmark&gt; fingerprint <span class="nt">-f</span> &lt;file&gt;
-
-<span class="c"># register asset along with issuing the first bitmark</span>
-<span class="nv">$ </span>bitmark-cli <span class="nt">-n</span> &lt;<span class="nb">local</span>|testing|bitmark&gt; <span class="nt">-i</span> &lt;identity&gt; create <span class="nt">-a</span> <span class="s1">'&lt;asset name&gt;'</span> <span class="nt">-m</span> <span class="s1">'&lt;asset metadata&gt;'</span> <span class="nt">-f</span> &lt;asset fingerprint&gt; <span class="nt">-z</span>
-
-<span class="c"># Verify the status of the issuance transaction</span>
-<span class="nv">$ </span>bitmark-cli <span class="nt">-n</span> &lt;<span class="nb">local</span>|testing|bitmark&gt; status <span class="nt">-t</span> &lt;txid&gt;
-
-</code></pre></div></div>
-</li>
-
-	<li>
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Create a Bitmark Account as the Issuer</span>
-bitmark-cli <span class="nt">-n</span> testing <span class="nt">-i</span> first add <span class="nt">-d</span> <span class="s1">'first'</span> <span class="nt">--new</span>
-
-<span class="c">#  Compute file hash</span>
-<span class="nv">$ </span>bitmark-cli <span class="nt">-n</span> testing fingerprint <span class="nt">-f</span> test.txt
-
-<span class="c"># Issue the first bitmark of the asset</span>
-<span class="nv">$ </span>bitmark-cli <span class="nt">-n</span> testing <span class="nt">-i</span> first create <span class="nt">-a</span> <span class="s1">'asset_name'</span> <span class="nt">-m</span> <span class="s1">'From\u0000CLI\u0000desc\u0000example'</span> <span class="nt">-f</span> 0122aa7d05ce9d324feca37780eeeeb7af8611eefb61cfe42bf9f8127071b481520b529e06c9f0799c7527859361f1694acef106d5131a96641eae524e1c323500 <span class="nt">-z</span>
-
-<span class="c"># Verify the status of the issuance transaction</span>
-<span class="nv">$ </span>bitmark-cli <span class="nt">-n</span> testing status <span class="nt">-t</span> 45a3e08658db810d7fda4c34a852f3707bc8e4518571c8c8a79835d0a9bb3834
-</code></pre></div></div>
-</li>
-
-	<li>
-<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">//</span><span class="w"> </span><span class="err">Computing</span><span class="w"> </span><span class="err">asset</span><span class="w"> </span><span class="err">hash</span><span class="w">
-</span><span class="p">{</span><span class="w">
-    </span><span class="nl">"file_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"filename.test"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"fingerprint"</span><span class="p">:</span><span class="s2">"0122aa7d05ce9d324feca37780eeeeb7af8611eefb61cfe42bf9f8127071b481520b529e06c9f799c7527859361f1694acef106d5131a96641eae524e1c323500"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-
-</span><span class="err">//Registering</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">asset</span><span class="w"> </span><span class="err">from</span><span class="w"> </span><span class="err">its</span><span class="w"> </span><span class="err">hash</span><span class="w">
-</span><span class="p">{</span><span class="w">
-  </span><span class="nl">"assetId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dac17bef505f7a5acf890a1d0f232b7d847f1e951cf1f5b880de13253a10df43cdbcab553e08050808e0b3fdfd2581a798dcdf9cedbbddf4476ead14caa612d3"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"issueIds"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="s2">"45a3e08658db810d7fda4c34a852f3707bc8e4518571c8c8a79835d0a9bb3834"</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="nl">"payId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"05943784313be02e7f1823f398f82bccf803933863804a46c42119ad2a8d1f85476d2211a1079acb5cebe6682daf7168"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"payNonce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8ae68bb87c4a926b"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"difficulty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0000ffffffffffffff8000000000000000000000000000000000000000000000"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"submittedNonce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0000000125ef307e"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"proofStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Accepted"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-
-</span><span class="err">//</span><span class="w"> </span><span class="err">Checking</span><span class="w"> </span><span class="err">status</span><span class="w">
-</span><span class="p">{</span><span class="w">
-  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Verified"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-
-</span><span class="err">//</span><span class="w"> </span><span class="err">After</span><span class="w"> </span><span class="err">about</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="err">minutes</span><span class="w">
-</span><span class="p">{</span><span class="w">
-  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Confirmed"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div></div>
-</li>
-
-</ul>
-
-<h2 id="issue-more">Issue more</h2>
-
-<p>After an asset is registered, users can issue more bitmarks with a permanent reference to the corresponding asset record. Those issuance transactions need to be paid to be confirmed on the Blockchain.</p>
-
-<ul>
-  <li>SDK users pay for the issuance transactions using the SDK credit system</li>
-  <li>CLI users pay for the issuance transactions by sending BTC or LTC to the indicated address.</li>
-</ul>
-
-<h3 id="using-the-sdk-1">Using the SDK</h3>
-
-<ul class="uk-tab" data-uk-switcher="{connect:'#64a36c2a-7e6b-49d5-9d30-2f6f29716639'}">
+<ul class="uk-tab" data-uk-switcher="{connect:'#16b51704-89d9-47af-9ef6-95773497c07f'}">
 
 	<li class="uk-active"><a href="#">JS</a></li>
 
@@ -702,7 +604,7 @@ bitmark-cli <span class="nt">-n</span> testing <span class="nt">-i</span> first 
 
 </ul>
 
-<ul id="64a36c2a-7e6b-49d5-9d30-2f6f29716639" class="uk-switcher uk-margin">
+<ul id="16b51704-89d9-47af-9ef6-95773497c07f" class="uk-switcher uk-margin">
 
 	<li>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//import the issuer account</span>
@@ -769,9 +671,13 @@ bitmark-cli <span class="nt">-n</span> testing <span class="nt">-i</span> first 
 
 </ul>
 
-<h3 id="using-the-cli-1">Using the CLI</h3>
+<h2 id="register-data-using-the-cli">Register data using the CLI</h2>
 
-<ul class="uk-tab" data-uk-switcher="{connect:'#bfc2ab98-0beb-4b3c-a22b-756bbf2744b6'}">
+<h3 id="register-an-asset-1">Register an asset</h3>
+
+<p>The steps and logics of registering an asset do not change regardless of whether which tool is used. An asset record requires an accompanying bitmark issuance to be added to the blockchain. This first issuance is free of charge, but additional issuances for the same asset require a fee.</p>
+
+<ul class="uk-tab" data-uk-switcher="{connect:'#5f44bad8-4570-471b-8d94-e1b5adedcad5'}">
 
 	<li class="uk-active"><a href="#">Command</a></li>
 
@@ -781,7 +687,88 @@ bitmark-cli <span class="nt">-n</span> testing <span class="nt">-i</span> first 
 
 </ul>
 
-<ul id="bfc2ab98-0beb-4b3c-a22b-756bbf2744b6" class="uk-switcher uk-margin">
+<ul id="5f44bad8-4570-471b-8d94-e1b5adedcad5" class="uk-switcher uk-margin">
+
+	<li>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Create an identity</span>
+<span class="nv">$ </span>bitmark-cli <span class="nt">-i</span> IDENTITY <span class="nt">-n</span> &lt;<span class="nb">local</span>|testing|bitmark&gt; add <span class="nt">-d</span> <span class="s1">'DESCRIPTION OF IDENTITY'</span> <span class="nt">--new</span>
+
+<span class="c"># Compute the asset hash</span>
+<span class="nv">$ </span>bitmark-cli <span class="nt">-n</span> &lt;<span class="nb">local</span>|testing|bitmark&gt; fingerprint <span class="nt">-f</span> &lt;file&gt;
+
+<span class="c"># register asset along with issuing the first bitmark</span>
+<span class="nv">$ </span>bitmark-cli <span class="nt">-n</span> &lt;<span class="nb">local</span>|testing|bitmark&gt; <span class="nt">-i</span> &lt;identity&gt; create <span class="nt">-a</span> <span class="s1">'&lt;asset name&gt;'</span> <span class="nt">-m</span> <span class="s1">'&lt;asset metadata&gt;'</span> <span class="nt">-f</span> &lt;asset fingerprint&gt; <span class="nt">-z</span>
+
+<span class="c"># Verify the status of the issuance transaction</span>
+<span class="nv">$ </span>bitmark-cli <span class="nt">-n</span> &lt;<span class="nb">local</span>|testing|bitmark&gt; status <span class="nt">-t</span> &lt;txid&gt;
+
+</code></pre></div></div>
+</li>
+
+	<li>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Create a Bitmark Account as the Issuer</span>
+bitmark-cli <span class="nt">-n</span> testing <span class="nt">-i</span> first add <span class="nt">-d</span> <span class="s1">'first'</span> <span class="nt">--new</span>
+
+<span class="c">#  Compute file hash</span>
+<span class="nv">$ </span>bitmark-cli <span class="nt">-n</span> testing fingerprint <span class="nt">-f</span> test.txt
+
+<span class="c"># Issue the first bitmark of the asset</span>
+<span class="nv">$ </span>bitmark-cli <span class="nt">-n</span> testing <span class="nt">-i</span> first create <span class="nt">-a</span> <span class="s1">'asset_name'</span> <span class="nt">-m</span> <span class="s1">'From\u0000CLI\u0000desc\u0000example'</span> <span class="nt">-f</span> 0122aa7d05ce9d324feca37780eeeeb7af8611eefb61cfe42bf9f8127071b481520b529e06c9f0799c7527859361f1694acef106d5131a96641eae524e1c323500 <span class="nt">-z</span>
+
+<span class="c"># Verify the status of the issuance transaction</span>
+<span class="nv">$ </span>bitmark-cli <span class="nt">-n</span> testing status <span class="nt">-t</span> 45a3e08658db810d7fda4c34a852f3707bc8e4518571c8c8a79835d0a9bb3834
+</code></pre></div></div>
+</li>
+
+	<li>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">//</span><span class="w"> </span><span class="err">Computing</span><span class="w"> </span><span class="err">asset</span><span class="w"> </span><span class="err">hash</span><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="nl">"file_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"filename.test"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"fingerprint"</span><span class="p">:</span><span class="s2">"0122aa7d05ce9d324feca37780eeeeb7af8611eefb61cfe42bf9f8127071b481520b529e06c9f799c7527859361f1694acef106d5131a96641eae524e1c323500"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="err">//Registering</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">asset</span><span class="w"> </span><span class="err">from</span><span class="w"> </span><span class="err">its</span><span class="w"> </span><span class="err">hash</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="nl">"assetId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dac17bef505f7a5acf890a1d0f232b7d847f1e951cf1f5b880de13253a10df43cdbcab553e08050808e0b3fdfd2581a798dcdf9cedbbddf4476ead14caa612d3"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"issueIds"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"45a3e08658db810d7fda4c34a852f3707bc8e4518571c8c8a79835d0a9bb3834"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"payId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"05943784313be02e7f1823f398f82bccf803933863804a46c42119ad2a8d1f85476d2211a1079acb5cebe6682daf7168"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"payNonce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8ae68bb87c4a926b"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"difficulty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0000ffffffffffffff8000000000000000000000000000000000000000000000"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"submittedNonce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0000000125ef307e"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"proofStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Accepted"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="err">//</span><span class="w"> </span><span class="err">Checking</span><span class="w"> </span><span class="err">status</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Verified"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="err">//</span><span class="w"> </span><span class="err">After</span><span class="w"> </span><span class="err">about</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="err">minutes</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Confirmed"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+</li>
+
+</ul>
+
+<h3 id="issue-more-bitmarks-1">Issue more bitmarks</h3>
+
+<p>The CLI users pay for transactions of issuing more bitmarks by sending BTC or LTC to the indicated address.</p>
+
+<ul class="uk-tab" data-uk-switcher="{connect:'#2c9c7117-d965-4fdd-acc0-bff656700172'}">
+
+	<li class="uk-active"><a href="#">Command</a></li>
+
+	<li><a href="#">Example</a></li>
+
+	<li><a href="#">Output</a></li>
+
+</ul>
+
+<ul id="2c9c7117-d965-4fdd-acc0-bff656700172" class="uk-switcher uk-margin">
 
 	<li>
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Issue more bitmarks on an existing asset</span>
