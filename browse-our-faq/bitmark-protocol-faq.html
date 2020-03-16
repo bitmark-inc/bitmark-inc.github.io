@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="keywords" content=" faq">
+<title>Bitmark Protocol FAQ | Bitmark Documentation</title>
+
+<link rel="stylesheet" href="/css/syntax.css">
+
+<link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css">
+<!--<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">-->
+<link rel="stylesheet" href="/css/modern-business.css">
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="/css/bootstrap.min.3.3.7.css" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/customstyles.css">
+<link rel="stylesheet" href="/css/boxshadowproperties.css">
+<!-- most color styles are extracted out to here -->
+<link rel="stylesheet" href="/css/theme-blue.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="/js/jquery.navgoco.min.js"></script>
+
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<!-- Anchor.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.2.0/anchor.min.js"></script>
+<script src="/js/toc.js"></script>
+<script src="/js/customscripts.js"></script>
+
+<link rel="shortcut icon" href="/assets/images/favicon.ico">
+
+<link rel="stylesheet" href="/css/uikit.min.css" />
+<script src="/js/uikit.min.js"></script>
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<link rel="alternate" type="application/rss+xml" title="docs" href="http://localhost:4000/feed.xml">
+
+    <script>
+        $(document).ready(function() {
+            // Initialize navgoco with default options
+            $("#mysidebar").navgoco({
+                caretHtml: '',
+                accordion: false,
+                openClass: 'active', // open
+                save: false, // leave false or nav highlighting doesn't work right
+                cookie: {
+                    name: 'navgoco',
+                    expires: false,
+                    path: '/'
+                },
+                slide: {
+                    duration: 250,
+                    easing: 'swing'
+                }
+            });
+
+            // expand first level at indexes [0,3,7]
+            $("#mysidebar").navgoco('toggle', true, 0, 3, 7);
+
+            $("#collapseAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', false);
+            });
+
+            $("#expandAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', true);
+            });
+
+        });
+
+    </script>
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
+    <script>
+        $(document).ready(function() {
+            $("#tg-sb-link").click(function() {
+                $("#tg-sb-sidebar").toggle();
+                $("#tg-sb-content").toggleClass('col-md-8');
+                $("#tg-sb-content").toggleClass('col-md-12');
+                $("#tg-sb-icon").toggleClass('fa-toggle-on');
+                $("#tg-sb-icon").toggleClass('fa-toggle-off');
+            });
+        });
+    </script>
+    
+
+</head>
+<body>
+<!-- Navigation -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container topnavlinks">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/index.html"><span class="projectTitle home-logo"><img src="/assets/images/Bitmark_Logo-desktop_white.svg" alt="Bitmark logo"/><!-- Home --></span></a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <!-- toggle sidebar button -->
+                <li><a id="tg-sb-link" href="#"><i id="tg-sb-icon" class="fa fa-toggle-on"></i> Nav</a></li>
+                <!-- entries without drop-downs appear here -->
+
+
+
+
+                
+                
+                
+                <li><a href="https://github.com/bitmark-inc/docs" target="_blank" rel="noopener">GitHub</a></li>
+                
+                
+                
+                <!-- entries with drop-downs appear here -->
+                <!-- conditional logic to control which topnav appears for the audience defined in the configuration file.-->
+                
+                
+			<li>
+
+
+
+  <a class="email" title="Submit feedback" href="#" onclick="javascript:window.location='mailto:support@bitmark.com?subject=Bitmark Inc feedback&body=I have some feedback about the Bitmark Protocol FAQ page: ' + window.location.href;"><i class="fa fa-envelope-o"></i> Need help?</a>
+
+</li>
+
+		
+                <!--comment out this block if you want to hide search-->
+                <li>
+                    <!--start search-->
+                    <div id="search-demo-container">
+                        <input type="text" id="search-input" placeholder="search...">
+                        <ul id="results-container"></ul>
+                    </div>
+                    <script src="/js/jekyll-search.js" type="text/javascript"></script>
+                    <script type="text/javascript">
+                            SimpleJekyllSearch.init({
+                                searchInput: document.getElementById('search-input'),
+                                resultsContainer: document.getElementById('results-container'),
+                                dataSource: '/search.json',
+                                searchResultTemplate: '<li><a href="{url}" title="Bitmark Protocol FAQ">{title}</a></li>',
+                    noResultsText: 'No results found.',
+                            limit: 10,
+                            fuzzy: true,
+                    })
+                    </script>
+                    <!--end search-->
+                </li>
+            </ul>
+        </div>
+        </div>
+        <!-- /.container -->
+</nav>
+
+<!-- Page Content -->
+<div class="container">
+  <div id="main">
+    <!-- Content Row -->
+    <div class="row">
+        
+        
+            <!-- Sidebar Column -->
+            <div class="col-md-4" id="tg-sb-sidebar">
+                
+
+<ul id="mysidebar" class="nav">
+  <li class="sidebarTitle"> </li>
+  
+  
+  
+  <li>
+      <a title="Register & Control data" href="#">Register & Control data</a>
+      <ul>
+          
+          
+          
+          <li><a title="Register data" href="/register-and-control-data/register-data">Register data</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Control access" href="/register-and-control-data/control-access">Control access</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Transfer rights" href="/register-and-control-data/transfer-rights">Transfer rights</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Share rights" href="/register-and-control-data/share-rights">Share rights</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Run a Node" href="/register-and-control-data/run-a-node">Run a Node</a></li>
+          
+          
+          
+          
+      </ul>
+   </li>
+     
+      
+  
+  <li>
+      <a title="Explore the Protocol Docs" href="#">Explore the Protocol Docs</a>
+      <ul>
+          
+          
+          
+          <li><a title="Blockchain Overview" href="/explore-the-protocol-docs/blockchain-overview">Blockchain Overview</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Block Validation and Synchronization" href="/explore-the-protocol-docs/block-verification-and-synchronization">Block Validation and Synchronization</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Block Mining" href="/explore-the-protocol-docs/block-mining">Block Mining</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Payment Verification" href="/explore-the-protocol-docs/payment-verification">Payment Verification</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Storage Databases" href="/explore-the-protocol-docs/storage-databases">Storage Databases</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Blockchain Security" href="/explore-the-protocol-docs/blockchain-security">Blockchain Security</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="RPC Communication" href="/explore-the-protocol-docs/rpc-communication">RPC Communication</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Glossary" href="/explore-the-protocol-docs/glossary">Glossary</a></li>
+          
+          
+          
+          
+      </ul>
+   </li>
+     
+      
+  
+  <li>
+      <a title="Read our Papers" href="#">Read our Papers</a>
+      <ul>
+          
+          
+          
+          <li><a title="Bitmark versus Ethereum" href="/read-our-papers/bitmark-eth-comparison">Bitmark versus Ethereum</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="White Papers" href="/read-our-papers/white-papers">White Papers</a></li>
+          
+          
+          
+          
+      </ul>
+   </li>
+     
+      
+  
+  <li>
+      <a title="Contribute to the Protocol" href="#">Contribute to the Protocol</a>
+      <ul>
+          
+          
+          
+          <li><a title="Contribute to the Protocol" href="/contribute-to-the-protocol">Contribute to the Protocol</a></li>
+          
+          
+          
+          
+      </ul>
+   </li>
+     
+      
+  
+  <li>
+      <a title="Browse our FAQ" href="#">Browse our FAQ</a>
+      <ul>
+          
+          
+          
+          <li class="active"><a title="Bitmark Protocol FAQ" href="/browse-our-faq/bitmark-protocol-faq">Bitmark Protocol FAQ</a></li>
+          
+          
+          
+          
+      </ul>
+   </li>
+     
+      
+      
+      <!-- if you aren't using the accordion, uncomment this block:
+         <p class="external">
+             <a href="#" id="collapseAll">Collapse All</a> | <a href="#" id="expandAll">Expand All</a>
+         </p>
+         -->
+</ul>
+
+<!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
+<script>$("li.active").parents('li').toggleClass("active");</script>
+
+            </div>
+            
+        
+
+        <!-- Content Column -->
+        <div class="col-md-8" id="tg-sb-content">
+            <!-- <div class="post-header">
+   <h1 class="post-title-main">Bitmark Protocol FAQ</h1>
+</div> -->
+
+
+
+<div class="post-content">
+
+   
+
+    
+    
+
+    <div class="row">
+        <div class="col-md-9"><h1 id="bitmark-protocol-faq">Bitmark Protocol FAQ</h1>
+
+<p>An early engineering fault with the Web was that information ownership and control was not addressed as an “end-to-end” internet protocol. This has allowed for all sorts of externalities to occur that range from digital rights management to fake news to mass-surveillance.</p>
+
+<p>To solve this problem, the provenance of data must be secured. That way information can be built and the origin and history can always be authenticated. That is the goal of the Bitmark Protocol. It has been in production use since 2018. Already, organizations like UC Berkeley, KKBOX, and Pfizer use the Bitmark Protocol to increase trust in valuable data. In total, the protocol is securing more than one million data records in healthcare, music, art, finance, and more.</p>
+
+<h2 id="why-secure-data-provenance">Why secure data provenance?</h2>
+
+<p>To alleviate the externalities of the Internet, we must have a system to control information. One option is to go “centralized” with government regulation and corporate Oversight Boards that are tasked with making new rules and then moderating content. However, this is a global issue, so State-level regulation will often conflict across different countries. The other option is to go “decentralized” and build an end-to-end protocol that secures the origin and history, or “provenance” of data itself. The benefits are:</p>
+
+<ul>
+  <li>When data has provenance, information (processed data) can be authenticated without a trusted third party.</li>
+  <li>End-to-end protocols are low-cost.</li>
+  <li>Having a global data provenance enhances local regulation (more below).</li>
+</ul>
+
+<h2 id="why-hasnt-this-been-done-before">Why hasn’t this been done before?</h2>
+
+<p>End-to-end protocols cannot rely on trusted third parties. In order to have such a protocol for information ownership/control we must have the ability to secure the provenance of data. Information is processed data. Before Bitcoin (specifically public blockchains), there was not a way to secure the provenance of anything digital without relying upon trusted third parties.</p>
+
+<h2 id="how-can-information-be-controlled">How can information be controlled?</h2>
+
+<p>The Bitmark protocol provides a set of rules governing how data can be held, used, and exchanged. This works because the data itself can be held locally or in the Cloud. The protocol provides safe, low-cost access control without requiring a trusted third party.</p>
+
+<p>When changes or ownership / control are needed, the underlying data can be transferred peer-to-peer, creating an unforgeable provenance.</p>
+
+<h2 id="how-can-this-protect-digital-rights">How can this protect digital rights?</h2>
+
+<p>Information is the key to human rights. And the key to controlling information is property rights.</p>
+
+<p>Property rights are agreements of control across different trust boundaries. For example, you could have a property right to access a river running through your land. In the digital environment, a tech company could recognize a property right to use your data in their algorithm.</p>
+
+<p>For most of human history, the dominant form of property has been personal property. The functionality of personal property has not usually depended on trusted third parties. Today, an increasing share of our personal property is digital, and our rights depend on BigTech. An end-to-end protocol for information control could record digital property rights and provide a better future.</p>
+
+<p>Recognizing rights to the data can transform it into a more accessible and valuable resource. Apps and services can safely use this data to enrich people’s lives.</p>
+
+<h2 id="what-about-government-regulation">What about government regulation?</h2>
+
+<p>An end-to-end protocol for securing the provenance of data is compatible and could help improve any local, government regulation by providing more transparency into the information.</p>
+
+<h2 id="why-use-a-blockchain">Why use a blockchain?</h2>
+
+<p>Currently, the only technology we know that can secure the provenance of data without requiring a trusted third party is a public blockchain.</p>
+
+<h2 id="how-much-does-this-cost">How much does this cost?</h2>
+
+<p>Right now it costs two times the bitcoin payment. We are working towards layer two options to radically lower this price.</p>
+
+<h2 id="how-can-i-share-feedback">How can I share feedback?</h2>
+
+<p>We welcome comments and questions about the company, the Bitmark Protocol, or any of our products. Please email feedback@bitmark.com to share your feedback.</p>
+
+</div>
+        
+        <div class="col-md-3">
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+  // Handler for .ready() called.
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 10);
+  return false
+})
+  
+});
+</script>
+
+<div id="toc" class="affix"></div>
+</div>
+        
+    </div>
+
+    
+
+    <div class="tags">
+        
+    </div>
+
+
+
+
+</div>
+
+<hr class="shaded"/>
+
+<footer>
+            <div class="row">
+                <div class="col-lg-12 footer">
+               	&copy;2020 Bitmark Inc. All rights reserved.
+				<br/> Powered by <a href="https://jekyllrb.com/">Jekyll</a>
+<!-- <p><img src="/assets/images/company_logo.png" alt="Company logo"/></p>
+                </div>
+            </div> -->
+</footer>
+
+
+        </div>
+    <!-- /.row -->
+</div>
+<!-- /.container -->
+</div>
+<!-- /#main -->
+    </div>
+
+</body>
+
+</html>
