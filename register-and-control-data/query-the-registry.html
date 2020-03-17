@@ -45,7 +45,7 @@
 <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
 
-<link rel="alternate" type="application/rss+xml" title="docs" href="http://localhost:4000/feed.xml">
+<link rel="alternate" type="application/rss+xml" title="docs" href="/feed.xml">
 
     <script>
         $(document).ready(function() {
@@ -112,12 +112,12 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/index.html"><span class="projectTitle home-logo"><img src="/assets/images/Bitmark_Logo-desktop_white.svg" alt="Bitmark logo"/><!-- Home --></span></a>
+            <a class="navbar-brand" href="/index.html"><span class="projectTitle home-logo">Bitmark<!-- <img src="/assets/images/Bitmark_Logo-desktop_white.svg" alt="Bitmark logo"/> --><!-- Home --></span></a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <!-- toggle sidebar button -->
-                <li><a id="tg-sb-link" href="#"><i id="tg-sb-icon" class="fa fa-toggle-on"></i> Nav</a></li>
+                <!-- <li><a id="tg-sb-link" href="#"><i id="tg-sb-icon" class="fa fa-toggle-on"></i> Nav</a></li> -->
                 <!-- entries without drop-downs appear here -->
 
 
@@ -126,23 +126,27 @@
                 
                 
                 
-                <li><a href="https://github.com/bitmark-inc/docs" target="_blank" rel="noopener">GitHub</a></li>
+                <li><a href="https://registry.bitmark.com/" target="_blank" rel="noopener">Registry</a></li>
+                
+                
+                
+                <li><a href="https://bitmark.com/products/bitmark-protocol/faq/" target="_blank" rel="noopener">FAQ</a></li>
                 
                 
                 
                 <!-- entries with drop-downs appear here -->
                 <!-- conditional logic to control which topnav appears for the audience defined in the configuration file.-->
                 
-                
+                <!-- 
 			<li>
 
 
 
-  <a class="email" title="Submit feedback" href="#" onclick="javascript:window.location='mailto:support@bitmark.com?subject=Bitmark Inc feedback&body=I have some feedback about the Query the Registry page: ' + window.location.href;"><i class="fa fa-envelope-o"></i> Need help?</a>
+  <a class="email" title="Submit feedback" href="#" target="_blank" onclick="javascript:window.location='mailto:support@bitmark.com?subject=Bitmark Inc feedback&body=I have some feedback about the Query the Registry page: ' + window.location.href;"><i class="fa fa-envelope-o"></i> Need help?</a>
 
 </li>
 
-		
+		 -->
                 <!--comment out this block if you want to hide search-->
                 <li>
                     <!--start search-->
@@ -174,7 +178,7 @@
 <div class="container">
   <div id="main">
     <!-- Content Row -->
-    <div class="row">
+    <div class="">
         
         
             <!-- Sidebar Column -->
@@ -187,40 +191,40 @@
   
   
   <li>
-      <a title="Register & Control data" href="#">Register & Control data</a>
-      <ul>
+      <a class="sidebar-title" title="Register & Control data" href="#">Register & Control data</a>
+      <ul class="sidebar-list">
           
           
           
-          <li><a title="Register data" href="/register-and-control-data/register-data">Register data</a></li>
-          
-          
-          
-          
-          
-          
-          <li><a title="Control access" href="/register-and-control-data/control-access">Control access</a></li>
+          <li><a title="Register data" href="/register-and-control-data/register-data"><b>Register data</b></a></li>
           
           
           
           
           
           
-          <li><a title="Transfer rights" href="/register-and-control-data/transfer-rights">Transfer rights</a></li>
+          <li><a title="Control access" href="/register-and-control-data/control-access"><b>Control access</b></a></li>
           
           
           
           
           
           
-          <li><a title="Share rights" href="/register-and-control-data/share-rights">Share rights</a></li>
+          <li><a title="Transfer rights" href="/register-and-control-data/transfer-rights"><b>Transfer rights</b></a></li>
           
           
           
           
           
           
-          <li><a title="Run a Node" href="/register-and-control-data/run-a-node">Run a Node</a></li>
+          <li><a title="Share rights" href="/register-and-control-data/share-rights"><b>Share rights</b></a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Run a Node" href="/register-and-control-data/run-a-node"><b>Run a Node</b></a></li>
           
           
           
@@ -231,84 +235,61 @@
       
   
   <li>
-      <a title="Explore the Protocol Docs" href="#">Explore the Protocol Docs</a>
-      <ul>
+      <a class="sidebar-title" title="Explore the Protocol Docs" href="#">Explore the Protocol Docs</a>
+      <ul class="sidebar-list">
           
           
           
-          <li><a title="Blockchain Overview" href="/explore-the-protocol-docs/blockchain-overview">Blockchain Overview</a></li>
-          
-          
-          
-          
-          
-          
-          <li><a title="Block Validation and Synchronization" href="/explore-the-protocol-docs/block-verification-and-synchronization">Block Validation and Synchronization</a></li>
+          <li><a title="Blockchain Overview" href="/explore-the-protocol-docs/blockchain-overview"><b>Blockchain Overview</b></a></li>
           
           
           
           
           
           
-          <li><a title="Block Mining" href="/explore-the-protocol-docs/block-mining">Block Mining</a></li>
+          <li><a title="Block Validation and Synchronization" href="/explore-the-protocol-docs/block-verification-and-synchronization"><b>Block Validation and Synchronization</b></a></li>
           
           
           
           
           
           
-          <li><a title="Payment Verification" href="/explore-the-protocol-docs/payment-verification">Payment Verification</a></li>
+          <li><a title="Block Mining" href="/explore-the-protocol-docs/block-mining"><b>Block Mining</b></a></li>
           
           
           
           
           
           
-          <li><a title="Storage Databases" href="/explore-the-protocol-docs/storage-databases">Storage Databases</a></li>
+          <li><a title="Payment Verification" href="/explore-the-protocol-docs/payment-verification"><b>Payment Verification</b></a></li>
           
           
           
           
           
           
-          <li><a title="Blockchain Security" href="/explore-the-protocol-docs/blockchain-security">Blockchain Security</a></li>
+          <li><a title="Storage Databases" href="/explore-the-protocol-docs/storage-databases"><b>Storage Databases</b></a></li>
           
           
           
           
           
           
-          <li><a title="RPC Communication" href="/explore-the-protocol-docs/rpc-communication">RPC Communication</a></li>
+          <li><a title="Blockchain Security" href="/explore-the-protocol-docs/blockchain-security"><b>Blockchain Security</b></a></li>
           
           
           
           
           
           
-          <li><a title="Glossary" href="/explore-the-protocol-docs/glossary">Glossary</a></li>
-          
-          
-          
-          
-      </ul>
-   </li>
-     
-      
-  
-  <li>
-      <a title="Read our Papers" href="#">Read our Papers</a>
-      <ul>
-          
-          
-          
-          <li><a title="Bitmark versus Ethereum" href="/read-our-papers/bitmark-eth-comparison">Bitmark versus Ethereum</a></li>
+          <li><a title="RPC Communication" href="/explore-the-protocol-docs/rpc-communication"><b>RPC Communication</b></a></li>
           
           
           
           
           
           
-          <li><a title="White Papers" href="/read-our-papers/white-papers">White Papers</a></li>
+          <li><a title="Glossary" href="/explore-the-protocol-docs/glossary"><b>Glossary</b></a></li>
           
           
           
@@ -319,12 +300,19 @@
       
   
   <li>
-      <a title="Contribute to the Protocol" href="#">Contribute to the Protocol</a>
-      <ul>
+      <a class="sidebar-title" title="Read our Papers" href="#">Read our Papers</a>
+      <ul class="sidebar-list">
           
           
           
-          <li><a title="Contribute to the Protocol" href="/contribute-to-the-protocol">Contribute to the Protocol</a></li>
+          <li><a title="Bitmark versus Ethereum" href="/read-our-papers/bitmark-eth-comparison"><b>Bitmark versus Ethereum</b></a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="White Papers" href="/read-our-papers//white-papers"><b>White Papers</b></a></li>
           
           
           
@@ -335,12 +323,28 @@
       
   
   <li>
-      <a title="Browse our FAQ" href="#">Browse our FAQ</a>
-      <ul>
+      <a class="sidebar-title" title="Contribute to the Protocol" href="#">Contribute to the Protocol</a>
+      <ul class="sidebar-list">
           
           
           
-          <li><a title="Bitmark Protocol FAQ" href="/browse-our-faq/bitmark-protocol-faq">Bitmark Protocol FAQ</a></li>
+          <li><a title="Contribute to the Protocol" href="/contribute-to-the-protocol"><b>Contribute to the Protocol</b></a></li>
+          
+          
+          
+          
+      </ul>
+   </li>
+     
+      
+  
+  <li>
+      <a class="sidebar-title" title="Browse our FAQ" href="#">Browse our FAQ</a>
+      <ul class="sidebar-list">
+          
+          
+          
+          <li><a title="Bitmark Protocol FAQ" href="/browser-our-faq/bitmark-protocol-faq"><b>Bitmark Protocol FAQ</b></a></li>
           
           
           
@@ -376,11 +380,11 @@
 
    
 
-    
+
     
 
     <div class="row">
-        <div class="col-md-9"><h1 id="query-the-registry">Query the Registry</h1>
+        <div class="col-md-9 page-article"><h1 id="query-the-registry">Query the Registry</h1>
 
 <p>The bitmark SDK support queries over these records: assets, bitmarks and transactions (txs). These records are created or updated when different actions (register, issue or transfer) are applied.</p>
 
@@ -460,7 +464,7 @@
 
 <h3 id="query-for-a-specific-asset">Query for a specific asset</h3>
 
-<ul class="uk-tab" data-uk-switcher="{connect:'#93829bac-bfe3-49d0-96f6-bae3278d2c51'}">
+<ul class="uk-tab" data-uk-switcher="{connect:'#3510ea82-ec81-4c1d-b779-b91ecb588838'}">
 
 	<li class="uk-active"><a href="#">JS</a></li>
 
@@ -472,7 +476,7 @@
 
 </ul>
 
-<ul id="93829bac-bfe3-49d0-96f6-bae3278d2c51" class="uk-switcher uk-margin">
+<ul id="3510ea82-ec81-4c1d-b779-b91ecb588838" class="uk-switcher uk-margin">
 
 	<li>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">Asset</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nx">assetId</span><span class="p">);</span>
@@ -519,7 +523,7 @@
 
 <p>Use the account number of the registrant as the query argument.</p>
 
-<ul class="uk-tab" data-uk-switcher="{connect:'#58cbd41c-c0b6-4701-b30b-453d0d9804d2'}">
+<ul class="uk-tab" data-uk-switcher="{connect:'#21e391a9-a1db-47fb-83c2-454ceeefc8fc'}">
 
 	<li class="uk-active"><a href="#">JS</a></li>
 
@@ -531,7 +535,7 @@
 
 </ul>
 
-<ul id="58cbd41c-c0b6-4701-b30b-453d0d9804d2" class="uk-switcher uk-margin">
+<ul id="21e391a9-a1db-47fb-83c2-454ceeefc8fc" class="uk-switcher uk-margin">
 
 	<li>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">assetQueryParams</span> <span class="o">=</span> <span class="nx">Asset</span><span class="p">.</span><span class="nx">newAssetQueryBuilder</span><span class="p">()</span>
@@ -653,7 +657,7 @@
 
 <h3 id="query-for-a-specific-transaction">Query for a specific transaction</h3>
 
-<ul class="uk-tab" data-uk-switcher="{connect:'#5b4d637f-4e86-41b2-a9ce-41db6cc2bded'}">
+<ul class="uk-tab" data-uk-switcher="{connect:'#8ca482fc-b2d7-4b86-a411-c091656bd9fe'}">
 
 	<li class="uk-active"><a href="#">JS</a></li>
 
@@ -665,7 +669,7 @@
 
 </ul>
 
-<ul id="5b4d637f-4e86-41b2-a9ce-41db6cc2bded" class="uk-switcher uk-margin">
+<ul id="8ca482fc-b2d7-4b86-a411-c091656bd9fe" class="uk-switcher uk-margin">
 
 	<li>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">txResponse</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">Transaction</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nx">txId</span><span class="p">);</span>
@@ -706,7 +710,7 @@
 
 <p>A list of transaction records to show the ownership changes of a bitmark. If a bitmark is issued by user A, and then transferred to user B and C, the return will include 3 transactions with user A, B and C as transaction owners respectively.</p>
 
-<ul class="uk-tab" data-uk-switcher="{connect:'#ac113bea-006a-4519-ab7f-735044d29c8b'}">
+<ul class="uk-tab" data-uk-switcher="{connect:'#7bf90afb-f2f9-483c-bad6-42a6474db12b'}">
 
 	<li class="uk-active"><a href="#">JS</a></li>
 
@@ -718,7 +722,7 @@
 
 </ul>
 
-<ul id="ac113bea-006a-4519-ab7f-735044d29c8b" class="uk-switcher uk-margin">
+<ul id="7bf90afb-f2f9-483c-bad6-42a6474db12b" class="uk-switcher uk-margin">
 
 	<li>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">transactionQueryParams</span> <span class="o">=</span> <span class="nx">Transaction</span><span class="p">.</span><span class="nx">newTransactionQueryBuilder</span><span class="p">()</span>
@@ -767,7 +771,7 @@
 
 <!-- TODO: what does this mean? -->
 
-<ul class="uk-tab" data-uk-switcher="{connect:'#404b1c6e-544c-4b08-8026-c107484d0e84'}">
+<ul class="uk-tab" data-uk-switcher="{connect:'#9297daa3-3340-4e69-9021-99b35b1d8cbf'}">
 
 	<li class="uk-active"><a href="#">JS</a></li>
 
@@ -779,7 +783,7 @@
 
 </ul>
 
-<ul id="404b1c6e-544c-4b08-8026-c107484d0e84" class="uk-switcher uk-margin">
+<ul id="9297daa3-3340-4e69-9021-99b35b1d8cbf" class="uk-switcher uk-margin">
 
 	<li>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">transactionQueryParams</span> <span class="o">=</span> <span class="nx">Transaction</span><span class="p">.</span><span class="nx">newTransactionQueryBuilder</span><span class="p">()</span>
@@ -934,7 +938,7 @@
 
 <h3 id="query-for-a-specific-bitmark">Query for a specific bitmark</h3>
 
-<ul class="uk-tab" data-uk-switcher="{connect:'#da8b731a-d08e-4b0c-a3d6-30631a013098'}">
+<ul class="uk-tab" data-uk-switcher="{connect:'#218665f9-5803-4ba4-a3fa-1da07ff1236c'}">
 
 	<li class="uk-active"><a href="#">JS</a></li>
 
@@ -946,7 +950,7 @@
 
 </ul>
 
-<ul id="da8b731a-d08e-4b0c-a3d6-30631a013098" class="uk-switcher uk-margin">
+<ul id="218665f9-5803-4ba4-a3fa-1da07ff1236c" class="uk-switcher uk-margin">
 
 	<li>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">Bitmark</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nx">bitmarkId</span><span class="p">,</span> <span class="kc">false</span><span class="p">);</span> <span class="c1">// false: not include asset, true: include asset</span>
@@ -1033,7 +1037,7 @@ $('#toc').on('click', 'a', function() {
         
     </div>
 
-    
+
 
     <div class="tags">
         
@@ -1044,7 +1048,7 @@ $('#toc').on('click', 'a', function() {
 
 </div>
 
-<hr class="shaded"/>
+<!-- <hr class="shaded"/> -->
 
 <footer>
             <div class="row">

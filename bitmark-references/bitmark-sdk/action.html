@@ -45,7 +45,7 @@
 <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
 
-<link rel="alternate" type="application/rss+xml" title="docs" href="http://localhost:4000/feed.xml">
+<link rel="alternate" type="application/rss+xml" title="docs" href="/feed.xml">
 
     <script>
         $(document).ready(function() {
@@ -112,12 +112,12 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/index.html"><span class="projectTitle home-logo"><img src="/assets/images/Bitmark_Logo-desktop_white.svg" alt="Bitmark logo"/><!-- Home --></span></a>
+            <a class="navbar-brand" href="/index.html"><span class="projectTitle home-logo">Bitmark<!-- <img src="/assets/images/Bitmark_Logo-desktop_white.svg" alt="Bitmark logo"/> --><!-- Home --></span></a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <!-- toggle sidebar button -->
-                <li><a id="tg-sb-link" href="#"><i id="tg-sb-icon" class="fa fa-toggle-on"></i> Nav</a></li>
+                <!-- <li><a id="tg-sb-link" href="#"><i id="tg-sb-icon" class="fa fa-toggle-on"></i> Nav</a></li> -->
                 <!-- entries without drop-downs appear here -->
 
 
@@ -126,23 +126,27 @@
                 
                 
                 
-                <li><a href="https://github.com/bitmark-inc/docs" target="_blank" rel="noopener">GitHub</a></li>
+                <li><a href="https://registry.bitmark.com/" target="_blank" rel="noopener">Registry</a></li>
+                
+                
+                
+                <li><a href="https://bitmark.com/products/bitmark-protocol/faq/" target="_blank" rel="noopener">FAQ</a></li>
                 
                 
                 
                 <!-- entries with drop-downs appear here -->
                 <!-- conditional logic to control which topnav appears for the audience defined in the configuration file.-->
                 
-                
+                <!-- 
 			<li>
 
 
 
-  <a class="email" title="Submit feedback" href="#" onclick="javascript:window.location='mailto:support@bitmark.com?subject=Bitmark Inc feedback&body=I have some feedback about the Actions page: ' + window.location.href;"><i class="fa fa-envelope-o"></i> Need help?</a>
+  <a class="email" title="Submit feedback" href="#" target="_blank" onclick="javascript:window.location='mailto:support@bitmark.com?subject=Bitmark Inc feedback&body=I have some feedback about the Actions page: ' + window.location.href;"><i class="fa fa-envelope-o"></i> Need help?</a>
 
 </li>
 
-		
+		 -->
                 <!--comment out this block if you want to hide search-->
                 <li>
                     <!--start search-->
@@ -174,7 +178,7 @@
 <div class="container">
   <div id="main">
     <!-- Content Row -->
-    <div class="row">
+    <div class="">
         
         
             <!-- Sidebar Column -->
@@ -187,40 +191,40 @@
   
   
   <li>
-      <a title="Register & Control data" href="#">Register & Control data</a>
-      <ul>
+      <a class="sidebar-title" title="Register & Control data" href="#">Register & Control data</a>
+      <ul class="sidebar-list">
           
           
           
-          <li><a title="Register data" href="/register-and-control-data/register-data">Register data</a></li>
-          
-          
-          
-          
-          
-          
-          <li><a title="Control access" href="/register-and-control-data/control-access">Control access</a></li>
+          <li><a title="Register data" href="/register-and-control-data/register-data"><b>Register data</b></a></li>
           
           
           
           
           
           
-          <li><a title="Transfer rights" href="/register-and-control-data/transfer-rights">Transfer rights</a></li>
+          <li><a title="Control access" href="/register-and-control-data/control-access"><b>Control access</b></a></li>
           
           
           
           
           
           
-          <li><a title="Share rights" href="/register-and-control-data/share-rights">Share rights</a></li>
+          <li><a title="Transfer rights" href="/register-and-control-data/transfer-rights"><b>Transfer rights</b></a></li>
           
           
           
           
           
           
-          <li><a title="Run a Node" href="/register-and-control-data/run-a-node">Run a Node</a></li>
+          <li><a title="Share rights" href="/register-and-control-data/share-rights"><b>Share rights</b></a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Run a Node" href="/register-and-control-data/run-a-node"><b>Run a Node</b></a></li>
           
           
           
@@ -231,84 +235,61 @@
       
   
   <li>
-      <a title="Explore the Protocol Docs" href="#">Explore the Protocol Docs</a>
-      <ul>
+      <a class="sidebar-title" title="Explore the Protocol Docs" href="#">Explore the Protocol Docs</a>
+      <ul class="sidebar-list">
           
           
           
-          <li><a title="Blockchain Overview" href="/explore-the-protocol-docs/blockchain-overview">Blockchain Overview</a></li>
-          
-          
-          
-          
-          
-          
-          <li><a title="Block Validation and Synchronization" href="/explore-the-protocol-docs/block-verification-and-synchronization">Block Validation and Synchronization</a></li>
+          <li><a title="Blockchain Overview" href="/explore-the-protocol-docs/blockchain-overview"><b>Blockchain Overview</b></a></li>
           
           
           
           
           
           
-          <li><a title="Block Mining" href="/explore-the-protocol-docs/block-mining">Block Mining</a></li>
+          <li><a title="Block Validation and Synchronization" href="/explore-the-protocol-docs/block-verification-and-synchronization"><b>Block Validation and Synchronization</b></a></li>
           
           
           
           
           
           
-          <li><a title="Payment Verification" href="/explore-the-protocol-docs/payment-verification">Payment Verification</a></li>
+          <li><a title="Block Mining" href="/explore-the-protocol-docs/block-mining"><b>Block Mining</b></a></li>
           
           
           
           
           
           
-          <li><a title="Storage Databases" href="/explore-the-protocol-docs/storage-databases">Storage Databases</a></li>
+          <li><a title="Payment Verification" href="/explore-the-protocol-docs/payment-verification"><b>Payment Verification</b></a></li>
           
           
           
           
           
           
-          <li><a title="Blockchain Security" href="/explore-the-protocol-docs/blockchain-security">Blockchain Security</a></li>
+          <li><a title="Storage Databases" href="/explore-the-protocol-docs/storage-databases"><b>Storage Databases</b></a></li>
           
           
           
           
           
           
-          <li><a title="RPC Communication" href="/explore-the-protocol-docs/rpc-communication">RPC Communication</a></li>
+          <li><a title="Blockchain Security" href="/explore-the-protocol-docs/blockchain-security"><b>Blockchain Security</b></a></li>
           
           
           
           
           
           
-          <li><a title="Glossary" href="/explore-the-protocol-docs/glossary">Glossary</a></li>
-          
-          
-          
-          
-      </ul>
-   </li>
-     
-      
-  
-  <li>
-      <a title="Read our Papers" href="#">Read our Papers</a>
-      <ul>
-          
-          
-          
-          <li><a title="Bitmark versus Ethereum" href="/read-our-papers/bitmark-eth-comparison">Bitmark versus Ethereum</a></li>
+          <li><a title="RPC Communication" href="/explore-the-protocol-docs/rpc-communication"><b>RPC Communication</b></a></li>
           
           
           
           
           
           
-          <li><a title="White Papers" href="/read-our-papers/white-papers">White Papers</a></li>
+          <li><a title="Glossary" href="/explore-the-protocol-docs/glossary"><b>Glossary</b></a></li>
           
           
           
@@ -319,12 +300,19 @@
       
   
   <li>
-      <a title="Contribute to the Protocol" href="#">Contribute to the Protocol</a>
-      <ul>
+      <a class="sidebar-title" title="Read our Papers" href="#">Read our Papers</a>
+      <ul class="sidebar-list">
           
           
           
-          <li><a title="Contribute to the Protocol" href="/contribute-to-the-protocol">Contribute to the Protocol</a></li>
+          <li><a title="Bitmark versus Ethereum" href="/read-our-papers/bitmark-eth-comparison"><b>Bitmark versus Ethereum</b></a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="White Papers" href="/read-our-papers//white-papers"><b>White Papers</b></a></li>
           
           
           
@@ -335,12 +323,28 @@
       
   
   <li>
-      <a title="Browse our FAQ" href="#">Browse our FAQ</a>
-      <ul>
+      <a class="sidebar-title" title="Contribute to the Protocol" href="#">Contribute to the Protocol</a>
+      <ul class="sidebar-list">
           
           
           
-          <li><a title="Bitmark Protocol FAQ" href="/browse-our-faq/bitmark-protocol-faq">Bitmark Protocol FAQ</a></li>
+          <li><a title="Contribute to the Protocol" href="/contribute-to-the-protocol"><b>Contribute to the Protocol</b></a></li>
+          
+          
+          
+          
+      </ul>
+   </li>
+     
+      
+  
+  <li>
+      <a class="sidebar-title" title="Browse our FAQ" href="#">Browse our FAQ</a>
+      <ul class="sidebar-list">
+          
+          
+          
+          <li><a title="Bitmark Protocol FAQ" href="/browser-our-faq/bitmark-protocol-faq"><b>Bitmark Protocol FAQ</b></a></li>
           
           
           
@@ -376,11 +380,11 @@
 
    
 
-    
+
     
 
     <div class="row">
-        <div class="col-md-9"><h1 id="actions">Actions</h1>
+        <div class="col-md-9 page-article"><h1 id="actions">Actions</h1>
 
 <p>The Bitmark Property System focuses on digital assets that can be registered, issued, or transferred.</p>
 
@@ -392,7 +396,7 @@
 
 <p>An asset record won’t be added to the blockchain without an accompanying bitmark issuances (see the next section for more info). Such an “orphaned” asset records will vanish after three days.</p>
 
-<ul class="uk-tab" data-uk-switcher="{connect:'#9e017fa0-a884-40f5-80d4-b0d7d264473a'}">
+<ul class="uk-tab" data-uk-switcher="{connect:'#b27d95df-e9f1-4b4b-a924-578c4d944d8e'}">
 
 	<li class="uk-active"><a href="#">JS</a></li>
 
@@ -404,7 +408,7 @@
 
 </ul>
 
-<ul id="9e017fa0-a884-40f5-80d4-b0d7d264473a" class="uk-switcher uk-margin">
+<ul id="b27d95df-e9f1-4b4b-a924-578c4d944d8e" class="uk-switcher uk-margin">
 
 	<li>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">params</span> <span class="o">=</span> <span class="nx">Asset</span><span class="p">.</span><span class="nx">newRegistrationParams</span><span class="p">(</span><span class="nx">assetName</span><span class="p">,</span> <span class="nx">metadata</span><span class="p">);</span>
@@ -466,7 +470,7 @@
 
 <p>After an asset is registered, you can issue bitmarks with a permanent reference to the corresponding asset record.</p>
 
-<ul class="uk-tab" data-uk-switcher="{connect:'#336af653-771a-4119-be50-5bf0636cf14b'}">
+<ul class="uk-tab" data-uk-switcher="{connect:'#ff453ae7-2c4f-44d6-abf9-f299e419381b'}">
 
 	<li class="uk-active"><a href="#">JS</a></li>
 
@@ -478,7 +482,7 @@
 
 </ul>
 
-<ul id="336af653-771a-4119-be50-5bf0636cf14b" class="uk-switcher uk-margin">
+<ul id="ff453ae7-2c4f-44d6-abf9-f299e419381b" class="uk-switcher uk-margin">
 
 	<li>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">params</span> <span class="o">=</span> <span class="nx">Bitmark</span><span class="p">.</span><span class="nx">newIssuanceParams</span><span class="p">(</span><span class="nx">assetId</span><span class="p">,</span> <span class="nx">quantity</span> <span class="o">=</span> <span class="mi">100</span><span class="p">);</span>
@@ -545,7 +549,7 @@
 
 <p>The sender can transfer a bitmark to another account without additional consent.</p>
 
-<ul class="uk-tab" data-uk-switcher="{connect:'#9c4af169-d92a-4fe8-bbe0-d07500995aac'}">
+<ul class="uk-tab" data-uk-switcher="{connect:'#3389b58b-8f76-4a24-8209-ce86c1024b13'}">
 
 	<li class="uk-active"><a href="#">JS</a></li>
 
@@ -557,7 +561,7 @@
 
 </ul>
 
-<ul id="9c4af169-d92a-4fe8-bbe0-d07500995aac" class="uk-switcher uk-margin">
+<ul id="3389b58b-8f76-4a24-8209-ce86c1024b13" class="uk-switcher uk-margin">
 
 	<li>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">params</span> <span class="o">=</span> <span class="nx">Bitmark</span><span class="p">.</span><span class="nx">newTransferParams</span><span class="p">(</span><span class="nx">receiverAccountNumber</span><span class="p">);</span>
@@ -621,7 +625,7 @@
 
 <p>The current owner of a bitmark can propose a transfer offer to another account. The actual ownership transfer won’t happen until the receiver accepts the offer.</p>
 
-<ul class="uk-tab" data-uk-switcher="{connect:'#a32ecf23-2601-470c-beac-8fe4ffda409f'}">
+<ul class="uk-tab" data-uk-switcher="{connect:'#a99fc8f2-f27c-4e26-8bf0-e03d4b50d86f'}">
 
 	<li class="uk-active"><a href="#">JS</a></li>
 
@@ -633,7 +637,7 @@
 
 </ul>
 
-<ul id="a32ecf23-2601-470c-beac-8fe4ffda409f" class="uk-switcher uk-margin">
+<ul id="a99fc8f2-f27c-4e26-8bf0-e03d4b50d86f" class="uk-switcher uk-margin">
 
 	<li>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">params</span> <span class="o">=</span> <span class="nx">Bitmark</span><span class="p">.</span><span class="nx">newTransferOfferParams</span><span class="p">(</span><span class="nx">receiverAccountNumber</span><span class="p">);</span>
@@ -693,7 +697,7 @@
 <p>The receiver needs to query if there are any bitmark transfer offers waiting for their countersignature.
 For the details of query execution, please refer to <a href="/bitmark-references/bitmark-sdk/query##Bitmark">Query Bitmark</a>.</p>
 
-<ul class="uk-tab" data-uk-switcher="{connect:'#4caac9a6-ff5f-436a-b3c6-b33512f466f7'}">
+<ul class="uk-tab" data-uk-switcher="{connect:'#510d207b-e1d3-4c1d-a544-1e5853ca06bc'}">
 
 	<li class="uk-active"><a href="#">JS</a></li>
 
@@ -705,7 +709,7 @@ For the details of query execution, please refer to <a href="/bitmark-references
 
 </ul>
 
-<ul id="4caac9a6-ff5f-436a-b3c6-b33512f466f7" class="uk-switcher uk-margin">
+<ul id="510d207b-e1d3-4c1d-a544-1e5853ca06bc" class="uk-switcher uk-margin">
 
 	<li>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">bitmarkQueryParams</span> <span class="o">=</span> <span class="nx">Bitmark</span><span class="p">.</span><span class="nx">newBitmarkQueryBuilder</span><span class="p">()</span>
@@ -755,7 +759,7 @@ For the details of query execution, please refer to <a href="/bitmark-references
 
 <p>The status of the bitmark will change from <code class="language-plaintext highlighter-rouge">offering</code> to <code class="language-plaintext highlighter-rouge">transferring</code>.</p>
 
-<ul class="uk-tab" data-uk-switcher="{connect:'#60431a8d-7304-4ae9-bb58-1fca1c1a108f'}">
+<ul class="uk-tab" data-uk-switcher="{connect:'#7b8f4525-4b47-4def-833e-3a0e484291c9'}">
 
 	<li class="uk-active"><a href="#">JS</a></li>
 
@@ -767,7 +771,7 @@ For the details of query execution, please refer to <a href="/bitmark-references
 
 </ul>
 
-<ul id="60431a8d-7304-4ae9-bb58-1fca1c1a108f" class="uk-switcher uk-margin">
+<ul id="7b8f4525-4b47-4def-833e-3a0e484291c9" class="uk-switcher uk-margin">
 
 	<li>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">transferOfferResponseParams</span> <span class="o">=</span> <span class="nx">Bitmark</span><span class="p">.</span><span class="nx">newTransferResponseParams</span><span class="p">(</span><span class="nx">BITMARK_CONSTANTS</span><span class="p">.</span><span class="nx">TRANSFER_OFFER_RESPONSE_TYPES</span><span class="p">.</span><span class="nx">ACCEPT</span><span class="p">);</span>
@@ -819,7 +823,7 @@ For the details of query execution, please refer to <a href="/bitmark-references
 <p>The receiver can also reject a bitmark transfer offer.
 The status of the bitmark will reverted to <code class="language-plaintext highlighter-rouge">settled</code>, and the sender can create a new transfer offer.</p>
 
-<ul class="uk-tab" data-uk-switcher="{connect:'#c4a9aafc-04e8-4783-8d5f-0e4aed0c7b73'}">
+<ul class="uk-tab" data-uk-switcher="{connect:'#721cdc02-4a91-469f-bc31-4846d0d93e39'}">
 
 	<li class="uk-active"><a href="#">JS</a></li>
 
@@ -831,7 +835,7 @@ The status of the bitmark will reverted to <code class="language-plaintext highl
 
 </ul>
 
-<ul id="c4a9aafc-04e8-4783-8d5f-0e4aed0c7b73" class="uk-switcher uk-margin">
+<ul id="721cdc02-4a91-469f-bc31-4846d0d93e39" class="uk-switcher uk-margin">
 
 	<li>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">transferOfferResponseParams</span> <span class="o">=</span> <span class="nx">Bitmark</span><span class="p">.</span><span class="nx">newTransferResponseParams</span><span class="p">(</span><span class="nx">BITMARK_CONSTANTS</span><span class="p">.</span><span class="nx">TRANSFER_OFFER_RESPONSE_TYPES</span><span class="p">.</span><span class="nx">REJECT</span><span class="p">);</span>
@@ -884,7 +888,7 @@ The status of the bitmark will reverted to <code class="language-plaintext highl
 
 <p>Similar to the case of the receiver rejecting the offer, the status of the bitmark will be set to <code class="language-plaintext highlighter-rouge">settled</code> again, and the bitmark becomes available for a new transfer.</p>
 
-<ul class="uk-tab" data-uk-switcher="{connect:'#ee8851bc-ebf1-4c45-9688-87bc19ed03e3'}">
+<ul class="uk-tab" data-uk-switcher="{connect:'#53c47fcf-29a7-478a-811c-390fa658e9df'}">
 
 	<li class="uk-active"><a href="#">JS</a></li>
 
@@ -896,7 +900,7 @@ The status of the bitmark will reverted to <code class="language-plaintext highl
 
 </ul>
 
-<ul id="ee8851bc-ebf1-4c45-9688-87bc19ed03e3" class="uk-switcher uk-margin">
+<ul id="53c47fcf-29a7-478a-811c-390fa658e9df" class="uk-switcher uk-margin">
 
 	<li>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">transferOfferResponseParams</span> <span class="o">=</span> <span class="nx">Bitmark</span><span class="p">.</span><span class="nx">newTransferResponseParams</span><span class="p">(</span><span class="nx">BITMARK_CONSTANTS</span><span class="p">.</span><span class="nx">TRANSFER_OFFER_RESPONSE_TYPES</span><span class="p">.</span><span class="nx">CANCEL</span><span class="p">);</span>
@@ -969,7 +973,7 @@ $('#toc').on('click', 'a', function() {
         
     </div>
 
-    
+
 
     <div class="tags">
         
@@ -980,7 +984,7 @@ $('#toc').on('click', 'a', function() {
 
 </div>
 
-<hr class="shaded"/>
+<!-- <hr class="shaded"/> -->
 
 <footer>
             <div class="row">

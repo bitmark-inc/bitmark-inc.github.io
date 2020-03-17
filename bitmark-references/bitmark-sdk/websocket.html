@@ -45,7 +45,7 @@
 <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
 
-<link rel="alternate" type="application/rss+xml" title="docs" href="http://localhost:4000/feed.xml">
+<link rel="alternate" type="application/rss+xml" title="docs" href="/feed.xml">
 
     <script>
         $(document).ready(function() {
@@ -112,12 +112,12 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/index.html"><span class="projectTitle home-logo"><img src="/assets/images/Bitmark_Logo-desktop_white.svg" alt="Bitmark logo"/><!-- Home --></span></a>
+            <a class="navbar-brand" href="/index.html"><span class="projectTitle home-logo">Bitmark<!-- <img src="/assets/images/Bitmark_Logo-desktop_white.svg" alt="Bitmark logo"/> --><!-- Home --></span></a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <!-- toggle sidebar button -->
-                <li><a id="tg-sb-link" href="#"><i id="tg-sb-icon" class="fa fa-toggle-on"></i> Nav</a></li>
+                <!-- <li><a id="tg-sb-link" href="#"><i id="tg-sb-icon" class="fa fa-toggle-on"></i> Nav</a></li> -->
                 <!-- entries without drop-downs appear here -->
 
 
@@ -126,23 +126,27 @@
                 
                 
                 
-                <li><a href="https://github.com/bitmark-inc/docs" target="_blank" rel="noopener">GitHub</a></li>
+                <li><a href="https://registry.bitmark.com/" target="_blank" rel="noopener">Registry</a></li>
+                
+                
+                
+                <li><a href="https://bitmark.com/products/bitmark-protocol/faq/" target="_blank" rel="noopener">FAQ</a></li>
                 
                 
                 
                 <!-- entries with drop-downs appear here -->
                 <!-- conditional logic to control which topnav appears for the audience defined in the configuration file.-->
                 
-                
+                <!-- 
 			<li>
 
 
 
-  <a class="email" title="Submit feedback" href="#" onclick="javascript:window.location='mailto:support@bitmark.com?subject=Bitmark Inc feedback&body=I have some feedback about the Receiving WebSocket Events page: ' + window.location.href;"><i class="fa fa-envelope-o"></i> Need help?</a>
+  <a class="email" title="Submit feedback" href="#" target="_blank" onclick="javascript:window.location='mailto:support@bitmark.com?subject=Bitmark Inc feedback&body=I have some feedback about the Receiving WebSocket Events page: ' + window.location.href;"><i class="fa fa-envelope-o"></i> Need help?</a>
 
 </li>
 
-		
+		 -->
                 <!--comment out this block if you want to hide search-->
                 <li>
                     <!--start search-->
@@ -174,7 +178,7 @@
 <div class="container">
   <div id="main">
     <!-- Content Row -->
-    <div class="row">
+    <div class="">
         
         
             <!-- Sidebar Column -->
@@ -187,40 +191,40 @@
   
   
   <li>
-      <a title="Register & Control data" href="#">Register & Control data</a>
-      <ul>
+      <a class="sidebar-title" title="Register & Control data" href="#">Register & Control data</a>
+      <ul class="sidebar-list">
           
           
           
-          <li><a title="Register data" href="/register-and-control-data/register-data">Register data</a></li>
-          
-          
-          
-          
-          
-          
-          <li><a title="Control access" href="/register-and-control-data/control-access">Control access</a></li>
+          <li><a title="Register data" href="/register-and-control-data/register-data"><b>Register data</b></a></li>
           
           
           
           
           
           
-          <li><a title="Transfer rights" href="/register-and-control-data/transfer-rights">Transfer rights</a></li>
+          <li><a title="Control access" href="/register-and-control-data/control-access"><b>Control access</b></a></li>
           
           
           
           
           
           
-          <li><a title="Share rights" href="/register-and-control-data/share-rights">Share rights</a></li>
+          <li><a title="Transfer rights" href="/register-and-control-data/transfer-rights"><b>Transfer rights</b></a></li>
           
           
           
           
           
           
-          <li><a title="Run a Node" href="/register-and-control-data/run-a-node">Run a Node</a></li>
+          <li><a title="Share rights" href="/register-and-control-data/share-rights"><b>Share rights</b></a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Run a Node" href="/register-and-control-data/run-a-node"><b>Run a Node</b></a></li>
           
           
           
@@ -231,84 +235,61 @@
       
   
   <li>
-      <a title="Explore the Protocol Docs" href="#">Explore the Protocol Docs</a>
-      <ul>
+      <a class="sidebar-title" title="Explore the Protocol Docs" href="#">Explore the Protocol Docs</a>
+      <ul class="sidebar-list">
           
           
           
-          <li><a title="Blockchain Overview" href="/explore-the-protocol-docs/blockchain-overview">Blockchain Overview</a></li>
-          
-          
-          
-          
-          
-          
-          <li><a title="Block Validation and Synchronization" href="/explore-the-protocol-docs/block-verification-and-synchronization">Block Validation and Synchronization</a></li>
+          <li><a title="Blockchain Overview" href="/explore-the-protocol-docs/blockchain-overview"><b>Blockchain Overview</b></a></li>
           
           
           
           
           
           
-          <li><a title="Block Mining" href="/explore-the-protocol-docs/block-mining">Block Mining</a></li>
+          <li><a title="Block Validation and Synchronization" href="/explore-the-protocol-docs/block-verification-and-synchronization"><b>Block Validation and Synchronization</b></a></li>
           
           
           
           
           
           
-          <li><a title="Payment Verification" href="/explore-the-protocol-docs/payment-verification">Payment Verification</a></li>
+          <li><a title="Block Mining" href="/explore-the-protocol-docs/block-mining"><b>Block Mining</b></a></li>
           
           
           
           
           
           
-          <li><a title="Storage Databases" href="/explore-the-protocol-docs/storage-databases">Storage Databases</a></li>
+          <li><a title="Payment Verification" href="/explore-the-protocol-docs/payment-verification"><b>Payment Verification</b></a></li>
           
           
           
           
           
           
-          <li><a title="Blockchain Security" href="/explore-the-protocol-docs/blockchain-security">Blockchain Security</a></li>
+          <li><a title="Storage Databases" href="/explore-the-protocol-docs/storage-databases"><b>Storage Databases</b></a></li>
           
           
           
           
           
           
-          <li><a title="RPC Communication" href="/explore-the-protocol-docs/rpc-communication">RPC Communication</a></li>
+          <li><a title="Blockchain Security" href="/explore-the-protocol-docs/blockchain-security"><b>Blockchain Security</b></a></li>
           
           
           
           
           
           
-          <li><a title="Glossary" href="/explore-the-protocol-docs/glossary">Glossary</a></li>
-          
-          
-          
-          
-      </ul>
-   </li>
-     
-      
-  
-  <li>
-      <a title="Read our Papers" href="#">Read our Papers</a>
-      <ul>
-          
-          
-          
-          <li><a title="Bitmark versus Ethereum" href="/read-our-papers/bitmark-eth-comparison">Bitmark versus Ethereum</a></li>
+          <li><a title="RPC Communication" href="/explore-the-protocol-docs/rpc-communication"><b>RPC Communication</b></a></li>
           
           
           
           
           
           
-          <li><a title="White Papers" href="/read-our-papers/white-papers">White Papers</a></li>
+          <li><a title="Glossary" href="/explore-the-protocol-docs/glossary"><b>Glossary</b></a></li>
           
           
           
@@ -319,12 +300,19 @@
       
   
   <li>
-      <a title="Contribute to the Protocol" href="#">Contribute to the Protocol</a>
-      <ul>
+      <a class="sidebar-title" title="Read our Papers" href="#">Read our Papers</a>
+      <ul class="sidebar-list">
           
           
           
-          <li><a title="Contribute to the Protocol" href="/contribute-to-the-protocol">Contribute to the Protocol</a></li>
+          <li><a title="Bitmark versus Ethereum" href="/read-our-papers/bitmark-eth-comparison"><b>Bitmark versus Ethereum</b></a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="White Papers" href="/read-our-papers//white-papers"><b>White Papers</b></a></li>
           
           
           
@@ -335,12 +323,28 @@
       
   
   <li>
-      <a title="Browse our FAQ" href="#">Browse our FAQ</a>
-      <ul>
+      <a class="sidebar-title" title="Contribute to the Protocol" href="#">Contribute to the Protocol</a>
+      <ul class="sidebar-list">
           
           
           
-          <li><a title="Bitmark Protocol FAQ" href="/browse-our-faq/bitmark-protocol-faq">Bitmark Protocol FAQ</a></li>
+          <li><a title="Contribute to the Protocol" href="/contribute-to-the-protocol"><b>Contribute to the Protocol</b></a></li>
+          
+          
+          
+          
+      </ul>
+   </li>
+     
+      
+  
+  <li>
+      <a class="sidebar-title" title="Browse our FAQ" href="#">Browse our FAQ</a>
+      <ul class="sidebar-list">
+          
+          
+          
+          <li><a title="Bitmark Protocol FAQ" href="/browser-our-faq/bitmark-protocol-faq"><b>Bitmark Protocol FAQ</b></a></li>
           
           
           
@@ -376,11 +380,11 @@
 
    
 
-    
+
     
 
     <div class="row">
-        <div class="col-md-9"><h1 id="receiving-websocket-events">Receiving WebSocket Events</h1>
+        <div class="col-md-9 page-article"><h1 id="receiving-websocket-events">Receiving WebSocket Events</h1>
 <p>Realtime event triggering is trending in modern application development. It helps application to always be up to date and so provides better user experiences.
 Bitmark SDK offers Web Socket event triggering so that the application can be notified immediately when anything changes.</p>
 
@@ -421,7 +425,7 @@ Bitmark SDK offers Web Socket event triggering so that the application can be no
 <p>Note: The attribute names could be different depending on the SDK used. This document refers specifically to the Java SDK.</p>
 
 <h3 id="connectdisconnect">Connect/Disconnect</h3>
-<ul class="uk-tab" data-uk-switcher="{connect:'#f5012be9-43c0-4cb6-955a-669301c3080b'}">
+<ul class="uk-tab" data-uk-switcher="{connect:'#363854a5-54cd-40d7-a259-ae99af2553fe'}">
 
 	<li class="uk-active"><a href="#">Java</a></li>
 
@@ -429,7 +433,7 @@ Bitmark SDK offers Web Socket event triggering so that the application can be no
 
 </ul>
 
-<ul id="f5012be9-43c0-4cb6-955a-669301c3080b" class="uk-switcher uk-margin">
+<ul id="363854a5-54cd-40d7-a259-ae99af2553fe" class="uk-switcher uk-margin">
 
 	<li>
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">WebSocket</span><span class="o">.</span><span class="na">ConnectionEvent</span> <span class="n">connEvent</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">WebSocket</span><span class="o">.</span><span class="na">ConnectionEvent</span><span class="o">()</span> <span class="o">{</span>
@@ -466,7 +470,7 @@ Bitmark SDK offers Web Socket event triggering so that the application can be no
 </ul>
 
 <h3 id="subscribeunsubscribe">Subscribe/Unsubscribe</h3>
-<ul class="uk-tab" data-uk-switcher="{connect:'#50eca6b8-db79-4a7e-8a7a-ca68f9723a28'}">
+<ul class="uk-tab" data-uk-switcher="{connect:'#b34f0352-5587-431b-a1a8-f9c896e9c5db'}">
 
 	<li class="uk-active"><a href="#">Java</a></li>
 
@@ -474,7 +478,7 @@ Bitmark SDK offers Web Socket event triggering so that the application can be no
 
 </ul>
 
-<ul id="50eca6b8-db79-4a7e-8a7a-ca68f9723a28" class="uk-switcher uk-margin">
+<ul id="b34f0352-5587-431b-a1a8-f9c896e9c5db" class="uk-switcher uk-margin">
 
 	<li>
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// subscribe</span>
@@ -542,7 +546,7 @@ $('#toc').on('click', 'a', function() {
         
     </div>
 
-    
+
 
     <div class="tags">
         
@@ -553,7 +557,7 @@ $('#toc').on('click', 'a', function() {
 
 </div>
 
-<hr class="shaded"/>
+<!-- <hr class="shaded"/> -->
 
 <footer>
             <div class="row">
