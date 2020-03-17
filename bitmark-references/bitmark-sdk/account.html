@@ -45,7 +45,7 @@
 <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
 
-<link rel="alternate" type="application/rss+xml" title="docs" href="http://localhost:4000/feed.xml">
+<link rel="alternate" type="application/rss+xml" title="docs" href="/feed.xml">
 
     <script>
         $(document).ready(function() {
@@ -112,12 +112,12 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/index.html"><span class="projectTitle home-logo"><img src="/assets/images/Bitmark_Logo-desktop_white.svg" alt="Bitmark logo"/><!-- Home --></span></a>
+            <a class="navbar-brand" href="/index.html"><span class="projectTitle home-logo">Bitmark<!-- <img src="/assets/images/Bitmark_Logo-desktop_white.svg" alt="Bitmark logo"/> --><!-- Home --></span></a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <!-- toggle sidebar button -->
-                <li><a id="tg-sb-link" href="#"><i id="tg-sb-icon" class="fa fa-toggle-on"></i> Nav</a></li>
+                <!-- <li><a id="tg-sb-link" href="#"><i id="tg-sb-icon" class="fa fa-toggle-on"></i> Nav</a></li> -->
                 <!-- entries without drop-downs appear here -->
 
 
@@ -126,23 +126,27 @@
                 
                 
                 
-                <li><a href="https://github.com/bitmark-inc/docs" target="_blank" rel="noopener">GitHub</a></li>
+                <li><a href="https://registry.bitmark.com/" target="_blank" rel="noopener">Registry</a></li>
+                
+                
+                
+                <li><a href="https://bitmark.com/products/bitmark-protocol/faq/" target="_blank" rel="noopener">FAQ</a></li>
                 
                 
                 
                 <!-- entries with drop-downs appear here -->
                 <!-- conditional logic to control which topnav appears for the audience defined in the configuration file.-->
                 
-                
+                <!-- 
 			<li>
 
 
 
-  <a class="email" title="Submit feedback" href="#" onclick="javascript:window.location='mailto:support@bitmark.com?subject=Bitmark Inc feedback&body=I have some feedback about the Account page: ' + window.location.href;"><i class="fa fa-envelope-o"></i> Need help?</a>
+  <a class="email" title="Submit feedback" href="#" target="_blank" onclick="javascript:window.location='mailto:support@bitmark.com?subject=Bitmark Inc feedback&body=I have some feedback about the Account page: ' + window.location.href;"><i class="fa fa-envelope-o"></i> Need help?</a>
 
 </li>
 
-		
+		 -->
                 <!--comment out this block if you want to hide search-->
                 <li>
                     <!--start search-->
@@ -174,7 +178,7 @@
 <div class="container">
   <div id="main">
     <!-- Content Row -->
-    <div class="row">
+    <div class="">
         
         
             <!-- Sidebar Column -->
@@ -187,40 +191,40 @@
   
   
   <li>
-      <a title="Register & Control data" href="#">Register & Control data</a>
-      <ul>
+      <a class="sidebar-title" title="Register & Control data" href="#">Register & Control data</a>
+      <ul class="sidebar-list">
           
           
           
-          <li><a title="Register data" href="/register-and-control-data/register-data">Register data</a></li>
-          
-          
-          
-          
-          
-          
-          <li><a title="Control access" href="/register-and-control-data/control-access">Control access</a></li>
+          <li><a title="Register data" href="/register-and-control-data/register-data"><b>Register data</b></a></li>
           
           
           
           
           
           
-          <li><a title="Transfer rights" href="/register-and-control-data/transfer-rights">Transfer rights</a></li>
+          <li><a title="Control access" href="/register-and-control-data/control-access"><b>Control access</b></a></li>
           
           
           
           
           
           
-          <li><a title="Share rights" href="/register-and-control-data/share-rights">Share rights</a></li>
+          <li><a title="Transfer rights" href="/register-and-control-data/transfer-rights"><b>Transfer rights</b></a></li>
           
           
           
           
           
           
-          <li><a title="Run a Node" href="/register-and-control-data/run-a-node">Run a Node</a></li>
+          <li><a title="Share rights" href="/register-and-control-data/share-rights"><b>Share rights</b></a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Run a Node" href="/register-and-control-data/run-a-node"><b>Run a Node</b></a></li>
           
           
           
@@ -231,84 +235,61 @@
       
   
   <li>
-      <a title="Explore the Protocol Docs" href="#">Explore the Protocol Docs</a>
-      <ul>
+      <a class="sidebar-title" title="Explore the Protocol Docs" href="#">Explore the Protocol Docs</a>
+      <ul class="sidebar-list">
           
           
           
-          <li><a title="Blockchain Overview" href="/explore-the-protocol-docs/blockchain-overview">Blockchain Overview</a></li>
-          
-          
-          
-          
-          
-          
-          <li><a title="Block Validation and Synchronization" href="/explore-the-protocol-docs/block-verification-and-synchronization">Block Validation and Synchronization</a></li>
+          <li><a title="Blockchain Overview" href="/explore-the-protocol-docs/blockchain-overview"><b>Blockchain Overview</b></a></li>
           
           
           
           
           
           
-          <li><a title="Block Mining" href="/explore-the-protocol-docs/block-mining">Block Mining</a></li>
+          <li><a title="Block Validation and Synchronization" href="/explore-the-protocol-docs/block-verification-and-synchronization"><b>Block Validation and Synchronization</b></a></li>
           
           
           
           
           
           
-          <li><a title="Payment Verification" href="/explore-the-protocol-docs/payment-verification">Payment Verification</a></li>
+          <li><a title="Block Mining" href="/explore-the-protocol-docs/block-mining"><b>Block Mining</b></a></li>
           
           
           
           
           
           
-          <li><a title="Storage Databases" href="/explore-the-protocol-docs/storage-databases">Storage Databases</a></li>
+          <li><a title="Payment Verification" href="/explore-the-protocol-docs/payment-verification"><b>Payment Verification</b></a></li>
           
           
           
           
           
           
-          <li><a title="Blockchain Security" href="/explore-the-protocol-docs/blockchain-security">Blockchain Security</a></li>
+          <li><a title="Storage Databases" href="/explore-the-protocol-docs/storage-databases"><b>Storage Databases</b></a></li>
           
           
           
           
           
           
-          <li><a title="RPC Communication" href="/explore-the-protocol-docs/rpc-communication">RPC Communication</a></li>
+          <li><a title="Blockchain Security" href="/explore-the-protocol-docs/blockchain-security"><b>Blockchain Security</b></a></li>
           
           
           
           
           
           
-          <li><a title="Glossary" href="/explore-the-protocol-docs/glossary">Glossary</a></li>
-          
-          
-          
-          
-      </ul>
-   </li>
-     
-      
-  
-  <li>
-      <a title="Read our Papers" href="#">Read our Papers</a>
-      <ul>
-          
-          
-          
-          <li><a title="Bitmark versus Ethereum" href="/read-our-papers/bitmark-eth-comparison">Bitmark versus Ethereum</a></li>
+          <li><a title="RPC Communication" href="/explore-the-protocol-docs/rpc-communication"><b>RPC Communication</b></a></li>
           
           
           
           
           
           
-          <li><a title="White Papers" href="/read-our-papers/white-papers">White Papers</a></li>
+          <li><a title="Glossary" href="/explore-the-protocol-docs/glossary"><b>Glossary</b></a></li>
           
           
           
@@ -319,12 +300,19 @@
       
   
   <li>
-      <a title="Contribute to the Protocol" href="#">Contribute to the Protocol</a>
-      <ul>
+      <a class="sidebar-title" title="Read our Papers" href="#">Read our Papers</a>
+      <ul class="sidebar-list">
           
           
           
-          <li><a title="Contribute to the Protocol" href="/contribute-to-the-protocol">Contribute to the Protocol</a></li>
+          <li><a title="Bitmark versus Ethereum" href="/read-our-papers/bitmark-eth-comparison"><b>Bitmark versus Ethereum</b></a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="White Papers" href="/read-our-papers//white-papers"><b>White Papers</b></a></li>
           
           
           
@@ -335,12 +323,28 @@
       
   
   <li>
-      <a title="Browse our FAQ" href="#">Browse our FAQ</a>
-      <ul>
+      <a class="sidebar-title" title="Contribute to the Protocol" href="#">Contribute to the Protocol</a>
+      <ul class="sidebar-list">
           
           
           
-          <li><a title="Bitmark Protocol FAQ" href="/browse-our-faq/bitmark-protocol-faq">Bitmark Protocol FAQ</a></li>
+          <li><a title="Contribute to the Protocol" href="/contribute-to-the-protocol"><b>Contribute to the Protocol</b></a></li>
+          
+          
+          
+          
+      </ul>
+   </li>
+     
+      
+  
+  <li>
+      <a class="sidebar-title" title="Browse our FAQ" href="#">Browse our FAQ</a>
+      <ul class="sidebar-list">
+          
+          
+          
+          <li><a title="Bitmark Protocol FAQ" href="/browser-our-faq/bitmark-protocol-faq"><b>Bitmark Protocol FAQ</b></a></li>
           
           
           
@@ -376,11 +380,11 @@
 
    
 
-    
+
     
 
     <div class="row">
-        <div class="col-md-9"><h1 id="account">Account</h1>
+        <div class="col-md-9 page-article"><h1 id="account">Account</h1>
 
 <p>Within the Bitmark Property System, an account represents any entity capable of creating and owning property, whether individuals, institutions, or organizations.</p>
 
@@ -390,7 +394,7 @@
 
 <p>You must create a new identity to participate on the Bitmark blockchain.</p>
 
-<ul class="uk-tab" data-uk-switcher="{connect:'#55a305c7-d03a-4dcb-971c-5bb70a7f4817'}">
+<ul class="uk-tab" data-uk-switcher="{connect:'#dc6218ee-e1fb-45df-be42-00eea3e21b2d'}">
 
 	<li class="uk-active"><a href="#">JS</a></li>
 
@@ -402,7 +406,7 @@
 
 </ul>
 
-<ul id="55a305c7-d03a-4dcb-971c-5bb70a7f4817" class="uk-switcher uk-margin">
+<ul id="dc6218ee-e1fb-45df-be42-00eea3e21b2d" class="uk-switcher uk-margin">
 
 	<li>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">account</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">sdk</span><span class="p">.</span><span class="nx">Account</span><span class="p">();</span>
@@ -442,7 +446,7 @@
   <li>The <strong>receiver</strong> of a bitmark transfer offer</li>
 </ul>
 
-<ul class="uk-tab" data-uk-switcher="{connect:'#ddabf92b-95fb-4bc8-8fd4-87435d5adec9'}">
+<ul class="uk-tab" data-uk-switcher="{connect:'#b61f77ff-4b6d-48ec-aeea-c320abf90817'}">
 
 	<li class="uk-active"><a href="#">JS</a></li>
 
@@ -454,7 +458,7 @@
 
 </ul>
 
-<ul id="ddabf92b-95fb-4bc8-8fd4-87435d5adec9" class="uk-switcher uk-margin">
+<ul id="b61f77ff-4b6d-48ec-aeea-c320abf90817" class="uk-switcher uk-margin">
 
 	<li>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">accountNumber</span> <span class="o">=</span> <span class="nx">account</span><span class="p">.</span><span class="nx">getAccountNumber</span><span class="p">();</span>
@@ -491,7 +495,7 @@
 
 <p>The seed is the more compact format of an exported account. See <a href="/bitmark-references/bitmark-sdk/store-seed">Store seed</a> to learn how to securely store seeds in mobile phones.</p>
 
-<ul class="uk-tab" data-uk-switcher="{connect:'#2067bb62-89dd-47d1-8712-61a1062cc4f1'}">
+<ul class="uk-tab" data-uk-switcher="{connect:'#899a7754-1c3a-44ba-812b-5ceb21be4b75'}">
 
 	<li class="uk-active"><a href="#">JS</a></li>
 
@@ -503,7 +507,7 @@
 
 </ul>
 
-<ul id="2067bb62-89dd-47d1-8712-61a1062cc4f1" class="uk-switcher uk-margin">
+<ul id="899a7754-1c3a-44ba-812b-5ceb21be4b75" class="uk-switcher uk-margin">
 
 	<li>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">seed</span> <span class="o">=</span> <span class="nx">account</span><span class="p">.</span><span class="nx">getSeed</span><span class="p">();</span>
@@ -538,7 +542,7 @@
 
 <p>Currently English and traditional Chinese phrases are supported.</p>
 
-<ul class="uk-tab" data-uk-switcher="{connect:'#bec5cc9e-aa0b-4b01-b7ee-5fd16ce9e573'}">
+<ul class="uk-tab" data-uk-switcher="{connect:'#be1e6efc-03a3-435f-b4ea-b6518e1cc4f0'}">
 
 	<li class="uk-active"><a href="#">JS</a></li>
 
@@ -550,7 +554,7 @@
 
 </ul>
 
-<ul id="bec5cc9e-aa0b-4b01-b7ee-5fd16ce9e573" class="uk-switcher uk-margin">
+<ul id="be1e6efc-03a3-435f-b4ea-b6518e1cc4f0" class="uk-switcher uk-margin">
 
 	<li>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// English version</span>
@@ -607,7 +611,7 @@
 
 <p>To instantiate an account from a given seed:</p>
 
-<ul class="uk-tab" data-uk-switcher="{connect:'#2a1caad7-a77f-4cd7-b921-e425e9dc30dd'}">
+<ul class="uk-tab" data-uk-switcher="{connect:'#b8b8558c-3d25-47e5-84d7-524101ea552a'}">
 
 	<li class="uk-active"><a href="#">JS</a></li>
 
@@ -619,7 +623,7 @@
 
 </ul>
 
-<ul id="2a1caad7-a77f-4cd7-b921-e425e9dc30dd" class="uk-switcher uk-margin">
+<ul id="b8b8558c-3d25-47e5-84d7-524101ea552a" class="uk-switcher uk-margin">
 
 	<li>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">account</span> <span class="o">=</span> <span class="nx">Account</span><span class="p">.</span><span class="nx">fromSeed</span><span class="p">(</span><span class="dl">"</span><span class="s2">9J87CAsHdFdoEu6N1unZk3sqhVBkVL8Z8</span><span class="dl">"</span><span class="p">);</span>
@@ -647,7 +651,7 @@
 
 <p>To instantiate an account from a given recovery phrase:</p>
 
-<ul class="uk-tab" data-uk-switcher="{connect:'#57c990e4-8a1c-4641-a607-76b797d97741'}">
+<ul class="uk-tab" data-uk-switcher="{connect:'#3f17b2a2-6136-4697-890a-26721293e683'}">
 
 	<li class="uk-active"><a href="#">JS</a></li>
 
@@ -659,7 +663,7 @@
 
 </ul>
 
-<ul id="57c990e4-8a1c-4641-a607-76b797d97741" class="uk-switcher uk-margin">
+<ul id="3f17b2a2-6136-4697-890a-26721293e683" class="uk-switcher uk-margin">
 
 	<li>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// English version</span>
@@ -715,7 +719,7 @@
 
 <p>An account can be used to sign an arbitrary message. Any party with the received message and the corresponding signature can then validate if the message was created by a known sender (authentication) and that the message was not altered in transit (integrity). This functionality is usually useful when you have a server application that needs to authenticate whether requests are from valid users.</p>
 
-<ul class="uk-tab" data-uk-switcher="{connect:'#bf4bf85b-aef8-41da-8cce-278e798f00e9'}">
+<ul class="uk-tab" data-uk-switcher="{connect:'#978891b5-b088-43ae-9b0e-74a79d999273'}">
 
 	<li class="uk-active"><a href="#">JS</a></li>
 
@@ -727,7 +731,7 @@
 
 </ul>
 
-<ul id="bf4bf85b-aef8-41da-8cce-278e798f00e9" class="uk-switcher uk-margin">
+<ul id="978891b5-b088-43ae-9b0e-74a79d999273" class="uk-switcher uk-margin">
 
 	<li>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">account</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Account</span><span class="p">();</span>
@@ -785,7 +789,7 @@
 <p>Validating a given account number verifies that it is valid in the current runtime environment (i.e.,
 the format is correct and its network matches the network specified in the SDK config during initialization). The SDK functions return an error if the validation fails.</p>
 
-<ul class="uk-tab" data-uk-switcher="{connect:'#a9ebac30-76ef-4ef6-b7a7-35e6ed857fa8'}">
+<ul class="uk-tab" data-uk-switcher="{connect:'#2893c2aa-9be0-4925-8cbc-a1023c77dced'}">
 
 	<li class="uk-active"><a href="#">JS</a></li>
 
@@ -797,7 +801,7 @@ the format is correct and its network matches the network specified in the SDK c
 
 </ul>
 
-<ul id="a9ebac30-76ef-4ef6-b7a7-35e6ed857fa8" class="uk-switcher uk-margin">
+<ul id="2893c2aa-9be0-4925-8cbc-a1023c77dced" class="uk-switcher uk-margin">
 
 	<li>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">isValid</span> <span class="o">=</span> <span class="nx">Account</span><span class="p">.</span><span class="nx">isValidAccountNumber</span><span class="p">(</span><span class="nx">accountNumber</span><span class="p">);</span>
@@ -848,7 +852,7 @@ $('#toc').on('click', 'a', function() {
         
     </div>
 
-    
+
 
     <div class="tags">
         
@@ -859,7 +863,7 @@ $('#toc').on('click', 'a', function() {
 
 </div>
 
-<hr class="shaded"/>
+<!-- <hr class="shaded"/> -->
 
 <footer>
             <div class="row">

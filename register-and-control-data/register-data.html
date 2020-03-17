@@ -45,7 +45,7 @@
 <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
 
-<link rel="alternate" type="application/rss+xml" title="docs" href="http://localhost:4000/feed.xml">
+<link rel="alternate" type="application/rss+xml" title="docs" href="/feed.xml">
 
     <script>
         $(document).ready(function() {
@@ -112,12 +112,12 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/index.html"><span class="projectTitle home-logo"><img src="/assets/images/Bitmark_Logo-desktop_white.svg" alt="Bitmark logo"/><!-- Home --></span></a>
+            <a class="navbar-brand" href="/index.html"><span class="projectTitle home-logo">Bitmark<!-- <img src="/assets/images/Bitmark_Logo-desktop_white.svg" alt="Bitmark logo"/> --><!-- Home --></span></a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <!-- toggle sidebar button -->
-                <li><a id="tg-sb-link" href="#"><i id="tg-sb-icon" class="fa fa-toggle-on"></i> Nav</a></li>
+                <!-- <li><a id="tg-sb-link" href="#"><i id="tg-sb-icon" class="fa fa-toggle-on"></i> Nav</a></li> -->
                 <!-- entries without drop-downs appear here -->
 
 
@@ -126,23 +126,27 @@
                 
                 
                 
-                <li><a href="https://github.com/bitmark-inc/docs" target="_blank" rel="noopener">GitHub</a></li>
+                <li><a href="https://registry.bitmark.com/" target="_blank" rel="noopener">Registry</a></li>
+                
+                
+                
+                <li><a href="https://bitmark.com/products/bitmark-protocol/faq/" target="_blank" rel="noopener">FAQ</a></li>
                 
                 
                 
                 <!-- entries with drop-downs appear here -->
                 <!-- conditional logic to control which topnav appears for the audience defined in the configuration file.-->
                 
-                
+                <!-- 
 			<li>
 
 
 
-  <a class="email" title="Submit feedback" href="#" onclick="javascript:window.location='mailto:support@bitmark.com?subject=Bitmark Inc feedback&body=I have some feedback about the Register data page: ' + window.location.href;"><i class="fa fa-envelope-o"></i> Need help?</a>
+  <a class="email" title="Submit feedback" href="#" target="_blank" onclick="javascript:window.location='mailto:support@bitmark.com?subject=Bitmark Inc feedback&body=I have some feedback about the Register data page: ' + window.location.href;"><i class="fa fa-envelope-o"></i> Need help?</a>
 
 </li>
 
-		
+		 -->
                 <!--comment out this block if you want to hide search-->
                 <li>
                     <!--start search-->
@@ -174,7 +178,7 @@
 <div class="container">
   <div id="main">
     <!-- Content Row -->
-    <div class="row">
+    <div class="">
         
         
             <!-- Sidebar Column -->
@@ -187,40 +191,40 @@
   
   
   <li>
-      <a title="Register & Control data" href="#">Register & Control data</a>
-      <ul>
+      <a class="sidebar-title" title="Register & Control data" href="#">Register & Control data</a>
+      <ul class="sidebar-list">
           
           
           
-          <li class="active"><a title="Register data" href="/register-and-control-data/register-data">Register data</a></li>
-          
-          
-          
-          
-          
-          
-          <li><a title="Control access" href="/register-and-control-data/control-access">Control access</a></li>
+          <li class="active"><a title="Register data" href="/register-and-control-data/register-data"><b>Register data</b></a></li>
           
           
           
           
           
           
-          <li><a title="Transfer rights" href="/register-and-control-data/transfer-rights">Transfer rights</a></li>
+          <li><a title="Control access" href="/register-and-control-data/control-access"><b>Control access</b></a></li>
           
           
           
           
           
           
-          <li><a title="Share rights" href="/register-and-control-data/share-rights">Share rights</a></li>
+          <li><a title="Transfer rights" href="/register-and-control-data/transfer-rights"><b>Transfer rights</b></a></li>
           
           
           
           
           
           
-          <li><a title="Run a Node" href="/register-and-control-data/run-a-node">Run a Node</a></li>
+          <li><a title="Share rights" href="/register-and-control-data/share-rights"><b>Share rights</b></a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Run a Node" href="/register-and-control-data/run-a-node"><b>Run a Node</b></a></li>
           
           
           
@@ -231,84 +235,61 @@
       
   
   <li>
-      <a title="Explore the Protocol Docs" href="#">Explore the Protocol Docs</a>
-      <ul>
+      <a class="sidebar-title" title="Explore the Protocol Docs" href="#">Explore the Protocol Docs</a>
+      <ul class="sidebar-list">
           
           
           
-          <li><a title="Blockchain Overview" href="/explore-the-protocol-docs/blockchain-overview">Blockchain Overview</a></li>
-          
-          
-          
-          
-          
-          
-          <li><a title="Block Validation and Synchronization" href="/explore-the-protocol-docs/block-verification-and-synchronization">Block Validation and Synchronization</a></li>
+          <li><a title="Blockchain Overview" href="/explore-the-protocol-docs/blockchain-overview"><b>Blockchain Overview</b></a></li>
           
           
           
           
           
           
-          <li><a title="Block Mining" href="/explore-the-protocol-docs/block-mining">Block Mining</a></li>
+          <li><a title="Block Validation and Synchronization" href="/explore-the-protocol-docs/block-verification-and-synchronization"><b>Block Validation and Synchronization</b></a></li>
           
           
           
           
           
           
-          <li><a title="Payment Verification" href="/explore-the-protocol-docs/payment-verification">Payment Verification</a></li>
+          <li><a title="Block Mining" href="/explore-the-protocol-docs/block-mining"><b>Block Mining</b></a></li>
           
           
           
           
           
           
-          <li><a title="Storage Databases" href="/explore-the-protocol-docs/storage-databases">Storage Databases</a></li>
+          <li><a title="Payment Verification" href="/explore-the-protocol-docs/payment-verification"><b>Payment Verification</b></a></li>
           
           
           
           
           
           
-          <li><a title="Blockchain Security" href="/explore-the-protocol-docs/blockchain-security">Blockchain Security</a></li>
+          <li><a title="Storage Databases" href="/explore-the-protocol-docs/storage-databases"><b>Storage Databases</b></a></li>
           
           
           
           
           
           
-          <li><a title="RPC Communication" href="/explore-the-protocol-docs/rpc-communication">RPC Communication</a></li>
+          <li><a title="Blockchain Security" href="/explore-the-protocol-docs/blockchain-security"><b>Blockchain Security</b></a></li>
           
           
           
           
           
           
-          <li><a title="Glossary" href="/explore-the-protocol-docs/glossary">Glossary</a></li>
-          
-          
-          
-          
-      </ul>
-   </li>
-     
-      
-  
-  <li>
-      <a title="Read our Papers" href="#">Read our Papers</a>
-      <ul>
-          
-          
-          
-          <li><a title="Bitmark versus Ethereum" href="/read-our-papers/bitmark-eth-comparison">Bitmark versus Ethereum</a></li>
+          <li><a title="RPC Communication" href="/explore-the-protocol-docs/rpc-communication"><b>RPC Communication</b></a></li>
           
           
           
           
           
           
-          <li><a title="White Papers" href="/read-our-papers/white-papers">White Papers</a></li>
+          <li><a title="Glossary" href="/explore-the-protocol-docs/glossary"><b>Glossary</b></a></li>
           
           
           
@@ -319,12 +300,19 @@
       
   
   <li>
-      <a title="Contribute to the Protocol" href="#">Contribute to the Protocol</a>
-      <ul>
+      <a class="sidebar-title" title="Read our Papers" href="#">Read our Papers</a>
+      <ul class="sidebar-list">
           
           
           
-          <li><a title="Contribute to the Protocol" href="/contribute-to-the-protocol">Contribute to the Protocol</a></li>
+          <li><a title="Bitmark versus Ethereum" href="/read-our-papers/bitmark-eth-comparison"><b>Bitmark versus Ethereum</b></a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="White Papers" href="/read-our-papers//white-papers"><b>White Papers</b></a></li>
           
           
           
@@ -335,12 +323,28 @@
       
   
   <li>
-      <a title="Browse our FAQ" href="#">Browse our FAQ</a>
-      <ul>
+      <a class="sidebar-title" title="Contribute to the Protocol" href="#">Contribute to the Protocol</a>
+      <ul class="sidebar-list">
           
           
           
-          <li><a title="Bitmark Protocol FAQ" href="/browse-our-faq/bitmark-protocol-faq">Bitmark Protocol FAQ</a></li>
+          <li><a title="Contribute to the Protocol" href="/contribute-to-the-protocol"><b>Contribute to the Protocol</b></a></li>
+          
+          
+          
+          
+      </ul>
+   </li>
+     
+      
+  
+  <li>
+      <a class="sidebar-title" title="Browse our FAQ" href="#">Browse our FAQ</a>
+      <ul class="sidebar-list">
+          
+          
+          
+          <li><a title="Bitmark Protocol FAQ" href="/browser-our-faq/bitmark-protocol-faq"><b>Bitmark Protocol FAQ</b></a></li>
           
           
           
@@ -376,19 +380,23 @@
 
    
 
-    
+
     
 
     <div class="row">
-        <div class="col-md-9"><h1 id="register-data">Register data</h1>
+        <div class="col-md-9 page-article"><h1 id="register-data">Register data</h1>
 
-<p>Assets with titles that have been publicly recorded are more valuable than those without. They are what grant basic rights, such as the ability to resell, rent, lend, and donate the property. The Bitmark blockchain allows individuals to access these rights for digital assets by registering their titles as Bitmark Certificates (or bitmarks). This can be done using the <a href="#register-data-using-the-sdk">SDK</a> and the <a href="#register-data-using-the-cli">CLI</a>.</p>
+<p>Assets with titles that have been publicly recorded are more valuable than those without. They are what grant basic rights, such as the ability to resell, rent, lend, and donate the property. The Bitmark blockchain allows individuals to access these rights for digital assets by registering their titles as Bitmark Certificates (or bitmarks). This can be done using the SDK and the CLI.</p>
 
 <p>The process of registering a Bitmark Certificate for a digital asset occurs in two steps:</p>
 
 <ul>
-  <li>Registering the asset: this creates an <em>Asset Record</em>, which is stored on the Bitmark blockchain.</li>
-  <li>Issuing bitmarks: this creates <em>Issue Records</em> linking to the corresponding asset record, which are also stored on the Bitmark blockchain.</li>
+  <li>
+    <p>Registering the asset: this creates an <em>Asset Record</em>, which is stored on the Bitmark blockchain.</p>
+  </li>
+  <li>
+    <p>Issuing bitmarks: this creates <em>Issue Records</em> linking to the corresponding asset record, which are also stored on the Bitmark blockchain.</p>
+  </li>
 </ul>
 
 <p>This process registers legal property rights on the public Bitmark blockchain for an individual’s digital assets, including personal health and social data, creative works such as art, photography, and music, and other intellectual property. These legal rights determine who owns property and what can be done with it, whether the individual wants to keep it, sell it, or donate it.</p>
@@ -407,13 +415,21 @@
   <li><a href="/register-and-control-data/cli/cli-payment#installing-and-configuring-the-bitmark-wallet">Install and configure the Bitmark Wallet</a></li>
 </ul>
 
-<h2 id="register-data-using-the-sdk">Register data using the SDK</h2>
+<h2 id="issue-the-first-bitmark">Issue the first bitmark</h2>
 
-<h3 id="register-an-asset">Register an asset</h3>
+<p>The first step to create a digital property is to register assets</p>
 
-<p>An asset record requires an accompanying bitmark issuance to be added to the blockchain. This first issuance is free of charge, but additional issuances for the same asset require a fee.</p>
+<ul>
+  <li>Each asset can be described by name and metadata (both optional), and can be uniquely identified by its fingerprint.</li>
+  <li>If an asset record with the same fingerprint value already exists in the blockchain, the new asset record is rejected from incorporation in the blockchain.</li>
+  <li>An asset record won’t be added to the blockchain without accompanying bitmark issuances. The “orphaned” asset records will be vanished after 3 days.</li>
+</ul>
 
-<ul class="uk-tab" data-uk-switcher="{connect:'#54ad9eee-1cc2-4255-9b31-c605ec5cf72f'}">
+<p>For any asset there is a special issue that is free of cost. Even if an asset already exists a different Bitmark account can create a free issue for it.</p>
+
+<h3 id="using-the-sdk">Using the SDK</h3>
+
+<ul class="uk-tab" data-uk-switcher="{connect:'#b38970b0-5438-41b4-b4d6-3d95afef4f95'}">
 
 	<li class="uk-active"><a href="#">JS</a></li>
 
@@ -425,7 +441,7 @@
 
 </ul>
 
-<ul id="54ad9eee-1cc2-4255-9b31-c605ec5cf72f" class="uk-switcher uk-margin">
+<ul id="b38970b0-5438-41b4-b4d6-3d95afef4f95" class="uk-switcher uk-margin">
 
 	<li>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//Configure the SDK</span>
@@ -588,96 +604,9 @@
 
 </ul>
 
-<h3 id="issue-more-bitmarks">Issue more bitmarks</h3>
+<h3 id="using-the-cli">Using the CLI</h3>
 
-<p>After an asset is registered, users can issue additional bitmarks with a permanent reference to the corresponding asset record. SDK users pay for those issuances using the SDK credit system.</p>
-
-<ul class="uk-tab" data-uk-switcher="{connect:'#6d9f044f-9eba-4380-868f-02843a66f639'}">
-
-	<li class="uk-active"><a href="#">JS</a></li>
-
-	<li><a href="#">Swift</a></li>
-
-	<li><a href="#">Java</a></li>
-
-	<li><a href="#">Go</a></li>
-
-</ul>
-
-<ul id="6d9f044f-9eba-4380-868f-02843a66f639" class="uk-switcher uk-margin">
-
-	<li>
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//import the issuer account</span>
-<span class="kd">let</span> <span class="nx">issuer</span> <span class="o">=</span> <span class="nx">Account</span><span class="p">.</span><span class="nx">fromSeed</span><span class="p">(</span><span class="dl">"</span><span class="s2">your_account_seed</span><span class="dl">"</span><span class="p">);</span>
-
-<span class="c1">// Build and sign the bitmark issuance request</span>
-<span class="kd">let</span> <span class="nx">issueParams</span> <span class="o">=</span> <span class="nx">sdk</span><span class="p">.</span><span class="nx">Bitmark</span><span class="p">.</span><span class="nx">newIssuanceParams</span><span class="p">(</span><span class="nx">assetId</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
-<span class="nx">issueParams</span><span class="p">.</span><span class="nx">sign</span><span class="p">(</span><span class="nx">issuer</span><span class="p">);</span>
-
-<span class="c1">// Submit the issue request</span>
-<span class="kd">let</span> <span class="nx">bitmarks</span> <span class="o">=</span> <span class="p">(</span><span class="k">await</span> <span class="nx">sdk</span><span class="p">.</span><span class="nx">Bitmark</span><span class="p">.</span><span class="nx">issue</span><span class="p">(</span><span class="nx">issueParams</span><span class="p">)).</span><span class="nx">bitmarks</span><span class="p">;</span>
-</code></pre></div></div>
-</li>
-
-	<li>
-<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//import the issuer account</span>
-<span class="n">issuer</span> <span class="o">=</span> <span class="kt">Account</span><span class="p">(</span><span class="nv">fromSeed</span><span class="p">:</span><span class="s">"your_account_seed"</span><span class="p">);</span>
-
-<span class="c1">// Build and sign the bitmark issuance request</span>
-<span class="k">var</span> <span class="nv">params</span> <span class="o">=</span> <span class="k">try</span> <span class="kt">Bitmark</span><span class="o">.</span><span class="nf">newIssuanceParams</span><span class="p">(</span><span class="nv">assetId</span><span class="p">:</span> <span class="n">assetId</span><span class="p">,</span>
-                                            <span class="nv">quantity</span><span class="p">:</span> <span class="mi">10</span><span class="p">)</span>
-<span class="k">try</span> <span class="n">params</span><span class="o">.</span><span class="nf">sign</span><span class="p">(</span><span class="n">issuer</span><span class="p">)</span>
-
-<span class="c1">// Submit the issue request</span>
-<span class="k">let</span> <span class="nv">bitmarkIds</span> <span class="o">=</span> <span class="k">try</span> <span class="kt">Bitmark</span><span class="o">.</span><span class="nf">issue</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
-</code></pre></div></div>
-</li>
-
-	<li>
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//import the issuer account</span>
-<span class="nc">Account</span> <span class="n">issuer</span> <span class="o">=</span> <span class="nc">Account</span><span class="o">.</span><span class="na">fromSeed</span><span class="o">(</span><span class="s">"your_account_seed"</span><span class="o">);</span>
-
-<span class="c1">// Build and sign the bitmark issuance request</span>
-<span class="nc">IssuanceParams</span> <span class="n">params</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">IssuanceParams</span><span class="o">(</span><span class="n">assetId</span><span class="o">,</span> <span class="mi">10</span><span class="o">);</span>
-<span class="n">params</span><span class="o">.</span><span class="na">sign</span><span class="o">(</span><span class="n">issuer</span><span class="o">.</span><span class="na">getKeyPair</span><span class="o">());</span>
-
-<span class="c1">// Submit the issue request</span>
-<span class="nc">Bitmark</span><span class="o">.</span><span class="na">issue</span><span class="o">(</span><span class="n">params</span><span class="o">,</span> <span class="k">new</span> <span class="nc">Callback1</span><span class="o">&lt;</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;&gt;()</span> <span class="o">{</span>
-            <span class="nd">@Override</span>
-            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onSuccess</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">txIds</span><span class="o">)</span> <span class="o">{</span>
-
-            <span class="o">}</span>
-
-            <span class="nd">@Override</span>
-            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onError</span><span class="o">(</span><span class="nc">Throwable</span> <span class="n">throwable</span><span class="o">)</span> <span class="o">{</span>
-
-            <span class="o">}</span>
-        <span class="o">});</span>
-</code></pre></div></div>
-</li>
-
-	<li>
-<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">//import the issuer account</span>
-<span class="n">issuer</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">account</span><span class="o">.</span><span class="n">FromSeed</span><span class="p">(</span><span class="s">"your_account_seed"</span><span class="p">);</span>
-
-<span class="c">// Build and sign the bitmark issuance request</span>
-<span class="n">params</span> <span class="o">:=</span> <span class="n">bitmark</span><span class="o">.</span><span class="n">NewIssuanceParams</span><span class="p">(</span><span class="n">assetID</span><span class="p">,</span> <span class="m">10</span><span class="p">)</span>
-<span class="n">params</span><span class="o">.</span><span class="n">Sign</span><span class="p">(</span><span class="n">issuer</span><span class="p">)</span>
-
-<span class="c">// Submit the issue request</span>
-<span class="n">bitmarkIDs</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">bitmark</span><span class="o">.</span><span class="n">Issue</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
-</code></pre></div></div>
-</li>
-
-</ul>
-
-<h2 id="register-data-using-the-cli">Register data using the CLI</h2>
-
-<h3 id="register-an-asset-1">Register an asset</h3>
-
-<p>The steps and logics of registering an asset do not change regardless of whether which tool is used. An asset record requires an accompanying bitmark issuance to be added to the blockchain. This first issuance is free of charge, but additional issuances for the same asset require a fee.</p>
-
-<ul class="uk-tab" data-uk-switcher="{connect:'#a44685dc-a1f9-40af-b46d-a1f7e8872dce'}">
+<ul class="uk-tab" data-uk-switcher="{connect:'#cdb94a49-4035-4c24-a8cd-d9e1c2dd66e9'}">
 
 	<li class="uk-active"><a href="#">Command</a></li>
 
@@ -687,7 +616,7 @@
 
 </ul>
 
-<ul id="a44685dc-a1f9-40af-b46d-a1f7e8872dce" class="uk-switcher uk-margin">
+<ul id="cdb94a49-4035-4c24-a8cd-d9e1c2dd66e9" class="uk-switcher uk-margin">
 
 	<li>
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Create an identity</span>
@@ -754,11 +683,99 @@ bitmark-cli <span class="nt">-n</span> testing <span class="nt">-i</span> first 
 
 </ul>
 
-<h3 id="issue-more-bitmarks-1">Issue more bitmarks</h3>
+<h2 id="issue-more">Issue more</h2>
 
-<p>The CLI users pay for transactions of issuing more bitmarks by sending BTC or LTC to the indicated address.</p>
+<p>After an asset is registered, users can issue more bitmarks with a permanent reference to the corresponding asset record. Those issuance transactions need to be paid to be confirmed on the Blockchain.</p>
 
-<ul class="uk-tab" data-uk-switcher="{connect:'#c8b7f076-3c3a-4072-8a87-0c970da318ac'}">
+<ul>
+  <li>SDK users pay for the issuance transactions using the SDK credit system</li>
+  <li>CLI users pay for the issuance transactions by sending BTC or LTC to the indicated address.</li>
+</ul>
+
+<h3 id="using-the-sdk-1">Using the SDK</h3>
+
+<ul class="uk-tab" data-uk-switcher="{connect:'#56a05c1e-e519-41ac-9ac9-ec0bad5d7521'}">
+
+	<li class="uk-active"><a href="#">JS</a></li>
+
+	<li><a href="#">Swift</a></li>
+
+	<li><a href="#">Java</a></li>
+
+	<li><a href="#">Go</a></li>
+
+</ul>
+
+<ul id="56a05c1e-e519-41ac-9ac9-ec0bad5d7521" class="uk-switcher uk-margin">
+
+	<li>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//import the issuer account</span>
+<span class="kd">let</span> <span class="nx">issuer</span> <span class="o">=</span> <span class="nx">Account</span><span class="p">.</span><span class="nx">fromSeed</span><span class="p">(</span><span class="dl">"</span><span class="s2">your_account_seed</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="c1">// Build and sign the bitmark issuance request</span>
+<span class="kd">let</span> <span class="nx">issueParams</span> <span class="o">=</span> <span class="nx">sdk</span><span class="p">.</span><span class="nx">Bitmark</span><span class="p">.</span><span class="nx">newIssuanceParams</span><span class="p">(</span><span class="nx">assetId</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
+<span class="nx">issueParams</span><span class="p">.</span><span class="nx">sign</span><span class="p">(</span><span class="nx">issuer</span><span class="p">);</span>
+
+<span class="c1">// Submit the issue request</span>
+<span class="kd">let</span> <span class="nx">bitmarks</span> <span class="o">=</span> <span class="p">(</span><span class="k">await</span> <span class="nx">sdk</span><span class="p">.</span><span class="nx">Bitmark</span><span class="p">.</span><span class="nx">issue</span><span class="p">(</span><span class="nx">issueParams</span><span class="p">)).</span><span class="nx">bitmarks</span><span class="p">;</span>
+</code></pre></div></div>
+</li>
+
+	<li>
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//import the issuer account</span>
+<span class="n">issuer</span> <span class="o">=</span> <span class="kt">Account</span><span class="p">(</span><span class="nv">fromSeed</span><span class="p">:</span><span class="s">"your_account_seed"</span><span class="p">);</span>
+
+<span class="c1">// Build and sign the bitmark issuance request</span>
+<span class="k">var</span> <span class="nv">params</span> <span class="o">=</span> <span class="k">try</span> <span class="kt">Bitmark</span><span class="o">.</span><span class="nf">newIssuanceParams</span><span class="p">(</span><span class="nv">assetId</span><span class="p">:</span> <span class="n">assetId</span><span class="p">,</span>
+                                            <span class="nv">quantity</span><span class="p">:</span> <span class="mi">10</span><span class="p">)</span>
+<span class="k">try</span> <span class="n">params</span><span class="o">.</span><span class="nf">sign</span><span class="p">(</span><span class="n">issuer</span><span class="p">)</span>
+
+<span class="c1">// Submit the issue request</span>
+<span class="k">let</span> <span class="nv">bitmarkIds</span> <span class="o">=</span> <span class="k">try</span> <span class="kt">Bitmark</span><span class="o">.</span><span class="nf">issue</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+</code></pre></div></div>
+</li>
+
+	<li>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//import the issuer account</span>
+<span class="nc">Account</span> <span class="n">issuer</span> <span class="o">=</span> <span class="nc">Account</span><span class="o">.</span><span class="na">fromSeed</span><span class="o">(</span><span class="s">"your_account_seed"</span><span class="o">);</span>
+
+<span class="c1">// Build and sign the bitmark issuance request</span>
+<span class="nc">IssuanceParams</span> <span class="n">params</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">IssuanceParams</span><span class="o">(</span><span class="n">assetId</span><span class="o">,</span> <span class="mi">10</span><span class="o">);</span>
+<span class="n">params</span><span class="o">.</span><span class="na">sign</span><span class="o">(</span><span class="n">issuer</span><span class="o">.</span><span class="na">getKeyPair</span><span class="o">());</span>
+
+<span class="c1">// Submit the issue request</span>
+<span class="nc">Bitmark</span><span class="o">.</span><span class="na">issue</span><span class="o">(</span><span class="n">params</span><span class="o">,</span> <span class="k">new</span> <span class="nc">Callback1</span><span class="o">&lt;</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;&gt;()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onSuccess</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">txIds</span><span class="o">)</span> <span class="o">{</span>
+
+            <span class="o">}</span>
+
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onError</span><span class="o">(</span><span class="nc">Throwable</span> <span class="n">throwable</span><span class="o">)</span> <span class="o">{</span>
+
+            <span class="o">}</span>
+        <span class="o">});</span>
+</code></pre></div></div>
+</li>
+
+	<li>
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">//import the issuer account</span>
+<span class="n">issuer</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">account</span><span class="o">.</span><span class="n">FromSeed</span><span class="p">(</span><span class="s">"your_account_seed"</span><span class="p">);</span>
+
+<span class="c">// Build and sign the bitmark issuance request</span>
+<span class="n">params</span> <span class="o">:=</span> <span class="n">bitmark</span><span class="o">.</span><span class="n">NewIssuanceParams</span><span class="p">(</span><span class="n">assetID</span><span class="p">,</span> <span class="m">10</span><span class="p">)</span>
+<span class="n">params</span><span class="o">.</span><span class="n">Sign</span><span class="p">(</span><span class="n">issuer</span><span class="p">)</span>
+
+<span class="c">// Submit the issue request</span>
+<span class="n">bitmarkIDs</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">bitmark</span><span class="o">.</span><span class="n">Issue</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+</code></pre></div></div>
+</li>
+
+</ul>
+
+<h3 id="using-the-cli-1">Using the CLI</h3>
+
+<ul class="uk-tab" data-uk-switcher="{connect:'#33dcb723-3b8b-4936-9e38-39738989fd45'}">
 
 	<li class="uk-active"><a href="#">Command</a></li>
 
@@ -768,7 +785,7 @@ bitmark-cli <span class="nt">-n</span> testing <span class="nt">-i</span> first 
 
 </ul>
 
-<ul id="c8b7f076-3c3a-4072-8a87-0c970da318ac" class="uk-switcher uk-margin">
+<ul id="33dcb723-3b8b-4936-9e38-39738989fd45" class="uk-switcher uk-margin">
 
 	<li>
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Issue more bitmarks on an existing asset</span>
@@ -932,7 +949,7 @@ $('#toc').on('click', 'a', function() {
         
     </div>
 
-    
+
 
     <div class="tags">
         
@@ -943,7 +960,7 @@ $('#toc').on('click', 'a', function() {
 
 </div>
 
-<hr class="shaded"/>
+<!-- <hr class="shaded"/> -->
 
 <footer>
             <div class="row">
