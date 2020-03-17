@@ -50,13 +50,13 @@
   
   
   <url>
-    <loc>/read-our-papers/bitmark-eth-comparison</loc>
+    <loc>/bitmark-appendix/bitmark-eth-comparison</loc>
   </url>
   
   
   
   <url>
-    <loc>/bitmark-appendix/bitmark-eth-comparison</loc>
+    <loc>/read-our-papers/bitmark-eth-comparison</loc>
   </url>
   
   
@@ -116,13 +116,13 @@
   
   
   <url>
-    <loc>/explore-the-protocol-docs/block-verification-and-synchronization</loc>
+    <loc>/bitmark-references/bitmark-node-software/block-verification-and-synchronization</loc>
   </url>
   
   
   
   <url>
-    <loc>/bitmark-references/bitmark-node-software/block-verification-and-synchronization</loc>
+    <loc>/explore-the-protocol-docs/block-verification-and-synchronization</loc>
   </url>
   
   
@@ -244,13 +244,13 @@
   
   
   <url>
-    <loc>/explore-the-protocol-docs/payment-verification</loc>
+    <loc>/bitmark-references/bitmark-node-software/payment-verification</loc>
   </url>
   
   
   
   <url>
-    <loc>/bitmark-references/bitmark-node-software/payment-verification</loc>
+    <loc>/explore-the-protocol-docs/payment-verification</loc>
   </url>
   
   
@@ -292,13 +292,13 @@
   
   
   <url>
-    <loc>/explore-the-protocol-docs/rpc-communication</loc>
+    <loc>/bitmark-references/bitmark-node-software/rpc-communication</loc>
   </url>
   
   
   
   <url>
-    <loc>/bitmark-references/bitmark-node-software/rpc-communication</loc>
+    <loc>/explore-the-protocol-docs/rpc-communication</loc>
   </url>
   
   
