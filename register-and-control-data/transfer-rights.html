@@ -388,6 +388,17 @@
 
 <p>Once an asset has been registered, the owner can trade it by creating a transfer record that points back to the original issue record (or to a previous transfer record) and that lists the new owner of the asset. Because the blockchain is ordered and because it’s immutable, this creates a permanent chain of custody reaching back to the asset’s origins.</p>
 
+<p>There are two types of transferring a bitmark from one Bitmark account to another:</p>
+
+<ul>
+  <li>One-signature transfer: only requires the sender’s signature</li>
+  <li>Two-signature transfer: requires both the sender’s and the recipient’s signature</li>
+</ul>
+
+<p>The one-signature transfer is similar to sending emails: the sender does not get consent from the recipient before sending the mail.</p>
+
+<p>The two-signature transfer is similar to certified mail or a package delivery that requires a signature: the recipient has the right to accept or reject the delivery of a package. The actual transfer won’t take effect until the recipient explicitly provides the second signature, a.k.a. countersignature, as consent.</p>
+
 <p>Bitmark owners can transfer their bitmarks to others using the <a href="#transfer-bitmarks-using-the-sdk">SDK</a> and the <a href="#transfer-bitmarks-using-the-cli">CLI</a>.</p>
 
 <h2 id="prerequisites">Prerequisites</h2>
@@ -406,268 +417,716 @@
 
 <h2 id="transfer-bitmarks-using-the-sdk">Transfer bitmarks using the SDK</h2>
 
-<ul>
-  <li>
-    <p>Submit a transfer transaction</p>
+<p>Each bitmark transfer requires the same transaction fee to be executed. SDK users pay for this transaction fee via the SDK credit system.</p>
 
-    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code>      <span class="kd">let</span> <span class="nx">transferParams</span> <span class="o">=</span> <span class="nx">Bitmark</span><span class="p">.</span><span class="nx">newTransferParams</span><span class="p">(</span><span class="nx">recipientAccount</span><span class="p">);</span>
-      <span class="k">await</span> <span class="nx">transferParams</span><span class="p">.</span><span class="nx">fromBitmark</span><span class="p">(</span><span class="nx">bitmarkid</span><span class="p">);</span>
-      <span class="nx">transferParams</span><span class="p">.</span><span class="nx">sign</span><span class="p">(</span><span class="nx">sender</span><span class="p">);</span>
+<h3 id="execute-a-one-signature-transfer">Execute a one-signature transfer</h3>
 
-      <span class="kd">let</span> <span class="nx">txs</span> <span class="o">=</span> <span class="p">(</span><span class="k">await</span> <span class="nx">Bitmark</span><span class="p">.</span><span class="nx">transfer</span><span class="p">(</span><span class="nx">transferParams</span><span class="p">)).</span><span class="nx">txs</span><span class="p">;</span>
-      <span class="kd">let</span> <span class="nx">txId</span> <span class="o">=</span> <span class="nx">txs</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">id</span><span class="p">;</span>
-</code></pre></div>    </div>
-  </li>
-  <li>
-    <p>Verify the transfer transaction</p>
+<p>A one-signature transfer is initiated and executed only by the sender.</p>
 
-    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code>      <span class="k">await</span> <span class="nx">Transaction</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nx">txId</span><span class="p">);</span>
-</code></pre></div>    </div>
-  </li>
+<ul class="uk-tab" data-uk-switcher="{connect:'#508dc61f-b3a8-490a-b848-61136d394391'}">
+
+	<li class="uk-active"><a href="#">JS</a></li>
+
+	<li><a href="#">Swift</a></li>
+
+	<li><a href="#">Java</a></li>
+
+	<li><a href="#">Go</a></li>
+
+</ul>
+
+<ul id="508dc61f-b3a8-490a-b848-61136d394391" class="uk-switcher uk-margin">
+
+	<li>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//Import the sender account</span>
+<span class="kd">let</span> <span class="nx">sender</span> <span class="o">=</span> <span class="nx">Account</span><span class="p">.</span><span class="nx">fromSeed</span><span class="p">(</span><span class="dl">"</span><span class="s2">your_account_seed</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="c1">//Build and sign the transfer request</span>
+<span class="kd">let</span> <span class="nx">params</span> <span class="o">=</span> <span class="nx">Bitmark</span><span class="p">.</span><span class="nx">newTransferParams</span><span class="p">(</span><span class="nx">recipientAccountNumber</span><span class="p">);</span>
+<span class="k">await</span> <span class="nx">params</span><span class="p">.</span><span class="nx">fromBitmark</span><span class="p">(</span><span class="nx">bitmarkId</span><span class="p">);</span> <span class="c1">// asynchronous, just to check the head_id</span>
+<span class="c1">// params.fromTxId(latestTxId); // or synchronous</span>
+<span class="nx">params</span><span class="p">.</span><span class="nx">sign</span><span class="p">(</span><span class="nx">sender</span><span class="p">);</span>
+
+<span class="c1">//Submit the transfer</span>
+<span class="kd">let</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">Bitmark</span><span class="p">.</span><span class="nx">transfer</span><span class="p">(</span><span class="nx">params</span><span class="p">);</span>
+</code></pre></div></div>
+</li>
+
+	<li>
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Import the sender account</span>
+<span class="n">sender</span> <span class="o">=</span> <span class="kt">Account</span><span class="p">(</span><span class="nv">fromSeed</span><span class="p">:</span><span class="s">"your_account_seed"</span><span class="p">);</span>
+
+<span class="c1">// Build and sign the transfer request</span>
+<span class="k">var</span> <span class="nv">params</span> <span class="o">=</span> <span class="k">try</span> <span class="kt">Bitmark</span><span class="o">.</span><span class="nf">newTransferParams</span><span class="p">(</span><span class="nv">to</span><span class="p">:</span> <span class="n">recipientAccountNumber</span><span class="p">)</span>
+<span class="k">try</span> <span class="n">params</span><span class="o">.</span><span class="nf">from</span><span class="p">(</span><span class="nv">bitmarkID</span><span class="p">:</span> <span class="n">bitmarkId</span><span class="p">)</span>
+<span class="k">try</span> <span class="n">params</span><span class="o">.</span><span class="nf">sign</span><span class="p">(</span><span class="n">sender</span><span class="p">)</span>
+
+<span class="c1">// Submit the transfer</span>
+<span class="k">let</span> <span class="nv">txId</span> <span class="o">=</span> <span class="k">try</span> <span class="kt">Bitmark</span><span class="o">.</span><span class="nf">transfer</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+</code></pre></div></div>
+</li>
+
+	<li>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Import the sender account</span>
+<span class="nc">Account</span> <span class="n">sennder</span> <span class="o">=</span> <span class="nc">Account</span><span class="o">.</span><span class="na">fromSeed</span><span class="o">(</span><span class="s">"your_account_seed"</span><span class="o">);</span>
+
+<span class="c1">// Get the link from bitmarkId</span>
+<span class="c1">// You can use traditional callback or modern await</span>
+<span class="c1">// Use await for better code but don't forget to catch exceptions maybe occur</span>
+<span class="nc">BitmarkRecord</span> <span class="n">bitmark</span> <span class="o">=</span> <span class="n">await</span><span class="o">((</span><span class="nc">Callable1</span><span class="o">&lt;</span><span class="nc">GetBitmarkResponse</span><span class="o">&gt;)</span> <span class="n">callback</span> <span class="o">-&gt;</span> <span class="nc">Bitmark</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">bitmarkId</span><span class="o">,</span> <span class="n">callback</span><span class="o">)).</span><span class="na">getBitmark</span><span class="o">();</span>
+<span class="nc">String</span> <span class="n">link</span> <span class="o">=</span> <span class="n">bitmark</span><span class="o">.</span><span class="na">getHeadId</span><span class="o">();</span>            
+
+<span class="c1">// Build and sign the transfer request</span>
+<span class="nc">TransferParams</span> <span class="n">params</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">TransferParams</span><span class="o">(</span><span class="n">recipientAccountNumber</span><span class="o">,</span> <span class="n">link</span><span class="o">);</span>
+<span class="n">params</span><span class="o">.</span><span class="na">sign</span><span class="o">(</span><span class="n">sender</span><span class="o">);</span>
+
+<span class="c1">//Submit the transfer</span>
+<span class="nc">Bitmark</span><span class="o">.</span><span class="na">transfer</span><span class="o">(</span><span class="n">params</span><span class="o">,</span> <span class="k">new</span> <span class="nc">Callback1</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onSuccess</span><span class="o">(</span><span class="nc">String</span> <span class="n">txId</span><span class="o">)</span> <span class="o">{</span>
+
+            <span class="o">}</span>
+
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onError</span><span class="o">(</span><span class="nc">Throwable</span> <span class="n">throwable</span><span class="o">)</span> <span class="o">{</span>
+
+            <span class="o">}</span>
+        <span class="o">});</span>
+</code></pre></div></div>
+</li>
+
+	<li>
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">// Import the sender account</span>
+<span class="n">sender</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">account</span><span class="o">.</span><span class="n">FromSeed</span><span class="p">(</span><span class="s">"your_account_seed"</span><span class="p">);</span>
+
+<span class="c">// Build and sign the transfer request</span>
+<span class="n">params</span><span class="p">,</span> <span class="n">_</span> <span class="o">:=</span> <span class="n">bitmark</span><span class="o">.</span><span class="n">NewTransferParams</span><span class="p">(</span><span class="n">recipientAccountNumber</span><span class="p">)</span>
+<span class="n">params</span><span class="o">.</span><span class="n">FromBitmark</span><span class="p">(</span><span class="n">bitmarkId</span><span class="p">)</span>
+<span class="n">params</span><span class="o">.</span><span class="n">Sign</span><span class="p">(</span><span class="n">sender</span><span class="p">)</span>
+
+<span class="c">// Submit the transfer</span>
+<span class="n">txID</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">bitmark</span><span class="o">.</span><span class="n">Transfer</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+</code></pre></div></div>
+</li>
+
+</ul>
+
+<h3 id="execute-a-two-signature-transfer">Execute a two-signature transfer</h3>
+
+<p>For some scenarios, the sender wants to get a permission from the recipient before transferring a property. In the case, the sender initiates a two-signature transfer. 
+<br /></p>
+
+<p><strong>Propose a transfer offer</strong></p>
+
+<p>The sender initiates a two-signature transfer by proposing a transfer offer</p>
+
+<ul class="uk-tab" data-uk-switcher="{connect:'#d713cfab-5e64-4048-85ff-16cf5ec8ff85'}">
+
+	<li class="uk-active"><a href="#">JS</a></li>
+
+	<li><a href="#">Swift</a></li>
+
+	<li><a href="#">Java</a></li>
+
+	<li><a href="#">Go</a></li>
+
+</ul>
+
+<ul id="d713cfab-5e64-4048-85ff-16cf5ec8ff85" class="uk-switcher uk-margin">
+
+	<li>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Import the sender account</span>
+<span class="kd">let</span> <span class="nx">sender</span> <span class="o">=</span> <span class="nx">Account</span><span class="p">.</span><span class="nx">fromSeed</span><span class="p">(</span><span class="dl">"</span><span class="s2">your_account_seed</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="c1">// Build and sign the transfer offer</span>
+<span class="kd">let</span> <span class="nx">params</span> <span class="o">=</span> <span class="nx">Bitmark</span><span class="p">.</span><span class="nx">newTransferOfferParams</span><span class="p">(</span><span class="nx">recipientAccountNumber</span><span class="p">);</span>
+<span class="k">await</span> <span class="nx">params</span><span class="p">.</span><span class="nx">fromBitmark</span><span class="p">(</span><span class="nx">bitmarkId</span><span class="p">);</span> <span class="c1">// asynchrous, just to check the head_id</span>
+<span class="c1">// params.fromTxId(lastestTxId); // or synchrous</span>
+<span class="nx">params</span><span class="p">.</span><span class="nx">sign</span><span class="p">(</span><span class="nx">senderAccount</span><span class="p">);</span>
+
+<span class="c1">// Submit the transfer offer</span>
+<span class="kd">let</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">Bitmark</span><span class="p">.</span><span class="nx">offer</span><span class="p">(</span><span class="nx">params</span><span class="p">);</span>
+</code></pre></div></div>
+</li>
+
+	<li>
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Import the sender account</span>
+<span class="n">sender</span> <span class="o">=</span> <span class="kt">Account</span><span class="p">(</span><span class="nv">fromSeed</span><span class="p">:</span><span class="s">"your_account_seed"</span><span class="p">);</span>
+
+<span class="c1">// Build and sign the transfer offer</span>
+<span class="k">var</span> <span class="nv">params</span> <span class="p">:</span><span class="o">=</span> <span class="kt">Bitmark</span><span class="o">.</span><span class="nf">newOfferParams</span><span class="p">(</span><span class="nv">to</span><span class="p">:</span> <span class="n">recipientAccountNumber</span><span class="p">,</span> <span class="nv">info</span><span class="p">:</span> <span class="kc">nil</span><span class="p">)</span> <span class="c1">// info: extra info attach to the transfer offer, it can be nil</span>
+<span class="k">try</span> <span class="n">params</span><span class="o">.</span><span class="nf">from</span><span class="p">(</span><span class="nv">bitmarkID</span><span class="p">:</span> <span class="n">bitmarkId</span><span class="p">)</span>
+<span class="k">try</span> <span class="n">params</span><span class="o">.</span><span class="nf">sign</span><span class="p">(</span><span class="n">account</span><span class="p">)</span>
+
+<span class="c1">// Submit the transfer offer</span>
+<span class="k">try</span> <span class="kt">Bitmark</span><span class="o">.</span><span class="nf">offer</span><span class="p">(</span><span class="nv">withOfferParams</span><span class="p">:</span> <span class="n">params</span><span class="p">)</span>
+</code></pre></div></div>
+</li>
+
+	<li>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Import the sender account</span>
+<span class="nc">Account</span> <span class="n">sennder</span> <span class="o">=</span> <span class="nc">Account</span><span class="o">.</span><span class="na">fromSeed</span><span class="o">(</span><span class="s">"your_account_seed"</span><span class="o">);</span>
+
+<span class="c1">// Get the link from bitmarkId</span>
+<span class="c1">// You can use traditional callback or modern await</span>
+<span class="c1">// Use await for better code but don't forget to catch exceptions maybe occur</span>
+<span class="nc">BitmarkRecord</span> <span class="n">bitmark</span> <span class="o">=</span> <span class="n">await</span><span class="o">((</span><span class="nc">Callable1</span><span class="o">&lt;</span><span class="nc">GetBitmarkResponse</span><span class="o">&gt;)</span> <span class="n">callback</span> <span class="o">-&gt;</span> <span class="nc">Bitmark</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">bitmarkId</span><span class="o">,</span> <span class="n">callback</span><span class="o">)).</span><span class="na">getBitmark</span><span class="o">();</span>
+<span class="nc">String</span> <span class="n">link</span> <span class="o">=</span> <span class="n">bitmark</span><span class="o">.</span><span class="na">getHeadId</span><span class="o">();</span>            
+
+<span class="c1">// Build and sign the transfer offer</span>
+<span class="nc">TransferOfferParams</span> <span class="n">params</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">TransferOfferParams</span><span class="o">(</span><span class="n">recipient</span><span class="o">,</span> <span class="n">link</span><span class="o">);</span>
+<span class="n">params</span><span class="o">.</span><span class="na">sign</span><span class="o">(</span><span class="n">senderKey</span><span class="o">);</span>
+
+<span class="c1">// Submit the transfer offer</span>
+<span class="nc">Bitmark</span><span class="o">.</span><span class="na">offer</span><span class="o">(</span><span class="n">params</span><span class="o">,</span> <span class="k">new</span> <span class="nc">Callback1</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onSuccess</span><span class="o">(</span><span class="nc">String</span> <span class="n">txId</span><span class="o">)</span> <span class="o">{</span>
+
+            <span class="o">}</span>
+
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onError</span><span class="o">(</span><span class="nc">Throwable</span> <span class="n">throwable</span><span class="o">)</span> <span class="o">{</span>
+
+            <span class="o">}</span>
+        <span class="o">});</span>
+</code></pre></div></div>
+</li>
+
+	<li>
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">// Import the sender account</span>
+<span class="n">sender</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">account</span><span class="o">.</span><span class="n">FromSeed</span><span class="p">(</span><span class="s">"your_account_seed"</span><span class="p">);</span>
+
+<span class="c">// Build and sign the transfer offer</span>
+<span class="n">params</span><span class="p">,</span> <span class="n">_</span> <span class="o">:=</span> <span class="n">bitmark</span><span class="o">.</span><span class="n">NewOfferParams</span><span class="p">(</span><span class="n">recipientAccountNumber</span><span class="p">,</span> <span class="no">nil</span><span class="p">)</span>
+<span class="n">params</span><span class="o">.</span><span class="n">FromBitmark</span><span class="p">(</span><span class="n">bitmarkId</span><span class="p">)</span>
+<span class="n">params</span><span class="o">.</span><span class="n">Sign</span><span class="p">(</span><span class="n">sender</span><span class="p">)</span>
+
+<span class="c">// Submit the transfer offer</span>
+<span class="n">err</span> <span class="o">:=</span> <span class="n">bitmark</span><span class="o">.</span><span class="n">Offer</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+</code></pre></div></div>
+</li>
+
+</ul>
+
+<p><br /></p>
+
+<p><strong>Accept a transfer offer</strong></p>
+
+<p>If the receiver decides to accept the bitmark transfer offer, they generate a countersignature, and the transfer action takes effect.</p>
+
+<p>The status of the bitmark will change from <code class="language-plaintext highlighter-rouge">offering</code> to <code class="language-plaintext highlighter-rouge">transferring</code>.</p>
+
+<ul class="uk-tab" data-uk-switcher="{connect:'#af74e15e-077d-43b2-b51c-b99993b1c38c'}">
+
+	<li class="uk-active"><a href="#">JS</a></li>
+
+	<li><a href="#">Swift</a></li>
+
+	<li><a href="#">Java</a></li>
+
+	<li><a href="#">Go</a></li>
+
+</ul>
+
+<ul id="af74e15e-077d-43b2-b51c-b99993b1c38c" class="uk-switcher uk-margin">
+
+	<li>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Import the recipient account</span>
+<span class="kd">let</span> <span class="nx">recipient</span> <span class="o">=</span> <span class="nx">Account</span><span class="p">.</span><span class="nx">fromSeed</span><span class="p">(</span><span class="dl">"</span><span class="s2">your_account_seed</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="c1">// Build and sign the response</span>
+<span class="kd">let</span> <span class="nx">transferOfferResponseParams</span> <span class="o">=</span> <span class="nx">Bitmark</span><span class="p">.</span><span class="nx">newTransferResponseParams</span><span class="p">(</span><span class="nx">BITMARK_CONSTANTS</span><span class="p">.</span><span class="nx">TRANSFER_OFFER_RESPONSE_TYPES</span><span class="p">.</span><span class="nx">ACCEPT</span><span class="p">);</span>
+<span class="k">await</span> <span class="nx">transferOfferResponseParams</span><span class="p">.</span><span class="nx">fromBitmark</span><span class="p">(</span><span class="nx">bitmark</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>  <span class="c1">// asynchrous, just to get offer from Bitmark</span>
+<span class="c1">// transferOfferResponseParams.fromOffer(offer) // or synchrous</span>
+<span class="nx">transferOfferResponseParams</span><span class="p">.</span><span class="nx">sign</span><span class="p">(</span><span class="nx">recipientAccount</span><span class="p">);</span>
+
+<span class="c1">// Submit the response</span>
+<span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">Bitmark</span><span class="p">.</span><span class="nx">response</span><span class="p">(</span><span class="nx">transferOfferResponseParams</span><span class="p">,</span> <span class="nx">recipientAccount</span><span class="p">);</span>
+
+</code></pre></div></div>
+</li>
+
+	<li>
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Import the recipient account</span>
+<span class="n">recipient</span> <span class="o">=</span> <span class="kt">Account</span><span class="p">(</span><span class="nv">fromSeed</span><span class="p">:</span><span class="s">"your_account_seed"</span><span class="p">);</span>
+
+<span class="c1">// Build and sign the response</span>
+<span class="k">var</span> <span class="nv">responseParams</span> <span class="o">=</span> <span class="k">try</span> <span class="kt">Bitmark</span><span class="o">.</span><span class="nf">newTransferResponseParams</span><span class="p">(</span><span class="nv">withBitmark</span><span class="p">:</span> <span class="n">receivingBitmark</span><span class="p">,</span> <span class="nv">action</span><span class="p">:</span> <span class="o">.</span><span class="n">accept</span><span class="p">)</span>
+<span class="k">try</span> <span class="n">responseParams</span><span class="o">.</span><span class="nf">sign</span><span class="p">(</span><span class="n">recipientAccount</span><span class="p">)</span>
+
+<span class="c1">// Submit the response</span>
+<span class="k">try</span> <span class="kt">Bitmark</span><span class="o">.</span><span class="nf">response</span><span class="p">(</span><span class="nv">withResponseParams</span><span class="p">:</span> <span class="n">responseParams</span><span class="p">)</span>
+
+</code></pre></div></div>
+</li>
+
+	<li>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Import the recipient account</span>
+<span class="nc">Account</span> <span class="n">recipient</span> <span class="o">=</span> <span class="nc">Account</span><span class="o">.</span><span class="na">fromSeed</span><span class="o">(</span><span class="s">"your_account_seed"</span><span class="o">);</span>
+
+<span class="c1">// Build and sign the response</span>
+<span class="nc">TransferResponseParams</span> <span class="n">params</span> <span class="o">=</span> <span class="nc">TransferResponseParams</span><span class="o">.</span><span class="na">accept</span><span class="o">(</span><span class="n">offerRecord</span><span class="o">);</span>
+<span class="n">params</span><span class="o">.</span><span class="na">sign</span><span class="o">(</span><span class="n">recipient</span><span class="o">);</span>
+
+<span class="c1">// Submit the response</span>
+<span class="nc">Bitmark</span><span class="o">.</span><span class="na">respond</span><span class="o">(</span><span class="n">params</span><span class="o">,</span> <span class="k">new</span> <span class="nc">Callback1</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onSuccess</span><span class="o">(</span><span class="nc">String</span> <span class="n">txId</span><span class="o">)</span> <span class="o">{</span>
+
+            <span class="o">}</span>
+
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onError</span><span class="o">(</span><span class="nc">Throwable</span> <span class="n">throwable</span><span class="o">)</span> <span class="o">{</span>
+
+            <span class="o">}</span>
+        <span class="o">});</span>
+
+</code></pre></div></div>
+</li>
+
+	<li>
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">// Import the recipient account</span>
+<span class="n">recipient</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">account</span><span class="o">.</span><span class="n">FromSeed</span><span class="p">(</span><span class="s">"your_account_seed"</span><span class="p">);</span>
+
+<span class="c">// Build and sign the response</span>
+<span class="n">bmk</span><span class="p">,</span> <span class="n">_</span> <span class="o">:=</span> <span class="n">bitmark</span><span class="o">.</span><span class="n">Get</span><span class="p">(</span><span class="n">bitmarkId</span><span class="p">)</span>
+<span class="n">params</span> <span class="o">:=</span> <span class="n">bitmark</span><span class="o">.</span><span class="n">NewTransferResponseParams</span><span class="p">(</span><span class="n">bmk</span><span class="p">,</span> <span class="n">bitmark</span><span class="o">.</span><span class="n">Accept</span><span class="p">)</span>
+<span class="n">params</span><span class="o">.</span><span class="n">Sign</span><span class="p">(</span><span class="n">recipient</span><span class="p">)</span>
+
+<span class="c">// Submit the response</span>
+<span class="n">response</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">bitmark</span><span class="o">.</span><span class="n">Respond</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+
+</code></pre></div></div>
+</li>
+
+</ul>
+
+<p><br /></p>
+
+<p><strong>Reject a transfer offer</strong></p>
+
+<p>The receiver can also reject a bitmark transfer offer.
+The status of the bitmark will reverted to <code class="language-plaintext highlighter-rouge">settled</code>, and the sender can create a new transfer offer.</p>
+
+<ul class="uk-tab" data-uk-switcher="{connect:'#c29b2f7f-da9a-47d2-b74d-abd88d651706'}">
+
+	<li class="uk-active"><a href="#">JS</a></li>
+
+	<li><a href="#">Swift</a></li>
+
+	<li><a href="#">Java</a></li>
+
+	<li><a href="#">Go</a></li>
+
+</ul>
+
+<ul id="c29b2f7f-da9a-47d2-b74d-abd88d651706" class="uk-switcher uk-margin">
+
+	<li>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Import the recipient account</span>
+<span class="kd">let</span> <span class="nx">recipient</span> <span class="o">=</span> <span class="nx">Account</span><span class="p">.</span><span class="nx">fromSeed</span><span class="p">(</span><span class="dl">"</span><span class="s2">your_account_seed</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="c1">// Build and sign the response</span>
+<span class="kd">let</span> <span class="nx">transferOfferResponseParams</span> <span class="o">=</span> <span class="nx">Bitmark</span><span class="p">.</span><span class="nx">newTransferResponseParams</span><span class="p">(</span><span class="nx">BITMARK_CONSTANTS</span><span class="p">.</span><span class="nx">TRANSFER_OFFER_RESPONSE_TYPES</span><span class="p">.</span><span class="nx">REJECT</span><span class="p">);</span>
+<span class="k">await</span> <span class="nx">transferOfferResponseParams</span><span class="p">.</span><span class="nx">fromBitmark</span><span class="p">(</span><span class="nx">bitmark</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>  <span class="c1">// asynchrous, just to get offer from Bitmark</span>
+<span class="c1">// transferOfferResponseParams.fromOffer(offer) // or synchrous</span>
+<span class="nx">transferOfferResponseParams</span><span class="p">.</span><span class="nx">sign</span><span class="p">(</span><span class="nx">recipientAccount</span><span class="p">);</span>
+
+<span class="c1">// Submit the response</span>
+<span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">Bitmark</span><span class="p">.</span><span class="nx">response</span><span class="p">(</span><span class="nx">transferOfferResponseParams</span><span class="p">,</span> <span class="nx">recipientAccount</span><span class="p">);</span>
+
+</code></pre></div></div>
+</li>
+
+	<li>
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Import the recipient account</span>
+<span class="n">recipient</span> <span class="o">=</span> <span class="kt">Account</span><span class="p">(</span><span class="nv">fromSeed</span><span class="p">:</span><span class="s">"your_account_seed"</span><span class="p">);</span>
+
+<span class="c1">// Build and sign the response</span>
+<span class="k">var</span> <span class="nv">responseParams</span> <span class="o">=</span> <span class="k">try</span> <span class="kt">Bitmark</span><span class="o">.</span><span class="nf">newTransferResponseParams</span><span class="p">(</span><span class="nv">withBitmark</span><span class="p">:</span> <span class="n">receivingBitmark</span><span class="p">,</span> <span class="nv">action</span><span class="p">:</span> <span class="o">.</span><span class="n">reject</span><span class="p">)</span>
+<span class="k">try</span> <span class="n">responseParams</span><span class="o">.</span><span class="nf">sign</span><span class="p">(</span><span class="n">recipientAccount</span><span class="p">)</span>
+
+<span class="c1">// Submit the response</span>
+<span class="k">try</span> <span class="kt">Bitmark</span><span class="o">.</span><span class="nf">response</span><span class="p">(</span><span class="nv">withResponseParams</span><span class="p">:</span> <span class="n">responseParams</span><span class="p">)</span>
+
+</code></pre></div></div>
+</li>
+
+	<li>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Import the recipient account</span>
+<span class="nc">Account</span> <span class="n">recipient</span> <span class="o">=</span> <span class="nc">Account</span><span class="o">.</span><span class="na">fromSeed</span><span class="o">(</span><span class="s">"your_account_seed"</span><span class="o">);</span>
+
+<span class="c1">// Build and sign the response</span>
+<span class="nc">TransferResponseParams</span> <span class="n">params</span> <span class="o">=</span> <span class="nc">TransferResponseParams</span><span class="o">.</span><span class="na">reject</span><span class="o">(</span><span class="n">offerRecord</span><span class="o">);</span>
+<span class="n">params</span><span class="o">.</span><span class="na">sign</span><span class="o">(</span><span class="n">recipient</span><span class="o">);</span>
+
+<span class="c1">// Submit the response</span>
+<span class="nc">Bitmark</span><span class="o">.</span><span class="na">respond</span><span class="o">(</span><span class="n">params</span><span class="o">,</span> <span class="k">new</span> <span class="nc">Callback1</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onSuccess</span><span class="o">(</span><span class="nc">String</span> <span class="n">txId</span><span class="o">)</span> <span class="o">{</span>
+
+            <span class="o">}</span>
+
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onError</span><span class="o">(</span><span class="nc">Throwable</span> <span class="n">throwable</span><span class="o">)</span> <span class="o">{</span>
+
+            <span class="o">}</span>
+        <span class="o">});</span>
+
+</code></pre></div></div>
+</li>
+
+	<li>
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">// Import the recipient account</span>
+<span class="n">recipient</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">account</span><span class="o">.</span><span class="n">FromSeed</span><span class="p">(</span><span class="s">"your_account_seed"</span><span class="p">);</span>
+
+<span class="c">// Build and sign the response</span>
+<span class="n">bmk</span><span class="p">,</span> <span class="n">_</span> <span class="o">:=</span> <span class="n">bitmark</span><span class="o">.</span><span class="n">Get</span><span class="p">(</span><span class="n">bitmarkId</span><span class="p">)</span>
+<span class="n">params</span> <span class="o">:=</span> <span class="n">bitmark</span><span class="o">.</span><span class="n">NewTransferResponseParams</span><span class="p">(</span><span class="n">bmk</span><span class="p">,</span> <span class="n">bitmark</span><span class="o">.</span><span class="n">Reject</span><span class="p">)</span>
+<span class="n">params</span><span class="o">.</span><span class="n">Sign</span><span class="p">(</span><span class="n">recipient</span><span class="p">)</span>
+
+<span class="c">// Submit the response</span>
+<span class="n">response</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">bitmark</span><span class="o">.</span><span class="n">Respond</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+</code></pre></div></div>
+</li>
+
+</ul>
+
+<p><br /></p>
+
+<p><strong>Cancel a transfer offer</strong></p>
+
+<p>If the recipient hasn’t responded to a transfer offer (neither accepted nor rejected it), the sender can cancel the offer.</p>
+
+<p>Similar to the case of the recipient rejecting the offer, the status of the bitmark will be set to <code class="language-plaintext highlighter-rouge">settled</code> again, and the bitmark becomes available for a new transfer.</p>
+
+<ul class="uk-tab" data-uk-switcher="{connect:'#3a217e5c-5e61-4027-b235-6a6598237248'}">
+
+	<li class="uk-active"><a href="#">JS</a></li>
+
+	<li><a href="#">Swift</a></li>
+
+	<li><a href="#">Java</a></li>
+
+	<li><a href="#">Go</a></li>
+
+</ul>
+
+<ul id="3a217e5c-5e61-4027-b235-6a6598237248" class="uk-switcher uk-margin">
+
+	<li>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Import the sender account</span>
+<span class="kd">let</span> <span class="nx">sender</span> <span class="o">=</span> <span class="nx">Account</span><span class="p">.</span><span class="nx">fromSeed</span><span class="p">(</span><span class="dl">"</span><span class="s2">your_account_seed</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="c1">// Build, sign and submit the cancellation</span>
+<span class="kd">let</span> <span class="nx">transferOfferResponseParams</span> <span class="o">=</span> <span class="nx">Bitmark</span><span class="p">.</span><span class="nx">newTransferResponseParams</span><span class="p">(</span><span class="nx">BITMARK_CONSTANTS</span><span class="p">.</span><span class="nx">TRANSFER_OFFER_RESPONSE_TYPES</span><span class="p">.</span><span class="nx">CANCEL</span><span class="p">);</span>
+<span class="k">await</span> <span class="nx">transferOfferResponseParams</span><span class="p">.</span><span class="nx">fromBitmark</span><span class="p">(</span><span class="nx">bitmark</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>  <span class="c1">// asynchronous, just to get offer from Bitmark</span>
+<span class="c1">// transferOfferResponseParams.fromOffer(offer) // or synchronous</span>
+<span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">Bitmark</span><span class="p">.</span><span class="nx">response</span><span class="p">(</span><span class="nx">transferOfferResponseParams</span><span class="p">,</span> <span class="nx">sender</span><span class="p">);</span>
+</code></pre></div></div>
+</li>
+
+	<li>
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Import the sender account</span>
+<span class="n">sender</span> <span class="o">=</span> <span class="kt">Account</span><span class="p">(</span><span class="nv">fromSeed</span><span class="p">:</span><span class="s">"your_account_seed"</span><span class="p">);</span>
+
+<span class="c1">//Build and sign the cancellation</span>
+<span class="k">var</span> <span class="nv">responseParams</span> <span class="o">=</span> <span class="k">try</span> <span class="kt">Bitmark</span><span class="o">.</span><span class="nf">newTransferResponseParams</span><span class="p">(</span><span class="nv">withBitmark</span><span class="p">:</span> <span class="n">bitmark</span><span class="p">,</span> <span class="nv">action</span><span class="p">:</span> <span class="o">.</span><span class="n">cancel</span><span class="p">)</span>
+<span class="k">try</span> <span class="n">responseParams</span><span class="o">.</span><span class="nf">sign</span><span class="p">(</span><span class="n">sender</span><span class="p">)</span>
+
+<span class="c1">// Submit the cancellation</span>
+<span class="k">try</span> <span class="kt">Bitmark</span><span class="o">.</span><span class="nf">response</span><span class="p">(</span><span class="nv">withResponseParams</span><span class="p">:</span> <span class="n">responseParams</span><span class="p">)</span>
+</code></pre></div></div>
+</li>
+
+	<li>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Import the sender account</span>
+<span class="nc">Account</span> <span class="n">sennder</span> <span class="o">=</span> <span class="nc">Account</span><span class="o">.</span><span class="na">fromSeed</span><span class="o">(</span><span class="s">"your_account_seed"</span><span class="o">);</span>
+
+<span class="c1">// Build and sign the cancellation</span>
+<span class="nc">TransferResponseParams</span> <span class="n">params</span> <span class="o">=</span> <span class="nc">TransferResponseParams</span><span class="o">.</span><span class="na">cancel</span><span class="o">(</span><span class="n">offerRecord</span><span class="o">,</span> <span class="n">sender</span><span class="o">);</span>
+<span class="n">params</span><span class="o">.</span><span class="na">sign</span><span class="o">(</span><span class="n">senderKey</span><span class="o">);</span>
+
+<span class="c1">//Submit the cancellation</span>
+<span class="nc">Bitmark</span><span class="o">.</span><span class="na">respond</span><span class="o">(</span><span class="n">params</span><span class="o">,</span> <span class="k">new</span> <span class="nc">Callback1</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onSuccess</span><span class="o">(</span><span class="nc">String</span> <span class="n">txId</span><span class="o">)</span> <span class="o">{</span>
+
+            <span class="o">}</span>
+
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onError</span><span class="o">(</span><span class="nc">Throwable</span> <span class="n">throwable</span><span class="o">)</span> <span class="o">{</span>
+
+            <span class="o">}</span>
+        <span class="o">});</span>
+</code></pre></div></div>
+</li>
+
+	<li>
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">// Import the sender account</span>
+<span class="n">sender</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">account</span><span class="o">.</span><span class="n">FromSeed</span><span class="p">(</span><span class="s">"your_account_seed"</span><span class="p">);</span>
+
+<span class="c">// Build and sign the cancellation</span>
+<span class="n">bmk</span><span class="p">,</span> <span class="n">_</span> <span class="o">:=</span> <span class="n">bitmark</span><span class="o">.</span><span class="n">Get</span><span class="p">(</span><span class="s">"YOUR BITMARK ID"</span><span class="p">)</span>
+<span class="n">sender</span><span class="p">,</span> <span class="n">_</span> <span class="o">:=</span> <span class="n">account</span><span class="o">.</span><span class="n">FromSeed</span><span class="p">(</span><span class="s">"USER_A_SEED"</span><span class="p">)</span>
+<span class="n">params</span> <span class="o">:=</span> <span class="n">bitmark</span><span class="o">.</span><span class="n">NewTransferResponseParams</span><span class="p">(</span><span class="n">bmk</span><span class="p">,</span> <span class="n">bitmark</span><span class="o">.</span><span class="n">Cancel</span><span class="p">)</span>
+<span class="n">params</span><span class="o">.</span><span class="n">Sign</span><span class="p">(</span><span class="n">sender</span><span class="p">)</span>
+
+<span class="c">// Submit the cancellation</span>
+<span class="n">_</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">bitmark</span><span class="o">.</span><span class="n">Respond</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+</code></pre></div></div>
+</li>
+
+</ul>
+
+<p><br /></p>
+
+<p><strong>Query transfer offers</strong></p>
+
+<p>A user is able to query to check if some transfer offers are existing with some certain conditions. 
+For the details of query execution, please refer to the <a href="/bitmark-references/bitmark-sdk/query">SDK Query</a>.</p>
+
+<ul class="uk-tab" data-uk-switcher="{connect:'#5f667e5a-9abf-41e7-a2fb-463759bd97ac'}">
+
+	<li class="uk-active"><a href="#">JS</a></li>
+
+	<li><a href="#">Swift</a></li>
+
+	<li><a href="#">Java</a></li>
+
+	<li><a href="#">Go</a></li>
+
+</ul>
+
+<ul id="5f667e5a-9abf-41e7-a2fb-463759bd97ac" class="uk-switcher uk-margin">
+
+	<li>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">bitmarkQueryParams</span> <span class="o">=</span> <span class="nx">Bitmark</span><span class="p">.</span><span class="nx">newBitmarkQueryBuilder</span><span class="p">()</span>
+    <span class="p">.</span><span class="nx">offerFrom</span><span class="p">(</span><span class="dl">"</span><span class="s2">e1pFRPqPhY2gpgJTpCiwXDnVeouY9EjHY6STtKwdN6Z4bp4sog</span><span class="dl">"</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">limit</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">build</span><span class="p">();</span>
+
+<span class="kd">let</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">Bitmark</span><span class="p">.</span><span class="nx">list</span><span class="p">(</span><span class="nx">bitmarkQueryParams</span><span class="p">);</span>
+</code></pre></div></div>
+</li>
+
+	<li>
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">let</span> <span class="nv">query</span> <span class="o">=</span> <span class="k">try</span> <span class="kt">Bitmark</span><span class="o">.</span><span class="nf">newBitmarkQueryParams</span><span class="p">()</span>
+    <span class="o">.</span><span class="nf">limit</span><span class="p">(</span><span class="nv">size</span><span class="p">:</span> <span class="mi">100</span><span class="p">)</span>
+    <span class="o">.</span><span class="nf">offer</span><span class="p">(</span><span class="nv">from</span><span class="p">:</span> <span class="s">"e1pFRPqPhY2gpgJTpCiwXDnVeouY9EjHY6STtKwdN6Z4bp4sog"</span><span class="p">)</span>
+<span class="k">let</span> <span class="nv">bitmarks</span> <span class="o">=</span> <span class="k">try</span> <span class="kt">Bitmark</span><span class="o">.</span><span class="nf">list</span><span class="p">(</span><span class="nv">params</span><span class="p">:</span> <span class="n">query</span><span class="p">)</span>
+</code></pre></div></div>
+</li>
+
+	<li>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">BitmarkQueryBuilder</span> <span class="n">builder</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BitmarkQueryBuilder</span><span class="o">().</span><span class="na">offerFrom</span><span class="o">(</span><span class="s">"e1pFRPqPhY2gpgJTpCiwXDnVeouY9EjHY6STtKwdN6Z4bp4sog"</span><span class="o">);</span>
+<span class="nc">Bitmark</span><span class="o">.</span><span class="na">list</span><span class="o">(</span><span class="n">builder</span><span class="o">,</span> <span class="k">new</span> <span class="nc">Callback1</span><span class="o">&lt;</span><span class="nc">GetBitmarksResponse</span><span class="o">&gt;()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onSuccess</span><span class="o">(</span><span class="nc">GetBitmarksResponse</span> <span class="n">res</span><span class="o">)</span> <span class="o">{</span>
+
+            <span class="o">}</span>
+
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onError</span><span class="o">(</span><span class="nc">Throwable</span> <span class="n">throwable</span><span class="o">)</span> <span class="o">{</span>
+
+            <span class="o">}</span>
+        <span class="o">});</span>
+</code></pre></div></div>
+</li>
+
+	<li>
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">builder</span> <span class="o">:=</span> <span class="n">bitmark</span><span class="o">.</span><span class="n">NewQueryParamsBuilder</span><span class="p">()</span><span class="o">.</span><span class="n">OfferTo</span><span class="p">(</span><span class="s">"YOUR RECIPIENT ACCOUNT NUMBER"</span><span class="p">)</span>
+<span class="n">bitmarks</span><span class="p">,</span> <span class="n">referencedAssets</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">bitmark</span><span class="o">.</span><span class="n">List</span><span class="p">(</span><span class="n">builder</span><span class="p">)</span>
+</code></pre></div></div>
+</li>
+
 </ul>
 
 <h2 id="transfer-bitmarks-using-the-cli">Transfer bitmarks using the CLI</h2>
 
-<p>The Bitmark CLI allows users to transfer bitmarks by submitting the transactions to its connected node and then broadcasting to the network.</p>
+<p>The Bitmark CLI allows users to transfer bitmarks by submitting the transactions to its connected node and then broadcasting to the network. The CLI users pay for their transactions by sending BTC or LTC to the indicated addresses.</p>
 
-<p>To transfer a Bitmark Certificate using the Bitmark CLI:</p>
+<ul class="uk-tab" data-uk-switcher="{connect:'#f783509c-9466-4264-bf8e-a546f1c3da9c'}">
+
+	<li class="uk-active"><a href="#">Command</a></li>
+
+	<li><a href="#">Example</a></li>
+
+	<li><a href="#">Output</a></li>
+
+</ul>
+
+<ul id="f783509c-9466-4264-bf8e-a546f1c3da9c" class="uk-switcher uk-margin">
+
+	<li>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Submit a transfer request</span>
+<span class="nv">$ </span>bitmark-cli <span class="nt">-n</span> &lt;network&gt; <span class="nt">-i</span> &lt;sender identity&gt; transfer <span class="nt">-r</span> &lt;recipient&gt; <span class="nt">-t</span> &lt;txId&gt; <span class="nt">-u</span>
+
+<span class="c"># Run the bitcoind</span>
+<span class="nv">$ </span>bitcoind <span class="nt">-datadir</span><span class="o">=</span>&lt;bitcoind config <span class="nb">dir</span><span class="o">&gt;</span>
+<span class="c"># OR run the litecoind</span>
+<span class="nv">$ </span>litecoind <span class="nt">-datadir</span><span class="o">=</span>&lt;litcoind config <span class="nb">dir</span><span class="o">&gt;</span>
+<span class="c">#Pay the transfer fee by BTC</span>
+<span class="nv">$ </span>bitmark-wallet <span class="nt">--conf</span> &lt;Bitmark-Wallet config file&gt; btc <span class="nt">--</span>&lt;btc network&gt; sendmany <span class="nt">--hex-data</span> <span class="s1">'&lt;payId&gt;'</span> <span class="s1">'&lt;btc address&gt;,&lt;btc amount in satoshi&gt;'</span>
+<span class="c">#OR Pay the transfer fee by LTC</span>
+<span class="nv">$ </span>bitmark-wallet <span class="nt">--conf</span> &lt;Bitmark-Wallet config file&gt; ltc <span class="nt">--</span>&lt;ltc network&gt; sendmany <span class="nt">--hex-data</span> <span class="s1">'&lt;payId&gt;'</span> <span class="s1">'&lt;ltc address&gt;,&lt;ltc amount in photon&gt;'</span>
+
+<span class="c"># Check the transfer transaction status</span>
+<span class="nv">$ </span>bitmark-cli <span class="nt">-n</span> &lt;network&gt; status <span class="nt">-t</span> &lt;transferId&gt;
+
+
+<span class="c"># Verify the bitmark provenance</span>
+<span class="nv">$ </span>bitmark-cli <span class="nt">-n</span> &lt;network&gt; provenance <span class="nt">-t</span> &lt;transferID&gt;
+
+</code></pre></div></div>
+</li>
+
+	<li>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Submit a transfer request</span>
+<span class="nv">$ </span>bitmark-cli <span class="nt">-n</span> testing <span class="nt">-i</span> first transfer <span class="nt">-r</span> second <span class="nt">-t</span> 6b35dfb5d623f6cae22fd03b3e28f1fde5255a29c1328a5d39ddfdfcd0ce6cf9 <span class="nt">-u</span>
+
+<span class="c"># run litecoind</span>
+<span class="nv">$ </span>litecoind <span class="nt">-datadir</span><span class="o">=</span>~/.config/litecoin/
+<span class="c"># Pay the transfer fee</span>
+<span class="nv">$ </span>bitmark-wallet <span class="nt">--conf</span> ~/.config/bitmark-wallet/test/test-bitmark-wallet.conf ltc <span class="nt">--testnet</span> sendmany <span class="nt">--hex-data</span> <span class="s1">'d819cff364b9211093fe09c2b462bdd05154472a72fac91a882a8f1129674dc92ac5d2724c8d26b16d414de8fbc5c62e'</span> <span class="s1">'mzkCaHJmu1gdnsL9jxW2bwqtw2MCCy66Ds,200000'</span>
+
+<span class="c"># Check the transfer transaction status</span>
+<span class="nv">$ </span>bitmark-cli <span class="nt">-n</span> testing status <span class="nt">-t</span> 4656604222152d08606d42a40c8590c2100c177cafe374ea90bae30c5bd371e0
+
+
+<span class="c"># Verify the bitmark provenance</span>
+<span class="nv">$ </span>bitmark-cli <span class="nt">-n</span> testing provenance <span class="nt">-t</span> 4656604222152d08606d42a40c8590c2100c177cafe374ea90bae30c5bd371e0
+
+</code></pre></div></div>
+</li>
+
+	<li>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">//</span><span class="w"> </span><span class="err">Submit</span><span class="w"> </span><span class="err">a</span><span class="w"> </span><span class="err">transfer</span><span class="w"> </span><span class="err">request</span><span class="w">
+</span><span class="err">/*=========================*/</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="nl">"transferId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4656604222152d08606d42a40c8590c2100c177cafe374ea90bae30c5bd371e0"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"bitmarkId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7e3337ae7596864e6dfd918c07780480ef80cea96fa039ed17d35c3849fcb3ca"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"payId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d819cff364b9211093fe09c2b462bdd05154472a72fac91a882a8f1129674dc92ac5d2724c8d26b16d414de8fbc5c62e"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"payments"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"BTC"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mr8DEygRvQwKfP4sVZuHVozqvzW89e193j"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20000"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"LTC"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LTC"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mzkCaHJmu1gdnsL9jxW2bwqtw2MCCy66Ds"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200000"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="err">,</span><span class="w">
+</span><span class="nl">"commands"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"BTC"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bitmark-wallet --conf ${XDG_CONFIG_HOME}/bitmark-wallet/test/test-bitmark-wallet.conf btc --testnet sendmany --hex-data 'd819cff364b9211093fe09c2b462bdd05154472a72fac91a882a8f1129674dc92ac5d2724c8d26b16d414de8fbc5c62e' 'mnTuuYNZmmswFT8iqr7ex82HAQYLJ8LXkC,10000' 'mr8DEygRvQwKfP4sVZuHVozqvzW89e193j,20000'"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"LTC"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bitmark-wallet --conf ${XDG_CONFIG_HOME}/bitmark-wallet/test/test-bitmark-wallet.conf ltc --testnet sendmany --hex-data 'd819cff364b9211093fe09c2b462bdd05154472a72fac91a882a8f1129674dc92ac5d2724c8d26b16d414de8fbc5c62e' 'mzkCaHJmu1gdnsL9jxW2bwqtw2MCCy66Ds,200000'"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="err">//</span><span class="w"> </span><span class="err">Pay</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">transfer</span><span class="w"> </span><span class="err">fee</span><span class="w">
+</span><span class="err">/*====================*/</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="nl">"txId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ca94ae188ba8bfdc42e026950c5e13a2f1082dae484a45c5dc29217ac0c9a23f"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"rawTx"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0100000001b76a37054a086c5bd68afd61914bb4badc78c9e7ef59e6b692777cc18063632d020000006b483045022100db6f27ec3e1e59c34887f262217d5ff819947c561f0ecd11034ba8b32dbdc87002203ef82d80be8e43434eb16e22248e4533a1d3c2831e19802ce55a308604d76f3c012103b45a55c3e48209581d63ba5ceea9a0e94ae49e18056d85a6dadec535dbe237a2ffffffff03400d0300000000001976a914d2ebb7b259fb7410dca19b707c4091195d818ac488ac8091e305000000001976a9142d477753d17099534f9249b54cda36081d4e5eba88ac0000000000000000326a30d819cff364b9211093fe09c2b462bdd05154472a72fac91a882a8f1129674dc92ac5d2724c8d26b16d414de8fbc5c62e00000000"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="err">//</span><span class="w"> </span><span class="err">Check</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">transfer</span><span class="w"> </span><span class="err">transaction</span><span class="w"> </span><span class="err">status</span><span class="w"> </span><span class="err">right</span><span class="w"> </span><span class="err">after</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">payment</span><span class="w">
+</span><span class="err">/*=============================================================*/</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Verified"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="err">//</span><span class="w"> </span><span class="err">Check</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">transfer</span><span class="w"> </span><span class="err">transaction</span><span class="w"> </span><span class="err">status</span><span class="w"> </span><span class="err">after</span><span class="w"> </span><span class="err">some</span><span class="w"> </span><span class="err">minutes</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Confirmed"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="err">//</span><span class="w"> </span><span class="err">Verify</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">bitmark</span><span class="w"> </span><span class="err">provenance</span><span class="w">
+</span><span class="err">/*=============================*/</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"record"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BitmarkTransferUnratified"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"isOwner"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"txId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4656604222152d08606d42a40c8590c2100c177cafe374ea90bae30c5bd371e0"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"inBlock"</span><span class="p">:</span><span class="w"> </span><span class="mi">31101</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"escrow"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7e3337ae7596864e6dfd918c07780480ef80cea96fa039ed17d35c3849fcb3ca"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"owner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fPWWkW45o12er6oP4EveaURHXstkSXR3odWCgpaDvEvxoR3woC"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"signature"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1d378c7e...7dafcc02"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"_IDENTITY"</span><span class="p">:</span><span class="w"> </span><span class="s2">"second"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"record"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BitmarkIssue"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"isOwner"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"txId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7e3337ae7596864e6dfd918c07780480ef80cea96fa039ed17d35c3849fcb3ca"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"inBlock"</span><span class="p">:</span><span class="w"> </span><span class="mi">31100</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"assetId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"813b2eb5...de9219a7"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"nonce"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"owner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fUuNhZ6CC4YxUkQB99nuLnUiEevEuwdCoYszJ9Y5uUjp8oiA3A"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"signature"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4581ee97...9b24f20f"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"_IDENTITY"</span><span class="p">:</span><span class="w"> </span><span class="s2">"first"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"record"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AssetData"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"isOwner"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"inBlock"</span><span class="p">:</span><span class="w"> </span><span class="mi">31100</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"assetId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"813b2eb5...de9219a7"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"fingerprint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01cdb27c...50514f0c"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Key1</span><span class="se">\u</span><span class="s2">0000Value1</span><span class="se">\u</span><span class="s2">0000Key2</span><span class="se">\u</span><span class="s2">0000Value2"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Example asset 3"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"registrant"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fUuNhZ6CC4YxUkQB99nuLnUiEevEuwdCoYszJ9Y5uUjp8oiA3A"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"signature"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d6cc18e5...47efe909"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"_IDENTITY"</span><span class="p">:</span><span class="w"> </span><span class="s2">"first"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+</li>
+
+</ul>
+
+<p>For the details of CLI commands and their parameters, please refer to the <a href="/register-and-control-data/cli/bitmark-cli-command-reference">CLI command reference</a>.</p>
+
+<h2 id="explore-the-transactions-using-the-registry-website">Explore the transactions using the Registry website</h2>
+
+<p>Users can explore all of the transactions on the Bitmark blockchain using the Bitmark Registry website:</p>
 
 <ul>
   <li>
-    <p>Submit a transfer request</p>
-
-    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nv">$ </span>bitmark-cli <span class="nt">-n</span> &lt;network&gt; <span class="nt">-i</span> &lt;sender identity&gt;<span class="se">\</span>
-    transfer <span class="nt">-r</span> &lt;receiver&gt; <span class="se">\</span>
-    <span class="nt">-t</span> &lt;txId&gt; <span class="nt">-u</span>
-</code></pre></div>    </div>
-
-    <blockquote>
-      <p>The <code class="language-plaintext highlighter-rouge">transfer</code> command submits a transfer transaction to the network.</p>
-
-      <p><strong>Global Options:</strong></p>
-      <ul>
-        <li><code class="language-plaintext highlighter-rouge">sender identity</code> - The identity of the sender’s Bitmark Account, which is stored in the Bitmark CLI config file</li>
-      </ul>
-
-      <p><strong>Command Options:</strong></p>
-      <ul>
-        <li><code class="language-plaintext highlighter-rouge">receiver</code> - The identifier of the recipient’s Bitmark Account. This can be a Bitmark Account Number or the Bitmark Account’s identity, if it’s stored in the Bitmark CLI config file</li>
-      </ul>
-
-      <p><code class="language-plaintext highlighter-rouge">txId</code> - The id of the last transaction of the Bitmark that is being transferring.</p>
-
-      <p><strong>NOTE:</strong> A transfer transaction on the Bitmark blockchain requires a transaction fee of 0.0002 BTC (20000 satoshis) or 0.002 LTC (200000 photons). Therefore, after the <code class="language-plaintext highlighter-rouge">transfer</code> command, the user will need to execute the payment on the Bitcoin or Litecoin blockchain. This payment information is included in the output of the <code class="language-plaintext highlighter-rouge">transfer</code> command.</p>
-
-      <p>The transfer command also auto generates the <code class="language-plaintext highlighter-rouge">bitmark-wallet</code> commands for paying for the transaction and displays them at the end of the output.</p>
-    </blockquote>
-
-    <p><em>Example:</em></p>
-
-    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nv">$ </span>bitmark-cli <span class="nt">-n</span> testing <span class="nt">-i</span> first<span class="se">\</span>
-    transfer <span class="nt">-r</span> second <span class="se">\</span>
-    <span class="nt">-t</span> 6b35dfb5d623f6cae22fd03b3e28f1fde5255a29c1328a5d39ddfdfcd0ce6cf9 <span class="nt">-u</span>
-</code></pre></div>    </div>
-    <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">  </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"transferId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4656604222152d08606d42a40c8590c2100c177cafe374ea90bae30c5bd371e0"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"bitmarkId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7e3337ae7596864e6dfd918c07780480ef80cea96fa039ed17d35c3849fcb3ca"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"payId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d819cff364b9211093fe09c2b462bdd05154472a72fac91a882a8f1129674dc92ac5d2724c8d26b16d414de8fbc5c62e"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"payments"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"BTC"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mr8DEygRvQwKfP4sVZuHVozqvzW89e193j"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20000"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="nl">"LTC"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LTC"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mzkCaHJmu1gdnsL9jxW2bwqtw2MCCy66Ds"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200000"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">]</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">}</span><span class="err">,</span><span class="w">
-  </span><span class="nl">"commands"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"BTC"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bitmark-wallet --conf ${XDG_CONFIG_HOME}/bitmark-wallet/test/test-bitmark-wallet.conf btc --testnet sendmany --hex-data 'd819cff364b9211093fe09c2b462bdd05154472a72fac91a882a8f1129674dc92ac5d2724c8d26b16d414de8fbc5c62e' 'mnTuuYNZmmswFT8iqr7ex82HAQYLJ8LXkC,10000' 'mr8DEygRvQwKfP4sVZuHVozqvzW89e193j,20000'"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"LTC"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bitmark-wallet --conf ${XDG_CONFIG_HOME}/bitmark-wallet/test/test-bitmark-wallet.conf ltc --testnet sendmany --hex-data 'd819cff364b9211093fe09c2b462bdd05154472a72fac91a882a8f1129674dc92ac5d2724c8d26b16d414de8fbc5c62e' 'mzkCaHJmu1gdnsL9jxW2bwqtw2MCCy66Ds,200000'"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span></code></pre></div>    </div>
+    <p><a href="https://registry.bitmark.com">Explore transactions on the Bitmark blockchain</a></p>
   </li>
   <li>
-    <p>Pay for the bitmark transfer using <code class="language-plaintext highlighter-rouge">bitmark-wallet</code></p>
-
-    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="c">#Run the bitcoind</span>
-  <span class="nv">$ </span>bitcoind <span class="nt">-datadir</span><span class="o">=</span>&lt;bitcoind config <span class="nb">dir</span><span class="o">&gt;</span>
-
-  <span class="c"># OR run the litecoind</span>
-  <span class="nv">$ </span>litecoind <span class="nt">-datadir</span><span class="o">=</span>&lt;litcoind config <span class="nb">dir</span><span class="o">&gt;</span>
-
-  <span class="c">#Pay by BTC</span>
-  <span class="nv">$ </span>bitmark-wallet <span class="nt">--conf</span> &lt;Bitmark-Wallet config file&gt; btc <span class="nt">--</span>&lt;btc network&gt; <span class="se">\</span>
-    sendmany <span class="nt">--hex-data</span> <span class="s1">'&lt;payId&gt;'</span> <span class="s1">'&lt;btc address&gt;,&lt;btc amount in satoshi&gt;'</span>
-
-  <span class="c">#OR Pay by LTC</span>
-  <span class="nv">$ </span>bitmark-wallet <span class="nt">--conf</span> &lt;Bitmark-Wallet config file&gt; ltc <span class="nt">--</span>&lt;ltc network&gt; <span class="se">\</span>
-    sendmany <span class="nt">--hex-data</span> <span class="s1">'&lt;payId&gt;'</span> <span class="s1">'&lt;ltc address&gt;,&lt;ltc amount in photon&gt;'</span>
-
-</code></pre></div>    </div>
-
-    <blockquote>
-      <p>To execute a bitcoin or litecoin transaction on the local environment, the <code class="language-plaintext highlighter-rouge">bitcoind</code> or <code class="language-plaintext highlighter-rouge">litecoind</code> daemon must be running.</p>
-
-      <ul>
-        <li><code class="language-plaintext highlighter-rouge">payId</code> - The payment id for the transfer transaction, printed in the results as <code class="language-plaintext highlighter-rouge">payId</code></li>
-        <li><code class="language-plaintext highlighter-rouge">btc address</code> or <code class="language-plaintext highlighter-rouge">ltc address</code> - The address for payment, printed in the results as <code class="language-plaintext highlighter-rouge">address</code> under <code class="language-plaintext highlighter-rouge">BTC</code> or <code class="language-plaintext highlighter-rouge">LTC</code></li>
-        <li><code class="language-plaintext highlighter-rouge">btc amount</code> or <code class="language-plaintext highlighter-rouge">ltc amount</code> - The payment amount, printed in the results as <code class="language-plaintext highlighter-rouge">amount</code> under <code class="language-plaintext highlighter-rouge">BTC</code> or <code class="language-plaintext highlighter-rouge">LTC</code></li>
-      </ul>
-    </blockquote>
-
-    <p><em>Example — Paying by LTC:</em></p>
-
-    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="c"># run litecoind</span>
-  <span class="nv">$ </span>litecoind <span class="nt">-datadir</span><span class="o">=</span>~/.config/litecoin/
-
-  <span class="c"># Perform payment</span>
-  <span class="nv">$ </span>bitmark-wallet <span class="nt">--conf</span> ~/.config/bitmark-wallet/test/test-bitmark-wallet.conf <span class="se">\</span>
-    ltc <span class="nt">--testnet</span> <span class="se">\</span>
-    sendmany <span class="nt">--hex-data</span> <span class="se">\</span>
-    <span class="s1">'d819cff364b9211093fe09c2b462bdd05154472a72fac91a882a8f1129674dc92ac5d2724c8d26b16d414de8fbc5c62e'</span> <span class="se">\</span>
-    <span class="s1">'mzkCaHJmu1gdnsL9jxW2bwqtw2MCCy66Ds,200000'</span>
-</code></pre></div>    </div>
-    <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">  </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"txId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ca94ae188ba8bfdc42e026950c5e13a2f1082dae484a45c5dc29217ac0c9a23f"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"rawTx"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0100000001b76a37054a086c5bd68afd61914bb4badc78c9e7ef59e6b692777cc18063632d020000006b483045022100db6f27ec3e1e59c34887f262217d5ff819947c561f0ecd11034ba8b32dbdc87002203ef82d80be8e43434eb16e22248e4533a1d3c2831e19802ce55a308604d76f3c012103b45a55c3e48209581d63ba5ceea9a0e94ae49e18056d85a6dadec535dbe237a2ffffffff03400d0300000000001976a914d2ebb7b259fb7410dca19b707c4091195d818ac488ac8091e305000000001976a9142d477753d17099534f9249b54cda36081d4e5eba88ac0000000000000000326a30d819cff364b9211093fe09c2b462bdd05154472a72fac91a882a8f1129674dc92ac5d2724c8d26b16d414de8fbc5c62e00000000"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span></code></pre></div>    </div>
-  </li>
-  <li>
-    <p>Verify the status of the transfer transaction</p>
-
-    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nv">$ </span>bitmark-cli <span class="nt">-n</span> &lt;network&gt; <span class="se">\</span>
-    status <span class="nt">-t</span> &lt;transferId&gt;
-</code></pre></div>    </div>
-
-    <blockquote>
-      <p>The <code class="language-plaintext highlighter-rouge">status</code> command queries a transaction’s status.</p>
-
-      <p><strong>Command Options:</strong></p>
-      <ul>
-        <li><code class="language-plaintext highlighter-rouge">transferId</code> - The transfer transaction id, printed as <code class="language-plaintext highlighter-rouge">transferId</code> in the output of the <code class="language-plaintext highlighter-rouge">transfer</code> command.</li>
-      </ul>
-
-      <p><strong>Returns:</strong></p>
-      <ul>
-        <li>
-          <p><code class="language-plaintext highlighter-rouge">Pending</code> - Not paid.</p>
-        </li>
-        <li>
-          <p><code class="language-plaintext highlighter-rouge">Verified</code> - Paid but not confirmed on the blockchain.</p>
-        </li>
-        <li>
-          <p><code class="language-plaintext highlighter-rouge">Confirmed</code> - Confirmed on the blockchain.</p>
-        </li>
-      </ul>
-    </blockquote>
-
-    <p><em>Example:</em></p>
-
-    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nv">$ </span>bitmark-cli <span class="nt">-n</span> testing <span class="se">\</span>
-    status <span class="nt">-t</span> <span class="se">\</span>
-    4656604222152d08606d42a40c8590c2100c177cafe374ea90bae30c5bd371e0
-</code></pre></div>    </div>
-    <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">  </span><span class="err">//Right</span><span class="w"> </span><span class="err">after</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">payment</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Verified"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-
-  </span><span class="err">//Check</span><span class="w"> </span><span class="err">again</span><span class="w"> </span><span class="err">after</span><span class="w"> </span><span class="err">some</span><span class="w"> </span><span class="err">minutes</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Confirmed"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span></code></pre></div>    </div>
-
-    <p><br /></p>
-  </li>
-  <li>
-    <p>Verify the Bitmark’s provenance</p>
-
-    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nv">$ </span>bitmark-cli <span class="nt">-n</span> &lt;network&gt; <span class="se">\</span>
-    provenance <span class="nt">-t</span> &lt;transferID&gt;
-</code></pre></div>    </div>
-
-    <blockquote>
-      <p>The <code class="language-plaintext highlighter-rouge">provenance</code> command returns all the transaction records related to an asset from the transaction corresponding to the txId back to the Bitmark’s asset registration record.</p>
-
-      <p><strong>Command options:</strong></p>
-      <ul>
-        <li><code class="language-plaintext highlighter-rouge">transferID</code> - <code class="language-plaintext highlighter-rouge">transferId</code> - The transfer transaction id, printed as <code class="language-plaintext highlighter-rouge">transferId</code> in the output of the <code class="language-plaintext highlighter-rouge">transfer</code> command</li>
-      </ul>
-    </blockquote>
-
-    <p><em>Example:</em></p>
-
-    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nv">$ </span>bitmark-cli <span class="nt">-n</span> testing <span class="se">\</span>
-    provenance <span class="nt">-t</span> <span class="se">\</span>
-    4656604222152d08606d42a40c8590c2100c177cafe374ea90bae30c5bd371e0
-</code></pre></div>    </div>
-    <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">  </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"record"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BitmarkTransferUnratified"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"isOwner"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"txId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4656604222152d08606d42a40c8590c2100c177cafe374ea90bae30c5bd371e0"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"inBlock"</span><span class="p">:</span><span class="w"> </span><span class="mi">31101</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"escrow"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7e3337ae7596864e6dfd918c07780480ef80cea96fa039ed17d35c3849fcb3ca"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"owner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fPWWkW45o12er6oP4EveaURHXstkSXR3odWCgpaDvEvxoR3woC"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"signature"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1d378c7e...7dafcc02"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="nl">"_IDENTITY"</span><span class="p">:</span><span class="w"> </span><span class="s2">"second"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"record"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BitmarkIssue"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"isOwner"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"txId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7e3337ae7596864e6dfd918c07780480ef80cea96fa039ed17d35c3849fcb3ca"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"inBlock"</span><span class="p">:</span><span class="w"> </span><span class="mi">31100</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"assetId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"813b2eb5...de9219a7"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"nonce"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"owner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fUuNhZ6CC4YxUkQB99nuLnUiEevEuwdCoYszJ9Y5uUjp8oiA3A"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"signature"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4581ee97...9b24f20f"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="nl">"_IDENTITY"</span><span class="p">:</span><span class="w"> </span><span class="s2">"first"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"record"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AssetData"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"isOwner"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"inBlock"</span><span class="p">:</span><span class="w"> </span><span class="mi">31100</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"assetId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"813b2eb5...de9219a7"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"fingerprint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01cdb27c...50514f0c"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Key1</span><span class="se">\u</span><span class="s2">0000Value1</span><span class="se">\u</span><span class="s2">0000Key2</span><span class="se">\u</span><span class="s2">0000Value2"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Example asset 3"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"registrant"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fUuNhZ6CC4YxUkQB99nuLnUiEevEuwdCoYszJ9Y5uUjp8oiA3A"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"signature"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d6cc18e5...47efe909"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="nl">"_IDENTITY"</span><span class="p">:</span><span class="w"> </span><span class="s2">"first"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span></code></pre></div>    </div>
+    <p><a href="https://registry.test.bitmark.com">Explore transactions on the Bitmark testnet blockchain</a></p>
   </li>
 </ul>
 
-<h2 id="exploring-bitmark-transactions-using-the-bitmark-registry-website">Exploring Bitmark transactions using the Bitmark Registry website</h2>
+<h2 id="references">References</h2>
 
-<p>Users can explore all of the transactions on the Bitmark blockchain using the Bitmark Registry web application:</p>
-
+<p>CLI</p>
 <ul>
-  <li>
-    <p>For transactions on the Bitmark livenet blockchain: https://registry.bitmark.com</p>
-  </li>
-  <li>
-    <p>For transactions on the Bitmark testnet blockchain: https://registry.test.bitmark.com</p>
-  </li>
+  <li><a href="/register-and-control-data/cli/bitmark-cli-command-reference">CLI command reference</a></li>
+  <li><a href="/register-and-control-data/cli/cli-quick-setup">CLI quick setup</a></li>
+</ul>
+
+<p>SDK</p>
+<ul>
+  <li><a href="/register-and-control-data/getting-started">SDK Getting Started</a></li>
+  <li><a href="/bitmark-references/bitmark-sdk/account">SDK Account</a></li>
+  <li><a href="/bitmark-references/bitmark-sdk/action">SDK Action</a></li>
+  <li><a href="/bitmark-references/bitmark-sdk/query">SDK Query</a></li>
+  <li><a href="/bitmark-references/bitmark-sdk/migration">SDK Migration</a></li>
+  <li><a href="/bitmark-references/bitmark-sdk/store-seed">SDK Store Seed</a></li>
+  <li><a href="/bitmark-references/bitmark-sdk/websocket">SDK Web Socket</a></li>
 </ul>
 </div>
         

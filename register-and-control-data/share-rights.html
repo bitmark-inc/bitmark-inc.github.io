@@ -396,16 +396,12 @@
   <li><a href="#swapping-bitmark-shares">Swap Bitmark shares</a> with other accounts.</li>
 </ul>
 
-<p>Currently, only the Bitmark CLI supports working with bitmark shares.</p>
+<p>Currently, only the Bitmark CLI supports working with bitmark shares. Transactions related to Bitmark shares require a transaction fee. On the bitmark network, the fee can be paid with BTC or LTC</p>
 
-<blockquote>
-  <p><strong>NOTE:</strong> Transactions related to Bitmark shares require a transaction fee. On the bitmark network, the fee can be paid with BTC or LTC</p>
-
-  <ul>
-    <li>Real BTC and/or LTC are used to pay for transaction fee on the Bitmark main chain</li>
-    <li>Testnet BTC and/or LTC are used to pay for transaction fee on the Bitmark testing chain</li>
-  </ul>
-</blockquote>
+<ul>
+  <li>Real BTC and/or LTC are used to pay for transaction fee on the Bitmark main chain</li>
+  <li>Testnet BTC and/or LTC are used to pay for transaction fee on the Bitmark testing chain</li>
+</ul>
 
 <h3 id="about-bitmark-shares-records">About Bitmark shares records</h3>
 
@@ -421,655 +417,476 @@
 
 <p>The <code class="language-plaintext highlighter-rouge">bitmark-wallet</code> software is required for paying for transactions. Please refer to the <a href="/register-and-control-data/cli/cli-payment">CLI Payment</a> document for instructions on installing it.</p>
 
-<h2 id="creating-bitmark-shares">Creating Bitmark shares</h2>
+<h2 id="create-bitmark-shares">Create Bitmark shares</h2>
 
 <p>Any Bitmark owner can divide a Bitmark Certificate into a number of shares by creating the shares and paying the associated fees. Additional commands can be used to verify the transaction.</p>
 
 <ul>
-  <li>
-    <p>The initial number of shares is not changeable once a Bitmark Certificate is divided.</p>
-  </li>
-  <li>
-    <p>Once the Bitmark Certificate is converted into shares, it can no longer be transferred any more, though the shares can be granted or swapped. The provenance of the bitmark is concluded.</p>
-  </li>
-  <li>
-    <p>All of the created shares are allocated to the owner.</p>
-  </li>
-  <li>
-    <p>A share creation transaction costs 0.002 LTC or 0.0002 BTC as the transaction fee.</p>
-  </li>
+  <li>The initial number of shares is not changeable once a Bitmark Certificate is divided.</li>
+  <li>Once the Bitmark Certificate is converted into shares, it can no longer be transferred any more, though the shares can be granted or swapped. The provenance of the bitmark is concluded.</li>
+  <li>All of the created shares are allocated to the owner.</li>
 </ul>
 
-<h3 id="creating-bitmark-shares-from-a-bitmark-certificate">Creating Bitmark shares from a Bitmark Certificate</h3>
+<ul class="uk-tab" data-uk-switcher="{connect:'#d29b86b2-af7c-40f5-9b67-794745c22279'}">
 
-<p>To create Bitmark shares using the Bitmark CLI:</p>
+	<li class="uk-active"><a href="#">Command</a></li>
 
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="nv">$ </span>bitmark-cli <span class="nt">-n</span> &lt;network&gt; <span class="nt">-i</span> &lt;identity&gt; <span class="se">\</span>
-      share <span class="nt">-t</span> &lt;txid&gt; <span class="nt">-q</span> &lt;quantity&gt;
+	<li><a href="#">Example</a></li>
+
+	<li><a href="#">Output</a></li>
+
+</ul>
+
+<ul id="d29b86b2-af7c-40f5-9b67-794745c22279" class="uk-switcher uk-margin">
+
+	<li>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Create a Bitmark shares from a bitmark</span>
+<span class="nv">$ </span>bitmark-cli <span class="nt">-n</span> &lt;network&gt; <span class="nt">-i</span> &lt;identity&gt; share <span class="nt">-t</span> &lt;txid&gt; <span class="nt">-q</span> &lt;quantity&gt;
+
+<span class="c"># Run the bitcoind</span>
+<span class="nv">$ </span>bitcoind <span class="nt">-datadir</span><span class="o">=</span>&lt;bitcoind config <span class="nb">dir</span><span class="o">&gt;</span>
+<span class="c"># OR run the litecoind</span>
+<span class="nv">$ </span>litecoind <span class="nt">-datadir</span><span class="o">=</span>&lt;litecoind config <span class="nb">dir</span><span class="o">&gt;</span>
+
+<span class="c">#Pay for a share creation by BTC</span>
+<span class="nv">$ </span>bitmark-wallet <span class="nt">--conf</span> &lt;Bitmark Wallet config file&gt; btc <span class="nt">--</span>&lt;btc network&gt; sendmany <span class="nt">--hex-data</span> <span class="s1">'&lt;payId&gt;'</span> <span class="s1">'&lt;btc address&gt;,&lt;btc amount in satoshi&gt;'</span>
+<span class="c">#OR Pay for a share creation by LTC</span>
+<span class="nv">$ </span>bitmark-wallet <span class="nt">--conf</span> &lt;Bitmark-Wallet config file&gt; ltc <span class="nt">--</span>&lt;ltc network&gt; sendmany <span class="nt">--hex-data</span> <span class="s1">'&lt;payId&gt;'</span> <span class="s1">'&lt;ltc address&gt;,&lt;ltc amount in photon&gt;'</span>
+
+<span class="c"># Check a share creation transaction status</span>
+<span class="nv">$ </span>bitmark-cli <span class="nt">-n</span> &lt;network&gt; status <span class="nt">-t</span> &lt;txid&gt;
+
+<span class="c"># Verify the number of shares</span>
+<span class="nv">$ </span>bitmark-cli <span class="nt">-n</span> &lt;network&gt; balance <span class="nt">-o</span> &lt;owner identity&gt;
+
 </code></pre></div></div>
+</li>
 
-<blockquote>
-  <p>The <code class="language-plaintext highlighter-rouge">share</code> command creates shares for a Bitmark Certificate.</p>
+	<li>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Create a Bitmark shares from a bitmark</span>
+<span class="nv">$ </span>bitmark-cli <span class="nt">-n</span> testing <span class="nt">-i</span> first share <span class="nt">-t</span> b069f2956b828281dec040782eea3d63793ab4cf17c26f7639e95f6f3b20ba23 <span class="nt">-q</span> 1000
 
-  <p><strong>Global Options:</strong></p>
-  <ul>
-    <li><code class="language-plaintext highlighter-rouge">identity</code> - The identity of the Bitmark Account of the Bitmark Certificate’s owner. The Bitmark Account and its identity are stored in the Bitmark CLI config file.</li>
-  </ul>
+<span class="c"># Run the bitcoind</span>
+<span class="nv">$ </span>bitcoind <span class="nt">-datadir</span><span class="o">=</span><span class="k">${</span><span class="nv">HOME</span><span class="k">}</span>/.config/bitcoin/
 
-  <p><strong>Command Options:</strong></p>
-  <ul>
-    <li>
-      <p><code class="language-plaintext highlighter-rouge">txid</code> - The latest transaction id in the Bitmark’s provenance.</p>
-    </li>
-    <li>
-      <p><code class="language-plaintext highlighter-rouge">quantity</code> - The number of shares to be created.</p>
-    </li>
-  </ul>
+<span class="c">#Pay for the share creation by BTC</span>
+<span class="nv">$ </span>bitmark-wallet <span class="nt">--conf</span> <span class="k">${</span><span class="nv">XDG_CONFIG_HOME</span><span class="k">}</span>/bitmark-wallet/test/test-bitmark-wallet.conf btc <span class="nt">--testnet</span> sendmany <span class="nt">--hex-data</span> <span class="s1">'b5000d490f2194307db84d86c6bed022cadf1c6f5cef7e5eb73ac871454aa5bf8ae3219cfe73fd6c53770f7ecba7b413'</span> <span class="s1">'2MvrbNpfr6zWG2Mm2hnCh735hPwjoist3Ep,20000'</span>
 
-  <p><strong>Returns</strong></p>
-  <ul>
-    <li>
-      <p><code class="language-plaintext highlighter-rouge">txid</code> - The transaction id of the share creation.</p>
-    </li>
-    <li>
-      <p><code class="language-plaintext highlighter-rouge">shareId</code> - The share id, which is also the Bitmark id.</p>
-    </li>
-    <li>
-      <p>The payment information (<code class="language-plaintext highlighter-rouge">payId</code>, <code class="language-plaintext highlighter-rouge">currency</code>, <code class="language-plaintext highlighter-rouge">address</code>, <code class="language-plaintext highlighter-rouge">amount</code>).</p>
-    </li>
-  </ul>
-</blockquote>
+<span class="c"># Check the share creation transaction status</span>
+<span class="nv">$ </span>bitmark-cli <span class="nt">-n</span> testing status <span class="nt">-t</span> 6f8cccbb8db2e2304227abb91cf0cbceaed79376b9d7b0181d28fa20f04fe2a3
 
-<p><em>Example:</em></p>
+<span class="c"># Verify the number of shares</span>
+<span class="nv">$ </span>bitmark-cli <span class="nt">-n</span> testing balance <span class="nt">-o</span> first
 
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="nv">$ </span>bitmark-cli <span class="nt">-n</span> testing <span class="nt">-i</span> first <span class="se">\</span>
-      share <span class="nt">-t</span> <span class="se">\</span>
-      b069f2956b828281dec040782eea3d63793ab4cf17c26f7639e95f6f3b20ba23 <span class="se">\</span>
-      <span class="nt">-q</span> 1000
 </code></pre></div></div>
+</li>
 
-<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">    </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"txId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6f8cccbb8db2e2304227abb91cf0cbceaed79376b9d7b0181d28fa20f04fe2a3"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"shareId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b069f2956b828281dec040782eea3d63793ab4cf17c26f7639e95f6f3b20ba23"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"payId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b5000d490f2194307db84d86c6bed022cadf1c6f5cef7e5eb73ac871454aa5bf8ae3219cfe73fd6c53770f7ecba7b413"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"payments"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"BTC"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-          </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2MvrbNpfr6zWG2Mm2hnCh735hPwjoist3Ep"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20000"</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">],</span><span class="w">
-        </span><span class="nl">"LTC"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-          </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LTC"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mv7pHLntNcEe8YQqCJGWTyL6aa8hjMRL9B"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200000"</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">]</span><span class="w">
+	<li>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">//</span><span class="w"> </span><span class="err">Create</span><span class="w"> </span><span class="err">a</span><span class="w"> </span><span class="err">Bitmark</span><span class="w"> </span><span class="err">shares</span><span class="w"> </span><span class="err">from</span><span class="w"> </span><span class="err">a</span><span class="w"> </span><span class="err">bitmark</span><span class="w">
+</span><span class="err">/*=====================================*/</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="nl">"txId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6f8cccbb8db2e2304227abb91cf0cbceaed79376b9d7b0181d28fa20f04fe2a3"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"shareId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b069f2956b828281dec040782eea3d63793ab4cf17c26f7639e95f6f3b20ba23"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"payId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b5000d490f2194307db84d86c6bed022cadf1c6f5cef7e5eb73ac871454aa5bf8ae3219cfe73fd6c53770f7ecba7b413"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"payments"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"BTC"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2MvrbNpfr6zWG2Mm2hnCh735hPwjoist3Ep"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20000"</span><span class="w">
       </span><span class="p">}</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span></code></pre></div></div>
-
-<h3 id="paying-for-a-share-creation">Paying for a share creation</h3>
-
-<p>To do so using the Bitmark CLI:</p>
-
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="c">#Run the bitcoind</span>
-    <span class="nv">$ </span>bitcoind <span class="nt">-datadir</span><span class="o">=</span>&lt;bitcoind config <span class="nb">dir</span><span class="o">&gt;</span>
-
-    <span class="c"># OR run the litecoind</span>
-    <span class="nv">$ </span>litecoind <span class="nt">-datadir</span><span class="o">=</span>&lt;litecoind config <span class="nb">dir</span><span class="o">&gt;</span>
-
-    <span class="c">#Pay by BTC</span>
-    <span class="nv">$ </span>bitmark-wallet <span class="nt">--conf</span> &lt;Bitmark Wallet config file&gt; btc <span class="nt">--</span>&lt;btc network&gt; <span class="se">\</span>
-      sendmany <span class="nt">--hex-data</span> <span class="s1">'&lt;payId&gt;'</span> <span class="s1">'&lt;btc address&gt;,&lt;btc amount in satoshi&gt;'</span>
-
-    <span class="c">#OR Pay by LTC</span>
-    <span class="nv">$ </span>bitmark-wallet <span class="nt">--conf</span> &lt;Bitmark-Wallet config file&gt; ltc <span class="nt">--</span>&lt;ltc network&gt; <span class="se">\</span>
-      sendmany <span class="nt">--hex-data</span> <span class="s1">'&lt;payId&gt;'</span> <span class="s1">'&lt;ltc address&gt;,&lt;ltc amount in photon&gt;'</span>
-
-</code></pre></div></div>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt;To execute a bitcoin or litecoin transaction on the local environment, the bitcoind or litecoind daemon needs to be running.
-&gt;
-&gt; - `payId` - The payment id for transfer transaction, printed in the results as `payId`
-&gt; - `btc address` or `ltc address` - The address for payment, printed in the results as `address` under `BTC` or `LTC`
-&gt; - `btc amount` or `ltc amount` - The payment amount, printed in the results as `amount` under `BTC` or `LTC`
-</code></pre></div></div>
-
-<p><em>Example — Paying with BTC:</em></p>
-
-<ul>
-  <li>
-    <p>Run bitcoind</p>
-
-    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nv">$ </span>bitcoind <span class="nt">-datadir</span><span class="o">=</span><span class="k">${</span><span class="nv">HOME</span><span class="k">}</span>/.config/bitcoin/
-</code></pre></div>    </div>
-  </li>
-  <li>
-    <p>Pay for the transaction with bitcoin using the Bitmark Wallet</p>
-
-    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nv">$ </span>bitmark-wallet <span class="nt">--conf</span> <span class="k">${</span><span class="nv">XDG_CONFIG_HOME</span><span class="k">}</span>/bitmark-wallet/test/test-bitmark-wallet.conf <span class="se">\</span>
-    btc <span class="nt">--testnet</span> <span class="se">\</span>
-    sendmany <span class="nt">--hex-data</span> <span class="se">\</span>
-    <span class="s1">'b5000d490f2194307db84d86c6bed022cadf1c6f5cef7e5eb73ac871454aa5bf8ae3219cfe73fd6c53770f7ecba7b413'</span> <span class="se">\</span>
-    <span class="s1">'2MvrbNpfr6zWG2Mm2hnCh735hPwjoist3Ep,20000'</span>
-</code></pre></div>    </div>
-    <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">  </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"txId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fc208c0...12c3d82"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"rawTx"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0100000001e45...7b41300000000"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"LTC"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LTC"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mv7pHLntNcEe8YQqCJGWTyL6aa8hjMRL9B"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200000"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w">
-</span></code></pre></div>    </div>
-  </li>
+</span><span class="p">}</span><span class="w">
+
+</span><span class="err">//</span><span class="w"> </span><span class="err">Pay</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">a</span><span class="w"> </span><span class="err">share</span><span class="w"> </span><span class="err">creation</span><span class="w">
+</span><span class="err">/*=======================*/</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="nl">"txId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fc208c0...12c3d82"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"rawTx"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0100000001e45...7b41300000000"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="err">//</span><span class="w"> </span><span class="err">Check</span><span class="w"> </span><span class="err">a</span><span class="w"> </span><span class="err">share</span><span class="w"> </span><span class="err">creation</span><span class="w"> </span><span class="err">transaction</span><span class="w"> </span><span class="err">status</span><span class="w">
+</span><span class="err">/*========================================*/</span><span class="w">
+</span><span class="err">//Right</span><span class="w"> </span><span class="err">after</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">payment</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Verified"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="err">//Check</span><span class="w"> </span><span class="err">again</span><span class="w"> </span><span class="err">after</span><span class="w"> </span><span class="err">some</span><span class="w"> </span><span class="err">minutes</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Confirmed"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="err">//</span><span class="w"> </span><span class="err">Verify</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">number</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">shares</span><span class="w">
+</span><span class="err">/*==========================*/</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="nl">"balances"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"shareId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b069f2956b828281dec040782eea3d63793ab4cf17c26f7639e95f6f3b20ba23"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"confirmed"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"spend"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"available"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div></div>
+</li>
+
 </ul>
-
-<h3 id="verifying-a-share-creation-transaction">Verifying a share creation transaction</h3>
-
-<p>To verify the status of the share creation using Bitmark CLI:</p>
-
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="nv">$ </span>bitmark-cli <span class="nt">-n</span> &lt;network&gt; <span class="se">\</span>
-      status <span class="nt">-t</span> &lt;txid&gt;
-</code></pre></div></div>
-
-<blockquote>
-  <p>The <code class="language-plaintext highlighter-rouge">status</code> command queries a transaction’s status.</p>
-
-  <p><strong>Command Options:</strong></p>
-  <ul>
-    <li><code class="language-plaintext highlighter-rouge">txid</code> - The transaction id, which is printed in the output of the share creation command.</li>
-  </ul>
-
-  <p><strong>Returns:</strong></p>
-  <ul>
-    <li>
-      <p><code class="language-plaintext highlighter-rouge">Pending</code> - Not paid.</p>
-    </li>
-    <li>
-      <p><code class="language-plaintext highlighter-rouge">Verified</code> - Paid but not confirmed on the blockchain.</p>
-    </li>
-    <li>
-      <p><code class="language-plaintext highlighter-rouge">Confirmed</code> - Confirmed on the blockchain.</p>
-    </li>
-  </ul>
-</blockquote>
-
-<p><em>Example:</em></p>
-
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="nv">$ </span>bitmark-cli <span class="nt">-n</span> testing <span class="se">\</span>
-      status <span class="nt">-t</span> <span class="se">\</span>
-      6f8cccbb8db2e2304227abb91cf0cbceaed79376b9d7b0181d28fa20f04fe2a3
-</code></pre></div></div>
-<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">    </span><span class="err">//Right</span><span class="w"> </span><span class="err">after</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">payment</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Verified"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-
-    </span><span class="err">//Check</span><span class="w"> </span><span class="err">again</span><span class="w"> </span><span class="err">after</span><span class="w"> </span><span class="err">some</span><span class="w"> </span><span class="err">minutes</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Confirmed"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span></code></pre></div></div>
-
-<p><br /></p>
-
-<h3 id="verifying-the-share-creation-results">Verifying the share creation results</h3>
-
-<p>To verify a user’s share balance using Bitmark CLI:</p>
-
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="nv">$ </span>bitmark-cli <span class="nt">-n</span> &lt;network&gt; <span class="se">\</span>
-      balance <span class="nt">-o</span> &lt;owner identity&gt;
-
-</code></pre></div></div>
-
-<blockquote>
-  <p>The <code class="language-plaintext highlighter-rouge">owned</code> command lists all the bitmarks and shares that are owned by a user.</p>
-
-  <p><strong>Command Options:</strong></p>
-  <ul>
-    <li><code class="language-plaintext highlighter-rouge">owner identity</code> - The identity of the owner whose shares are being listed (in this case, the owner of the Bitmark Certificate that was just converted into shares)</li>
-  </ul>
-</blockquote>
-
-<p><em>Example:</em></p>
-
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="nv">$ </span>bitmark-cli <span class="nt">-n</span> testing <span class="se">\</span>
-      balance <span class="nt">-o</span> first
-</code></pre></div></div>
-<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">    </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"balances"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"shareId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b069f2956b828281dec040782eea3d63793ab4cf17c26f7639e95f6f3b20ba23"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"confirmed"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"spend"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"available"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">]</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span></code></pre></div></div>
 
 <h2 id="granting-bitmark-shares-to-another-account">Granting Bitmark shares to another account</h2>
 
 <p>Any user with a non-zero share balance can grant shares from that balance to another account. This is a three-part process: initializing the granting of shares; countersigning the grant; and paying for the transaction. Afterward, the transaction can be verified.</p>
 
-<h3 id="initializing-a-share-grant">Initializing a share grant</h3>
-
-<p>To initialize a grant of shares using the Bitmark CLI:</p>
-
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="c"># The current owner initializes the grant shares transaction</span>
-    <span class="nv">$ </span>bitmark-cli <span class="nt">-n</span> &lt;network&gt; <span class="nt">-i</span> &lt;current owner identity&gt; <span class="se">\</span>
-      grant <span class="nt">-r</span> &lt;receiver&gt; <span class="nt">-s</span> &lt;shareid&gt; <span class="nt">-q</span> &lt;quantity&gt;
-</code></pre></div></div>
-
-<blockquote>
-  <p>The <code class="language-plaintext highlighter-rouge">grant</code> command allows a Bitmark shares owner to grant some of his share balance to another account. Only after the new owner signs to accept the shares will the grant transaction be created and submitted to the blockchain.</p>
-
-  <p><strong>Global Options:</strong></p>
-  <ul>
-    <li><code class="language-plaintext highlighter-rouge">current owner identity</code> - The identity of the current share owner’s Bitmark Account, which is stored in the Bitmark CLI config file.</li>
-  </ul>
-
-  <p><strong>Command Options:</strong></p>
-  <ul>
-    <li>
-      <p><code class="language-plaintext highlighter-rouge">receiver</code> - The identifier of the new owner of the granted shares. This can be the receiver’s Bitmark Account identity, stored by the Bitmark CLI, or the receiver’s Bitmark Account Number.</p>
-    </li>
-    <li>
-      <p><code class="language-plaintext highlighter-rouge">shareid</code> - The share id (share id = bitmark id).</p>
-    </li>
-    <li>
-      <p><code class="language-plaintext highlighter-rouge">quantity</code> - The number of granted shares.</p>
-    </li>
-  </ul>
-
-  <p><strong>Returns:</strong></p>
-  <ul>
-    <li>
-      <p><code class="language-plaintext highlighter-rouge">identity</code> - The Bitmark Account Number of the current share owner.</p>
-    </li>
-    <li>
-      <p><code class="language-plaintext highlighter-rouge">grant</code> - The hex-data that needs to be signed by the new owner.</p>
-    </li>
-  </ul>
-</blockquote>
-
-<p><em>Example:</em></p>
-
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="nv">$ </span>bitmark-cli <span class="nt">-n</span> testing <span class="nt">-i</span> first <span class="se">\</span>
-      grant <span class="nt">-r</span> second <span class="se">\</span>
-      <span class="nt">-s</span> 6f8cccbb8db2e2304227abb91cf0cbceaed79376b9d7b0181d28fa20f04fe2a3 <span class="se">\</span>
-      <span class="nt">-q</span> 100
-</code></pre></div></div>
-<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">    </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"identity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fUuNhZ6CC4YxUkQB99nuLnUiEevEuwdCoYszJ9Y5uUjp8oiA3A"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"grant"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0920b069f2956b828281dec040782eea3d63793ab4cf17c26f7639e95f6f3b20ba23642113cbcf0da30e9e1b5acd9cd33f76ef6d93fcec6c81c0a7f3d3fb54d29d3ba8a8472113bf8f8a5e558bdefeaa3fe482dbc9d929e4e6c60ca585e9191e4636bafb9d9144f5f20140b7498423c8b26a159846474cfe84d1c2f9c16ca66192ebf3cc7b3225bbd47dfe666f8bfbf319352d13b7b2686971ded2d42c718e2f4a1b0019f6aa8a8b5d7c0e"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span></code></pre></div></div>
-
-<h3 id="countersigning-a-share-grant">Countersigning a share grant</h3>
-
 <p>The share grant transaction requires two signatures. Therefore, after the current share owner initializes the grant, the new owner needs to sign to accept the shares.</p>
 
-<p>To countersign a share grant using the Bitmark CLI:</p>
+<ul class="uk-tab" data-uk-switcher="{connect:'#85f86ff1-e11d-42fc-8f4c-3b04497965b3'}">
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    # The receiver signs to accept the shares
-    $ bitmark-cli -n &lt;network&gt; -i &lt;receiver identity&gt; \
-      countersign -t &lt;hex-data&gt;
+	<li class="uk-active"><a href="#">Command</a></li>
+
+	<li><a href="#">Example</a></li>
+
+	<li><a href="#">Output</a></li>
+
+</ul>
+
+<ul id="85f86ff1-e11d-42fc-8f4c-3b04497965b3" class="uk-switcher uk-margin">
+
+	<li>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Initialize a share grant</span>
+<span class="nv">$ </span>bitmark-cli <span class="nt">-n</span> &lt;network&gt; <span class="nt">-i</span> &lt;current owner identity&gt; grant <span class="nt">-r</span> &lt;recipient&gt; <span class="nt">-s</span> &lt;shareid&gt; <span class="nt">-q</span> &lt;quantity&gt;
+
+<span class="c"># Countersign a share grant</span>
+<span class="nv">$ </span>bitmark-cli <span class="nt">-n</span> &lt;network&gt; <span class="nt">-i</span> &lt;recipient identity&gt; countersign <span class="nt">-t</span> &lt;hex-data&gt;
+
+<span class="c"># Pay for a share grant by BTC</span>
+<span class="nv">$ </span>bitmark-wallet <span class="nt">--conf</span> &lt;Bitmark Wallet config file&gt; btc <span class="nt">--</span>&lt;btc network&gt; sendmany <span class="nt">--hex-data</span> <span class="s1">'&lt;payId&gt;'</span> <span class="s1">'&lt;btc address&gt;,&lt;btc amount in satoshi&gt;'</span>
+<span class="c"># OR Pay for a share grant by LTC</span>
+<span class="nv">$ </span>bitmark-wallet <span class="nt">--conf</span> &lt;Bitmark-Wallet config file&gt; ltc <span class="nt">--</span>&lt;ltc network&gt; sendmany <span class="nt">--hex-data</span> <span class="s1">'&lt;payId&gt;'</span> <span class="s1">'&lt;ltc address&gt;,&lt;ltc amount in photon&gt;'</span>
+
+<span class="c"># Check a share grant transaction status</span>
+<span class="nv">$ </span>bitmark-cli <span class="nt">-n</span> &lt;network&gt; status <span class="nt">-t</span> &lt;txid&gt;
+
+<span class="c"># Verify the share balance change of an account</span>
+<span class="nv">$ </span>bitmark-cli <span class="nt">-n</span> &lt;network&gt; balance <span class="nt">-o</span> &lt;owner identity&gt;
 </code></pre></div></div>
+</li>
 
-<blockquote>
-  <p>The <code class="language-plaintext highlighter-rouge">countersign</code> command signs hex data. (In this case, it is used by the <code class="language-plaintext highlighter-rouge">receiver</code> to sign to accept granted shares.)</p>
+	<li>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Initialize a share grant</span>
+<span class="nv">$ </span>bitmark-cli <span class="nt">-n</span> testing <span class="nt">-i</span> first grant <span class="nt">-r</span> second <span class="nt">-s</span> 6f8cccbb8db2e2304227abb91cf0cbceaed79376b9d7b0181d28fa20f04fe2a3 <span class="nt">-q</span> 100
 
-  <p><strong>Global Options:</strong></p>
-  <ul>
-    <li>
-      <p><code class="language-plaintext highlighter-rouge">receiver identity</code> - The identity of the receiving Bitmark Account, which is stored in the Bitmark CLI config file.</p>
-    </li>
-    <li>
-      <p><code class="language-plaintext highlighter-rouge">hex-data</code> - The <code class="language-plaintext highlighter-rouge">grant</code> data returned by the <code class="language-plaintext highlighter-rouge">grant</code> command.</p>
-    </li>
-  </ul>
+<span class="c"># Countersign the share grant</span>
+<span class="nv">$ </span>bitmark-cli <span class="nt">-n</span> testing <span class="nt">-i</span> second countersign <span class="nt">-t</span> 0920b069f2956b828281dec040782eea3d63793ab4cf17c26f7639e95f6f3b20ba23642113cbcf0da30e9e1b5acd9cd33f76ef6d93fcec6c81c0a7f3d3fb54d29d3ba8a8472113bff8a5e558bdefeaa3fe482dbc9d929e4e6c60ca585e9191e4636bafb9d9144f5f20140b7498423c8b26a159846474cfe84d1c2f9c16ca66192ebf3cc7b3225bbd47dfe666f8bfbf319352d13b7b2686971ded2d42c718e2f4a1b0019f6aa8a8b5d7c0e
 
-  <p><strong>NOTE:</strong> The share grant transaction cost a transaction fee of 0.002 LTC (200000 photons) or 0.0002 BTC (20000 satoshis). Only when the fee is paid, can the transaction be confirmed on the blockchain.
-The payment information is included in the <code class="language-plaintext highlighter-rouge">coutersign</code> command’s returns.</p>
-</blockquote>
+<span class="c"># Pay for the share grant by LTC</span>
+<span class="nv">$ </span>bitmark-wallet <span class="nt">--conf</span> ~/.config/bitmark-wallet/test/test-bitmark-wallet.conf ltc <span class="nt">--testnet</span> sendmany <span class="nt">--hex-data</span> <span class="s1">'3728cb6a24f92801ac5fb0f29db58803339fecbe77dafad5cda9b1be9755a9a7d16b67428f7c3cebaccd10a20f6d8462'</span> <span class="s1">'mv7pHLntNcEe8YQqCJGWTyL6aa8hjMRL9B,100000'</span> <span class="s1">'mzkCaHJmu1gdnsL9jxW2bwqtw2MCCy66Ds,100000'</span>
 
-<p><em>Example:</em></p>
+<span class="c"># Check the share grant transaction status</span>
+<span class="nv">$ </span>bitmark-cli <span class="nt">-n</span> testing status <span class="nt">-t</span> fc88099d56c6f33bd90eb35937aa5d6e875c00017e7a78046ab3e5279b337e57
 
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="nv">$ </span>bitmark-cli <span class="nt">-n</span> testing <span class="nt">-i</span> second <span class="se">\</span>
-      countersign <span class="nt">-t</span> <span class="se">\</span>
-      0920b069f2956b828281dec040782eea3d63793ab4cf17c26f7639e95f6f3b20ba23642113cbcf0da30e9e1b5acd9cd33f76ef6d93fcec6c81c0a7f3d3fb54d29d3ba8a8472113bff8a5e558bdefeaa3fe482dbc9d929e4e6c60ca585e9191e4636bafb9d9144f5f20140b7498423c8b26a159846474cfe84d1c2f9c16ca66192ebf3cc7b3225bbd47dfe666f8bfbf319352d13b7b2686971ded2d42c718e2f4a1b0019f6aa8a8b5d7c0e
+<span class="c"># Verify the balance change on the sender side</span>
+<span class="nv">$ </span>bitmark-cli <span class="nt">-n</span> testing balance <span class="nt">-o</span> first
+
+<span class="c"># Verify the balance change on the recipient side</span>
+<span class="nv">$ </span>bitmark-cli <span class="nt">-n</span> testing balance <span class="nt">-o</span> second
 </code></pre></div></div>
-<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">    </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"grantId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fc88099d56c6f33bd90eb35937aa5d6e875c00017e7a78046ab3e5279b337e57"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"payId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3728cb6a24f92801ac5fb0f29db58803339fecbe77dafad5cda9b1be9755a9a7d16b67428f7c3cebaccd10a20f6d8462"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"payments"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"BTC"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-          </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2MvrbNpfr6zWG2Mm2hnCh735hPwjoist3Ep"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10000"</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-          </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mr8DEygRvQwKfP4sVZuHVozqvzW89e193j"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10000"</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">],</span><span class="w">
-        </span><span class="nl">"LTC"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-          </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LTC"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mv7pHLntNcEe8YQqCJGWTyL6aa8hjMRL9B"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100000"</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-          </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LTC"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mzkCaHJmu1gdnsL9jxW2bwqtw2MCCy66Ds"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100000"</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">]</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span></code></pre></div></div>
+</li>
 
-<blockquote>
-  <p>The returned fields:</p>
+	<li>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">//</span><span class="w"> </span><span class="err">Initialize</span><span class="w"> </span><span class="err">a</span><span class="w"> </span><span class="err">share</span><span class="w"> </span><span class="err">grant</span><span class="w">
+</span><span class="err">/*=======================*/</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="nl">"identity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fUuNhZ6CC4YxUkQB99nuLnUiEevEuwdCoYszJ9Y5uUjp8oiA3A"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"grant"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0920b069f2956b828281dec040782eea3d63793ab4cf17c26f7639e95f6f3b20ba23642113cbcf0da30e9e1b5acd9cd33f76ef6d93fcec6c81c0a7f3d3fb54d29d3ba8a8472113bf8f8a5e558bdefeaa3fe482dbc9d929e4e6c60ca585e9191e4636bafb9d9144f5f20140b7498423c8b26a159846474cfe84d1c2f9c16ca66192ebf3cc7b3225bbd47dfe666f8bfbf319352d13b7b2686971ded2d42c718e2f4a1b0019f6aa8a8b5d7c0e"</span><span class="w">
+</span><span class="p">}</span><span class="w">
 
-  <ul>
-    <li>
-      <p><code class="language-plaintext highlighter-rouge">grantId</code> - The transaction id of the share granting.</p>
-    </li>
-    <li>
-      <p><code class="language-plaintext highlighter-rouge">payId</code> - The payId to attach to the payment command.</p>
-    </li>
-    <li>
-      <p><code class="language-plaintext highlighter-rouge">payment</code> - The corresponding amounts and addresses to pay for the transaction in different currencies.</p>
-    </li>
-  </ul>
-</blockquote>
-
-<p><br />
-<br /></p>
-
-<h3 id="paying-for-a-share-grant">Paying for a share grant</h3>
-
-<p>Payment for a share grant works just the same as payment for a transfer or for share creation.</p>
-
-<p><em>Example — Paying with LTC:</em></p>
-
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="nv">$ </span>bitmark-wallet <span class="nt">--conf</span> ~/.config/bitmark-wallet/test/test-bitmark-wallet.conf <span class="se">\</span>
-      ltc <span class="nt">--testnet</span> <span class="se">\</span>
-      sendmany <span class="nt">--hex-data</span> <span class="se">\</span>
-      <span class="s1">'3728cb6a24f92801ac5fb0f29db58803339fecbe77dafad5cda9b1be9755a9a7d16b67428f7c3cebaccd10a20f6d8462'</span> <span class="se">\</span>
-      <span class="s1">'mv7pHLntNcEe8YQqCJGWTyL6aa8hjMRL9B,100000'</span> <span class="se">\</span>
-      <span class="s1">'mzkCaHJmu1gdnsL9jxW2bwqtw2MCCy66Ds,100000'</span>
-</code></pre></div></div>
-<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">    </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"txId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f61c41e7261508f9f65fa73c5af93a86e02ba82361e8f01afde9245d0bbe82dc"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"rawTx"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0100000001b6e8...846200000000"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span></code></pre></div></div>
-
-<h3 id="verifying-a-share-grant">Verifying a share grant</h3>
-
-<p>To verify a grant using the Bitmark CLI:</p>
-
-<ul>
-  <li>
-    <p>Check the transaction status</p>
-
-    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nv">$ </span>bitmark-cli <span class="nt">-n</span> testing <span class="se">\</span>
-    status <span class="nt">-t</span> <span class="se">\</span>
-    fc88099d56c6f33bd90eb35937aa5d6e875c00017e7a78046ab3e5279b337e57
-</code></pre></div>    </div>
-    <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">  </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Verified"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-
-  </span><span class="err">//Check</span><span class="w"> </span><span class="err">again</span><span class="w"> </span><span class="err">after</span><span class="w"> </span><span class="err">some</span><span class="w"> </span><span class="err">minutes</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Confirmed"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span></code></pre></div>    </div>
-  </li>
-  <li>
-    <p>Check the sender’s balance</p>
-
-    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nv">$ </span>bitmark-cli <span class="nt">-n</span> testing balance <span class="nt">-o</span> first
-</code></pre></div>    </div>
-    <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">  </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"balances"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+</span><span class="err">//</span><span class="w"> </span><span class="err">Countersign</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">share</span><span class="w"> </span><span class="err">grant</span><span class="w">
+</span><span class="err">/*==========================*/</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="nl">"grantId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fc88099d56c6f33bd90eb35937aa5d6e875c00017e7a78046ab3e5279b337e57"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"payId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3728cb6a24f92801ac5fb0f29db58803339fecbe77dafad5cda9b1be9755a9a7d16b67428f7c3cebaccd10a20f6d8462"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"payments"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"BTC"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"shareId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b069f2956b828281dec040782eea3d63793ab4cf17c26f7639e95f6f3b20ba23"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"confirmed"</span><span class="p">:</span><span class="w"> </span><span class="mi">900</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"spend"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"available"</span><span class="p">:</span><span class="w"> </span><span class="mi">900</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span></code></pre></div>    </div>
-  </li>
-  <li>
-    <p>Check the receiver’s balance</p>
-
-    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nv">$ </span>bitmark-cli <span class="nt">-n</span> testing balance <span class="nt">-o</span> second
-</code></pre></div>    </div>
-    <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">  </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"balances"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"shareId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0f366f3ee477a75c6304746f45296d804c08be06ad0941313371a17fe07d778f"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"confirmed"</span><span class="p">:</span><span class="w"> </span><span class="mi">2000</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"spend"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"available"</span><span class="p">:</span><span class="w"> </span><span class="mi">2000</span><span class="w">
+        </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2MvrbNpfr6zWG2Mm2hnCh735hPwjoist3Ep"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10000"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"shareId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b069f2956b828281dec040782eea3d63793ab4cf17c26f7639e95f6f3b20ba23"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"confirmed"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"spend"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"available"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
+        </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mr8DEygRvQwKfP4sVZuHVozqvzW89e193j"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10000"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"LTC"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LTC"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mv7pHLntNcEe8YQqCJGWTyL6aa8hjMRL9B"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100000"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LTC"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mzkCaHJmu1gdnsL9jxW2bwqtw2MCCy66Ds"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100000"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w">
-</span></code></pre></div>    </div>
-  </li>
+</span><span class="p">}</span><span class="w">
+
+</span><span class="err">//</span><span class="w"> </span><span class="err">Pay</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">share</span><span class="w"> </span><span class="err">grant</span><span class="w"> </span><span class="err">by</span><span class="w"> </span><span class="err">LTC</span><span class="w">
+</span><span class="err">/*=============================*/</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="nl">"txId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f61c41e7261508f9f65fa73c5af93a86e02ba82361e8f01afde9245d0bbe82dc"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"rawTx"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0100000001b6e8...846200000000"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="err">//</span><span class="w"> </span><span class="err">Check</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">share</span><span class="w"> </span><span class="err">grant</span><span class="w"> </span><span class="err">transaction</span><span class="w"> </span><span class="err">status</span><span class="w">
+</span><span class="err">/*=======================================*/</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Verified"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="err">//Check</span><span class="w"> </span><span class="err">again</span><span class="w"> </span><span class="err">after</span><span class="w"> </span><span class="err">some</span><span class="w"> </span><span class="err">minutes</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Confirmed"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="err">//</span><span class="w"> </span><span class="err">Verify</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">balance</span><span class="w"> </span><span class="err">change</span><span class="w"> </span><span class="err">on</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">sender</span><span class="w"> </span><span class="err">side</span><span class="w">
+</span><span class="err">/*===========================================*/</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="nl">"balances"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"shareId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b069f2956b828281dec040782eea3d63793ab4cf17c26f7639e95f6f3b20ba23"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"confirmed"</span><span class="p">:</span><span class="w"> </span><span class="mi">900</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"spend"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"available"</span><span class="p">:</span><span class="w"> </span><span class="mi">900</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="err">//</span><span class="w"> </span><span class="err">Verify</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">balance</span><span class="w"> </span><span class="err">change</span><span class="w"> </span><span class="err">on</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">recipient</span><span class="w"> </span><span class="err">side</span><span class="w">
+</span><span class="err">/*==============================================*/</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="nl">"balances"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"shareId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0f366f3ee477a75c6304746f45296d804c08be06ad0941313371a17fe07d778f"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"confirmed"</span><span class="p">:</span><span class="w"> </span><span class="mi">2000</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"spend"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"available"</span><span class="p">:</span><span class="w"> </span><span class="mi">2000</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"shareId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b069f2956b828281dec040782eea3d63793ab4cf17c26f7639e95f6f3b20ba23"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"confirmed"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"spend"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"available"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+</li>
+
 </ul>
 
 <h2 id="swapping-bitmark-shares">Swapping Bitmark shares</h2>
 
 <p>Owners of shares of two different bitmark Bitmark Certificates can simultaneously swap their shares.</p>
 
-<p>Similar to share granting, share swapping is a three-part process: one owner (the sender) initializes the swapping; the other owner (the receiver) countersigns to accept the swap and to execute the transaction; and then someone makes a payment. Afterward, the transaction can be verified.</p>
+<p>Similar to share granting, share swapping is a three-part process: one owner (the sender) initializes the swapping; the other owner (the recipient) countersigns to accept the swap and to execute the transaction; and then someone makes a payment. Afterward, the transaction can be verified.</p>
 
-<h3 id="initializing-a-share-swap">Initializing a share swap</h3>
+<ul class="uk-tab" data-uk-switcher="{connect:'#f7a44f08-cd63-4cf1-92fe-ee9c9ba43ca0'}">
 
-<p>To initialize a swap of shares using the Bitmark CLI:</p>
+	<li class="uk-active"><a href="#">Command</a></li>
 
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="nv">$ </span>bitmark-cli <span class="nt">-n</span> &lt;network&gt; <span class="nt">-i</span> &lt;sender identity&gt; <span class="se">\</span>
-      swap <span class="nt">-r</span> &lt;receiver&gt; <span class="nt">-s</span> &lt;shareId1&gt; <span class="nt">-q</span> &lt;quantity1&gt; <span class="se">\</span>
-      <span class="nt">-S</span> &lt;shareId2&gt; <span class="se">\</span>
-      <span class="nt">-Q</span> &lt;quantity2&gt; <span class="se">\</span>
-      <span class="nt">-b</span> &lt;block_number&gt;
+	<li><a href="#">Example</a></li>
+
+	<li><a href="#">Output</a></li>
+
+</ul>
+
+<ul id="f7a44f08-cd63-4cf1-92fe-ee9c9ba43ca0" class="uk-switcher uk-margin">
+
+	<li>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Initialize a share swap</span>
+<span class="nv">$ </span>bitmark-cli <span class="nt">-n</span> &lt;network&gt; <span class="nt">-i</span> &lt;sender identity&gt; swap <span class="nt">-r</span> &lt;recipient&gt; <span class="nt">-s</span> &lt;shareId1&gt; <span class="nt">-q</span> &lt;quantity1&gt; <span class="nt">-S</span> &lt;shareId2&gt; <span class="nt">-Q</span> &lt;quantity2&gt; <span class="nt">-b</span> &lt;block_number&gt;
+
+<span class="c"># Countersign a share swap</span>
+<span class="nv">$ </span>bitmark-cli <span class="nt">-n</span> &lt;network&gt; <span class="nt">-i</span> &lt;recipient identity&gt; countersign <span class="nt">-t</span> &lt;hex-data&gt;
+
+<span class="c"># Pay for a share swap by BTC</span>
+<span class="nv">$ </span>bitmark-wallet <span class="nt">--conf</span> &lt;Bitmark Wallet config file&gt; btc <span class="nt">--</span>&lt;btc network&gt; sendmany <span class="nt">--hex-data</span> <span class="s1">'&lt;payId&gt;'</span> <span class="s1">'&lt;btc address&gt;,&lt;btc amount in satoshi&gt;'</span>
+<span class="c"># OR Pay for a share swap by LTC</span>
+<span class="nv">$ </span>bitmark-wallet <span class="nt">--conf</span> &lt;Bitmark-Wallet config file&gt; ltc <span class="nt">--</span>&lt;ltc network&gt; sendmany <span class="nt">--hex-data</span> <span class="s1">'&lt;payId&gt;'</span> <span class="s1">'&lt;ltc address&gt;,&lt;ltc amount in photon&gt;'</span>
+
+<span class="c"># Check a share swap transaction status</span>
+<span class="nv">$ </span>bitmark-cli <span class="nt">-n</span> &lt;network&gt; status <span class="nt">-t</span> &lt;txid&gt;
+
+<span class="c"># Verify the share balance change of an account</span>
+<span class="nv">$ </span>bitmark-cli <span class="nt">-n</span> &lt;network&gt; balance <span class="nt">-o</span> &lt;owner identity&gt;
 </code></pre></div></div>
+</li>
 
-<blockquote>
-  <p>The <code class="language-plaintext highlighter-rouge">swap</code> command initializes a share swap request; this request must be signed by the sender. Once the receiver signs to accept the request, the share swap transaction is created and submitted to the blockchain.</p>
+	<li>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Initialize a share swap</span>
+<span class="nv">$ </span>bitmark-cli <span class="nt">-n</span> testing <span class="nt">-i</span> first swap <span class="nt">-r</span> second <span class="nt">-s</span> b069f2956b828281dec040782eea3d63793ab4cf17c26f7639e95f6f3b20ba23 <span class="nt">-q</span> 150 <span class="nt">-S</span> 0f366f3ee477a75c6304746f45296d804c08be06ad0941313371a17fe07d778f <span class="nt">-Q</span> 250 <span class="nt">-b</span> 31099
 
-  <p><strong>Global Options:</strong></p>
-  <ul>
-    <li><code class="language-plaintext highlighter-rouge">sender identity</code> - The identity of the sender’s Bitmark Account, which is stored in the Bitmark CLI config file.</li>
-  </ul>
+<span class="c"># Countersign the share swap</span>
+bitmark-cli <span class="nt">-n</span> testing <span class="nt">-i</span> second countersign <span class="nt">-t</span> 0a20b069f2956b828281dec040782eea3d63793ab4cf17c26f7639e95f6f3b20ba2396012113cbcf0da30e9e1b5acd9cd33f76ef6d93fcec6c81c0a7f3d3fb54d29d3ba8a847200f366f3ee477a75c6304746f45296d804c08be06ad0941313371a17fe07d778ffa012113bf8f8a5e558bdefeaa3fe482dbc9d929e4e6c60ca585e9191e4636bafb9d9144fbf2014078889ed3239b68dc9d78a13c83bd7cd92a8f78e97842d554abb57dea7cc268166228253b094e86273b85010a582e59ee8d5b07d9d9c795c5fe84695b87dcf704
 
-  <p><strong>Command Options:</strong></p>
-  <ul>
-    <li>
-      <p><code class="language-plaintext highlighter-rouge">receiver</code> - The receiver’s identifier. It could be the receiver’s Bitmark Account Number or an identity that is stored in the Bitmark CLI config file.</p>
-    </li>
-    <li>
-      <p><code class="language-plaintext highlighter-rouge">shareId1</code> - The id of the shares that the sender is swapping.</p>
-    </li>
-    <li>
-      <p><code class="language-plaintext highlighter-rouge">quantity1</code> - The number of shares that the sender wants to swap with the receiver.</p>
-    </li>
-    <li>
-      <p><code class="language-plaintext highlighter-rouge">shareId2</code> - The id of the shares that the receiver is swapping.</p>
-    </li>
-    <li>
-      <p><code class="language-plaintext highlighter-rouge">quantity2</code> - The number of shares that the receiver want to swap with the sender.</p>
-    </li>
-    <li><code class="language-plaintext highlighter-rouge">block_number</code> - A time-limit after which the request expires and becomes invalid. Every 30 blocks from the current block adds one hour of expiration.</li>
-    <li><a href="https://registry.bitmark.com">Bitmark Blockchain’s current block height</a></li>
-    <li><a href="https://registry.test.bitmark.com">Bitmark Testnet Blockchain’s current block height</a></li>
-  </ul>
+<span class="c"># Pay for the share swap by LTC</span>
+<span class="nv">$ </span>bitmark-wallet <span class="nt">--conf</span> ~/.config/bitmark-wallet/test/test-bitmark-wallet.conf ltc <span class="nt">--testnet</span> sendmany <span class="nt">--hex-data</span> <span class="s1">'c369cc6d69b34d009cdfe7ff1b3f93dc7c38d90cf13cafe45731793bf6cf37e04f8694cde7a2171e12b6623b5fa64e28'</span> <span class="s1">'mv7pHLntNcEe8YQqCJGWTyL6aa8hjMRL9B,100000'</span> <span class="s1">'mzkCaHJmu1gdnsL9jxW2bwqtw2MCCy66Ds,100000'</span>
 
-  <p><strong>Note:</strong> The <code class="language-plaintext highlighter-rouge">shareId1</code> and the <code class="language-plaintext highlighter-rouge">shareId2</code> are different. They are the ids of different shares, which are generated from different Bitmark Certificates.</p>
-</blockquote>
+<span class="c"># Check the share swap transaction status</span>
+<span class="nv">$ </span>bitmark-cli <span class="nt">-n</span> testing status <span class="nt">-t</span> c54ac8727a02ad006c4c670f27e9b51e45ef255bb703ff13fa03206b8e60da7e
 
-<p><em>Example:</em></p>
+<span class="c"># Verify the balance change on the sender side</span>
+<span class="nv">$ </span>bitmark-cli <span class="nt">-n</span> testing balance <span class="nt">-o</span> first
 
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="nv">$ </span>bitmark-cli <span class="nt">-n</span> testing <span class="nt">-i</span> first <span class="se">\</span>
-      swap <span class="nt">-r</span> second <span class="se">\</span>
-      <span class="nt">-s</span> b069f2956b828281dec040782eea3d63793ab4cf17c26f7639e95f6f3b20ba23 <span class="se">\</span>
-      <span class="nt">-q</span> 150 <span class="se">\</span>
-      <span class="nt">-S</span> 0f366f3ee477a75c6304746f45296d804c08be06ad0941313371a17fe07d778f <span class="se">\</span>
-      <span class="nt">-Q</span> 250 <span class="se">\</span>
-      <span class="nt">-b</span> 31099
+<span class="c"># Verify the balance change on the recipient side</span>
+<span class="nv">$ </span>bitmark-cli <span class="nt">-n</span> testing balance <span class="nt">-o</span> second
 </code></pre></div></div>
-<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">    </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"identity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fUuNhZ6CC4YxUkQB99nuLnUiEevEuwdCoYszJ9Y5uUjp8oiA3A"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"swap"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0a20b069f2956b828281dec040782eea3d63793ab4cf17c26f7639e95f6f3b20ba2396012113cbcf0da30e9e1b5acd9cd33f76ef6d93fcec6c81c0a7f3d3fb54d29d3ba8a847200f366f3ee477a75c6304746f45296d804c08be06ad0941313371a17fe07d778ffa012113bf8f8a5e558bdefeaa3fe482dbc9d929e4e6c60ca585e9191e4636bafb9d9144fbf2014078889ed3239b68dc9d78a13c83bd7cd92a8f78e97842d554abb57dea7cc268166228253b094e86273b85010a582e59ee8d5b07d9d9c795c5fe84695b87dcf704"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span></code></pre></div></div>
+</li>
 
-<h4 id="countersigning-a-share-swap">Countersigning a share swap</h4>
+	<li>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">//</span><span class="w"> </span><span class="err">Initialize</span><span class="w"> </span><span class="err">a</span><span class="w"> </span><span class="err">share</span><span class="w"> </span><span class="err">swap</span><span class="w">
+</span><span class="err">/*======================*/</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="nl">"identity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fUuNhZ6CC4YxUkQB99nuLnUiEevEuwdCoYszJ9Y5uUjp8oiA3A"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"swap"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0a20b069f2956b828281dec040782eea3d63793ab4cf17c26f7639e95f6f3b20ba2396012113cbcf0da30e9e1b5acd9cd33f76ef6d93fcec6c81c0a7f3d3fb54d29d3ba8a847200f366f3ee477a75c6304746f45296d804c08be06ad0941313371a17fe07d778ffa012113bf8f8a5e558bdefeaa3fe482dbc9d929e4e6c60ca585e9191e4636bafb9d9144fbf2014078889ed3239b68dc9d78a13c83bd7cd92a8f78e97842d554abb57dea7cc268166228253b094e86273b85010a582e59ee8d5b07d9d9c795c5fe84695b87dcf704"</span><span class="w">
+</span><span class="p">}</span><span class="w">
 
-<p>A share-swap transaction requires two signatures. The sender signs when running the <code class="language-plaintext highlighter-rouge">swap</code> command, after which the receiver must countersign. This process is the same as when countersigning a <code class="language-plaintext highlighter-rouge">grant</code> transaction.</p>
-
-<p><em>Example:</em></p>
-
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="nv">$ </span>bitmark-cli <span class="nt">-n</span> testing <span class="nt">-i</span> second <span class="se">\</span>
-      countersign <span class="nt">-t</span> <span class="se">\</span>
-      0a20b069f2956b828281dec040782eea3d63793ab4cf17c26f7639e95f6f3b20ba2396012113cbcf0da30e9e1b5acd9cd33f76ef6d93fcec6c81c0a7f3d3fb54d29d3ba8a847200f366f3ee477a75c6304746f45296d804c08be06ad0941313371a17fe07d778ffa012113bf8f8a5e558bdefeaa3fe482dbc9d929e4e6c60ca585e9191e4636bafb9d9144fbf2014078889ed3239b68dc9d78a13c83bd7cd92a8f78e97842d554abb57dea7cc268166228253b094e86273b85010a582e59ee8d5b07d9d9c795c5fe84695b87dcf704
-</code></pre></div></div>
-<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">    </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"swapId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c54ac8727a02ad006c4c670f27e9b51e45ef255bb703ff13fa03206b8e60da7e"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"payId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c369cc6d69b34d009cdfe7ff1b3f93dc7c38d90cf13cafe45731793bf6cf37e04f8694cde7a2171e12b6623b5fa64e28"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"payments"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"BTC"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-          </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2MvrbNpfr6zWG2Mm2hnCh735hPwjoist3Ep"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10000"</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-          </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mr8DEygRvQwKfP4sVZuHVozqvzW89e193j"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10000"</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">],</span><span class="w">
-        </span><span class="nl">"LTC"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-          </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LTC"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mv7pHLntNcEe8YQqCJGWTyL6aa8hjMRL9B"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100000"</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-          </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LTC"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mzkCaHJmu1gdnsL9jxW2bwqtw2MCCy66Ds"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100000"</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">]</span><span class="w">
+</span><span class="err">//</span><span class="w"> </span><span class="err">Countersign</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">share</span><span class="w"> </span><span class="err">swap</span><span class="w">
+</span><span class="err">/*==========================*/</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="nl">"swapId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c54ac8727a02ad006c4c670f27e9b51e45ef255bb703ff13fa03206b8e60da7e"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"payId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c369cc6d69b34d009cdfe7ff1b3f93dc7c38d90cf13cafe45731793bf6cf37e04f8694cde7a2171e12b6623b5fa64e28"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"payments"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"BTC"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2MvrbNpfr6zWG2Mm2hnCh735hPwjoist3Ep"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10000"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mr8DEygRvQwKfP4sVZuHVozqvzW89e193j"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10000"</span><span class="w">
       </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"LTC"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LTC"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mv7pHLntNcEe8YQqCJGWTyL6aa8hjMRL9B"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100000"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LTC"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mzkCaHJmu1gdnsL9jxW2bwqtw2MCCy66Ds"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100000"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="err">//</span><span class="w"> </span><span class="err">Pay</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">share</span><span class="w"> </span><span class="err">swap</span><span class="w"> </span><span class="err">by</span><span class="w"> </span><span class="err">BTC</span><span class="w">
+</span><span class="err">/*============================*/</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="nl">"txId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2d636380c17c7792b6e659efe7c978dcbab44b9161fd8ad65b6c084a05376ab7"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"rawTx"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0100000001dc...4e2800000000"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="err">//</span><span class="w"> </span><span class="err">Check</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">share</span><span class="w"> </span><span class="err">swap</span><span class="w"> </span><span class="err">transaction</span><span class="w"> </span><span class="err">status</span><span class="w">
+</span><span class="err">/*======================================*/</span><span class="w">
+</span><span class="err">//</span><span class="w"> </span><span class="err">Right</span><span class="w"> </span><span class="err">after</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">payment</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Verified"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="err">//</span><span class="w"> </span><span class="err">Check</span><span class="w"> </span><span class="err">again</span><span class="w"> </span><span class="err">after</span><span class="w"> </span><span class="err">some</span><span class="w"> </span><span class="err">minutes</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Confirmed"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="err">//</span><span class="w"> </span><span class="err">Verify</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">balance</span><span class="w"> </span><span class="err">change</span><span class="w"> </span><span class="err">on</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">sender</span><span class="w"> </span><span class="err">side</span><span class="w">
+</span><span class="err">/*===========================================*/</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="nl">"balances"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"shareId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0f366f3ee477a75c6304746f45296d804c08be06ad0941313371a17fe07d778f"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"confirmed"</span><span class="p">:</span><span class="w"> </span><span class="mi">250</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"spend"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"available"</span><span class="p">:</span><span class="w"> </span><span class="mi">250</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"shareId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b069f2956b828281dec040782eea3d63793ab4cf17c26f7639e95f6f3b20ba23"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"confirmed"</span><span class="p">:</span><span class="w"> </span><span class="mi">750</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"spend"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"available"</span><span class="p">:</span><span class="w"> </span><span class="mi">750</span><span class="w">
     </span><span class="p">}</span><span class="w">
-</span></code></pre></div></div>
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
 
-<h3 id="paying-for-a-share-swap">Paying for a share swap</h3>
-
-<p>Paying for a share swap transaction works just the same as paying for a transfer, for share creation, or for a share grant.</p>
-
-<p><em>Example — Paying with LTC:</em></p>
-
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="nv">$ </span>bitmark-wallet <span class="nt">--conf</span> ~/.config/bitmark-wallet/test/test-bitmark-wallet.conf <span class="se">\</span>
-      ltc <span class="nt">--testnet</span> <span class="se">\</span>
-      sendmany <span class="nt">--hex-data</span> <span class="se">\</span>
-      <span class="s1">'c369cc6d69b34d009cdfe7ff1b3f93dc7c38d90cf13cafe45731793bf6cf37e04f8694cde7a2171e12b6623b5fa64e28'</span> <span class="se">\</span>
-      <span class="s1">'mv7pHLntNcEe8YQqCJGWTyL6aa8hjMRL9B,100000'</span> <span class="se">\</span>
-      <span class="s1">'mzkCaHJmu1gdnsL9jxW2bwqtw2MCCy66Ds,100000'</span>
-</code></pre></div></div>
-<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">    </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"txId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2d636380c17c7792b6e659efe7c978dcbab44b9161fd8ad65b6c084a05376ab7"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"rawTx"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0100000001dc...4e2800000000"</span><span class="w">
+</span><span class="err">//</span><span class="w"> </span><span class="err">Verify</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">balance</span><span class="w"> </span><span class="err">change</span><span class="w"> </span><span class="err">on</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">recipient</span><span class="w"> </span><span class="err">side</span><span class="w">
+</span><span class="err">/*==============================================*/</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="nl">"balances"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"shareId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0f366f3ee477a75c6304746f45296d804c08be06ad0941313371a17fe07d778f"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"confirmed"</span><span class="p">:</span><span class="w"> </span><span class="mi">1750</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"spend"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"available"</span><span class="p">:</span><span class="w"> </span><span class="mi">1750</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"shareId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b069f2956b828281dec040782eea3d63793ab4cf17c26f7639e95f6f3b20ba23"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"confirmed"</span><span class="p">:</span><span class="w"> </span><span class="mi">250</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"spend"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"available"</span><span class="p">:</span><span class="w"> </span><span class="mi">250</span><span class="w">
     </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre></div></div>
+</li>
 
-<h3 id="verifying-a-share-swap">Verifying a share swap</h3>
+</ul>
 
-<p>To thoroughly check the results of a share swap using the Bitmark CLI:</p>
+<p>For the details of CLI commands and their parameters, please refer to the <a href="/register-and-control-data/cli/bitmark-cli-command-reference">CLI command reference</a>.</p>
+
+<h2 id="explore-the-transactions-using-the-registry-website">Explore the transactions using the Registry website</h2>
+
+<p>Users can explore all of the transactions on the Bitmark blockchain using the Bitmark Registry website:</p>
 
 <ul>
   <li>
-    <p>Check the share swap transaction status</p>
-
-    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nv">$ </span>bitmark-cli <span class="nt">-n</span> testing <span class="se">\</span>
-    status <span class="nt">-t</span> <span class="se">\</span>
-    c54ac8727a02ad006c4c670f27e9b51e45ef255bb703ff13fa03206b8e60da7e
-</code></pre></div>    </div>
-    <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">Right</span><span class="w"> </span><span class="err">after</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">payment</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Verified"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-
-  </span><span class="err">//</span><span class="w"> </span><span class="err">Check</span><span class="w"> </span><span class="err">again</span><span class="w"> </span><span class="err">after</span><span class="w"> </span><span class="err">some</span><span class="w"> </span><span class="err">minutes</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Confirmed"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span></code></pre></div>    </div>
+    <p><a href="https://registry.bitmark.com">Explore transactions on the Bitmark blockchain</a></p>
   </li>
   <li>
-    <p>Check the balance of the sending user</p>
-
-    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nv">$ </span>bitmark-cli <span class="nt">-n</span> testing balance <span class="nt">-o</span> first
-</code></pre></div>    </div>
-    <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">  </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"balances"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"shareId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0f366f3ee477a75c6304746f45296d804c08be06ad0941313371a17fe07d778f"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"confirmed"</span><span class="p">:</span><span class="w"> </span><span class="mi">250</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"spend"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"available"</span><span class="p">:</span><span class="w"> </span><span class="mi">250</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"shareId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b069f2956b828281dec040782eea3d63793ab4cf17c26f7639e95f6f3b20ba23"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"confirmed"</span><span class="p">:</span><span class="w"> </span><span class="mi">750</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"spend"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"available"</span><span class="p">:</span><span class="w"> </span><span class="mi">750</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span></code></pre></div>    </div>
+    <p><a href="https://registry.test.bitmark.com">Explore transactions on the Bitmark testnet blockchain</a></p>
   </li>
-  <li>
-    <p>Check the balance of the receiving user</p>
+</ul>
 
-    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nv">$ </span>bitmark-cli <span class="nt">-n</span> testing balance <span class="nt">-o</span> second
-</code></pre></div>    </div>
-    <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">  </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"balances"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"shareId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0f366f3ee477a75c6304746f45296d804c08be06ad0941313371a17fe07d778f"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"confirmed"</span><span class="p">:</span><span class="w"> </span><span class="mi">1750</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"spend"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"available"</span><span class="p">:</span><span class="w"> </span><span class="mi">1750</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"shareId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b069f2956b828281dec040782eea3d63793ab4cf17c26f7639e95f6f3b20ba23"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"confirmed"</span><span class="p">:</span><span class="w"> </span><span class="mi">250</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"spend"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"available"</span><span class="p">:</span><span class="w"> </span><span class="mi">250</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span></code></pre></div>    </div>
-  </li>
+<h2 id="references">References</h2>
+
+<p>CLI</p>
+<ul>
+  <li><a href="/register-and-control-data/cli/bitmark-cli-command-reference">CLI command reference</a></li>
+  <li><a href="/register-and-control-data/cli/cli-quick-setup">CLI quick setup</a></li>
+</ul>
+
+<p>SDK</p>
+<ul>
+  <li><a href="/register-and-control-data/getting-started">SDK Getting Started</a></li>
+  <li><a href="/bitmark-references/bitmark-sdk/account">SDK Account</a></li>
+  <li><a href="/bitmark-references/bitmark-sdk/action">SDK Action</a></li>
+  <li><a href="/bitmark-references/bitmark-sdk/query">SDK Query</a></li>
+  <li><a href="/bitmark-references/bitmark-sdk/migration">SDK Migration</a></li>
+  <li><a href="/bitmark-references/bitmark-sdk/store-seed">SDK Store Seed</a></li>
+  <li><a href="/bitmark-references/bitmark-sdk/websocket">SDK Web Socket</a></li>
 </ul>
 </div>
         
