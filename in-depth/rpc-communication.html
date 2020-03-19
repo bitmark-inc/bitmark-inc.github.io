@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
-<meta name="keywords" content=" sdk, sdk doc">
-<title>Getting Started | Bitmark Documentation</title>
+<meta name="keywords" content=" rpc">
+<title>RPC Communication | Bitmark Documentation</title>
 
 <link rel="stylesheet" href="/css/syntax.css">
 
@@ -142,7 +142,7 @@
 
 
 
-  <a class="email" title="Submit feedback" href="#" target="_blank" onclick="javascript:window.location='mailto:support@bitmark.com?subject=Bitmark Inc feedback&body=I have some feedback about the Getting Started page: ' + window.location.href;"><i class="fa fa-envelope-o"></i> Need help?</a>
+  <a class="email" title="Submit feedback" href="#" target="_blank" onclick="javascript:window.location='mailto:support@bitmark.com?subject=Bitmark Inc feedback&body=I have some feedback about the RPC Communication page: ' + window.location.href;"><i class="fa fa-envelope-o"></i> Need help?</a>
 
 </li>
 
@@ -160,7 +160,7 @@
                                 searchInput: document.getElementById('search-input'),
                                 resultsContainer: document.getElementById('results-container'),
                                 dataSource: '/search.json',
-                                searchResultTemplate: '<li><a href="{url}" title="Getting Started">{title}</a></li>',
+                                searchResultTemplate: '<li><a href="{url}" title="RPC Communication">{title}</a></li>',
                     noResultsText: 'No results found.',
                             limit: 10,
                             fuzzy: true,
@@ -296,7 +296,7 @@
           
           
           
-          <li><a title="RPC Communication" href="/in-depth/rpc-communication"><b>RPC Communication</b></a></li>
+          <li class="active"><a title="RPC Communication" href="/in-depth/rpc-communication"><b>RPC Communication</b></a></li>
           
           
           
@@ -367,7 +367,7 @@
         <!-- Content Column -->
         <div class="col-md-8" id="tg-sb-content">
             <!-- <div class="post-header">
-   <h1 class="post-title-main">Getting Started</h1>
+   <h1 class="post-title-main">RPC Communication</h1>
 </div> -->
 
 
@@ -380,140 +380,185 @@
     
 
     <div class="row">
-        <div class="col-md-9 page-article"><h1 id="overview">Overview</h1>
+        <div class="col-md-9 page-article"><h1 id="rpc-communication">RPC Communication</h1>
 
-<p>The Bitmark Property System is a universal property system that confers the same property rights to digital assets that have long existed for physical assets. The system records ownership claims for digital assets on the public Bitmark blockchain using digital property titles known as Bitmark certificates. These digital assets can be any sort of digital object, including files, applications, code, and data.</p>
+<h2 id="overview">Overview</h2>
 
-<p>In the digital world:</p>
+<p>RPC (remote procedure call) is an inter-process communication technique used for client-server based applications; it is used to communicated with the <code class="language-plaintext highlighter-rouge">bitmarkd</code> server.</p>
 
-<p><strong>digital property = digital asset + bitmark certificate (property rights)</strong></p>
+<p>RPC calls are also called subroutine calls or function calls.</p>
 
-<p>You can work with the Bitmark blockchain to look up Bitmark certificates or even to register and transfer digital properties using the Bitmark SDK, a collection of libraries for different programming languages and mobile platforms. In addition to providing language-specific bindings to the Bitmark APIs, the SDK also simplifies local key management for signing and encryption.</p>
+<h2 id="rpc-flow">RPC Flow</h2>
 
-<p>For simplicity, the term <em>Bitmark certificate</em> is shortened as <em>bitmark</em> in the SDK.</p>
+<h3 id="initializing">Initializing</h3>
 
-<h1 id="getting-started">Getting Started</h1>
+<p>When <code class="language-plaintext highlighter-rouge">bitmarkd</code> starts, it initializes RPC settings including maximum connection count, connection bandwidth, and communication encryption key. It then binds RPC on a specific port and listens to that RPC port.</p>
 
-<h2 id="installing-sdk-packages">Installing SDK Packages</h2>
+<h3 id="processing-messages">Processing Messages</h3>
 
-<p>The Bitmark SDK can be installed for JavaScript, Swift, Java, or Go.</p>
+<p>Different RPC commands are processed by different functions. The following sections describes each command with examples. Each message is in JSON format: the key <code class="language-plaintext highlighter-rouge">method</code> denotes which remote method is being executed, and the  key <code class="language-plaintext highlighter-rouge">params</code> denotes what arguments are being passed.</p>
 
-<ul class="uk-tab" data-uk-switcher="{connect:'#cca70a9e-8685-4089-9530-8c67e27d090c'}">
+<p>In order to test these examples, <code class="language-plaintext highlighter-rouge">bitmarkd</code> should be started in advance at the default RPC port of <code class="language-plaintext highlighter-rouge">2130</code>. <code class="language-plaintext highlighter-rouge">openssl</code> should be installed to run communications.</p>
 
-	<li class="uk-active"><a href="#">JS</a></li>
+<p>All methods are named in the format of <code class="language-plaintext highlighter-rouge">file_name.method_name</code>, for example, <code class="language-plaintext highlighter-rouge">Assets.Get</code> stands for the method <code class="language-plaintext highlighter-rouge">Get</code> in the file <code class="language-plaintext highlighter-rouge">assets.go</code>.</p>
 
-	<li><a href="#">Swift</a></li>
+<p><strong>Available commands:</strong></p>
 
-	<li><a href="#">Java</a></li>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">Assets.Get</code> - retrieve assets information</li>
+</ol>
 
-	<li><a href="#">Go</a></li>
+<p>Parameters:</p>
 
+<ul>
+  <li>fingerprints - an array of asset fingerprints</li>
 </ul>
 
-<ul id="cca70a9e-8685-4089-9530-8c67e27d090c" class="uk-switcher uk-margin">
+<p>Example shell command:</p>
 
-	<li>
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">$</span> <span class="nx">npm</span> <span class="nx">install</span> <span class="nx">bitmark</span><span class="o">-</span><span class="nx">sdk</span><span class="o">-</span><span class="nx">js</span>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span><span class="nb">echo</span> <span class="s1">'{"method":"Assets.Get","params":[{"fingerprints": ["01c7499e5d27880da75a3747340aa1cb2f11fa023f7aa1eb10acbf28e447aefd366759092de7a31fdfe89fcb88ecc3c90c0e067484184f41a8e3043e8aa4732f00", "01f9c2eed799128d331c0e60b07d99bffa299b100eea7bb4a410d8f2ee2a04218623f2dbd1a53f0fe08f9cda131ecff213889cbd2cf5c8e53100581ff00f6270c1"]}]}'</span><span class="p">;</span> <span class="nb">sleep </span>0.5<span class="p">;</span> <span class="nb">echo </span>Q<span class="o">)</span> | openssl s_client <span class="nt">-connect</span> 127.0.0.1:2130 <span class="nt">-quiet</span>
 </code></pre></div></div>
-</li>
 
-	<li>
-<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pod</span> <span class="err">'</span><span class="kt">BitmarkSDK</span><span class="err">'</span>
-</code></pre></div></div>
-</li>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">Bitmark.Provenance</code> - retrieve transfer history of a bitmark</li>
+</ol>
 
-	<li>
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// From your build.gradle</span>
-<span class="n">repositories</span> <span class="o">{</span>
-    <span class="n">jcenter</span><span class="o">()</span>
-    <span class="n">maven</span> <span class="o">{</span> <span class="n">url</span> <span class="err">'</span><span class="nl">https:</span><span class="c1">//oss.sonatype.org/content/repositories/snapshots/' } // For snapshot version</span>
-<span class="o">}</span>
+<p>Parameters:</p>
 
-<span class="n">dependencies</span> <span class="o">{</span>
-    <span class="n">implementation</span> <span class="err">'</span><span class="n">com</span><span class="o">.</span><span class="na">bitmark</span><span class="o">.</span><span class="na">sdk</span><span class="o">:</span><span class="n">java</span><span class="o">-</span><span class="nl">sdk:</span><span class="mf">2.1</span><span class="o">.</span><span class="mi">0</span><span class="err">'</span> <span class="c1">// Java SDK</span>
-    <span class="c1">// Or</span>
-    <span class="n">implementation</span> <span class="err">'</span><span class="n">com</span><span class="o">.</span><span class="na">bitmark</span><span class="o">.</span><span class="na">sdk</span><span class="o">:</span><span class="n">android</span><span class="o">-</span><span class="nl">sdk:</span><span class="mf">2.1</span><span class="o">.</span><span class="mi">0</span><span class="err">'</span> <span class="c1">// Android SDK</span>
-<span class="o">}</span>
-</code></pre></div></div>
-</li>
-
-	<li>
-<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">$</span> <span class="k">go</span> <span class="n">get</span> <span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">bitmark</span><span class="o">-</span><span class="n">inc</span><span class="o">/</span><span class="n">bitmark</span><span class="o">-</span><span class="n">sdk</span><span class="o">-</span><span class="k">go</span>
-</code></pre></div></div>
-</li>
-
+<ul>
+  <li>count - provenance depth to return</li>
+  <li>txId - string of transaction ID</li>
 </ul>
 
-<h2 id="acquiring-an-api-token">Acquiring an API token</h2>
+<p>Example shell command:</p>
 
-<p>An API token is required to authenticate requests to the Bitmark API.</p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span><span class="nb">echo</span> <span class="s1">'{"method":"Bitmark.Provenance","params":[{"count":20,"txId":"2dc8770718b01f0205ad991bfb4c052f02677cff60e65d596e890cb6ed82c861"}]}'</span><span class="p">;</span> <span class="nb">sleep </span>0.5<span class="p">;</span> <span class="nb">echo </span>Q<span class="o">)</span> | openssl s_client <span class="nt">-connect</span> 127.0.0.1:2130 <span class="nt">-quiet</span>
+</code></pre></div></div>
 
-<p>Please contact <a href="mailto:support@bitmark.com">Bitmark support</a> to create a developer account and get an API token.</p>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">Bitmark.Transfer</code> - transfer a bitmark</li>
+</ol>
 
-<h2 id="configuring-the-sdk">Configuring the SDK</h2>
+<p>Parameter:</p>
 
-<p>Before working with the Bitmark blockchain, configure the SDK for your API token and the Bitmark network that you’ll be using.</p>
-
-<ul class="uk-tab" data-uk-switcher="{connect:'#b14a31ff-8ce9-4756-a720-7b7c89c66f05'}">
-
-	<li class="uk-active"><a href="#">JS</a></li>
-
-	<li><a href="#">Swift</a></li>
-
-	<li><a href="#">Java</a></li>
-
-	<li><a href="#">Go</a></li>
-
+<ul>
+  <li>link - previous transaction ID</li>
+  <li>owner - new owner account</li>
+  <li>signature - hex string of previous owner’s signature</li>
+  <li>countersignature - hex string of new owner’s signature</li>
 </ul>
 
-<ul id="b14a31ff-8ce9-4756-a720-7b7c89c66f05" class="uk-switcher uk-margin">
+<p>Example shell command:</p>
 
-	<li>
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">sdk</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">bitmark-sdk-js</span><span class="dl">'</span><span class="p">);</span>
-
-<span class="kd">const</span> <span class="nx">config</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="na">apiToken</span><span class="p">:</span> <span class="dl">"</span><span class="s2">api-token</span><span class="dl">"</span><span class="p">,</span>
-  <span class="na">network</span><span class="p">:</span> <span class="dl">"</span><span class="s2">testnet</span><span class="dl">"</span>
-<span class="p">};</span>
-
-<span class="nx">sdk</span><span class="p">.</span><span class="nx">init</span><span class="p">(</span><span class="nx">config</span><span class="p">);</span>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span><span class="nb">echo</span> <span class="s1">'{"method":"Bitmark.Transfer","params":[{"link":"1bebd06c8ecb8b11ea93e93c9d38b7f6d7dfdf015530819015172cf51c7f33f7", "owner": "eZpG6Wi9SQvpDatEP7QGrx6nvzwd6s6R8DgMKgDbDY1R5bjzb9", "signature": "a3e456a31a4a64962a32bcbf6549d14134deeb5d87285a04c648355eb9e59d938f8ab440d2b50c781baf2c1a5a2112c2167301bb128c8f850a9d54f3b27c5a08"}]}'</span><span class="p">;</span> <span class="nb">sleep </span>0.5<span class="p">;</span> <span class="nb">echo </span>Q<span class="o">)</span> | openssl s_client <span class="nt">-connect</span> 127.0.0.1:2130 <span class="nt">-quiet</span>
 </code></pre></div></div>
-</li>
 
-	<li>
-<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">import</span> <span class="kt">BitmarkSDK</span>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">Bitmarks.Create</code> - create a bitmark</li>
+</ol>
 
-<span class="kt">BitmarkSDK</span><span class="o">.</span><span class="nf">initialize</span><span class="p">(</span><span class="nv">config</span><span class="p">:</span> <span class="kt">SDKConfig</span><span class="p">(</span><span class="nv">apiToken</span><span class="p">:</span> <span class="s">"api-token"</span><span class="p">,</span>
-                                        <span class="nv">network</span><span class="p">:</span> <span class="o">.</span><span class="n">testnet</span><span class="p">,</span>
-                                        <span class="nv">urlSession</span><span class="p">:</span> <span class="kt">URLSession</span><span class="o">.</span><span class="n">shared</span><span class="p">))</span>
-</code></pre></div></div>
-</li>
+<p>The creation parameters are composed of two parts: asset and owner.</p>
 
-	<li>
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">final</span> <span class="nc">GlobalConfiguration</span><span class="o">.</span><span class="na">Builder</span> <span class="n">builder</span> <span class="o">=</span> <span class="nc">GlobalConfiguration</span><span class="o">.</span><span class="na">builder</span><span class="o">().</span><span class="na">withApiToken</span><span class="o">(</span><span class="s">"api-token"</span><span class="o">).</span><span class="na">withNetwork</span><span class="o">(</span><span class="nc">Network</span><span class="o">.</span><span class="na">LIVE_NET</span><span class="o">);</span>
-<span class="nc">BitmarkSDK</span><span class="o">.</span><span class="na">init</span><span class="o">(</span><span class="n">builder</span><span class="o">);</span>
-</code></pre></div></div>
-</li>
+<p>Asset Parameters:</p>
 
-	<li>
-<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="n">sdk</span> <span class="s">"github.com/bitmark/bitmark-inc/bitmark-sdk-go"</span>
-
-<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
-	<span class="n">config</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="n">sdk</span><span class="o">.</span><span class="n">Config</span><span class="p">{</span>
-		<span class="n">APIToken</span><span class="o">:</span> <span class="s">"YOUR API TOKEN"</span><span class="p">,</span>
-		<span class="n">Network</span><span class="o">:</span>  <span class="n">sdk</span><span class="o">.</span><span class="n">Testnet</span><span class="p">,</span>
-		<span class="n">HTTPClient</span><span class="o">:</span> <span class="o">&amp;</span><span class="n">http</span><span class="o">.</span><span class="n">Client</span><span class="p">{</span>
-			<span class="n">Timeout</span><span class="o">:</span> <span class="m">10</span> <span class="o">*</span> <span class="n">time</span><span class="o">.</span><span class="n">Second</span><span class="p">,</span>
-		<span class="p">},</span>
-	<span class="p">}</span>
-	<span class="n">sdk</span><span class="o">.</span><span class="n">Init</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
-<span class="p">}</span>
-</code></pre></div></div>
-</li>
-
+<ul>
+  <li>name - name of asset</li>
+  <li>fingerprint - fingerprint of asset</li>
+  <li>metadata - attributes related to an asset; each metadata attribute is composed of two parts, key and value, separated by <code class="language-plaintext highlighter-rouge">\u0000</code>. For example, to denote a key “date” with value “2001.01.01” would be <code class="language-plaintext highlighter-rouge">"metadata": "date\u00002001.01.01"</code></li>
+  <li>registrant - owner account</li>
+  <li>signature - hex string of owner’s signature</li>
 </ul>
 
-<p>Each code example in the later sections presumes that the SDK is already correctly initialized.</p>
+<p>Owner Parameters:</p>
+
+<ul>
+  <li>assetId - asset id</li>
+  <li>owner - owner account</li>
+  <li>nonce - string to ensure hash meets difficulty requirement</li>
+  <li>signature - hex string of owner’s signature</li>
+</ul>
+
+<p>Example shell command:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span><span class="nb">echo</span> <span class="s1">'{"id":"1","method":"Bitmarks.Create","params":[{"assets": [{"name": "asset", "fingerprint": "01840006653e9ac9e95117a15c915caab81662918e925de9e004f774ff82d7079a40d4d27b1b372657c61d46d470304c88c788b3a4527ad074d1dccbee5dbaa99a", "metadata": "k1\u0000v1\u0000k2\u0000v2", "registrant": "e1pFRPqPhY2gpgJTpCiwXDnVeouY9EjHY6STtKwdN6Z4bp4sog", "signature": "dc9ad2f4948d5f5defaf9043098cd2f3c245b092f0d0c2fc9744fab1835cfb1ad533ee0ff2a72d1cdd7a69f8ba6e95013fc517d5d4a16ca1b0036b1f3055270c"}], "issues": [{"assetId": "3c50d70e0fe78819e7755687003483523852ee6ecc59fe40a4e70e89496c4d45313c6d76141bc322ba56ad3f7cd9c906b951791208281ddba3ebb5e7ad83436c", "owner": "e1pFRPqPhY2gpgJTpCiwXDnVeouY9EjHY6STtKwdN6Z4bp4sog", "nonce": 4, "signature": "6ecf1e6d965e4364321596b4675950554b3b8f1b40be3deb64306ddf72fef09f3c6bcebd6375925a51b984f56ec751a54c88f0dab56b3f69708a7b634c428a0a"}]}]}'</span><span class="p">;</span> <span class="nb">sleep </span>0.5<span class="p">;</span> <span class="nb">echo </span>Q<span class="o">)</span> | openssl s_client <span class="nt">-connect</span> 127.0.0.1:2130 <span class="nt">-quiet</span>
+</code></pre></div></div>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">Bitmarks.Proof</code> - provide payment information</li>
+</ol>
+
+<p>Parameters:</p>
+
+<ul>
+  <li>payId - payment id</li>
+  <li>nonce - string to ensure hash meets difficulty criteria (nonce)</li>
+</ul>
+
+<p>Example shell command:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span><span class="nb">echo</span> <span class="s1">'{"id":"1","method":"Bitmarks.Proof","params":[{"payId":"2ad3ba0b28fe98716bb8d87169a952eebfc4aff96b4f9eb7de7d4c71c7acee79", "nonce": "c114fa516a98c3de"}]}'</span><span class="p">;</span> <span class="nb">sleep </span>0.5<span class="p">;</span> <span class="nb">echo </span>Q<span class="o">)</span> | openssl s_client <span class="nt">-connect</span> 127.0.0.1:2130 <span class="nt">-quiet</span>
+</code></pre></div></div>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">BlockOwner.Transfer</code> - transfer block ownership to another account</li>
+</ol>
+
+<p>Parameters:</p>
+
+<ul>
+  <li>link - transaction hash</li>
+  <li>version - version to specify available payments</li>
+  <li>payments - payment information</li>
+  <li>owner - new owner</li>
+  <li>signature - hex string of previous owner’s signature</li>
+  <li>countersignature - hex string of new owner’s signature</li>
+</ul>
+
+<p>Example shell command:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span><span class="nb">echo</span> <span class="s1">'{"id":"1","method":"BlockOwner.Transfer","params":[{"link":"1bebd06c8ecb8b11ea93e93c9d38b7f6d7dfdf015530819015172cf51c7f33f7", "version": 1, "payments": {"1": "BTC-address", "2": "LTC-address"}, "owner": "eZpG6Wi9SQvpDatEP7QGrx6nvzwd6s6R8DgMKgDbDY1R5bjzb9", "signature": "a3e456a31a4a64962a32bcbf6549d14134deeb5d87285a04c648355eb9e59d938f8ab440d2b50c781baf2c1a5a2112c2167301bb128c8f850a9d54f3b27c5a08"}]}'</span><span class="p">;</span> <span class="nb">sleep </span>0.5<span class="p">;</span> <span class="nb">echo </span>Q<span class="o">)</span> | openssl s_client <span class="nt">-connect</span> 127.0.0.1:2130 <span class="nt">-quiet</span>
+</code></pre></div></div>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">Node.Info</code> - retrieve node info</li>
+</ol>
+
+<p>No extra parameters are needed.</p>
+
+<p>Example shell command:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span><span class="nb">echo</span> <span class="s1">'{"method":"Node.Info","params":[{}]}'</span><span class="p">;</span> <span class="nb">sleep </span>0.5<span class="p">;</span> <span class="nb">echo </span>Q<span class="o">)</span> | openssl s_client <span class="nt">-connect</span> 127.0.0.1:2130 <span class="nt">-quiet</span>
+</code></pre></div></div>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">Node.List</code> - list available nodes</li>
+</ol>
+
+<p>Parameters:</p>
+
+<ul>
+  <li>count - how many nodes to return</li>
+</ul>
+
+<p>Example shell command:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span><span class="nb">echo</span> <span class="s1">'{"id":"1","method":"Node.List","params":[{"count": 20}]}'</span><span class="p">;</span> <span class="nb">sleep </span>0.5<span class="p">;</span> <span class="nb">echo </span>Q<span class="o">)</span> | openssl s_client <span class="nt">-connect</span> 127.0.0.1:2130 <span class="nt">-quiet</span>
+
+</code></pre></div></div>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">Transaction.Status</code> - retrieve status of a transaction</li>
+</ol>
+
+<p>Parameters:</p>
+
+<ul>
+  <li>txId - array of transaction hashes</li>
+</ul>
+
+<p>Example shell command:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span><span class="nb">echo</span> <span class="s1">'{"id":"1","method":"Transaction.Status","params":[{"txId":"2dc8770718b01f0205ad991bfb4c052f02677cff60e65d596e890cb6ed82c861"}]}'</span><span class="p">;</span> <span class="nb">sleep </span>0.5<span class="p">;</span> <span class="nb">echo </span>Q<span class="o">)</span> | openssl s_client <span class="nt">-connect</span> 127.0.0.1:2130 <span class="nt">-quiet</span>
+</code></pre></div></div>
 </div>
         
         <div class="col-md-3">

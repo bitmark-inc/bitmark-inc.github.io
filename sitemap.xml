@@ -86,13 +86,13 @@
   
   
   <url>
-    <loc>/bitmark-appendix/bitmark-shares</loc>
+    <loc>/essentials/shares/bitmark-shares</loc>
   </url>
   
   
   
   <url>
-    <loc>/essentials/shares/bitmark-shares</loc>
+    <loc>/bitmark-appendix/bitmark-shares</loc>
   </url>
   
   
@@ -116,13 +116,13 @@
   
   
   <url>
-    <loc>/bitmark-references/bitmark-node-software/block-verification-and-synchronization</loc>
+    <loc>/in-depth/block-verification-and-synchronization</loc>
   </url>
   
   
   
   <url>
-    <loc>/in-depth/block-verification-and-synchronization</loc>
+    <loc>/bitmark-references/bitmark-node-software/block-verification-and-synchronization</loc>
   </url>
   
   
@@ -274,13 +274,13 @@
   
   
   <url>
-    <loc>/bitmark-references/bitmark-sdk/query</loc>
+    <loc>/essentials/sdk/query</loc>
   </url>
   
   
   
   <url>
-    <loc>/essentials/sdk/query</loc>
+    <loc>/bitmark-references/bitmark-sdk/query</loc>
   </url>
   
   
@@ -298,13 +298,13 @@
   
   
   <url>
-    <loc>/bitmark-references/bitmark-node-software/rpc-communication</loc>
+    <loc>/in-depth/rpc-communication</loc>
   </url>
   
   
   
   <url>
-    <loc>/in-depth/rpc-communication</loc>
+    <loc>/bitmark-references/bitmark-node-software/rpc-communication</loc>
   </url>
   
   

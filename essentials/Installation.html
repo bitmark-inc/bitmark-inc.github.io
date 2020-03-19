@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
-<meta name="keywords" content=" sdk, sdk doc">
-<title>Getting Started | Bitmark Documentation</title>
+<meta name="keywords" content=" installation">
+<title>Installation | Bitmark Documentation</title>
 
 <link rel="stylesheet" href="/css/syntax.css">
 
@@ -142,7 +142,7 @@
 
 
 
-  <a class="email" title="Submit feedback" href="#" target="_blank" onclick="javascript:window.location='mailto:support@bitmark.com?subject=Bitmark Inc feedback&body=I have some feedback about the Getting Started page: ' + window.location.href;"><i class="fa fa-envelope-o"></i> Need help?</a>
+  <a class="email" title="Submit feedback" href="#" target="_blank" onclick="javascript:window.location='mailto:support@bitmark.com?subject=Bitmark Inc feedback&body=I have some feedback about the Installation page: ' + window.location.href;"><i class="fa fa-envelope-o"></i> Need help?</a>
 
 </li>
 
@@ -160,7 +160,7 @@
                                 searchInput: document.getElementById('search-input'),
                                 resultsContainer: document.getElementById('results-container'),
                                 dataSource: '/search.json',
-                                searchResultTemplate: '<li><a href="{url}" title="Getting Started">{title}</a></li>',
+                                searchResultTemplate: '<li><a href="{url}" title="Installation">{title}</a></li>',
                     noResultsText: 'No results found.',
                             limit: 10,
                             fuzzy: true,
@@ -367,7 +367,7 @@
         <!-- Content Column -->
         <div class="col-md-8" id="tg-sb-content">
             <!-- <div class="post-header">
-   <h1 class="post-title-main">Getting Started</h1>
+   <h1 class="post-title-main">Installation</h1>
 </div> -->
 
 
@@ -380,25 +380,23 @@
     
 
     <div class="row">
-        <div class="col-md-9 page-article"><h1 id="overview">Overview</h1>
+        <div class="col-md-9 page-article"><h1 id="installation">Installation</h1>
 
-<p>The Bitmark Property System is a universal property system that confers the same property rights to digital assets that have long existed for physical assets. The system records ownership claims for digital assets on the public Bitmark blockchain using digital property titles known as Bitmark certificates. These digital assets can be any sort of digital object, including files, applications, code, and data.</p>
+<p>Users can interact with the Bitmark System using</p>
 
-<p>In the digital world:</p>
+<ul>
+  <li>The Bitmark SDK</li>
+  <li>The Bitmark CLI.</li>
+</ul>
 
-<p><strong>digital property = digital asset + bitmark certificate (property rights)</strong></p>
+<h2 id="sdk-installation-and-configuration">SDK Installation and Configuration</h2>
+<p>The Bitmark SDK enables data registration, rights transfer, and registry querying in the Bitmark property system. The SDK’s simplified interface allows developers to easily build on the core Bitmark infrastructure by reading from and writing to the Bitmark blockchain.</p>
 
-<p>You can work with the Bitmark blockchain to look up Bitmark certificates or even to register and transfer digital properties using the Bitmark SDK, a collection of libraries for different programming languages and mobile platforms. In addition to providing language-specific bindings to the Bitmark APIs, the SDK also simplifies local key management for signing and encryption.</p>
+<h3 id="install-sdk-packages">Install SDK Packages</h3>
 
-<p>For simplicity, the term <em>Bitmark certificate</em> is shortened as <em>bitmark</em> in the SDK.</p>
+<p>The SDK can be installed for JavaScript, Swift, Java, or Go.</p>
 
-<h1 id="getting-started">Getting Started</h1>
-
-<h2 id="installing-sdk-packages">Installing SDK Packages</h2>
-
-<p>The Bitmark SDK can be installed for JavaScript, Swift, Java, or Go.</p>
-
-<ul class="uk-tab" data-uk-switcher="{connect:'#cca70a9e-8685-4089-9530-8c67e27d090c'}">
+<ul class="uk-tab" data-uk-switcher="{connect:'#c48f6dc9-3df2-49bd-ab22-4c54af356135'}">
 
 	<li class="uk-active"><a href="#">JS</a></li>
 
@@ -410,7 +408,7 @@
 
 </ul>
 
-<ul id="cca70a9e-8685-4089-9530-8c67e27d090c" class="uk-switcher uk-margin">
+<ul id="c48f6dc9-3df2-49bd-ab22-4c54af356135" class="uk-switcher uk-margin">
 
 	<li>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">$</span> <span class="nx">npm</span> <span class="nx">install</span> <span class="nx">bitmark</span><span class="o">-</span><span class="nx">sdk</span><span class="o">-</span><span class="nx">js</span>
@@ -444,17 +442,17 @@
 
 </ul>
 
-<h2 id="acquiring-an-api-token">Acquiring an API token</h2>
+<h3 id="acquiring-an-api-token">Acquiring an API token</h3>
 
 <p>An API token is required to authenticate requests to the Bitmark API.</p>
 
 <p>Please contact <a href="mailto:support@bitmark.com">Bitmark support</a> to create a developer account and get an API token.</p>
 
-<h2 id="configuring-the-sdk">Configuring the SDK</h2>
+<h3 id="configuring-the-sdk">Configuring the SDK</h3>
 
 <p>Before working with the Bitmark blockchain, configure the SDK for your API token and the Bitmark network that you’ll be using.</p>
 
-<ul class="uk-tab" data-uk-switcher="{connect:'#b14a31ff-8ce9-4756-a720-7b7c89c66f05'}">
+<ul class="uk-tab" data-uk-switcher="{connect:'#65723af6-4293-497d-b529-95f249afe0bf'}">
 
 	<li class="uk-active"><a href="#">JS</a></li>
 
@@ -466,7 +464,7 @@
 
 </ul>
 
-<ul id="b14a31ff-8ce9-4756-a720-7b7c89c66f05" class="uk-switcher uk-margin">
+<ul id="65723af6-4293-497d-b529-95f249afe0bf" class="uk-switcher uk-margin">
 
 	<li>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">sdk</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">bitmark-sdk-js</span><span class="dl">'</span><span class="p">);</span>
@@ -513,7 +511,215 @@
 
 </ul>
 
-<p>Each code example in the later sections presumes that the SDK is already correctly initialized.</p>
+<h2 id="cli-installation-and-setup">CLI Installation and Setup</h2>
+
+<p>The Bitmark CLI is a command line interface which submits transactions to its connected Bitmark Node via RPC. CLI users are able to register data, transfer rights, share rights as well as query the registry by submitting corresponding transactions directly to the connected Node.</p>
+
+<h3 id="install-the-cli">Install the CLI</h3>
+
+<p>As the CLI needs to connect with a Node to communicate with the Bitmark Blockchain, the CLI installation is included in the Node installation.</p>
+
+<p>Refer <a href="/essentials/run-a-node">Run a node</a> section for the instructions.</p>
+
+<h3 id="install-the-bitmark-wallet-for-payment">Install the Bitmark wallet for payment</h3>
+
+<p>In the Bitmark Property System, only the first bitmark issuance of a registered data is free of charge. All the other transactions require transaction fees. Bitmark transaction fees can be paid in either Bitcoin (BTC) or Litecoin (LTC) cryptocurrencies. Because common wallets do not support attaching the Bitmark blockchain payment identifier to the BTC/LTC transactions, Bitmark provides an app called the Bitmark Wallet to pay for Bitmark transactions that come from the Bitmark CLI.</p>
+
+<p>The main actions required to use the Bitmark wallet are:</p>
+
+<ul>
+  <li>Installing the Bitmark Wallet.</li>
+  <li>Syncing the wallet with coins.</li>
+  <li>Running the wallet.</li>
+  <li>Acquiring testnet coins.</li>
+</ul>
+
+<p>Prerequisites</p>
+
+<ul>
+  <li>Git must be installed.</li>
+  <li>Go must be installed.</li>
+  <li>Python3 must be installed.</li>
+  <li><code class="language-plaintext highlighter-rouge">bitcoind</code>/<code class="language-plaintext highlighter-rouge">litecoind</code> must be installed.</li>
+</ul>
+
+<p><br /></p>
+
+<p>Install the Bitmark wallet</p>
+
+<ul class="uk-tab" data-uk-switcher="{connect:'#130ce518-2572-48e6-9914-e14f73180717'}">
+
+	<li class="uk-active"><a href="#">Command</a></li>
+
+</ul>
+
+<ul id="130ce518-2572-48e6-9914-e14f73180717" class="uk-switcher uk-margin">
+
+	<li>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Clone the Bitmark Wallet</span>
+<span class="nv">$git</span> clone https://github.com/bitmark-inc/bitmark-wallet.git
+
+<span class="c"># Install the wallet</span>
+<span class="nv">$cd</span> bitmark-wallet/command/bitmark-wallet
+<span class="nv">$go</span> <span class="nb">install</span>
+
+<span class="c"># Create the Bitmark Wallet's config file</span>
+<span class="nv">$ </span><span class="nb">mkdir</span> ~/.config/bitmark-wallet
+<span class="nv">$ </span><span class="nb">touch</span> ~/.config/bitmark-wallet/bitmark-wallet.conf
+</code></pre></div></div>
+</li>
+
+</ul>
+
+<p><br /></p>
+
+<p>Connect with bitcoind and litecoind by enabling RPC</p>
+
+<ul class="uk-tab" data-uk-switcher="{connect:'#b708ef13-3c94-423b-a3e1-597609eae3ba'}">
+
+	<li class="uk-active"><a href="#">bitcoin.conf</a></li>
+
+	<li><a href="#">litecoin.conf</a></li>
+
+	<li><a href="#">bitmark-wallet.conf</a></li>
+
+</ul>
+
+<ul id="b708ef13-3c94-423b-a3e1-597609eae3ba" class="uk-switcher uk-margin">
+
+	<li>
+<div class="language-conf highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># RPC server port
+</span><span class="n">rpcport</span> = <span class="m">18443</span>
+<span class="n">rpcbind</span> = <span class="m">127</span>.<span class="m">0</span>.<span class="m">0</span>.<span class="m">1</span>
+<span class="n">rpcbind</span> = [::<span class="m">1</span>]
+
+<span class="c"># RPC configuration
+</span><span class="n">rpcthreads</span> = <span class="m">20</span>
+<span class="c">#rpcssl = 1
+</span><span class="n">rpcallowip</span> = <span class="m">127</span>.<span class="m">0</span>.<span class="m">0</span>.<span class="m">1</span>
+<span class="n">rpcallowip</span> = [::<span class="m">1</span>]
+
+<span class="c"># authentication
+</span><span class="n">rpcauth</span>=<span class="n">cotzntmnxllhcpsshvdzzuue</span>:<span class="m">1</span><span class="n">c1671f8ffbdd8d845688dc450d2c4e1</span>$<span class="n">ec4723c3a7c29d072c40749017d4d326576c68264595355fac8816d525220f7a</span>
+</code></pre></div></div>
+</li>
+
+	<li>
+<div class="language-conf highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># RPC server port
+</span><span class="n">rpcport</span> = <span class="m">19443</span>
+<span class="n">rpcbind</span> = <span class="m">127</span>.<span class="m">0</span>.<span class="m">0</span>.<span class="m">1</span>
+<span class="n">rpcbind</span> = [::<span class="m">1</span>]
+
+<span class="c"># RPC configuration
+</span><span class="n">rpcthreads</span> = <span class="m">20</span>
+<span class="c">#rpcssl = 1
+</span><span class="n">rpcallowip</span> = <span class="m">127</span>.<span class="m">0</span>.<span class="m">0</span>.<span class="m">1</span>
+<span class="n">rpcallowip</span> = [::<span class="m">1</span>]
+
+<span class="c"># authentication
+</span><span class="n">rpcauth</span>=<span class="n">wzrhjmlikroaxjnckmgzcrfv</span>:<span class="m">37</span><span class="n">ff59f93e737d95f3cb15a4c5b81d</span>$<span class="n">ecf9e7d5ceaf79fa136865d950c64b88845582e78f4a7af5e8a1861ad8331f08</span>
+</code></pre></div></div>
+</li>
+
+	<li>
+<div class="language-conf highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">agent</span> {
+  <span class="n">btc</span>{
+      <span class="n">type</span> = <span class="s2">"daemon"</span>
+      <span class="n">node</span> = <span class="s2">"localhost:18443"</span>
+      <span class="n">user</span> = <span class="s2">"cotzntmnxllhcpsshvdzzuue"</span>
+      <span class="n">pass</span> = <span class="s2">"vN9v95_7qjWiHSMUx2QuriX6fUgjoPyZgJRm-1Og0-g="</span>
+  }
+  <span class="n">ltc</span> {
+    <span class="n">type</span> = <span class="s2">"daemon"</span>
+    <span class="n">node</span> = <span class="s2">"localhost:19443"</span>
+    <span class="n">user</span> = <span class="s2">"wzrhjmlikroaxjnckmgzcrfv"</span>
+    <span class="n">pass</span> = <span class="s2">"7iLL9pGM7W4LNQTjDmdYGj6mJ7nBFgYIix5OjRbR-v4="</span>
+  }
+}
+</code></pre></div></div>
+</li>
+
+</ul>
+
+<p><br /></p>
+
+<p>Run coin servers and Bitmark wallet</p>
+
+<ul class="uk-tab" data-uk-switcher="{connect:'#27e2d169-8c6b-4d88-950e-ac558720eb04'}">
+
+	<li class="uk-active"><a href="#">Command</a></li>
+
+	<li><a href="#">Example</a></li>
+
+</ul>
+
+<ul id="27e2d169-8c6b-4d88-950e-ac558720eb04" class="uk-switcher uk-margin">
+
+	<li>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Run bitcoind</span>
+<span class="nv">$ </span>bitcoind <span class="nt">-datadir</span><span class="o">=</span>&lt;bitcoind config <span class="nb">dir</span><span class="o">&gt;</span>
+
+<span class="c"># Run litecoind</span>
+<span class="nv">$ </span>litecoind <span class="nt">-datadir</span><span class="o">=</span>&lt;litecoind config <span class="nb">dir</span><span class="o">&gt;</span>
+
+<span class="c"># Initialize the Bitmark wallet</span>
+<span class="nv">$ </span>bitmark-wallet <span class="nt">--conf</span><span class="o">=</span>&lt;conf file&gt; init
+
+<span class="c"># Sync bitcoin</span>
+<span class="nv">$ </span>bitmark-wallet <span class="nt">--conf</span><span class="o">=</span>&lt;config file&gt; btc <span class="nb">sync</span> <span class="nt">--</span>&lt;network&gt;
+
+<span class="c"># Sync litecoin</span>
+<span class="nv">$ </span>bitmark-wallet <span class="nt">--conf</span><span class="o">=</span>&lt;config file&gt; ltc <span class="nb">sync</span> <span class="nt">--</span>&lt;network&gt;
+
+<span class="c"># Generate BTC address</span>
+<span class="nv">$ </span>bitmark-wallet <span class="nt">--conf</span><span class="o">=</span>&lt;config file&gt; btc newaddress <span class="nt">--</span>&lt;network&gt;
+
+<span class="c"># Generate LTC address</span>
+<span class="nv">$ </span>bitmark-wallet <span class="nt">--conf</span><span class="o">=</span>&lt;config file&gt; ltc newaddress <span class="nt">--</span>&lt;network&gt;
+</code></pre></div></div>
+</li>
+
+	<li>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Run bitcoind</span>
+<span class="nv">$ </span>bitcoind <span class="nt">-datadir</span><span class="o">=</span><span class="k">${</span><span class="nv">HOME</span><span class="k">}</span>/.config/bitcoin
+
+<span class="c"># Run litecoind</span>
+<span class="nv">$ </span>litecoind <span class="nt">-datadir</span><span class="o">=</span><span class="k">${</span><span class="nv">HOME</span><span class="k">}</span>/.config/litecoin
+
+<span class="c"># Initialize the Bitmark wallet</span>
+<span class="nv">$ </span>bitmark-wallet <span class="nt">--conf</span><span class="o">=</span><span class="k">${</span><span class="nv">HOME</span><span class="k">}</span>/.config/bitmark-wallet/test/bitmark-wallet.conf init
+
+<span class="c"># Sync bitcoin</span>
+bitmark-wallet <span class="nt">--conf</span><span class="o">=</span><span class="k">${</span><span class="nv">HOME</span><span class="k">}</span>/.config/bitmark-wallet/test/bitmark-wallet.conf btc <span class="nb">sync</span> <span class="nt">--testnet</span>
+
+<span class="c"># Sync litecoin</span>
+bitmark-wallet <span class="nt">--conf</span><span class="o">=</span><span class="k">${</span><span class="nv">HOME</span><span class="k">}</span>/.config/bitmark-wallet/test/bitmark-wallet.conf ltc <span class="nb">sync</span> <span class="nt">--testnet</span>
+
+<span class="c"># Generate BTC address</span>
+<span class="nv">$ </span>bitmark-wallet <span class="nt">--conf</span><span class="o">=</span><span class="k">${</span><span class="nv">HOME</span><span class="k">}</span>/.config/bitmark-wallet/test/bitmark-wallet.conf btc newaddress <span class="nt">--testnet</span>
+
+<span class="c"># Generate LTC address</span>
+<span class="nv">$ </span>bitmark-wallet <span class="nt">--conf</span><span class="o">=</span><span class="k">${</span><span class="nv">HOME</span><span class="k">}</span>/.config/bitmark-wallet/test/bitmark-wallet.conf ltc newaddress <span class="nt">--testnet</span>
+
+</code></pre></div></div>
+</li>
+
+</ul>
+
+<p><br /></p>
+
+<h3 id="getting-testnet-coins">Getting testnet coins</h3>
+
+<p>To fund a mainnet wallet, you’ll need to send coins to the BTC or LTC address, but to fund a testnet wallet, you can simply request coins from a faucet.</p>
+
+<ul>
+  <li>
+    <p>Get some testnet ltc at https://faucet.xblau.com/</p>
+  </li>
+  <li>
+    <p>Get some testnet btc at https://coinfaucet.eu/en/btc-testnet/</p>
+  </li>
+</ul>
 </div>
         
         <div class="col-md-3">

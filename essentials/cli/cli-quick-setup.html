@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
-<meta name="keywords" content=" ">
-<title>Bitmark SDK | Bitmark Documentation</title>
+<meta name="keywords" content=" CLI, bitmark-cli, command line interface, quick setup">
+<title>CLI quick setup | Bitmark Documentation</title>
 
 <link rel="stylesheet" href="/css/syntax.css">
 
@@ -142,7 +142,7 @@
 
 
 
-  <a class="email" title="Submit feedback" href="#" target="_blank" onclick="javascript:window.location='mailto:support@bitmark.com?subject=Bitmark Inc feedback&body=I have some feedback about the Bitmark SDK page: ' + window.location.href;"><i class="fa fa-envelope-o"></i> Need help?</a>
+  <a class="email" title="Submit feedback" href="#" target="_blank" onclick="javascript:window.location='mailto:support@bitmark.com?subject=Bitmark Inc feedback&body=I have some feedback about the CLI quick setup page: ' + window.location.href;"><i class="fa fa-envelope-o"></i> Need help?</a>
 
 </li>
 
@@ -160,7 +160,7 @@
                                 searchInput: document.getElementById('search-input'),
                                 resultsContainer: document.getElementById('results-container'),
                                 dataSource: '/search.json',
-                                searchResultTemplate: '<li><a href="{url}" title="Bitmark SDK">{title}</a></li>',
+                                searchResultTemplate: '<li><a href="{url}" title="CLI quick setup">{title}</a></li>',
                     noResultsText: 'No results found.',
                             limit: 10,
                             fuzzy: true,
@@ -188,6 +188,168 @@
 <ul id="mysidebar" class="nav">
   <li class="sidebarTitle"> </li>
   
+  
+  
+  <li>
+      <a class="sidebar-title" title="Essentials" href="#">Essentials</a>
+      <ul class="sidebar-list">
+          
+          
+          
+          <li><a title="Installation" href="/essentials/installation"><b>Installation</b></a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Register data" href="/essentials/register-data"><b>Register data</b></a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Control access" href="/essentials/control-access"><b>Control access</b></a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Transfer rights" href="/essentials/transfer-rights"><b>Transfer rights</b></a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Share rights" href="/essentials/share-rights"><b>Share rights</b></a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Query the Registry" href="/essentials/query-the-registry"><b>Query the Registry</b></a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Run a Node" href="/essentials/run-a-node"><b>Run a Node</b></a></li>
+          
+          
+          
+          
+      </ul>
+   </li>
+     
+      
+  
+  <li>
+      <a class="sidebar-title" title="In-Depth" href="#">In-Depth</a>
+      <ul class="sidebar-list">
+          
+          
+          
+          <li><a title="Blockchain Overview" href="/in-depth/blockchain-overview"><b>Blockchain Overview</b></a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Block Validation and Synchronization" href="/in-depth/block-verification-and-synchronization"><b>Block Validation and Synchronization</b></a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Block Mining" href="/in-depth/block-mining"><b>Block Mining</b></a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Payment Verification" href="/in-depth/payment-verification"><b>Payment Verification</b></a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Storage Databases" href="/in-depth/storage-databases"><b>Storage Databases</b></a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Blockchain Security" href="/in-depth/blockchain-security"><b>Blockchain Security</b></a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="RPC Communication" href="/in-depth/rpc-communication"><b>RPC Communication</b></a></li>
+          
+          
+          
+          
+      </ul>
+   </li>
+     
+      
+  
+  <li>
+      <a class="sidebar-title" title="Meta" href="#">Meta</a>
+      <ul class="sidebar-list">
+          
+          
+          
+          <li><a title="Glossary" href="/meta/glossary"><b>Glossary</b></a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="White Papers" href="/meta/white-papers"><b>White Papers</b></a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Bitmark versus Ethereum" href="/meta/bitmark-eth-comparison"><b>Bitmark versus Ethereum</b></a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Contribute to the Protocol" href="/meta/contribute-to-the-protocol"><b>Contribute to the Protocol</b></a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="FAQ" href="/meta/bitmark-protocol-faq"><b>FAQ</b></a></li>
+          
+          
+          
+          
+      </ul>
+   </li>
+     
+      
+      
       <!-- if you aren't using the accordion, uncomment this block:
          <p class="external">
              <a href="#" id="collapseAll">Collapse All</a> | <a href="#" id="expandAll">Expand All</a>
@@ -205,7 +367,7 @@
         <!-- Content Column -->
         <div class="col-md-8" id="tg-sb-content">
             <!-- <div class="post-header">
-   <h1 class="post-title-main">Bitmark SDK</h1>
+   <h1 class="post-title-main">CLI quick setup</h1>
 </div> -->
 
 
@@ -218,126 +380,105 @@
     
 
     <div class="row">
-        <div class="col-md-9 page-article"><h1 id="bitmark-sdk">Bitmark SDK</h1>
+        <div class="col-md-9 page-article"><h1 id="cli-quick-setup">CLI quick setup</h1>
 
-<h2 id="overview"><a href="bitmark-sdk-document.md#overview">Overview</a></h2>
+<p>The <code class="language-plaintext highlighter-rouge">bitmark-cli</code> program can be used on both the testing and Bitmark blockchains, with separate configuration files created for each blockchain to avoid confusion.</p>
 
-<h2 id="getting-started"><a href="bitmark-sdk-document.md#getting-started">Getting Started</a></h2>
+<h2 id="creating-an-identity">Creating an Identity</h2>
 
+<p>The first step in setting up <code class="language-plaintext highlighter-rouge">bitmark-cli</code> is to create an initial identity, which will be used by default for any actions that require a signature:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bitmarkcli -i IDENTITY -n NETWORK setup -d 'DESCRIPTION OF IDENTITY' -c HOST:2130
+</code></pre></div></div>
+
+<h2 id="configuring-the-cli">Configuring the CLI</h2>
+
+<p>You can then create the initial configuration file.</p>
+
+<p>For the testing blocking:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bitmarkcli -i fred -n testing setup -n -d 'Testing account for Fred' -c node-a1.test.bitmark.com:2130
+</code></pre></div></div>
+
+<p>For the Bitmark blockchain:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bitmarkcli -i fred -n bitmark setup -n -d 'Live account for Fred' -c node-a1.live.bitmark.com:2130
+</code></pre></div></div>
+
+<p>The configuration file will have a path such as <code class="language-plaintext highlighter-rouge">${XDG_CONFIG_HOME}/bitmark-cli/testing-cli.json</code> and will look like this:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+  "default_identity": "fred",
+  "testnet": true,
+  "connections": [
+    "node-a1.test.bitmark.com:2130"
+  ],
+  "identities": {
+    "fred": {
+      "description": "Testing account for Fred",
+      "account": "XXX...XXX",
+      "data": "XXX...XXX",
+      "salt": "XXX...XXX"
+    }
+  }
+}
+</code></pre></div></div>
+
+<p>Once this initial setup is complete, all functions of the command-line interface program (CLI) will be available to use.</p>
+
+<p>Security:</p>
 <ul>
-  <li><a href="bitmark-sdk-document.md#installing-sdk-packages">Installing SDK Packages</a></li>
-  <li><a href="bitmark-sdk-document.md#acquiring-an-api-token">Acquiring an API token</a></li>
-  <li><a href="bitmark-sdk-document.md#configuring-the-sdk">Configuring the SDK</a></li>
+  <li>During setup you will be asked for a password. Make sure it is secure, as it is the only thing that prevents the secret data
+in the file from being decrypted.</li>
+  <li>It is also recommended that the <code class="language-plaintext highlighter-rouge">seed</code> command be used to display
+the recovery phrase for your data; print this and carefully store it to allow recovery
+or to add this account to another computer.</li>
 </ul>
 
-<h2 id="account"><a href="/bitmark-references/bitmark-sdk/account#account">Account</a></h2>
+<h2 id="adding-extra-connections">Adding Extra Connections</h2>
 
-<ul>
-  <li><a href="/bitmark-references/bitmark-sdk/account#creating-an-account">Creating an account</a></li>
-  <li><a href="/bitmark-references/bitmark-sdk/account#retrieving-the-account-number">Retrieving the account number</a></li>
-  <li><a href="/bitmark-references/bitmark-sdk/account#exporting-an-account">Exporting an account</a>
-    <ul>
-      <li><a href="/bitmark-references/bitmark-sdk/account#exporting-a-seed">Exporting a seed</a></li>
-      <li><a href="/bitmark-references/bitmark-sdk/account#exporting-a-recovery-phrase">Exporting a recovery phrase</a></li>
-    </ul>
-  </li>
-  <li><a href="/bitmark-references/bitmark-sdk/account#importing-an-account">Importing an account</a>
-    <ul>
-      <li><a href="/bitmark-references/bitmark-sdk/account#recovering-from-a-seed">Recovering from a seed</a></li>
-      <li><a href="/bitmark-references/bitmark-sdk/account#recovering-from-a-phrase">Recovering from a phrase</a></li>
-    </ul>
-  </li>
-  <li><a href="/bitmark-references/bitmark-sdk/account#signing-and-verifying">Signing and verifying</a></li>
-  <li><a href="/bitmark-references/bitmark-sdk/account#validating-an-account-number">Validating an account number</a></li>
-</ul>
+<p>If you want to use  the connection feature to be able to send to
+different nodes then the above file will have to be edited to add
+them. The JSON configuration can be edited in any text editor, but be
+careful to keep the formatting correct; JSON is not tolerant of
+missing or extraneous commas.</p>
 
-<h2 id="actions"><a href="/bitmark-references/bitmark-sdk/action">Actions</a></h2>
+<p><strong>Testing Example:</strong></p>
 
-<ul>
-  <li><a href="/bitmark-references/bitmark-sdk/action#registering-an-asset">Registering an asset</a></li>
-  <li><a href="/bitmark-references/bitmark-sdk/action#issuing-a-bitmark">Issuing a bitmark</a></li>
-  <li><a href="/bitmark-references/bitmark-sdk/action#transferring-a-bitmark">Transferring a bitmark</a>
-    <ul>
-      <li><a href="/bitmark-references/bitmark-sdk/action#direct-transfer">Direct transfer</a></li>
-      <li><a href="/bitmark-references/bitmark-sdk/action#countersigned-transfer">Countersigned transfer</a>
-        <ul>
-          <li><a href="/bitmark-references/bitmark-sdk/action#proposing-a-transfer-offer">Proposing a transfer offer</a></li>
-          <li><a href="/bitmark-references/bitmark-sdk/action#querying-for-offers">Querying for offers</a></li>
-          <li><a href="/bitmark-references/bitmark-sdk/action#accepting-a-transfer-offer">Accepting a transfer offer</a></li>
-          <li><a href="/bitmark-references/bitmark-sdk/action#rejecting-a-transfer-offer">Rejecting a transfer offer</a></li>
-          <li><a href="/bitmark-references/bitmark-sdk/action#cancelling-a-transfer-offer">Cancelling a transfer offer</a></li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-</ul>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+  "default_identity": "fred",
+  "testnet": true,
+  "connections": [
+    "node-a1.test.bitmark.com:2130",
+    "node-a2.test.bitmark.com:2130",
+    "node-a3.test.bitmark.com:2130",
+    "node-a4.test.bitmark.com:2130"
+  ],
+  "identities": {
+    "fred": {
+      "description": "Testing account for Fred",
+      "account": "XXX...XXX",
+      "data": "XXX...XXX",
+      "salt": "XXX...XXX"
+    }
+  }
+}
+</code></pre></div></div>
 
-<h2 id="queries"><a href="/bitmark-references/bitmark-sdk/query">Queries</a></h2>
+<p>Now the bitmark-cli can use the global <code class="language-plaintext highlighter-rouge">-c N</code> option where N is in the range 0…3 for the four different connections.
+This is useful for scripts, which can now spread their load across multiple nodes</p>
 
-<ul>
-  <li><a href="/bitmark-references/bitmark-sdk/query#asset">Asset</a>
-    <ul>
-      <li><a href="/bitmark-references/bitmark-sdk/query#record-data-structure">Record data structure</a></li>
-      <li><a href="/bitmark-references/bitmark-sdk/query#querying-for-a-specific-asset">Querying for a specific asset</a></li>
-      <li><a href="/bitmark-references/bitmark-sdk/query#querying-for-a-set-of-assets">Querying for a set of assets</a>
-        <ul>
-          <li><a href="/bitmark-references/bitmark-sdk/query#assets-registered-by-the-specific-registrant">Assets registered by the specific registrant</a></li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-  <li><a href="/bitmark-references/bitmark-sdk/query#transaction-tx">Transaction (tx)</a>
-    <ul>
-      <li><a href="/bitmark-references/bitmark-sdk/query#record-data-structure-1">Record data structure</a></li>
-      <li><a href="/bitmark-references/bitmark-sdk/query#querying-for-a-specific-transaction">Querying for a specific transaction</a></li>
-      <li><a href="/bitmark-references/bitmark-sdk/query#querying-for-a-set-of-transactions">Querying for a set of transactions</a>
-        <ul>
-          <li><a href="/bitmark-references/bitmark-sdk/query#transactions-depicting-the-provenance-of-a-bitmark">Transactions depicting provenance of a bitmark</a></li>
-          <li><a href="/bitmark-references/bitmark-sdk/query#transactions-created-by-an-account">Transactions created by an account</a></li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-  <li><a href="/bitmark-references/bitmark-sdk/query#bitmark">Bitmark</a>
-    <ul>
-      <li><a href="/bitmark-references/bitmark-sdk/query#record-data-structure-2">Record data structure</a>
-        <ul>
-          <li><a href="/bitmark-references/bitmark-sdk/query#offer-data-structure">Offer data structure</a></li>
-        </ul>
-      </li>
-      <li><a href="/bitmark-references/bitmark-sdk/query#querying-for-a-specific-bitmark">Querying for a specific bitmark</a></li>
-      <li><a href="/bitmark-references/bitmark-sdk/query#querying-for-a-set-of-bitmarks">Querying for a set of bitmarks</a>
-        <ul>
-          <li><a href="/bitmark-references/bitmark-sdk/query#bitmarks-issued-by-the-specific-issuer">bitmarks issued by the specific issuer</a></li>
-          <li><a href="/bitmark-references/bitmark-sdk/query#bitmarks-owned-by-the-specific-owner">bitmarks owned by the specific owner</a></li>
-          <li><a href="/bitmark-references/bitmark-sdk/query#bitmarks-offered-from-the-specific-sender">bitmarks offered from the specific sender</a></li>
-          <li><a href="/bitmark-references/bitmark-sdk/query#bitmarks-offered-to-the-specific-receiver">bitmarks offered to the specific receiver</a></li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-</ul>
+<p><strong>Bitmark Blockchain Example:</strong></p>
 
-<h2 id="receiving-websocket-events"><a href="/bitmark-references/bitmark-sdk/websocket#web-socket">Receiving WebSocket Events</a></h2>
+<p>For the live bitmark block chain the servers are:</p>
 
-<ul>
-  <li><a href="/bitmark-references/bitmark-sdk/websocket#event">Event</a></li>
-  <li><a href="/bitmark-references/bitmark-sdk/websocket#java">Java</a>
-    <ul>
-      <li><a href="/bitmark-references/bitmark-sdk/websocket#connectdisconnect">Connect/Disconnect</a></li>
-      <li><a href="/bitmark-references/bitmark-sdk/websocket#subscribeunsubscribe">Subscribe/Unsubscribe</a></li>
-    </ul>
-  </li>
-  <li><a href="/bitmark-references/bitmark-sdk/websocket#swift">Swift</a></li>
-</ul>
-
-<h2 id="storing-a-seed"><a href="/bitmark-references/bitmark-sdk/store-seed">Storing a Seed</a></h2>
-
-<ul>
-  <li><a href="/bitmark-references/bitmark-sdk/store-seed#android">Android</a></li>
-  <li><a href="/bitmark-references/bitmark-sdk/store-seed#ios">iOS</a></li>
-</ul>
-
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  "connections": [
+    "node-a1.live.bitmark.com:2130",
+    "node-a2.live.bitmark.com:2130",
+    "node-a3.live.bitmark.com:2130",
+    "node-a4.live.bitmark.com:2130"
+  ],
+</code></pre></div></div>
 </div>
         
         <div class="col-md-3">

@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="keywords" content=" blockchain, verification, sync, synchronization">
+<title>Block Validation and Synchronization | Bitmark Documentation</title>
+
+<link rel="stylesheet" href="/css/syntax.css">
+
+<link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css">
+<!--<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">-->
+<link rel="stylesheet" href="/css/modern-business.css">
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="/css/bootstrap.min.3.3.7.css" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/customstyles.css">
+<link rel="stylesheet" href="/css/boxshadowproperties.css">
+<!-- most color styles are extracted out to here -->
+<link rel="stylesheet" href="/css/theme-blue.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="/js/jquery.navgoco.min.js"></script>
+
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<!-- Anchor.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.2.0/anchor.min.js"></script>
+<script src="/js/toc.js"></script>
+<script src="/js/customscripts.js"></script>
+
+<link rel="shortcut icon" href="/assets/images/favicon.ico">
+
+<link rel="stylesheet" href="/css/uikit.min.css" />
+<script src="/js/uikit.min.js"></script>
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<link rel="alternate" type="application/rss+xml" title="docs" href="/feed.xml">
+
+    <!-- <script>
+        $(document).ready(function() {
+            // Initialize navgoco with default options
+            $("#mysidebar").navgoco({
+                caretHtml: '',
+                accordion: false,
+                openClass: 'active', // open
+                save: false, // leave false or nav highlighting doesn't work right
+                cookie: {
+                    name: 'navgoco',
+                    expires: false,
+                    path: '/'
+                },
+                slide: {
+                    duration: 250,
+                    easing: 'swing'
+                }
+            });
+
+            // expand first level at indexes [0,3,7]
+            $("#mysidebar").navgoco('toggle', true, 0, 3, 7);
+
+            $("#collapseAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', false);
+            });
+
+            $("#expandAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', true);
+            });
+
+        });
+
+    </script> -->
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
+    <script>
+        $(document).ready(function() {
+            $("#tg-sb-link").click(function() {
+                // $("#tg-sb-sidebar").toggle();
+                $("#tg-sb-content").toggleClass('col-md-8');
+                $("#tg-sb-content").toggleClass('col-md-12');
+                $("#tg-sb-icon").toggleClass('fa-toggle-on');
+                $("#tg-sb-icon").toggleClass('fa-toggle-off');
+            });
+        });
+    </script>
+    
+
+</head>
+<body>
+<!-- Navigation -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container topnavlinks">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/index.html"><span class="projectTitle home-logo">Bitmark<!-- <img src="/assets/images/Bitmark_Logo-desktop_white.svg" alt="Bitmark logo"/> --><!-- Home --></span></a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <!-- toggle sidebar button -->
+                <!-- <li><a id="tg-sb-link" href="#"><i id="tg-sb-icon" class="fa fa-toggle-on"></i> Nav</a></li> -->
+                <!-- entries without drop-downs appear here -->
+
+
+
+
+                
+                
+                
+                <li><a href="https://registry.bitmark.com/" target="_blank" rel="noopener">Registry</a></li>
+                
+                
+                
+                <li><a href="https://bitmark.com/products/bitmark-protocol/faq/" target="_blank" rel="noopener">FAQ</a></li>
+                
+                
+                
+                <!-- entries with drop-downs appear here -->
+                <!-- conditional logic to control which topnav appears for the audience defined in the configuration file.-->
+                
+                <!-- 
+			<li>
+
+
+
+  <a class="email" title="Submit feedback" href="#" target="_blank" onclick="javascript:window.location='mailto:support@bitmark.com?subject=Bitmark Inc feedback&body=I have some feedback about the Block Validation and Synchronization page: ' + window.location.href;"><i class="fa fa-envelope-o"></i> Need help?</a>
+
+</li>
+
+		 -->
+                <!--comment out this block if you want to hide search-->
+                <li>
+                    <!--start search-->
+                    <div id="search-demo-container">
+                        <input type="text" id="search-input" placeholder="search...">
+                        <ul id="results-container"></ul>
+                    </div>
+                    <script src="/js/jekyll-search.js" type="text/javascript"></script>
+                    <script type="text/javascript">
+                            SimpleJekyllSearch.init({
+                                searchInput: document.getElementById('search-input'),
+                                resultsContainer: document.getElementById('results-container'),
+                                dataSource: '/search.json',
+                                searchResultTemplate: '<li><a href="{url}" title="Block Validation and Synchronization">{title}</a></li>',
+                    noResultsText: 'No results found.',
+                            limit: 10,
+                            fuzzy: true,
+                    })
+                    </script>
+                    <!--end search-->
+                </li>
+            </ul>
+        </div>
+        </div>
+        <!-- /.container -->
+</nav>
+
+<!-- Page Content -->
+<div class="container">
+  <div id="main">
+    <!-- Content Row -->
+    <div class="">
+        
+        
+            <!-- Sidebar Column -->
+            <div class="col-md-4" id="tg-sb-sidebar">
+                
+
+<ul id="mysidebar" class="nav">
+  <li class="sidebarTitle"> </li>
+  
+  
+  
+  <li>
+      <a class="sidebar-title" title="Essentials" href="#">Essentials</a>
+      <ul class="sidebar-list">
+          
+          
+          
+          <li><a title="Installation" href="/essentials/installation"><b>Installation</b></a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Register data" href="/essentials/register-data"><b>Register data</b></a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Control access" href="/essentials/control-access"><b>Control access</b></a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Transfer rights" href="/essentials/transfer-rights"><b>Transfer rights</b></a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Share rights" href="/essentials/share-rights"><b>Share rights</b></a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Query the Registry" href="/essentials/query-the-registry"><b>Query the Registry</b></a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Run a Node" href="/essentials/run-a-node"><b>Run a Node</b></a></li>
+          
+          
+          
+          
+      </ul>
+   </li>
+     
+      
+  
+  <li>
+      <a class="sidebar-title" title="In-Depth" href="#">In-Depth</a>
+      <ul class="sidebar-list">
+          
+          
+          
+          <li><a title="Blockchain Overview" href="/in-depth/blockchain-overview"><b>Blockchain Overview</b></a></li>
+          
+          
+          
+          
+          
+          
+          <li class="active"><a title="Block Validation and Synchronization" href="/in-depth/block-verification-and-synchronization"><b>Block Validation and Synchronization</b></a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Block Mining" href="/in-depth/block-mining"><b>Block Mining</b></a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Payment Verification" href="/in-depth/payment-verification"><b>Payment Verification</b></a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Storage Databases" href="/in-depth/storage-databases"><b>Storage Databases</b></a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Blockchain Security" href="/in-depth/blockchain-security"><b>Blockchain Security</b></a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="RPC Communication" href="/in-depth/rpc-communication"><b>RPC Communication</b></a></li>
+          
+          
+          
+          
+      </ul>
+   </li>
+     
+      
+  
+  <li>
+      <a class="sidebar-title" title="Meta" href="#">Meta</a>
+      <ul class="sidebar-list">
+          
+          
+          
+          <li><a title="Glossary" href="/meta/glossary"><b>Glossary</b></a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="White Papers" href="/meta/white-papers"><b>White Papers</b></a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Bitmark versus Ethereum" href="/meta/bitmark-eth-comparison"><b>Bitmark versus Ethereum</b></a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Contribute to the Protocol" href="/meta/contribute-to-the-protocol"><b>Contribute to the Protocol</b></a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="FAQ" href="/meta/bitmark-protocol-faq"><b>FAQ</b></a></li>
+          
+          
+          
+          
+      </ul>
+   </li>
+     
+      
+      
+      <!-- if you aren't using the accordion, uncomment this block:
+         <p class="external">
+             <a href="#" id="collapseAll">Collapse All</a> | <a href="#" id="expandAll">Expand All</a>
+         </p>
+         -->
+</ul>
+
+<!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
+<script>$("li.active").parents('li').toggleClass("active");</script>
+
+            </div>
+            
+        
+
+        <!-- Content Column -->
+        <div class="col-md-8" id="tg-sb-content">
+            <!-- <div class="post-header">
+   <h1 class="post-title-main">Block Validation and Synchronization</h1>
+</div> -->
+
+
+
+<div class="post-content">
+
+   
+
+
+    
+
+    <div class="row">
+        <div class="col-md-9 page-article"><h1 id="block-validation-and-synchronization">Block Validation and Synchronization</h1>
+
+<p>The structure of transactions and block headers is detailed in the <a href="/in-depth/blockchain-overview">Bitmark Blockchain Technical Overview</a>. What follows are the technical details for how blocks are validated, then synchronized on the Bitmark Blockchain.</p>
+
+<h2 id="block-structure">Block Structure</h2>
+
+<p>A block intended for validation on the Bitmark blockchain contains a <a href="/in-depth/blockchain-overview#block-header">block header</a> followed by a number of transactions, laid out as follows:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>size (bytes)</th>
+      <th>data</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2</td>
+      <td>block version number</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>transaction count inside the block</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>block number (block height)</td>
+    </tr>
+    <tr>
+      <td>32</td>
+      <td>Argon2 hash of previous block header</td>
+    </tr>
+    <tr>
+      <td>32</td>
+      <td>SHA-3 hash of all transactions in the block (Merkle root)</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>timestamp of block generation time, seconds since <code class="language-plaintext highlighter-rouge">1970-01-01T00:00:00 UTC</code></td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>current difficulty in compact mode</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>number to make hash meets difficulty</td>
+    </tr>
+    <tr>
+      <td>… to end</td>
+      <td>transactions</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Block Header Example:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>05008300a1820000000000001e886357e769dab9c5f9b68a9101c13888a8b9aaf2bc21ff3aa2b78fbac114002684b245a1f51f54677770530032471f0ec4c36ffae5f14001eb15f42082e31becc1895d00000000d3dbb256c7042f00deb653d83b4a0bc7
+</code></pre></div></div>
+
+<p>Remember that a byte is made up of two hexadecimal characters. The header string could thus be broken up as follows, using the byte counts above:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0500/8300/a182000000000000/1e886357e769dab9c5f9b68a9101c13888a8b9aaf2bc21ff3aa2b78fbac11400/2684b245a1f51f54677770530032471f0ec4c36ffae5f14001eb15f42082e31b/ecc1895d00000000/d3dbb256c7042f00/deb653d83b4a0bc7
+</code></pre></div></div>
+
+<p>Also remember that each element has its bytes reversed because it is encoded in Little Endian. The various fields are thus decoded as follows:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Version:0x5,
+TransactionCount:0x83,
+Number:0x82a1,
+PreviousBlock: 0x0014c1ba8fb7a23aff21bcf2aab9a88838c101918ab6f9c5b9da69e75763881e,
+MerkleRoot: 0x1be38220f415eb0140f1e5fa6fc3c40e1f47320053707767541ff5a145b28426,
+Timestamp:0x5d89c1ec,
+Difficulty:00978263ab596de9800000000000000000000000000000000000000000000000,
+Nonce:0xc70b4a3bd853b6de
+</code></pre></div></div>
+<p>Different types of transactions following the block header will then be different lengths and have different content.</p>
+
+<h2 id="block-validation">Block Validation</h2>
+
+<p>When a block is received, the following tests are conducted to ensure its validity:</p>
+
+<ol>
+  <li>Length of all parts inside a block must match.</li>
+  <li>Incoming block version number must be equal or larger than current block version number.</li>
+  <li>Incoming block height must be 1 ahead of current block height.</li>
+  <li>Incoming block must contain at least 1 transaction, at most 9999 transactions.</li>
+  <li>Incoming block generation time must be within 5 minutes compared to received time.</li>
+  <li>Incoming block generation time must be no larger than 10 minutes compared to current block generation time.</li>
+  <li>Incoming block generation time must be within specific range.</li>
+  <li>Incoming block difficulty must be same as current difficulty.</li>
+  <li>Incoming block hash must meet difficulty criteria.</li>
+  <li>Incoming block’s previous block hash must be same as current block hash.</li>
+  <li>Incoming transaction must fit each type’s format and length.</li>
+  <li>Incoming transaction owner ownership must be valid.</li>
+  <li>Incoming transaction payment must be valid.</li>
+  <li>Incoming block’s SHA-3 of all transactions with must be valid.</li>
+</ol>
+
+<p>After a block is validated, a node stores that block into its internal
+database (<code class="language-plaintext highlighter-rouge">leveldb</code>), then the node broadcasts this newly saved block to all connected
+nodes. When other nodes receive the broadcast of a block, each node
+validates block correctness by the rules described above.</p>
+
+<h2 id="block-synchronization">Block Synchronization</h2>
+
+<p>The Bitmark blockchain uses both proof-of-work (PoW) and majority votes to
+choose blocks.</p>
+
+<h3 id="proof-of-work">Proof of Work</h3>
+
+<p>Proof of work is the traditional method of Sybil defense on a blockchain, used by Bitcoin and (at the moment) by Ethereum. Every participant is given the opportunity to solve a math problem. Whoever manages to do so is allowed to propose a block for the blockchain, contributing to the consensus and the growth of the ledger. Sybil defense is provided by the fact that it’s very hard to make these calculations, and so block creation has real costs in energy.</p>
+
+<p>In order for a block to be accepted by network participants, miners must have completed a proof of work that covers all of the data in the block. The difficulty of this work is adjusted so as to limit the rate at which new blocks can be generated by the network to one every two minutes. Due to the very low probability of successful generation, this makes it unpredictable which miner in the network will be able to generate the next block.</p>
+
+<p>For a block to be valid, it must hash to a value less than the current difficulty; this means that each block indicates that work has been done generating it. Each block contains the hash of the preceding block, thus each block has a chain of blocks that together contain a large amount of work. Changing a block (which can only be done by making a new block containing the same predecessor) requires regenerating all successors and redoing the work they contain. This protects the block chain from tampering.</p>
+
+<p>Bitmark uses <a href="https://en.wikipedia.org/wiki/Argon2">Argon2</a> to hash the block header; the rest of the data in the block is protected by having the Merkle Tree root hash as part of the header. If transactions are different or in a different order then the Merkle Tree root will not match. and the block will be rejected.</p>
+
+<h3 id="majority-votes">Majority Votes</h3>
+
+<p>When deciding upon the next block, each node considers decisions from other nodes. The block selected by the most other nodes will be chosen. Every 30 seconds, a node asks its connected nodes for their block hash and block height. This information is used to determine the main chain based on majority vote. For different chains, the same block height will have a different block hash, so a node can distinguish a fork by testing the block hash for a specific block number.</p>
+
+<p>A variety of conditions could occurs when nodes are deciding whether to select a block.</p>
+
+<ol>
+  <li>Majority votes exists</li>
+</ol>
+
+<table>
+  <thead>
+    <tr>
+      <th>Node</th>
+      <th>Block Height</th>
+      <th>Block Hash</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>1000</td>
+      <td><code class="language-plaintext highlighter-rouge">58583d17235c2b4e171c003fc96cde12fd52bb4b35658cbe85dd394f52fea08d</code></td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>1000</td>
+      <td><code class="language-plaintext highlighter-rouge">58583d17235c2b4e171c003fc96cde12fd52bb4b35658cbe85dd394f52fea08d</code></td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>1000</td>
+      <td><code class="language-plaintext highlighter-rouge">c77a4078350526ca9da34b50e4920558082b7e5c7d8f50b6fb1ecb0e78b44a0d</code></td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>1000</td>
+      <td><code class="language-plaintext highlighter-rouge">58583d17235c2b4e171c003fc96cde12fd52bb4b35658cbe85dd394f52fea08d</code></td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>1000</td>
+      <td><code class="language-plaintext highlighter-rouge">58583d17235c2b4e171c003fc96cde12fd52bb4b35658cbe85dd394f52fea08d</code></td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>1000</td>
+      <td><code class="language-plaintext highlighter-rouge">58583d17235c2b4e171c003fc96cde12fd52bb4b35658cbe85dd394f52fea08d</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>In this example, node-3 resides on a different chain than the others (because
+its block hash is different from others at same block height).</p>
+
+<p>Each node will then query its fellows to determine the majority vote.
+Assuming all nodes are connected, node-1, node-2, node-4, node-5, and node-6 will all see the following results when they ask for consensus.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Count</th>
+      <th>Block Height</th>
+      <th>Block Hash</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>4</td>
+      <td>1000</td>
+      <td><code class="language-plaintext highlighter-rouge">58583d17235c2b4e171c003fc96cde12fd52bb4b35658cbe85dd394f52fea08d</code></td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>1000</td>
+      <td><code class="language-plaintext highlighter-rouge">c77a4078350526ca9da34b50e4920558082b7e5c7d8f50b6fb1ecb0e78b44a0d</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>They will each choose the chain that has hash <code class="language-plaintext highlighter-rouge">abcdefg</code> on block
+height 1000.</p>
+
+<p>Meanwhile, node-3 will see the following results when asking for majority votes:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Count</th>
+      <th>Block Height</th>
+      <th>Block Hash</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>5</td>
+      <td>1000</td>
+      <td><code class="language-plaintext highlighter-rouge">58583d17235c2b4e171c003fc96cde12fd52bb4b35658cbe85dd394f52fea08d</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>It also will choose the chain that has hash <code class="language-plaintext highlighter-rouge">abcdefg</code> on block height
+1000, which means it will sync to the other nodes.</p>
+
+<ol>
+  <li>Several groups with same votes</li>
+</ol>
+
+<table>
+  <thead>
+    <tr>
+      <th>Node</th>
+      <th>Block Height</th>
+      <th>Block Hash</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>A</td>
+      <td>1000</td>
+      <td><code class="language-plaintext highlighter-rouge">58583d17235c2b4e171c003fc96cde12fd52bb4b35658cbe85dd394f52fea08d</code></td>
+    </tr>
+    <tr>
+      <td>B</td>
+      <td>1000</td>
+      <td><code class="language-plaintext highlighter-rouge">58583d17235c2b4e171c003fc96cde12fd52bb4b35658cbe85dd394f52fea08d</code></td>
+    </tr>
+    <tr>
+      <td>C</td>
+      <td>1000</td>
+      <td><code class="language-plaintext highlighter-rouge">58583d17235c2b4e171c003fc96cde12fd52bb4b35658cbe85dd394f52fea08d</code></td>
+    </tr>
+    <tr>
+      <td>D</td>
+      <td>1000</td>
+      <td><code class="language-plaintext highlighter-rouge">c77a4078350526ca9da34b50e4920558082b7e5c7d8f50b6fb1ecb0e78b44a0d</code></td>
+    </tr>
+    <tr>
+      <td>E</td>
+      <td>1000</td>
+      <td><code class="language-plaintext highlighter-rouge">c77a4078350526ca9da34b50e4920558082b7e5c7d8f50b6fb1ecb0e78b44a0d</code></td>
+    </tr>
+    <tr>
+      <td>F</td>
+      <td>1000</td>
+      <td><code class="language-plaintext highlighter-rouge">c77a4078350526ca9da34b50e4920558082b7e5c7d8f50b6fb1ecb0e78b44a0d</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>In this example, two chains have equal votes.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Count</th>
+      <th>Block Height</th>
+      <th>Block Hash</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>3</td>
+      <td>1000</td>
+      <td><code class="language-plaintext highlighter-rouge">58583d17235c2b4e171c003fc96cde12fd52bb4b35658cbe85dd394f52fea08d</code></td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>1000</td>
+      <td><code class="language-plaintext highlighter-rouge">c77a4078350526ca9da34b50e4920558082b7e5c7d8f50b6fb1ecb0e78b44a0d</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>In this case, there’s a tie between <code class="language-plaintext highlighter-rouge">58583d17235c2b4e171c003fc96cde12fd52bb4b35658cbe85dd394f52fea08d</code> and <code class="language-plaintext highlighter-rouge">c77a4078350526ca9da34b50e4920558082b7e5c7d8f50b6fb1ecb0e78b44a0d</code>, and the chain with the smaller hash value will be chosen. Since block hash is stored in little endian, the value of <code class="language-plaintext highlighter-rouge">c77a4078350526ca9da34b50e4920558082b7e5c7d8f50b6fb1ecb0e78b44a0d</code> is actually the smaller value, and the chain with that block hash is chosen. This means that <code class="language-plaintext highlighter-rouge">c77a4078350526ca9da34b50e4920558082b7e5c7d8f50b6fb1ecb0e78b44a0d</code> will eventually win over as the selected chain and dominate the network.</p>
+
+<p>This tie breaking selection could occur when a new node-7 joins the network or when some node notes that all other connected, remote nodes have separated into equal groups.</p>
+</div>
+        
+        <div class="col-md-3">
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+  // Handler for .ready() called.
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 10);
+  return false
+})
+
+});
+</script>
+
+<!-- <div id="toc" class="affix"></div> -->
+</div>
+        
+    </div>
+
+
+
+    <div class="tags">
+        
+    </div>
+
+
+
+
+</div>
+
+<!-- <hr class="shaded"/> -->
+
+<footer>
+            <div class="row">
+                <div class="col-lg-12 footer">
+               	&copy;2020 Bitmark Inc. All rights reserved.
+				<!-- <br/> Powered by <a href="https://jekyllrb.com/">Jekyll</a> -->
+<!-- <p><img src="/assets/images/company_logo.png" alt="Company logo"/></p>
+                </div>
+            </div> -->
+</footer>
+
+
+        </div>
+    <!-- /.row -->
+</div>
+<!-- /.container -->
+</div>
+<!-- /#main -->
+    </div>
+
+</body>
+
+</html>

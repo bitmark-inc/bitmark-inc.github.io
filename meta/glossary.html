@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
-<meta name="keywords" content=" sdk, sdk doc">
-<title>Getting Started | Bitmark Documentation</title>
+<meta name="keywords" content=" terms, glossary">
+<title>Glossary | Bitmark Documentation</title>
 
 <link rel="stylesheet" href="/css/syntax.css">
 
@@ -142,7 +142,7 @@
 
 
 
-  <a class="email" title="Submit feedback" href="#" target="_blank" onclick="javascript:window.location='mailto:support@bitmark.com?subject=Bitmark Inc feedback&body=I have some feedback about the Getting Started page: ' + window.location.href;"><i class="fa fa-envelope-o"></i> Need help?</a>
+  <a class="email" title="Submit feedback" href="#" target="_blank" onclick="javascript:window.location='mailto:support@bitmark.com?subject=Bitmark Inc feedback&body=I have some feedback about the Glossary page: ' + window.location.href;"><i class="fa fa-envelope-o"></i> Need help?</a>
 
 </li>
 
@@ -160,7 +160,7 @@
                                 searchInput: document.getElementById('search-input'),
                                 resultsContainer: document.getElementById('results-container'),
                                 dataSource: '/search.json',
-                                searchResultTemplate: '<li><a href="{url}" title="Getting Started">{title}</a></li>',
+                                searchResultTemplate: '<li><a href="{url}" title="Glossary">{title}</a></li>',
                     noResultsText: 'No results found.',
                             limit: 10,
                             fuzzy: true,
@@ -312,7 +312,7 @@
           
           
           
-          <li><a title="Glossary" href="/meta/glossary"><b>Glossary</b></a></li>
+          <li class="active"><a title="Glossary" href="/meta/glossary"><b>Glossary</b></a></li>
           
           
           
@@ -367,7 +367,7 @@
         <!-- Content Column -->
         <div class="col-md-8" id="tg-sb-content">
             <!-- <div class="post-header">
-   <h1 class="post-title-main">Getting Started</h1>
+   <h1 class="post-title-main">Glossary</h1>
 </div> -->
 
 
@@ -380,140 +380,111 @@
     
 
     <div class="row">
-        <div class="col-md-9 page-article"><h1 id="overview">Overview</h1>
+        <div class="col-md-9 page-article"><h1 id="glossary">Glossary</h1>
 
-<p>The Bitmark Property System is a universal property system that confers the same property rights to digital assets that have long existed for physical assets. The system records ownership claims for digital assets on the public Bitmark blockchain using digital property titles known as Bitmark certificates. These digital assets can be any sort of digital object, including files, applications, code, and data.</p>
+<p><strong>Account</strong> — <em>See Bitmark Account.</em></p>
 
-<p>In the digital world:</p>
+<p><strong>ancillary information</strong> — Information placed on the <em>Bitmark blockchain</em> in addition to the <em>Bitmark certificate</em> (and potentially the <em>digital asset</em> or <em>data</em> itself).</p>
 
-<p><strong>digital property = digital asset + bitmark certificate (property rights)</strong></p>
+<p><strong>asset record</strong> — A <em>record</em> on the <em>Bitmark blockchain</em> that details information about a <em>digital property</em>. You <em>register</em> an asset record.</p>
 
-<p>You can work with the Bitmark blockchain to look up Bitmark certificates or even to register and transfer digital properties using the Bitmark SDK, a collection of libraries for different programming languages and mobile platforms. In addition to providing language-specific bindings to the Bitmark APIs, the SDK also simplifies local key management for signing and encryption.</p>
+<p><strong>asset</strong> — Something of value. Usually a shorthand for <em>digital asset</em>.</p>
 
-<p>For simplicity, the term <em>Bitmark certificate</em> is shortened as <em>bitmark</em> in the SDK.</p>
+<p>**authenticate (v.) — to prove that you are who you say you are, or that a <em>property</em> is what it purports to be, as opposed to <em>verify</em>.</p>
 
-<h1 id="getting-started">Getting Started</h1>
+<p><strong>Bitcoin</strong> — The technology behind the <em>bitcoin</em> currency.</p>
 
-<h2 id="installing-sdk-packages">Installing SDK Packages</h2>
+<p><strong>bitcoins</strong> — The currency enabled by the <em>Bitcoin</em> technology.</p>
 
-<p>The Bitmark SDK can be installed for JavaScript, Swift, Java, or Go.</p>
+<p><strong>Bitmark</strong> — The name of a company that creates systems to manage <em>digital property</em> rights.</p>
 
-<ul class="uk-tab" data-uk-switcher="{connect:'#cca70a9e-8685-4089-9530-8c67e27d090c'}">
+<p><strong>Bitmark Account</strong> — A user account at Bitmark containing a <em>public key</em> and a <em>private key</em>. It links to <em>Bitmark certificates</em> on the <em>Bitmark blockchain</em> and allows a property owner to <em>record</em>, track, and trade their <em>digital assets</em> and <em>data</em>.</p>
 
-	<li class="uk-active"><a href="#">JS</a></li>
+<p><strong>Bitmark Account Number</strong> — A public key identifying a <em>Bitmark Account</em>.</p>
 
-	<li><a href="#">Swift</a></li>
+<p><strong>Bitmark API</strong> — A programming interface that allows programmers to interface with the <em>Bitmark Property System</em>. It is an Open Rest API.</p>
 
-	<li><a href="#">Java</a></li>
+<p><strong>Bitmark blockchain</strong> — The <em>blockchain</em> used by Bitmark to record <em>Bitmark certificates</em>. It is both decentralized and distributed and is also open, public, and free. Also called the <em>Bitmark public blockchain</em> or the <em>Bitmark public blockchain ledger</em>.</p>
 
-	<li><a href="#">Go</a></li>
+<p><strong>Bitmark certificate</strong> — A unique identifier that provides a record of <em>property rights</em> for <em>digital assets and data</em>. Technically, this is either an <em>issue record</em> or a <em>transfer record</em> that records the current ownership of a <em>digital property</em>, associated with an <em>asset record</em> that describes what the digital property is.</p>
 
-</ul>
+<p><strong>Bitmark Health</strong> — An iPhone app.</p>
 
-<ul id="cca70a9e-8685-4089-9530-8c67e27d090c" class="uk-switcher uk-margin">
+<p><strong>Bitmark Property System</strong> — The <em>digital assets and data</em> management system that consists of the <em>Bitmark blockchain</em>, the <em>Bitmark Account</em>, and other tools.</p>
 
-	<li>
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">$</span> <span class="nx">npm</span> <span class="nx">install</span> <span class="nx">bitmark</span><span class="o">-</span><span class="nx">sdk</span><span class="o">-</span><span class="nx">js</span>
-</code></pre></div></div>
-</li>
+<p><strong>Bitmark Registry</strong> — A web app that acts as an index to the <em>Bitmark blockchain</em>.</p>
 
-	<li>
-<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pod</span> <span class="err">'</span><span class="kt">BitmarkSDK</span><span class="err">'</span>
-</code></pre></div></div>
-</li>
+<p><strong>Bitmark SDK</strong> — A collection of language-specific software development kits that provide bindings to the <em>Bitmark API</em> and simplify local key management for signing and encryption.</p>
 
-	<li>
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// From your build.gradle</span>
-<span class="n">repositories</span> <span class="o">{</span>
-    <span class="n">jcenter</span><span class="o">()</span>
-    <span class="n">maven</span> <span class="o">{</span> <span class="n">url</span> <span class="err">'</span><span class="nl">https:</span><span class="c1">//oss.sonatype.org/content/repositories/snapshots/' } // For snapshot version</span>
-<span class="o">}</span>
+<p><strong>bitmarkd</strong> - The main Bitmark program. It verifies and records transactions on the <em>Bitmark blockchain</em>.</p>
 
-<span class="n">dependencies</span> <span class="o">{</span>
-    <span class="n">implementation</span> <span class="err">'</span><span class="n">com</span><span class="o">.</span><span class="na">bitmark</span><span class="o">.</span><span class="na">sdk</span><span class="o">:</span><span class="n">java</span><span class="o">-</span><span class="nl">sdk:</span><span class="mf">2.1</span><span class="o">.</span><span class="mi">0</span><span class="err">'</span> <span class="c1">// Java SDK</span>
-    <span class="c1">// Or</span>
-    <span class="n">implementation</span> <span class="err">'</span><span class="n">com</span><span class="o">.</span><span class="na">bitmark</span><span class="o">.</span><span class="na">sdk</span><span class="o">:</span><span class="n">android</span><span class="o">-</span><span class="nl">sdk:</span><span class="mf">2.1</span><span class="o">.</span><span class="mi">0</span><span class="err">'</span> <span class="c1">// Android SDK</span>
-<span class="o">}</span>
-</code></pre></div></div>
-</li>
+<p><strong>Bitmark CLI</strong> - A command line interface for interacting with <em>bitmarkd</em> (and thus the <em>Bitmark Property System</em>.</p>
 
-	<li>
-<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">$</span> <span class="k">go</span> <span class="n">get</span> <span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">bitmark</span><span class="o">-</span><span class="n">inc</span><span class="o">/</span><span class="n">bitmark</span><span class="o">-</span><span class="n">sdk</span><span class="o">-</span><span class="k">go</span>
-</code></pre></div></div>
-</li>
+<p><strong>Bitmark Wallet</strong> - A wallet that allows a <em>recorder</em> to receive <em>bitcoins</em> and <em>litecoins</em>.</p>
 
-</ul>
+<p><strong>bitmark-webui</strong> - A web-based user interface to monitor and configure a Bitmark <em>node</em> via a web browser.</p>
 
-<h2 id="acquiring-an-api-token">Acquiring an API token</h2>
+<p><strong>block</strong> - The basic unit of data in a <em>blockchain</em>. Each block contains transactions (or other <em>records</em> and points back to the previous block on the blockchain.</p>
 
-<p>An API token is required to authenticate requests to the Bitmark API.</p>
+<p><strong>blockchain</strong> — A technology that creates <em>blocks</em> of transactions (or other data) that are linked together to create a chain going back from the present to a Genesis block. Also, a specific instance of the blockchain technology that has created a linked chain of blocks used for some purpose. The <em>Bitmark blockchain</em> and the <em>Bitcoin</em> blockchain are two examples.</p>
 
-<p>Please contact <a href="mailto:support@bitmark.com">Bitmark support</a> to create a developer account and get an API token.</p>
+<p><strong>cryptocurrency</strong> — Digital currencies such as <em>bitcoins</em> or <em>litecoins</em>.</p>
 
-<h2 id="configuring-the-sdk">Configuring the SDK</h2>
+<p><strong>data</strong> — Information that is stored in a digital form: digital data.</p>
 
-<p>Before working with the Bitmark blockchain, configure the SDK for your API token and the Bitmark network that you’ll be using.</p>
+<p><strong>decentralized</strong> — A <em>distributed</em> system that has no single-point-of-failure.</p>
 
-<ul class="uk-tab" data-uk-switcher="{connect:'#b14a31ff-8ce9-4756-a720-7b7c89c66f05'}">
+<p><strong>digital asset</strong> - Something of value that exist solely or primarily in digital form.</p>
 
-	<li class="uk-active"><a href="#">JS</a></li>
+<p><strong>digital assets and data</strong> — The two primary sorts of <em>digital property</em> protected by the <em>Bitmark Property System</em>: things of value and information.</p>
 
-	<li><a href="#">Swift</a></li>
+<p><strong>digital estate</strong> — A collection of digital assets and digital data of value.</p>
 
-	<li><a href="#">Java</a></li>
+<p><strong>digital property</strong> — A shorthand for either a <em>digital asset</em> or <em>data</em>, since it encompasses both.</p>
 
-	<li><a href="#">Go</a></li>
+<p><strong>distributed</strong> — A system that is divided among many nodes. This is a superset of <em>decentralized</em>.</p>
 
-</ul>
+<p><strong>Hashcash calculation</strong> — A proof-of-work calculation used to pay for an issue record.</p>
 
-<ul id="b14a31ff-8ce9-4756-a720-7b7c89c66f05" class="uk-switcher uk-margin">
+<p><strong>issue record</strong> — A <em>record</em> on the <em>Bitmark blockchain</em> that <em>records</em> the initial ownership of a <em>digital property</em>. You record an issue record (or an issuance).</p>
 
-	<li>
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">sdk</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">bitmark-sdk-js</span><span class="dl">'</span><span class="p">);</span>
+<p><strong>key pair</strong> - A pair of linked keys used in Public-key cryptography: a <em>private key</em> and a <em>public key</em>.</p>
 
-<span class="kd">const</span> <span class="nx">config</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="na">apiToken</span><span class="p">:</span> <span class="dl">"</span><span class="s2">api-token</span><span class="dl">"</span><span class="p">,</span>
-  <span class="na">network</span><span class="p">:</span> <span class="dl">"</span><span class="s2">testnet</span><span class="dl">"</span>
-<span class="p">};</span>
+<p><strong>Litecoin</strong> — The technology behind the <em>litecoin</em> currency.</p>
 
-<span class="nx">sdk</span><span class="p">.</span><span class="nx">init</span><span class="p">(</span><span class="nx">config</span><span class="p">);</span>
-</code></pre></div></div>
-</li>
+<p><strong>litecoins</strong> — The currency enabled by the <em>Litecoin</em> technology.</p>
 
-	<li>
-<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">import</span> <span class="kt">BitmarkSDK</span>
+<p><strong>miner</strong> - Someone who creates blocks. On the <em>Bitmark blockchain</em>, they are instead called a <em>recorder</em>.</p>
 
-<span class="kt">BitmarkSDK</span><span class="o">.</span><span class="nf">initialize</span><span class="p">(</span><span class="nv">config</span><span class="p">:</span> <span class="kt">SDKConfig</span><span class="p">(</span><span class="nv">apiToken</span><span class="p">:</span> <span class="s">"api-token"</span><span class="p">,</span>
-                                        <span class="nv">network</span><span class="p">:</span> <span class="o">.</span><span class="n">testnet</span><span class="p">,</span>
-                                        <span class="nv">urlSession</span><span class="p">:</span> <span class="kt">URLSession</span><span class="o">.</span><span class="n">shared</span><span class="p">))</span>
-</code></pre></div></div>
-</li>
+<p><strong>node</strong> or <strong>Bitmark node</strong> — A computer that runs the <em>Bitmark blockchain</em>. Typically this refers to a full node that contains the full contents of the <em>Bitmark blockchain</em>. It runs <em>bitmarkd</em> and <em>recorderd</em>.</p>
 
-	<li>
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">final</span> <span class="nc">GlobalConfiguration</span><span class="o">.</span><span class="na">Builder</span> <span class="n">builder</span> <span class="o">=</span> <span class="nc">GlobalConfiguration</span><span class="o">.</span><span class="na">builder</span><span class="o">().</span><span class="na">withApiToken</span><span class="o">(</span><span class="s">"api-token"</span><span class="o">).</span><span class="na">withNetwork</span><span class="o">(</span><span class="nc">Network</span><span class="o">.</span><span class="na">LIVE_NET</span><span class="o">);</span>
-<span class="nc">BitmarkSDK</span><span class="o">.</span><span class="na">init</span><span class="o">(</span><span class="n">builder</span><span class="o">);</span>
-</code></pre></div></div>
-</li>
+<p><strong>private key</strong> — Half of a <em>key pair</em>. The private key is part of a <em>Bitmark account</em> and protects <em>Bitmark certificates</em> on the <em>Bitmark blockchain</em>. The other half is the <em>public key</em>.</p>
 
-	<li>
-<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="n">sdk</span> <span class="s">"github.com/bitmark/bitmark-inc/bitmark-sdk-go"</span>
+<p><strong>proof-of-work</strong> - A method of Sybil control used to protect <em>blockchains</em>, including the <em>Bitmark blockchain</em>. The other primary method of Sybil control is <a href="https://medium.com/@bitmark/a-philosophy-of-blockchain-what-would-satoshi-nakamoto-think-of-proof-of-stake-f9aac8e4d005">proof-of-stake</a>.</p>
 
-<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
-	<span class="n">config</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="n">sdk</span><span class="o">.</span><span class="n">Config</span><span class="p">{</span>
-		<span class="n">APIToken</span><span class="o">:</span> <span class="s">"YOUR API TOKEN"</span><span class="p">,</span>
-		<span class="n">Network</span><span class="o">:</span>  <span class="n">sdk</span><span class="o">.</span><span class="n">Testnet</span><span class="p">,</span>
-		<span class="n">HTTPClient</span><span class="o">:</span> <span class="o">&amp;</span><span class="n">http</span><span class="o">.</span><span class="n">Client</span><span class="p">{</span>
-			<span class="n">Timeout</span><span class="o">:</span> <span class="m">10</span> <span class="o">*</span> <span class="n">time</span><span class="o">.</span><span class="n">Second</span><span class="p">,</span>
-		<span class="p">},</span>
-	<span class="p">}</span>
-	<span class="n">sdk</span><span class="o">.</span><span class="n">Init</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
-<span class="p">}</span>
-</code></pre></div></div>
-</li>
+<p><strong>property</strong> — Something that is owned. Usually a shorthand for <em>digital property</em>.</p>
 
-</ul>
+<p><strong>property owner</strong> — The legal holder of a property. A property owner can be an individual, institution, or organization.</p>
 
-<p>Each code example in the later sections presumes that the SDK is already correctly initialized.</p>
+<p><strong>property rights</strong> — Economic constructs that allow a <em>property owner</em> to control  <em>property</em>.</p>
+
+<p><strong>public key</strong> — Half of a <em>key pair</em>. The public key is part of a <em>Bitmark account</em>; to be precise, it is the <em>Bitmark Account Number</em>. The other half of the key pair is the <em>private key</em>.</p>
+
+<p><strong>record</strong> - Information stored on a <em>blockchain</em> to record information. On the <em>Bitmark blockchain</em>, records are used to record property rights and generate <em>Bitmark certificates</em>.</p>
+
+<p><strong>record (v.)</strong> — The act of recording a change in <em>property rights</em>. You might record an <em>issue record</em> or a <em>transfer record</em>. For an <em>asset record</em>, you instead <em>register</em>.</p>
+
+<p><strong>recorder</strong> — Someone who creates <em>blocks</em> by adding <em>records</em> to the <em>Bitmark blockchain</em>. On other <em>blockchains</em> they are instead called a <em>miner</em>.</p>
+
+<p><strong>recorderd</strong> - The Bitmark mining program, run by <em>recorders</em>. It allows <em>nodes</em> to compete with <em>proof-of-work</em> to make <em>blocks</em>.</p>
+
+<p><strong>recovery phrase</strong> - a set of 12 mnemonic words that can be used to restore a <em>private key</em>.</p>
+
+<p><strong>register (v.)</strong> — The act of recording initial property rights. You might register a <em>digital asset</em> or register an <em>asset record</em>. You can register multiple rights on the <em>Bitmark blockchain</em>.</p>
+
+<p><strong>transfer record</strong> — A <em>record</em> on the <em>Bitmark blockchain</em> that describes the transfer of a <em>digital property</em> to a new owner. You <em>record</em> a transfer record (or a transfer).</p>
+
+<p><strong>verify (v.)</strong> — To prove that someone’s identity data matches with who they are, as opposed to _authenticate_s.</p>
 </div>
         
         <div class="col-md-3">

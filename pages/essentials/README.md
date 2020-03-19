@@ -1,4 +1,6 @@
-# Register & Control data
+# Essentials
+
+## [Installation](installation.md)
 
 ## [Register data](register-data.md)
 

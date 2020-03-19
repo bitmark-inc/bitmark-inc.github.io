@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
-<meta name="keywords" content=" sdk, sdk doc">
-<title>Getting Started | Bitmark Documentation</title>
+<meta name="keywords" content=" mining">
+<title>Block Mining | Bitmark Documentation</title>
 
 <link rel="stylesheet" href="/css/syntax.css">
 
@@ -142,7 +142,7 @@
 
 
 
-  <a class="email" title="Submit feedback" href="#" target="_blank" onclick="javascript:window.location='mailto:support@bitmark.com?subject=Bitmark Inc feedback&body=I have some feedback about the Getting Started page: ' + window.location.href;"><i class="fa fa-envelope-o"></i> Need help?</a>
+  <a class="email" title="Submit feedback" href="#" target="_blank" onclick="javascript:window.location='mailto:support@bitmark.com?subject=Bitmark Inc feedback&body=I have some feedback about the Block Mining page: ' + window.location.href;"><i class="fa fa-envelope-o"></i> Need help?</a>
 
 </li>
 
@@ -160,7 +160,7 @@
                                 searchInput: document.getElementById('search-input'),
                                 resultsContainer: document.getElementById('results-container'),
                                 dataSource: '/search.json',
-                                searchResultTemplate: '<li><a href="{url}" title="Getting Started">{title}</a></li>',
+                                searchResultTemplate: '<li><a href="{url}" title="Block Mining">{title}</a></li>',
                     noResultsText: 'No results found.',
                             limit: 10,
                             fuzzy: true,
@@ -268,7 +268,7 @@
           
           
           
-          <li><a title="Block Mining" href="/in-depth/block-mining"><b>Block Mining</b></a></li>
+          <li class="active"><a title="Block Mining" href="/in-depth/block-mining"><b>Block Mining</b></a></li>
           
           
           
@@ -367,7 +367,7 @@
         <!-- Content Column -->
         <div class="col-md-8" id="tg-sb-content">
             <!-- <div class="post-header">
-   <h1 class="post-title-main">Getting Started</h1>
+   <h1 class="post-title-main">Block Mining</h1>
 </div> -->
 
 
@@ -380,140 +380,161 @@
     
 
     <div class="row">
-        <div class="col-md-9 page-article"><h1 id="overview">Overview</h1>
+        <div class="col-md-9 page-article"><h1 id="block-mining">Block Mining</h1>
 
-<p>The Bitmark Property System is a universal property system that confers the same property rights to digital assets that have long existed for physical assets. The system records ownership claims for digital assets on the public Bitmark blockchain using digital property titles known as Bitmark certificates. These digital assets can be any sort of digital object, including files, applications, code, and data.</p>
+<p>Mining on the Bitmark blockchain requires an understanding of hashing and difficulty, as well as of the communication, verification, and reward protocols.</p>
 
-<p>In the digital world:</p>
+<h2 id="block-diagram">Block Diagram</h2>
 
-<p><strong>digital property = digital asset + bitmark certificate (property rights)</strong></p>
-
-<p>You can work with the Bitmark blockchain to look up Bitmark certificates or even to register and transfer digital properties using the Bitmark SDK, a collection of libraries for different programming languages and mobile platforms. In addition to providing language-specific bindings to the Bitmark APIs, the SDK also simplifies local key management for signing and encryption.</p>
-
-<p>For simplicity, the term <em>Bitmark certificate</em> is shortened as <em>bitmark</em> in the SDK.</p>
-
-<h1 id="getting-started">Getting Started</h1>
-
-<h2 id="installing-sdk-packages">Installing SDK Packages</h2>
-
-<p>The Bitmark SDK can be installed for JavaScript, Swift, Java, or Go.</p>
-
-<ul class="uk-tab" data-uk-switcher="{connect:'#cca70a9e-8685-4089-9530-8c67e27d090c'}">
-
-	<li class="uk-active"><a href="#">JS</a></li>
-
-	<li><a href="#">Swift</a></li>
-
-	<li><a href="#">Java</a></li>
-
-	<li><a href="#">Go</a></li>
-
-</ul>
-
-<ul id="cca70a9e-8685-4089-9530-8c67e27d090c" class="uk-switcher uk-margin">
-
-	<li>
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">$</span> <span class="nx">npm</span> <span class="nx">install</span> <span class="nx">bitmark</span><span class="o">-</span><span class="nx">sdk</span><span class="o">-</span><span class="nx">js</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>        +--------------+  ZeroMQ protocol   +---------------+
+        |              |  ---------------&gt;  |               |
+        |   bitmarkd   |                    |   recorderd   |
+        |              |  &lt;---------------  |               |
+        +--------------+  ZeroMQ protocol   +---------------+
 </code></pre></div></div>
-</li>
 
-	<li>
-<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pod</span> <span class="err">'</span><span class="kt">BitmarkSDK</span><span class="err">'</span>
+<p>The mining procedure for Bitmark occurs through interactions between <code class="language-plaintext highlighter-rouge">bitmarkd</code> and <code class="language-plaintext highlighter-rouge">recorderd</code>:</p>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">bitmarkd</code> sends a job to <code class="language-plaintext highlighter-rouge">recorderd</code>, requesting a hash that meets certain criteria.</li>
+  <li><code class="language-plaintext highlighter-rouge">recorderd</code> tries to find possible hashes that meets those criteria.</li>
+  <li>If a hash is found, <code class="language-plaintext highlighter-rouge">recorderd</code> sends a message back to <code class="language-plaintext highlighter-rouge">bitmarkd</code> and requests a validation.</li>
+  <li>When <code class="language-plaintext highlighter-rouge">bitmarkd</code> receives this message from <code class="language-plaintext highlighter-rouge">recorderd</code>, it validates the hash and returns the result to <code class="language-plaintext highlighter-rouge">recorderd</code>.</li>
+  <li>If <code class="language-plaintext highlighter-rouge">bitmarkd</code> receives no valid hashes from other nodes or from <code class="language-plaintext highlighter-rouge">recorderd</code>, then it will periodically send hash tasks to <code class="language-plaintext highlighter-rouge">recorderd</code> (currently every 1 minute), until a valid hash is found or received.</li>
+</ol>
+
+<h2 id="hashing">Hashing</h2>
+
+<p>Hashing is the transformation of a string of characters into an unique value or key that represents the original string. There are different hash implementations using a wide range of algorithms; if the hash implementation is well designed, it is very difficult to guess the original data from a given hash value.</p>
+
+<p>The Bitmark blockchain uses <code class="language-plaintext highlighter-rouge">argon2</code> to compute its hashing; <code class="language-plaintext highlighter-rouge">argon2</code> has some benefits, such as a memory-hard algorithm that provides resistance against GPU and ASIC hardware computation and the production of a hash that is 256 bits long.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">argon2</code> user-land software supports a wide range of parameters.</p>
+
+<p>Example:</p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">printf</span> <span class="s1">'%s'</span> <span class="s1">'hello world'</span> | argon2 <span class="s1">'hello world'</span> <span class="nt">-d</span> <span class="nt">-l</span> 32 <span class="nt">-m</span> 17 <span class="nt">-t</span> 4 <span class="nt">-p</span> 1 <span class="nt">-r</span> | <span class="nb">awk</span> <span class="s1">'{for(i=length($1);i&gt;0;i-=2)x=x substr($1,i-1,2);print x}'</span>
+
+f8a17bc25cb53e848e2d09811ade4b8a037f628443661b88611faf5d9a5a1f33
 </code></pre></div></div>
-</li>
 
-	<li>
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// From your build.gradle</span>
-<span class="n">repositories</span> <span class="o">{</span>
-    <span class="n">jcenter</span><span class="o">()</span>
-    <span class="n">maven</span> <span class="o">{</span> <span class="n">url</span> <span class="err">'</span><span class="nl">https:</span><span class="c1">//oss.sonatype.org/content/repositories/snapshots/' } // For snapshot version</span>
-<span class="o">}</span>
+<p>The hash of a block is made from the following information, hashed through the <code class="language-plaintext highlighter-rouge">argon2</code> algorithm:</p>
 
-<span class="n">dependencies</span> <span class="o">{</span>
-    <span class="n">implementation</span> <span class="err">'</span><span class="n">com</span><span class="o">.</span><span class="na">bitmark</span><span class="o">.</span><span class="na">sdk</span><span class="o">:</span><span class="n">java</span><span class="o">-</span><span class="nl">sdk:</span><span class="mf">2.1</span><span class="o">.</span><span class="mi">0</span><span class="err">'</span> <span class="c1">// Java SDK</span>
-    <span class="c1">// Or</span>
-    <span class="n">implementation</span> <span class="err">'</span><span class="n">com</span><span class="o">.</span><span class="na">bitmark</span><span class="o">.</span><span class="na">sdk</span><span class="o">:</span><span class="n">android</span><span class="o">-</span><span class="nl">sdk:</span><span class="mf">2.1</span><span class="o">.</span><span class="mi">0</span><span class="err">'</span> <span class="c1">// Android SDK</span>
-<span class="o">}</span>
+<ol>
+  <li>
+    <p>Block record version</p>
+
+    <p>blockchain header version</p>
+  </li>
+  <li>
+    <p>Transaction count</p>
+
+    <p>number of transactions in the block</p>
+  </li>
+  <li>
+    <p>Merkle tree</p>
+
+    <p>A binary tree where the leaves are hashes of transactions; there is an allowable limit of 9999 transaction hashes maximum per block, with random transactions selected if the number of verified transactions exceeds that value.</p>
+  </li>
+  <li>
+    <p>Timestamp</p>
+
+    <p>block generated time</p>
+  </li>
+  <li>
+    <p>Difficulty</p>
+
+    <p>hashing difficulty</p>
+  </li>
+  <li>
+    <p>Nonce</p>
+
+    <p>random string to make the hash fit the difficulty</p>
+  </li>
+</ol>
+
+<h2 id="difficulty">Difficulty</h2>
+
+<p>As described in the <a href="/in-depth/blockchain-overview#block-hashing-argon2-difficulty-proof-of-work-">Bitmark Blockchain Technical Overview</a>, difficulty is decided by blockchain consensus rules. A higher difficulty means that it is harder for a miner to find a valid hash; when a hash meets a difficulty, that means that the hash value is less than or equal to the difficulty level. Usually, the difficulty level is represented by a number.</p>
+
+<p>For example, when difficulty is 2, the hash of a block should contains at least 10 (8+2) leading zeros. A block hash of “012345678901234567890123456789012” would not meet this difficulty criteria because it only has one leading zero, but a block hash of “00000000001234567890123456789012” would because it contains 10 leading zeros.</p>
+
+<p>The hash is a fixed 256-bit value that is composed of two parts:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[8 bits] [248 bits]
+[exponent] [mantissa]
 </code></pre></div></div>
-</li>
 
-	<li>
-<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">$</span> <span class="k">go</span> <span class="n">get</span> <span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">bitmark</span><span class="o">-</span><span class="n">inc</span><span class="o">/</span><span class="n">bitmark</span><span class="o">-</span><span class="n">sdk</span><span class="o">-</span><span class="k">go</span>
+<p>Difficulty value is encoded in 64 bits, including 8 bits of exponent and 56 bits of mantissa.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[56 bits] [8 bits]
+[mantissa]  [exponent] = 64 bits unsigned value
 </code></pre></div></div>
-</li>
 
-</ul>
+<p>The mantissa bits are normalized: the most significant bit is 1 and can be dropped, leaving 56 bits to store; these bits are right shifted by exponent +8 from the most significant bit.</p>
 
-<h2 id="acquiring-an-api-token">Acquiring an API token</h2>
+<p>The difficulty <code class="language-plaintext highlighter-rouge">One</code> is defined as <code class="language-plaintext highlighter-rouge">00 ff  ff ff  ff ff  ff ff</code>, represents the 256-bit value <code class="language-plaintext highlighter-rouge">0ff ffff ffff ffff 8000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000</code>.</p>
 
-<p>An API token is required to authenticate requests to the Bitmark API.</p>
+<p>The difficulty <code class="language-plaintext highlighter-rouge">Two</code> is  double the difficulty of <code class="language-plaintext highlighter-rouge">One</code>: <code class="language-plaintext highlighter-rouge">01ffffffffffffff</code>, which represents 256-bit value <code class="language-plaintext highlighter-rouge">007fffffffffffffc00000000000000000000000000000000000000000000000</code>.</p>
 
-<p>Please contact <a href="mailto:support@bitmark.com">Bitmark support</a> to create a developer account and get an API token.</p>
+<h2 id="communication">Communication</h2>
 
-<h2 id="configuring-the-sdk">Configuring the SDK</h2>
+<p><code class="language-plaintext highlighter-rouge">bitmarkd</code> sends a hashing job to <code class="language-plaintext highlighter-rouge">recorderd</code>. Each <code class="language-plaintext highlighter-rouge">bitmarkd</code> has a job queue that lists the records of what job have been sent to <code class="language-plaintext highlighter-rouge">recorderd</code>. If <code class="language-plaintext highlighter-rouge">recorderd</code> finds a possible hash that might fits the difficulty, it sends the result back to <code class="language-plaintext highlighter-rouge">bitmarkd</code>, and <code class="language-plaintext highlighter-rouge">bitmarkd</code> returns the validated result  to <code class="language-plaintext highlighter-rouge">recorderd</code>.</p>
 
-<p>Before working with the Bitmark blockchain, configure the SDK for your API token and the Bitmark network that you’ll be using.</p>
+<p>The following message format is used to send from <code class="language-plaintext highlighter-rouge">recorderd</code> to <code class="language-plaintext highlighter-rouge">bitmarkd</code>:</p>
 
-<ul class="uk-tab" data-uk-switcher="{connect:'#b14a31ff-8ce9-4756-a720-7b7c89c66f05'}">
+<ol>
+  <li>
+    <p>request</p>
 
-	<li class="uk-active"><a href="#">JS</a></li>
+    <p>a string <code class="language-plaintext highlighter-rouge">block.nonce</code> to represent the type of request</p>
+  </li>
+  <li>
+    <p>job</p>
 
-	<li><a href="#">Swift</a></li>
+    <p>the job’s number in the queue, provided by <code class="language-plaintext highlighter-rouge">bitmarkd</code></p>
+  </li>
+  <li>
+    <p>packed</p>
 
-	<li><a href="#">Java</a></li>
+    <p>a nonce that may make hash meet difficulty</p>
+  </li>
+</ol>
 
-	<li><a href="#">Go</a></li>
+<p>The following message format is used to send from  <code class="language-plaintext highlighter-rouge">bitmarkd</code> to <code class="language-plaintext highlighter-rouge">recorderd</code>:</p>
 
-</ul>
+<ol>
+  <li>
+    <p>job</p>
 
-<ul id="b14a31ff-8ce9-4756-a720-7b7c89c66f05" class="uk-switcher uk-margin">
+    <p>job number</p>
+  </li>
+  <li>
+    <p>ok</p>
 
-	<li>
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">sdk</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">bitmark-sdk-js</span><span class="dl">'</span><span class="p">);</span>
+    <p>a string value of “true” and “false”, it is used to denote if hash is valid or not</p>
+  </li>
+</ol>
 
-<span class="kd">const</span> <span class="nx">config</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="na">apiToken</span><span class="p">:</span> <span class="dl">"</span><span class="s2">api-token</span><span class="dl">"</span><span class="p">,</span>
-  <span class="na">network</span><span class="p">:</span> <span class="dl">"</span><span class="s2">testnet</span><span class="dl">"</span>
-<span class="p">};</span>
+<p>For example, if <code class="language-plaintext highlighter-rouge">recorderd</code> receives a message of <code class="language-plaintext highlighter-rouge">job:2479 ok:false</code>, it means job number 2479 doesn’t meet difficulty criteria. If <code class="language-plaintext highlighter-rouge">recorderd</code> receives a message of <code class="language-plaintext highlighter-rouge">job:3000 ok:true</code>, it means job number 3000 meets the difficulty criteria.</p>
 
-<span class="nx">sdk</span><span class="p">.</span><span class="nx">init</span><span class="p">(</span><span class="nx">config</span><span class="p">);</span>
-</code></pre></div></div>
-</li>
+<h2 id="verification-and-broadcast">Verification and Broadcast</h2>
 
-	<li>
-<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">import</span> <span class="kt">BitmarkSDK</span>
+<p><code class="language-plaintext highlighter-rouge">bitmarkd</code> receives blocks from other nodes or from <code class="language-plaintext highlighter-rouge">recorderd</code>; each received block needs to pass the following verifications:</p>
 
-<span class="kt">BitmarkSDK</span><span class="o">.</span><span class="nf">initialize</span><span class="p">(</span><span class="nv">config</span><span class="p">:</span> <span class="kt">SDKConfig</span><span class="p">(</span><span class="nv">apiToken</span><span class="p">:</span> <span class="s">"api-token"</span><span class="p">,</span>
-                                        <span class="nv">network</span><span class="p">:</span> <span class="o">.</span><span class="n">testnet</span><span class="p">,</span>
-                                        <span class="nv">urlSession</span><span class="p">:</span> <span class="kt">URLSession</span><span class="o">.</span><span class="n">shared</span><span class="p">))</span>
-</code></pre></div></div>
-</li>
+<ol>
+  <li>block hash must meet difficulty</li>
+  <li>block header information must be same as block data</li>
+  <li>block header must contain correct information of previous block hash</li>
+  <li>payment information must be valid</li>
+  <li>compared to local block number, incoming block number must be incremented by 1</li>
+</ol>
 
-	<li>
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">final</span> <span class="nc">GlobalConfiguration</span><span class="o">.</span><span class="na">Builder</span> <span class="n">builder</span> <span class="o">=</span> <span class="nc">GlobalConfiguration</span><span class="o">.</span><span class="na">builder</span><span class="o">().</span><span class="na">withApiToken</span><span class="o">(</span><span class="s">"api-token"</span><span class="o">).</span><span class="na">withNetwork</span><span class="o">(</span><span class="nc">Network</span><span class="o">.</span><span class="na">LIVE_NET</span><span class="o">);</span>
-<span class="nc">BitmarkSDK</span><span class="o">.</span><span class="na">init</span><span class="o">(</span><span class="n">builder</span><span class="o">);</span>
-</code></pre></div></div>
-</li>
+<p><code class="language-plaintext highlighter-rouge">bitmarkd</code> discards incoming block if any of verification fails; a block that passes verifications is stored in <code class="language-plaintext highlighter-rouge">bitmarkd</code> and broadcast to all connected nodes.</p>
 
-	<li>
-<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="n">sdk</span> <span class="s">"github.com/bitmark/bitmark-inc/bitmark-sdk-go"</span>
+<h2 id="reward">Reward</h2>
 
-<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
-	<span class="n">config</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="n">sdk</span><span class="o">.</span><span class="n">Config</span><span class="p">{</span>
-		<span class="n">APIToken</span><span class="o">:</span> <span class="s">"YOUR API TOKEN"</span><span class="p">,</span>
-		<span class="n">Network</span><span class="o">:</span>  <span class="n">sdk</span><span class="o">.</span><span class="n">Testnet</span><span class="p">,</span>
-		<span class="n">HTTPClient</span><span class="o">:</span> <span class="o">&amp;</span><span class="n">http</span><span class="o">.</span><span class="n">Client</span><span class="p">{</span>
-			<span class="n">Timeout</span><span class="o">:</span> <span class="m">10</span> <span class="o">*</span> <span class="n">time</span><span class="o">.</span><span class="n">Second</span><span class="p">,</span>
-		<span class="p">},</span>
-	<span class="p">}</span>
-	<span class="n">sdk</span><span class="o">.</span><span class="n">Init</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
-<span class="p">}</span>
-</code></pre></div></div>
-</li>
+<p>Miner account information is stored inside each block. However, on the Bitmark blockchain, a mining reward is not given to a miner when the block is mined; instead, the reward is given to a miner when transactions in the miner’s block are transferred. The miner is rewarded 0.001 LTC for every transfer of a digital asset, which means if a miner mines a block with popular digital assets, they get more rewards.</p>
 
-</ul>
-
-<p>Each code example in the later sections presumes that the SDK is already correctly initialized.</p>
+<p>For example, miner A mines block number 1000, and this block contains a digital asset. After some period of time, the owner of the digital asset transfers the asset to another account. Once the transfer record has been put into the blockchain, miner A receives a mining fee of 0.001 LTC. If the new owner of that digital asset transfer again, then miner A is rewarded an additional 0.001 LTC.</p>
 </div>
         
         <div class="col-md-3">

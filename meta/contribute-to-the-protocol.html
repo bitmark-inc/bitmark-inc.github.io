@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
-<meta name="keywords" content=" sdk, sdk doc">
-<title>Getting Started | Bitmark Documentation</title>
+<meta name="keywords" content=" governance, security program, Bitmark Upgrade Proposal">
+<title>Contribute to the Protocol | Bitmark Documentation</title>
 
 <link rel="stylesheet" href="/css/syntax.css">
 
@@ -142,7 +142,7 @@
 
 
 
-  <a class="email" title="Submit feedback" href="#" target="_blank" onclick="javascript:window.location='mailto:support@bitmark.com?subject=Bitmark Inc feedback&body=I have some feedback about the Getting Started page: ' + window.location.href;"><i class="fa fa-envelope-o"></i> Need help?</a>
+  <a class="email" title="Submit feedback" href="#" target="_blank" onclick="javascript:window.location='mailto:support@bitmark.com?subject=Bitmark Inc feedback&body=I have some feedback about the Contribute to the Protocol page: ' + window.location.href;"><i class="fa fa-envelope-o"></i> Need help?</a>
 
 </li>
 
@@ -160,7 +160,7 @@
                                 searchInput: document.getElementById('search-input'),
                                 resultsContainer: document.getElementById('results-container'),
                                 dataSource: '/search.json',
-                                searchResultTemplate: '<li><a href="{url}" title="Getting Started">{title}</a></li>',
+                                searchResultTemplate: '<li><a href="{url}" title="Contribute to the Protocol">{title}</a></li>',
                     noResultsText: 'No results found.',
                             limit: 10,
                             fuzzy: true,
@@ -333,7 +333,7 @@
           
           
           
-          <li><a title="Contribute to the Protocol" href="/meta/contribute-to-the-protocol"><b>Contribute to the Protocol</b></a></li>
+          <li class="active"><a title="Contribute to the Protocol" href="/meta/contribute-to-the-protocol"><b>Contribute to the Protocol</b></a></li>
           
           
           
@@ -367,7 +367,7 @@
         <!-- Content Column -->
         <div class="col-md-8" id="tg-sb-content">
             <!-- <div class="post-header">
-   <h1 class="post-title-main">Getting Started</h1>
+   <h1 class="post-title-main">Contribute to the Protocol</h1>
 </div> -->
 
 
@@ -380,140 +380,168 @@
     
 
     <div class="row">
-        <div class="col-md-9 page-article"><h1 id="overview">Overview</h1>
+        <div class="col-md-9 page-article"><h1 id="contribute-to-the-protocol">Contribute to the Protocol</h1>
+<p><em>Last updated: 24 FEB 2020</em></p>
 
-<p>The Bitmark Property System is a universal property system that confers the same property rights to digital assets that have long existed for physical assets. The system records ownership claims for digital assets on the public Bitmark blockchain using digital property titles known as Bitmark certificates. These digital assets can be any sort of digital object, including files, applications, code, and data.</p>
+<p>[TOC]</p>
 
-<p>In the digital world:</p>
+<h2 id="about-the-bitmark-protocol">About the Bitmark Protocol</h2>
 
-<p><strong>digital property = digital asset + bitmark certificate (property rights)</strong></p>
+<p>We expect you probably got here from https://bitmark.com.  But just in case you didn’t, the explanation of the Bitmark Protocol is here:</p>
 
-<p>You can work with the Bitmark blockchain to look up Bitmark certificates or even to register and transfer digital properties using the Bitmark SDK, a collection of libraries for different programming languages and mobile platforms. In addition to providing language-specific bindings to the Bitmark APIs, the SDK also simplifies local key management for signing and encryption.</p>
-
-<p>For simplicity, the term <em>Bitmark certificate</em> is shortened as <em>bitmark</em> in the SDK.</p>
-
-<h1 id="getting-started">Getting Started</h1>
-
-<h2 id="installing-sdk-packages">Installing SDK Packages</h2>
-
-<p>The Bitmark SDK can be installed for JavaScript, Swift, Java, or Go.</p>
-
-<ul class="uk-tab" data-uk-switcher="{connect:'#cca70a9e-8685-4089-9530-8c67e27d090c'}">
-
-	<li class="uk-active"><a href="#">JS</a></li>
-
-	<li><a href="#">Swift</a></li>
-
-	<li><a href="#">Java</a></li>
-
-	<li><a href="#">Go</a></li>
-
+<ul>
+  <li><a href="/meta/bitmark-protocol-faq">https://bitmark.com/faq</a></li>
+  <li><a href="/meta/white-papers">https://bitmark.com/white-papers</a></li>
 </ul>
 
-<ul id="cca70a9e-8685-4089-9530-8c67e27d090c" class="uk-switcher uk-margin">
+<p>The Bitmark Protocol software project is the means by which the peer-to-peer network implements the Bitmark Protocol.</p>
 
-	<li>
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">$</span> <span class="nx">npm</span> <span class="nx">install</span> <span class="nx">bitmark</span><span class="o">-</span><span class="nx">sdk</span><span class="o">-</span><span class="nx">js</span>
-</code></pre></div></div>
-</li>
+<p>The core values of both Bitmark Inc. and the Bitmark Protocol software project are transparency and trust. The end goal of the Bitmark Protocol software project is to develop a means of establishing transparency and trust in digital property.</p>
 
-	<li>
-<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pod</span> <span class="err">'</span><span class="kt">BitmarkSDK</span><span class="err">'</span>
-</code></pre></div></div>
-</li>
+<p>To that end, this document attempts to transparently establish the principles by which Bitmark Inc. provides the Bitmark Protocol to the community and invites community participation, with the hope of establishing trust in that community.</p>
 
-	<li>
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// From your build.gradle</span>
-<span class="n">repositories</span> <span class="o">{</span>
-    <span class="n">jcenter</span><span class="o">()</span>
-    <span class="n">maven</span> <span class="o">{</span> <span class="n">url</span> <span class="err">'</span><span class="nl">https:</span><span class="c1">//oss.sonatype.org/content/repositories/snapshots/' } // For snapshot version</span>
-<span class="o">}</span>
+<h3 id="about-bitmark-inc">About Bitmark Inc.</h3>
 
-<span class="n">dependencies</span> <span class="o">{</span>
-    <span class="n">implementation</span> <span class="err">'</span><span class="n">com</span><span class="o">.</span><span class="na">bitmark</span><span class="o">.</span><span class="na">sdk</span><span class="o">:</span><span class="n">java</span><span class="o">-</span><span class="nl">sdk:</span><span class="mf">2.1</span><span class="o">.</span><span class="mi">0</span><span class="err">'</span> <span class="c1">// Java SDK</span>
-    <span class="c1">// Or</span>
-    <span class="n">implementation</span> <span class="err">'</span><span class="n">com</span><span class="o">.</span><span class="na">bitmark</span><span class="o">.</span><span class="na">sdk</span><span class="o">:</span><span class="n">android</span><span class="o">-</span><span class="nl">sdk:</span><span class="mf">2.1</span><span class="o">.</span><span class="mi">0</span><span class="err">'</span> <span class="c1">// Android SDK</span>
-<span class="o">}</span>
-</code></pre></div></div>
-</li>
+<p>Bitmark Inc. is a venture-funded private company.  Current information regarding our funders is here: <a href="https://bitmark.com/about">https://bitmark.com/about</a>.  Bitmark Inc. has been to date the main developer of the Bitmark Protocol software project, and we will offer services and products which rely on it, but we don’t want to be the only people using it.  We think it can be useful to the wider community.</p>
 
-	<li>
-<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">$</span> <span class="k">go</span> <span class="n">get</span> <span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">bitmark</span><span class="o">-</span><span class="n">inc</span><span class="o">/</span><span class="n">bitmark</span><span class="o">-</span><span class="n">sdk</span><span class="o">-</span><span class="k">go</span>
-</code></pre></div></div>
-</li>
+<p>Just as the larger project of Bitmark Inc. and the Bitmark Protocol software project is a distributed peer-to-peer network for managing and claiming crypto property, we’d like the Bitmark Protocol software project to become a community project.</p>
 
+<h3 id="why-not-a-foundation">Why not a Foundation?</h3>
+
+<p>Bitmark Inc. is a small company.  We simply don’t have the resources to establish and sustain a separate foundation to manage the Bitmark Protocol software project.  As we grow, we will continue to evaluate whether, between Bitmark Inc. and the community, there are adequate resources to establish and sustain a separate foundation for the development and maintenance of the Bitmark Protocol software project.</p>
+
+<h3 id="why-the-internet-systems-consortium-isc-license">Why the Internet Systems Consortium (“ISC”) License?</h3>
+
+<p>We chose a permissive license in order to allow the broadest possible set of uses for the Bitmark Protocol software project.  It also makes contribution easy – just license your contribution under the ISC License.  We may at some point revisit the licensing model based on the actual uses of the Bitmark Protocol software project and community input.</p>
+
+<h2 id="principles-of-operation">Principles of Operation</h2>
+
+<p>Bitmark Inc. will maintain the primary code repository for the Bitmark Protocol software project and will retain primary development and maintenance responsibility.  We will also retain control of the code commit decisions, at least until a sufficiently strong community has arisen from which to select trusted code committers.</p>
+
+<p>Bitmark Inc. will also provide one or more community moderators to guide the discussion about the project, again, at least until a sufficiently strong community has arisen from which to select trusted community moderators.</p>
+
+<p>Bitmark Inc. will provide its reasons for all of its decisions regarding the Bitmark Protocol software project, including the direction it chooses for development, code commit decisions, and community management decisions.</p>
+
+<p>The primary method of communication among the communities will be one or more mailing lists. This creates an archive of community conversations and allows asynchronous conversations.  Our expectations for behavior are here: https://bitmark.com/conduct.  Generally speaking, however, we expect our community members to conduct open and honest conversations, <strong><em>while always treating each other with respect and honoring the dignity of each individual participant</em></strong>.</p>
+
+<p>We will over time evaluate the community to determine whether we have a sufficient number of active participants to establish additional roles for community members or to establish a more democratic mode of governance.</p>
+
+<p>Our expectation is that only Bitmark employees speak for the organization for which they work, and even then, only within their scope of authority.  All other community members speak only for themselves.</p>
+
+<h3 id="bitmark-upgrade-proposals">Bitmark Upgrade Proposals</h3>
+
+<p>A Bitmark Upgrade Proposal (BUP) is a design document providing information to the Bitmark community or describing a new feature for
+Bitmark or its processes or environment. A BUP provides a concise technical specification of the feature and a rationale for it.</p>
+
+<p>We have a repo at GitHub specifically for BUPs. We do not maintain it as part of the
+Bitmark documentation <a href="https://github.com/bitmark-inc/docs">repository</a> because we want that to be a clean
+environment where developers are not distracted by other
+repos.</p>
+
+<p>For full access to all BUPs, please go to: <a href="https://github.com/bitmark-property-system/bups">Bitmark Upgrade Proposal</a></p>
+
+<p>Please assume that everything you contribute intentionally to the Bitmark Protocol software project is public. This includes emails on public lists, wikis, other online discussions of all sorts, and software or documentation that you post to this website or our revision control repositories.  There may be cases where you are invited to share private information for various purposes, and denote that information as such. That information is subject to the privacy policy of Bitmark Inc., located here:  <a href="https://bitmark.com/privacy">https://bitmark.com/privacy</a>.  Similarly, other information collected by this website is subject to that privacy policy.</p>
+
+<p>Although what participants disclose here is public, both community members and Bitmark Inc. are limited by intellectual property law in how the use of community member contributions. <strong><em>Bitmark Inc. only accepts voluntary contributions of software and documentation that are expressly licensed to Bitmark Inc. (or all comers) under the ISC license.</em></strong></p>
+
+<h2 id="security-program">Security Program</h2>
+
+<p>Bitmark strives to make the Bitmark Property System safe and secure for everyone. We greatly value the work done by security researchers in improving the security of our products and service offerings, so we are committed to working with this community to verify, reproduce, and respond to legitimate reported vulnerabilities. We encourage the community to participate in our responsible reporting process.</p>
+
+<p><strong>Important:</strong> We only accept bug reports for the <strong><code class="language-plaintext highlighter-rouge">bitmarkd</code></strong> project. Bug reports for web applications or any other project that is not <strong><code class="language-plaintext highlighter-rouge">bitmarkd</code></strong> will not be accepted nor given any reward.</p>
+
+<p><a href="https://docs.google.com/forms/d/e/1FAIpQLSeVzZfd-DDQNuVVDMkwgu4VSxmPnvB6OLo_sw_9CH1w34xoZA/viewform">SUBMIT A BUG</a></p>
+
+<p>We offer rewards in Bitcoin:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Critical</th>
+      <th>High</th>
+      <th>Medium</th>
+      <th>Low</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1 BTC</td>
+      <td>0.5 BTC</td>
+      <td>0.2 BTC</td>
+      <td>0.1 BTC</td>
+      <td>0.01 BTC</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Latest bug updates:</p>
+<ul>
+  <li><strong>2018.11.14</strong>: Congratulations to bughunterboy for finding bugs and earning rewards!</li>
+  <li><strong>2018.10.11</strong>: Join our Bug Bounty Program and earn rewards now!</li>
 </ul>
 
-<h2 id="acquiring-an-api-token">Acquiring an API token</h2>
+<h3 id="how-to-report-a-bug">How to report a bug</h3>
 
-<p>An API token is required to authenticate requests to the Bitmark API.</p>
+<h4 id="determining-scope">Determining scope</h4>
+<p><a href="https://github.com/bitmark-inc/bitmarkd">Bitmarkd</a> is the codebase for the Bitmark blockchain.</p>
 
-<p>Please contact <a href="mailto:support@bitmark.com">Bitmark support</a> to create a developer account and get an API token.</p>
+<h5 id="bug-scope">Bug scope</h5>
+<p>Only bugs in Scope are eligible for a bug bounty. A qualifying bug has to be a danger to the blockchain records, privacy, or client operations. These include bugs in:</p>
+<ol>
+  <li><strong>Protocol</strong>: Flaws in protocol design, an example being the incentive design flaw in the <a href="/assets/pdf/bitmark-technical-white-paper.pdf">white paper</a></li>
+  <li><strong>Implementation of client</strong>: Any implementation bug in <code class="language-plaintext highlighter-rouge">bitmarkd</code> that could cause cause bad block, invalid assets, transaction failure, bad operations, or program crashes</li>
+  <li><strong>Cryptography</strong>: Incorrect implementation of Cryptographic algorithms</li>
+  <li><strong>Network Attacks</strong>: Attacks such as Sybil attacks</li>
+  <li>Any bugs that Bitmark considers important</li>
+</ol>
 
-<h2 id="configuring-the-sdk">Configuring the SDK</h2>
-
-<p>Before working with the Bitmark blockchain, configure the SDK for your API token and the Bitmark network that you’ll be using.</p>
-
-<ul class="uk-tab" data-uk-switcher="{connect:'#b14a31ff-8ce9-4756-a720-7b7c89c66f05'}">
-
-	<li class="uk-active"><a href="#">JS</a></li>
-
-	<li><a href="#">Swift</a></li>
-
-	<li><a href="#">Java</a></li>
-
-	<li><a href="#">Go</a></li>
-
+<h5 id="restrict-online-low-bandwidth-attack-to-these-two-nodes-only">Restrict online low-bandwidth attack to these two nodes only:</h5>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">node-d3.test.bitmark.com</code></li>
+  <li><code class="language-plaintext highlighter-rouge">node-a3.test.bitmark.com</code></li>
 </ul>
 
-<ul id="b14a31ff-8ce9-4756-a720-7b7c89c66f05" class="uk-switcher uk-margin">
+<h5 id="bugs-in-third-party-packages">Bugs in third-party packages</h5>
+<p>Third-party package bugs may or may not be rewarded by Bitmark. In theory, you should claim the bug(s) directly with a third-party bounty program; however, we may also reward you for your efforts.</p>
 
-	<li>
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">sdk</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">bitmark-sdk-js</span><span class="dl">'</span><span class="p">);</span>
-
-<span class="kd">const</span> <span class="nx">config</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="na">apiToken</span><span class="p">:</span> <span class="dl">"</span><span class="s2">api-token</span><span class="dl">"</span><span class="p">,</span>
-  <span class="na">network</span><span class="p">:</span> <span class="dl">"</span><span class="s2">testnet</span><span class="dl">"</span>
-<span class="p">};</span>
-
-<span class="nx">sdk</span><span class="p">.</span><span class="nx">init</span><span class="p">(</span><span class="nx">config</span><span class="p">);</span>
-</code></pre></div></div>
-</li>
-
-	<li>
-<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">import</span> <span class="kt">BitmarkSDK</span>
-
-<span class="kt">BitmarkSDK</span><span class="o">.</span><span class="nf">initialize</span><span class="p">(</span><span class="nv">config</span><span class="p">:</span> <span class="kt">SDKConfig</span><span class="p">(</span><span class="nv">apiToken</span><span class="p">:</span> <span class="s">"api-token"</span><span class="p">,</span>
-                                        <span class="nv">network</span><span class="p">:</span> <span class="o">.</span><span class="n">testnet</span><span class="p">,</span>
-                                        <span class="nv">urlSession</span><span class="p">:</span> <span class="kt">URLSession</span><span class="o">.</span><span class="n">shared</span><span class="p">))</span>
-</code></pre></div></div>
-</li>
-
-	<li>
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">final</span> <span class="nc">GlobalConfiguration</span><span class="o">.</span><span class="na">Builder</span> <span class="n">builder</span> <span class="o">=</span> <span class="nc">GlobalConfiguration</span><span class="o">.</span><span class="na">builder</span><span class="o">().</span><span class="na">withApiToken</span><span class="o">(</span><span class="s">"api-token"</span><span class="o">).</span><span class="na">withNetwork</span><span class="o">(</span><span class="nc">Network</span><span class="o">.</span><span class="na">LIVE_NET</span><span class="o">);</span>
-<span class="nc">BitmarkSDK</span><span class="o">.</span><span class="na">init</span><span class="o">(</span><span class="n">builder</span><span class="o">);</span>
-</code></pre></div></div>
-</li>
-
-	<li>
-<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="n">sdk</span> <span class="s">"github.com/bitmark/bitmark-inc/bitmark-sdk-go"</span>
-
-<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
-	<span class="n">config</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="n">sdk</span><span class="o">.</span><span class="n">Config</span><span class="p">{</span>
-		<span class="n">APIToken</span><span class="o">:</span> <span class="s">"YOUR API TOKEN"</span><span class="p">,</span>
-		<span class="n">Network</span><span class="o">:</span>  <span class="n">sdk</span><span class="o">.</span><span class="n">Testnet</span><span class="p">,</span>
-		<span class="n">HTTPClient</span><span class="o">:</span> <span class="o">&amp;</span><span class="n">http</span><span class="o">.</span><span class="n">Client</span><span class="p">{</span>
-			<span class="n">Timeout</span><span class="o">:</span> <span class="m">10</span> <span class="o">*</span> <span class="n">time</span><span class="o">.</span><span class="n">Second</span><span class="p">,</span>
-		<span class="p">},</span>
-	<span class="p">}</span>
-	<span class="n">sdk</span><span class="o">.</span><span class="n">Init</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
-<span class="p">}</span>
-</code></pre></div></div>
-</li>
-
+<h5 id="out-of-scope-bugs">Out-of-scope bugs</h5>
+<p>Bugs that are out of scope include those that require:</p>
+<ul>
+  <li>Physical access to a user’s device</li>
+  <li>Social engineering</li>
+  <li>MITM attacks</li>
+  <li>DDoS / Fuzzing / High-Bandwidth Attack</li>
 </ul>
 
-<p>Each code example in the later sections presumes that the SDK is already correctly initialized.</p>
+<h3 id="submitting-a-bug">Submitting a bug</h3>
+<ul>
+  <li>Submit your report to: <a href="https://docs.google.com/forms/d/e/1FAIpQLSeVzZfd-DDQNuVVDMkwgu4VSxmPnvB6OLo_sw_9CH1w34xoZA/viewform">Bug Bounty Submission Form</a></li>
+</ul>
+
+<h3 id="collecting-rewards">Collecting rewards</h3>
+<p>Rewards are considered based on the impact and severity of the vulnerability, with relation to the scope and quality of the report.</p>
+
+<ul>
+  <li>Critical Bugs: key leaks</li>
+  <li>High Bugs (At Least): invalid block or corrupted database</li>
+  <li>If a bug does not fit into the Critical or High criteria as defined above, it will be considered Medium, Low, or Note</li>
+  <li>Only unknown and first-submitted bugs are considered eligible for a reward</li>
+  <li>A detailed proof of concept has to be presented when claiming a Critical or High bug</li>
+</ul>
+
+<h3 id="disclosure-policy">Disclosure policy</h3>
+<p>Please discuss with us before disclosure of your bugs. Bitmark will endeavor to respond to reports within <strong>2-3 business days</strong> and will make every effort to quickly address reported vulnerabilities. To encourage responsible reporting, we commit that we will <strong>not take legal action</strong> against you or ask law enforcement to investigate you if you give us at least <strong>90 days</strong> from the time of your report to correct the issue before you make the reported vulnerability public.</p>
+
+<p>Contact us at: <a href="mailto:security@bitmark.com">security@bitmark.com</a></p>
+
+<h2 id="updates-to-this-document">Updates to this Document</h2>
+
+<p>Bitmark Inc. may update this document from time to time. We will maintain a <a href="https://github.com/bitmark-inc/docs/tree/master/pages/meta/contribute-to-the-protocol.md">revision history</a> in our revision control repository.</p>
+
+<h2 id="questions">Questions</h2>
+
+<p>Questions should be directed to: <a href="mailto:protocol@bitmark.com">protocol@bitmark.com</a>.</p>
 </div>
         
         <div class="col-md-3">

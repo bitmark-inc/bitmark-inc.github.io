@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
-<meta name="keywords" content=" sdk, sdk doc">
-<title>Getting Started | Bitmark Documentation</title>
+<meta name="keywords" content=" payment, payment verification">
+<title>Payment Verification | Bitmark Documentation</title>
 
 <link rel="stylesheet" href="/css/syntax.css">
 
@@ -142,7 +142,7 @@
 
 
 
-  <a class="email" title="Submit feedback" href="#" target="_blank" onclick="javascript:window.location='mailto:support@bitmark.com?subject=Bitmark Inc feedback&body=I have some feedback about the Getting Started page: ' + window.location.href;"><i class="fa fa-envelope-o"></i> Need help?</a>
+  <a class="email" title="Submit feedback" href="#" target="_blank" onclick="javascript:window.location='mailto:support@bitmark.com?subject=Bitmark Inc feedback&body=I have some feedback about the Payment Verification page: ' + window.location.href;"><i class="fa fa-envelope-o"></i> Need help?</a>
 
 </li>
 
@@ -160,7 +160,7 @@
                                 searchInput: document.getElementById('search-input'),
                                 resultsContainer: document.getElementById('results-container'),
                                 dataSource: '/search.json',
-                                searchResultTemplate: '<li><a href="{url}" title="Getting Started">{title}</a></li>',
+                                searchResultTemplate: '<li><a href="{url}" title="Payment Verification">{title}</a></li>',
                     noResultsText: 'No results found.',
                             limit: 10,
                             fuzzy: true,
@@ -275,7 +275,7 @@
           
           
           
-          <li><a title="Payment Verification" href="/in-depth/payment-verification"><b>Payment Verification</b></a></li>
+          <li class="active"><a title="Payment Verification" href="/in-depth/payment-verification"><b>Payment Verification</b></a></li>
           
           
           
@@ -367,7 +367,7 @@
         <!-- Content Column -->
         <div class="col-md-8" id="tg-sb-content">
             <!-- <div class="post-header">
-   <h1 class="post-title-main">Getting Started</h1>
+   <h1 class="post-title-main">Payment Verification</h1>
 </div> -->
 
 
@@ -380,140 +380,86 @@
     
 
     <div class="row">
-        <div class="col-md-9 page-article"><h1 id="overview">Overview</h1>
+        <div class="col-md-9 page-article"><h1 id="payment-verification">Payment Verification</h1>
 
-<p>The Bitmark Property System is a universal property system that confers the same property rights to digital assets that have long existed for physical assets. The system records ownership claims for digital assets on the public Bitmark blockchain using digital property titles known as Bitmark certificates. These digital assets can be any sort of digital object, including files, applications, code, and data.</p>
+<p>This section introduces:</p>
 
-<p>In the digital world:</p>
-
-<p><strong>digital property = digital asset + bitmark certificate (property rights)</strong></p>
-
-<p>You can work with the Bitmark blockchain to look up Bitmark certificates or even to register and transfer digital properties using the Bitmark SDK, a collection of libraries for different programming languages and mobile platforms. In addition to providing language-specific bindings to the Bitmark APIs, the SDK also simplifies local key management for signing and encryption.</p>
-
-<p>For simplicity, the term <em>Bitmark certificate</em> is shortened as <em>bitmark</em> in the SDK.</p>
-
-<h1 id="getting-started">Getting Started</h1>
-
-<h2 id="installing-sdk-packages">Installing SDK Packages</h2>
-
-<p>The Bitmark SDK can be installed for JavaScript, Swift, Java, or Go.</p>
-
-<ul class="uk-tab" data-uk-switcher="{connect:'#cca70a9e-8685-4089-9530-8c67e27d090c'}">
-
-	<li class="uk-active"><a href="#">JS</a></li>
-
-	<li><a href="#">Swift</a></li>
-
-	<li><a href="#">Java</a></li>
-
-	<li><a href="#">Go</a></li>
-
+<ul>
+  <li>What the Bitmark payment flow looks like</li>
+  <li>How <code class="language-plaintext highlighter-rouge">bitmarkd</code> validates a transaction that requires a payment from the Bitcoin or Litecoin blockchain</li>
 </ul>
 
-<ul id="cca70a9e-8685-4089-9530-8c67e27d090c" class="uk-switcher uk-margin">
+<h2 id="overview">Overview</h2>
 
-	<li>
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">$</span> <span class="nx">npm</span> <span class="nx">install</span> <span class="nx">bitmark</span><span class="o">-</span><span class="nx">sdk</span><span class="o">-</span><span class="nx">js</span>
+<p>When a user submits a new transaction to the Bitmark blockchain via RPC, <code class="language-plaintext highlighter-rouge">bitmarkd</code> will process it and return transaction details that include payment information.</p>
+
+<p>Someone then needs to pay for the Bitmark transaction using either the Bitcoin or Litecoin blockchain, in accordance with the payment information. This transaction must include the payment id returned by <code class="language-plaintext highlighter-rouge">bitmarkd</code> as part of the cryptocurrency transaction’s <code class="language-plaintext highlighter-rouge">OP_RETURN</code> opcode.</p>
+
+<p>Once the Bitmark blockchain detects a payment transaction from either blockchain, it marks the target Bitmark transaction as verified and waits for miners to put it into a block.</p>
+
+<h2 id="reservoir-module">Reservoir Module</h2>
+
+<p>Reservoir is the module that is used for validating and storing transactions.</p>
+
+<h3 id="processing-a-new-transaction">Processing a new transaction</h3>
+
+<p>When a new transaction is submitted to the Bitmark blockchain by RPC, it will be processed either by <code class="language-plaintext highlighter-rouge">StoreIssues</code> or <code class="language-plaintext highlighter-rouge">StoreTransfer</code>, according to the type of the transaction. This processing checks for the existence of the transaction and also generates a payment id.</p>
+
+<h3 id="generating-a-payment-id">Generating a payment id</h3>
+
+<p>The <code class="language-plaintext highlighter-rouge">StoreIssues</code> function packs issue records as binary data. This packed data is concatenated together and hashed by the SHA3 algorithm. The result of that hashing becomes the payment id. <code class="language-plaintext highlighter-rouge">StoreTransfer</code> works in the same way for transfer records; the only difference is that there will only be one transaction record in a transfer request.</p>
+
+<h3 id="changing-the-state-of-a-paid-transaction">Changing the state of a paid transaction</h3>
+
+<p>When <code class="language-plaintext highlighter-rouge">bitmarkd</code> detects a payment transaction from either blockchain, it invokes the function <code class="language-plaintext highlighter-rouge">SetTransferVerified</code> from Reservoir. The target Bitmark transaction is marked as verified and made available for miners to put it into a block.</p>
+
+<h3 id="pending-and-verified-structures">Pending and Verified Structures</h3>
+
+<p>The following structures manage all of the payment-related transaction states in <code class="language-plaintext highlighter-rouge">bitmarkd</code>. They assist <code class="language-plaintext highlighter-rouge">bitmarkd</code> in validating payments for transactions.</p>
+
+<p><strong>Pending Structures.</strong> When a transaction initially comes in, Reservoir checks it and saves it into pending structures. If it is a valid new transaction, it will be saved in <code class="language-plaintext highlighter-rouge">pendingIndex</code> with its transaction id as a key. Reservoir will also add another record with its payment id as key, based on the type of transaction.</p>
+
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pendingTransactions</span> <span class="k">map</span><span class="p">[</span><span class="n">pay</span><span class="o">.</span><span class="n">PayId</span><span class="p">]</span><span class="o">*</span><span class="n">transactionPaymentData</span>
+<span class="n">pendingFreeIssues</span>   <span class="k">map</span><span class="p">[</span><span class="n">pay</span><span class="o">.</span><span class="n">PayId</span><span class="p">]</span><span class="o">*</span><span class="n">issueFreeData</span>
+<span class="n">pendingPaidIssues</span>   <span class="k">map</span><span class="p">[</span><span class="n">pay</span><span class="o">.</span><span class="n">PayId</span><span class="p">]</span><span class="o">*</span><span class="n">issuePaymentData</span>
+<span class="n">pendingIndex</span>        <span class="k">map</span><span class="p">[</span><span class="n">merkle</span><span class="o">.</span><span class="n">Digest</span><span class="p">]</span><span class="n">pay</span><span class="o">.</span><span class="n">PayId</span>
 </code></pre></div></div>
-</li>
 
-	<li>
-<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pod</span> <span class="err">'</span><span class="kt">BitmarkSDK</span><span class="err">'</span>
+<p><strong>Verified Structures.</strong> Once the Bitmark blockchain detects a payment transaction from the Bitcoin or Litecoin blockchain, pending transactions are be moved to verified structures.</p>
+
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">verifiedTransactions</span> <span class="k">map</span><span class="p">[</span><span class="n">pay</span><span class="o">.</span><span class="n">PayId</span><span class="p">]</span><span class="o">*</span><span class="n">transactionData</span>
+<span class="n">verifiedFreeIssues</span>   <span class="k">map</span><span class="p">[</span><span class="n">pay</span><span class="o">.</span><span class="n">PayId</span><span class="p">]</span><span class="o">*</span><span class="n">issueFreeData</span>
+<span class="n">verifiedPaidIssues</span>   <span class="k">map</span><span class="p">[</span><span class="n">pay</span><span class="o">.</span><span class="n">PayId</span><span class="p">]</span><span class="o">*</span><span class="n">issuePaymentData</span>
+<span class="n">verifiedIndex</span>        <span class="k">map</span><span class="p">[</span><span class="n">merkle</span><span class="o">.</span><span class="n">Digest</span><span class="p">]</span><span class="n">pay</span><span class="o">.</span><span class="n">PayId</span>
 </code></pre></div></div>
-</li>
 
-	<li>
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// From your build.gradle</span>
-<span class="n">repositories</span> <span class="o">{</span>
-    <span class="n">jcenter</span><span class="o">()</span>
-    <span class="n">maven</span> <span class="o">{</span> <span class="n">url</span> <span class="err">'</span><span class="nl">https:</span><span class="c1">//oss.sonatype.org/content/repositories/snapshots/' } // For snapshot version</span>
-<span class="o">}</span>
+<p>Verified transactions are collected periodically to form a block foundation. The block data is broadcast to a <code class="language-plaintext highlighter-rouge">recorderd</code> so that a block can be generated.</p>
 
-<span class="n">dependencies</span> <span class="o">{</span>
-    <span class="n">implementation</span> <span class="err">'</span><span class="n">com</span><span class="o">.</span><span class="na">bitmark</span><span class="o">.</span><span class="na">sdk</span><span class="o">:</span><span class="n">java</span><span class="o">-</span><span class="nl">sdk:</span><span class="mf">2.1</span><span class="o">.</span><span class="mi">0</span><span class="err">'</span> <span class="c1">// Java SDK</span>
-    <span class="c1">// Or</span>
-    <span class="n">implementation</span> <span class="err">'</span><span class="n">com</span><span class="o">.</span><span class="na">bitmark</span><span class="o">.</span><span class="na">sdk</span><span class="o">:</span><span class="n">android</span><span class="o">-</span><span class="nl">sdk:</span><span class="mf">2.1</span><span class="o">.</span><span class="mi">0</span><span class="err">'</span> <span class="c1">// Android SDK</span>
-<span class="o">}</span>
-</code></pre></div></div>
-</li>
+<h2 id="payment-module">Payment Module</h2>
 
-	<li>
-<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">$</span> <span class="k">go</span> <span class="n">get</span> <span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">bitmark</span><span class="o">-</span><span class="n">inc</span><span class="o">/</span><span class="n">bitmark</span><span class="o">-</span><span class="n">sdk</span><span class="o">-</span><span class="k">go</span>
-</code></pre></div></div>
-</li>
+<p>The payment module defines how <code class="language-plaintext highlighter-rouge">bitmarkd</code> handles payment transactions from the Bitcoin and Litecoin blockchains. When the payment module is initialized, a background process is launched to check blockchain transactions using a mechanism defined in the configuration file.</p>
 
-</ul>
+<p>There are three mechanisms that can be used to allow <code class="language-plaintext highlighter-rouge">bitmarkd</code> to validate payments for transactions.</p>
 
-<h2 id="acquiring-an-api-token">Acquiring an API token</h2>
+<ol>
+  <li>Using RPC APIs</li>
+  <li>Using Discovery Service</li>
+  <li>Using Bitcoin peer-to-peer protocol (WIP)</li>
+</ol>
 
-<p>An API token is required to authenticate requests to the Bitmark API.</p>
+<h3 id="using-rpc-apis">Using RPC APIs</h3>
 
-<p>Please contact <a href="mailto:support@bitmark.com">Bitmark support</a> to create a developer account and get an API token.</p>
+<p>The Bitcoin and Litecoin daemons provide RPC APIs that can be used to invoke and query transactions on those blockchains. This is the simplest way to monitor transactions from the Bitcoin and Litecoin blockchains. Using this method, <code class="language-plaintext highlighter-rouge">bitmarkd</code> will check the block header for the cryptocurrency blockchains periodically. When a block reaches certain confirmation, <code class="language-plaintext highlighter-rouge">bitmarkd</code> will pull the block data and scan all transactions in it. If a transaction contains an <code class="language-plaintext highlighter-rouge">OP_RETURN</code> starting with <code class="language-plaintext highlighter-rouge">6a30</code>, it will be treated as a potential payment transaction and sent to Reservoir for pending transaction validation.</p>
 
-<h2 id="configuring-the-sdk">Configuring the SDK</h2>
+<p>The main drawback of this method is that Bitmark node runners will need to host a full node for both the Bitcoin and Litecoin blockchains. This consumes both computational power and storage because it requires recording of each blockchain’s block data and validation of the healthiness of both chains.</p>
 
-<p>Before working with the Bitmark blockchain, configure the SDK for your API token and the Bitmark network that you’ll be using.</p>
+<h3 id="using-discovery-service">Using Discovery Service</h3>
 
-<ul class="uk-tab" data-uk-switcher="{connect:'#b14a31ff-8ce9-4756-a720-7b7c89c66f05'}">
+<p>Discovery is an open-source service that is built on top of blockchain nodes. It watches and extracts all potential payment transactions from both the Bitcoin and Litecoin blockchains simultaneously. It also provides an abstract interface using the ZeroMQ PUBSUB pattern, so that <code class="language-plaintext highlighter-rouge">bitmarkd</code> can listen to only related transaction, without traversal of whole blocks.</p>
 
-	<li class="uk-active"><a href="#">JS</a></li>
+<h3 id="using-bitcoin-peer-to-peer-protocol-wip">Using Bitcoin peer-to-peer protocol (WIP)</h3>
 
-	<li><a href="#">Swift</a></li>
-
-	<li><a href="#">Java</a></li>
-
-	<li><a href="#">Go</a></li>
-
-</ul>
-
-<ul id="b14a31ff-8ce9-4756-a720-7b7c89c66f05" class="uk-switcher uk-margin">
-
-	<li>
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">sdk</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">bitmark-sdk-js</span><span class="dl">'</span><span class="p">);</span>
-
-<span class="kd">const</span> <span class="nx">config</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="na">apiToken</span><span class="p">:</span> <span class="dl">"</span><span class="s2">api-token</span><span class="dl">"</span><span class="p">,</span>
-  <span class="na">network</span><span class="p">:</span> <span class="dl">"</span><span class="s2">testnet</span><span class="dl">"</span>
-<span class="p">};</span>
-
-<span class="nx">sdk</span><span class="p">.</span><span class="nx">init</span><span class="p">(</span><span class="nx">config</span><span class="p">);</span>
-</code></pre></div></div>
-</li>
-
-	<li>
-<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">import</span> <span class="kt">BitmarkSDK</span>
-
-<span class="kt">BitmarkSDK</span><span class="o">.</span><span class="nf">initialize</span><span class="p">(</span><span class="nv">config</span><span class="p">:</span> <span class="kt">SDKConfig</span><span class="p">(</span><span class="nv">apiToken</span><span class="p">:</span> <span class="s">"api-token"</span><span class="p">,</span>
-                                        <span class="nv">network</span><span class="p">:</span> <span class="o">.</span><span class="n">testnet</span><span class="p">,</span>
-                                        <span class="nv">urlSession</span><span class="p">:</span> <span class="kt">URLSession</span><span class="o">.</span><span class="n">shared</span><span class="p">))</span>
-</code></pre></div></div>
-</li>
-
-	<li>
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">final</span> <span class="nc">GlobalConfiguration</span><span class="o">.</span><span class="na">Builder</span> <span class="n">builder</span> <span class="o">=</span> <span class="nc">GlobalConfiguration</span><span class="o">.</span><span class="na">builder</span><span class="o">().</span><span class="na">withApiToken</span><span class="o">(</span><span class="s">"api-token"</span><span class="o">).</span><span class="na">withNetwork</span><span class="o">(</span><span class="nc">Network</span><span class="o">.</span><span class="na">LIVE_NET</span><span class="o">);</span>
-<span class="nc">BitmarkSDK</span><span class="o">.</span><span class="na">init</span><span class="o">(</span><span class="n">builder</span><span class="o">);</span>
-</code></pre></div></div>
-</li>
-
-	<li>
-<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="n">sdk</span> <span class="s">"github.com/bitmark/bitmark-inc/bitmark-sdk-go"</span>
-
-<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
-	<span class="n">config</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="n">sdk</span><span class="o">.</span><span class="n">Config</span><span class="p">{</span>
-		<span class="n">APIToken</span><span class="o">:</span> <span class="s">"YOUR API TOKEN"</span><span class="p">,</span>
-		<span class="n">Network</span><span class="o">:</span>  <span class="n">sdk</span><span class="o">.</span><span class="n">Testnet</span><span class="p">,</span>
-		<span class="n">HTTPClient</span><span class="o">:</span> <span class="o">&amp;</span><span class="n">http</span><span class="o">.</span><span class="n">Client</span><span class="p">{</span>
-			<span class="n">Timeout</span><span class="o">:</span> <span class="m">10</span> <span class="o">*</span> <span class="n">time</span><span class="o">.</span><span class="n">Second</span><span class="p">,</span>
-		<span class="p">},</span>
-	<span class="p">}</span>
-	<span class="n">sdk</span><span class="o">.</span><span class="n">Init</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
-<span class="p">}</span>
-</code></pre></div></div>
-</li>
-
-</ul>
-
-<p>Each code example in the later sections presumes that the SDK is already correctly initialized.</p>
+<p>Bitcoin P2P protocol is the mechanism that Bitcoin daemons use to communicate with each other on the network. By using this protocol, <code class="language-plaintext highlighter-rouge">bitmarkd</code> doesn’t need to rely on specific centralized nodes. instead, the validation process is decentralised. With lessons learned from the SPV client, Bitmark only keeps block headers for blockchains. All detected payment transactions are then sent to Reservoir by the function <code class="language-plaintext highlighter-rouge">SetTransferVerified</code>. This dramatically reduces storage costs compared to hosting a full node for Bitcoin and Litecoin.</p>
 </div>
         
         <div class="col-md-3">

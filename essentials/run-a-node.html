@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
-<meta name="keywords" content=" sdk, sdk doc">
-<title>Getting Started | Bitmark Documentation</title>
+<meta name="keywords" content=" node">
+<title>Run a Node | Bitmark Documentation</title>
 
 <link rel="stylesheet" href="/css/syntax.css">
 
@@ -142,7 +142,7 @@
 
 
 
-  <a class="email" title="Submit feedback" href="#" target="_blank" onclick="javascript:window.location='mailto:support@bitmark.com?subject=Bitmark Inc feedback&body=I have some feedback about the Getting Started page: ' + window.location.href;"><i class="fa fa-envelope-o"></i> Need help?</a>
+  <a class="email" title="Submit feedback" href="#" target="_blank" onclick="javascript:window.location='mailto:support@bitmark.com?subject=Bitmark Inc feedback&body=I have some feedback about the Run a Node page: ' + window.location.href;"><i class="fa fa-envelope-o"></i> Need help?</a>
 
 </li>
 
@@ -160,7 +160,7 @@
                                 searchInput: document.getElementById('search-input'),
                                 resultsContainer: document.getElementById('results-container'),
                                 dataSource: '/search.json',
-                                searchResultTemplate: '<li><a href="{url}" title="Getting Started">{title}</a></li>',
+                                searchResultTemplate: '<li><a href="{url}" title="Run a Node">{title}</a></li>',
                     noResultsText: 'No results found.',
                             limit: 10,
                             fuzzy: true,
@@ -238,7 +238,7 @@
           
           
           
-          <li><a title="Run a Node" href="/essentials/run-a-node"><b>Run a Node</b></a></li>
+          <li class="active"><a title="Run a Node" href="/essentials/run-a-node"><b>Run a Node</b></a></li>
           
           
           
@@ -367,7 +367,7 @@
         <!-- Content Column -->
         <div class="col-md-8" id="tg-sb-content">
             <!-- <div class="post-header">
-   <h1 class="post-title-main">Getting Started</h1>
+   <h1 class="post-title-main">Run a Node</h1>
 </div> -->
 
 
@@ -380,140 +380,156 @@
     
 
     <div class="row">
-        <div class="col-md-9 page-article"><h1 id="overview">Overview</h1>
+        <div class="col-md-9 page-article"><h1 id="run-a-node">Run a Node</h1>
 
-<p>The Bitmark Property System is a universal property system that confers the same property rights to digital assets that have long existed for physical assets. The system records ownership claims for digital assets on the public Bitmark blockchain using digital property titles known as Bitmark certificates. These digital assets can be any sort of digital object, including files, applications, code, and data.</p>
+<p>A full-node of bitmarkd consists of a <code class="language-plaintext highlighter-rouge">bitmarkd</code>, a <code class="language-plaintext highlighter-rouge">recorderd</code>, a payment system, a <code class="language-plaintext highlighter-rouge">litecoind</code>, and a <code class="language-plaintext highlighter-rouge">bitcoind</code>. The <code class="language-plaintext highlighter-rouge">bitmarkd</code> service  verifies and records transactions on the Bitmark blockchain while the <code class="language-plaintext highlighter-rouge">recorderd</code> service computes the Bitmark proof-of-work algorithm that allows nodes to compete to win blocks on the Bitmark blockchain.</p>
 
-<p>In the digital world:</p>
+<p>This tutorial explains how to set up the <code class="language-plaintext highlighter-rouge">bitmarkd</code> and/or the <code class="language-plaintext highlighter-rouge">recorderd</code> services by hand.</p>
 
-<p><strong>digital property = digital asset + bitmark certificate (property rights)</strong></p>
+<h2 id="prerequisites">Prerequisites</h2>
 
-<p>You can work with the Bitmark blockchain to look up Bitmark certificates or even to register and transfer digital properties using the Bitmark SDK, a collection of libraries for different programming languages and mobile platforms. In addition to providing language-specific bindings to the Bitmark APIs, the SDK also simplifies local key management for signing and encryption.</p>
-
-<p>For simplicity, the term <em>Bitmark certificate</em> is shortened as <em>bitmark</em> in the SDK.</p>
-
-<h1 id="getting-started">Getting Started</h1>
-
-<h2 id="installing-sdk-packages">Installing SDK Packages</h2>
-
-<p>The Bitmark SDK can be installed for JavaScript, Swift, Java, or Go.</p>
-
-<ul class="uk-tab" data-uk-switcher="{connect:'#cca70a9e-8685-4089-9530-8c67e27d090c'}">
-
-	<li class="uk-active"><a href="#">JS</a></li>
-
-	<li><a href="#">Swift</a></li>
-
-	<li><a href="#">Java</a></li>
-
-	<li><a href="#">Go</a></li>
-
+<ul>
+  <li>You must have and know your <strong>public IP</strong> address.</li>
+  <li>You must have <strong>a Bitcoin and a Litecoin address</strong> for receiving mining rewards.</li>
+  <li>Your environment must be open for incoming connections through port 2136.</li>
+  <li>Hardware minimum requirements:
+    <ul>
+      <li>memory &gt;= 2 GB</li>
+      <li>free disk space &gt;= 20 GB</li>
+      <li>broadband Internet connection with upload speeds of at least 400 kilobits (50 kilobytes) per second</li>
+    </ul>
+  </li>
 </ul>
 
-<ul id="cca70a9e-8685-4089-9530-8c67e27d090c" class="uk-switcher uk-margin">
+<h2 id="installing-a-bitmark-node-and-generating-required-keys-and-certificates">Installing a Bitmark Node and Generating Required Keys and Certificates</h2>
 
-	<li>
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">$</span> <span class="nx">npm</span> <span class="nx">install</span> <span class="nx">bitmark</span><span class="o">-</span><span class="nx">sdk</span><span class="o">-</span><span class="nx">js</span>
+<p>Bitmark nodes can be installed on a variety of different operating systems, with pre-built packages available for FreeBSD, Ubuntu, and macOS.</p>
+
+<p>If some special functionality is required, or there are no available packages yet for your OS, a Bitmark node can also be compiled from source files. For more information, see <a href="#building-from-source">Building From Source</a>.</p>
+
+<h3 id="freebsd">FreeBSD</h3>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>pkg <span class="nb">install </span>bitmark
+<span class="nv">$ </span>service bitmarkd keygen
+<span class="nv">$ </span>service recorderd keygen
 </code></pre></div></div>
-</li>
 
-	<li>
-<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pod</span> <span class="err">'</span><span class="kt">BitmarkSDK</span><span class="err">'</span>
+<h3 id="ubuntu">Ubuntu</h3>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>add-apt-repository <span class="nt">-y</span> ppa:bitmark/bitmarkd
+<span class="nv">$ </span>apt update
+<span class="nv">$ </span>apt <span class="nb">install </span>bitmarkd
 </code></pre></div></div>
-</li>
 
-	<li>
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// From your build.gradle</span>
-<span class="n">repositories</span> <span class="o">{</span>
-    <span class="n">jcenter</span><span class="o">()</span>
-    <span class="n">maven</span> <span class="o">{</span> <span class="n">url</span> <span class="err">'</span><span class="nl">https:</span><span class="c1">//oss.sonatype.org/content/repositories/snapshots/' } // For snapshot version</span>
-<span class="o">}</span>
+<h3 id="macos">macOS</h3>
 
-<span class="n">dependencies</span> <span class="o">{</span>
-    <span class="n">implementation</span> <span class="err">'</span><span class="n">com</span><span class="o">.</span><span class="na">bitmark</span><span class="o">.</span><span class="na">sdk</span><span class="o">:</span><span class="n">java</span><span class="o">-</span><span class="nl">sdk:</span><span class="mf">2.1</span><span class="o">.</span><span class="mi">0</span><span class="err">'</span> <span class="c1">// Java SDK</span>
-    <span class="c1">// Or</span>
-    <span class="n">implementation</span> <span class="err">'</span><span class="n">com</span><span class="o">.</span><span class="na">bitmark</span><span class="o">.</span><span class="na">sdk</span><span class="o">:</span><span class="n">android</span><span class="o">-</span><span class="nl">sdk:</span><span class="mf">2.1</span><span class="o">.</span><span class="mi">0</span><span class="err">'</span> <span class="c1">// Android SDK</span>
-<span class="o">}</span>
+<p>You need to install Brew:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>/usr/bin/ruby <span class="nt">-e</span> <span class="s2">"</span><span class="si">$(</span>curl <span class="nt">-fsSL</span> https://raw.githubusercontent.com/Homebrew/install/master/install<span class="si">)</span><span class="s2">"</span>
 </code></pre></div></div>
-</li>
 
-	<li>
-<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">$</span> <span class="k">go</span> <span class="n">get</span> <span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">bitmark</span><span class="o">-</span><span class="n">inc</span><span class="o">/</span><span class="n">bitmark</span><span class="o">-</span><span class="n">sdk</span><span class="o">-</span><span class="k">go</span>
+<p>Visit the <a href="https://brew.sh/">Brew</a> site for more information on the installation and configuration options.</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>brew tap bitmark-inc/bitmark
+<span class="nv">$ </span>brew <span class="nb">install </span>bitmarkd
 </code></pre></div></div>
-</li>
 
-</ul>
+<h3 id="building-from-source">Building From Source</h3>
 
-<h2 id="acquiring-an-api-token">Acquiring an API token</h2>
+<p><a href="https://github.com/bitmark-inc/bitmarkd#operating-system-specific-setup-commands">See detailed instructions here.</a></p>
 
-<p>An API token is required to authenticate requests to the Bitmark API.</p>
+<h2 id="setting-up-and-running-bitmarkd">Setting up and running bitmarkd</h2>
 
-<p>Please contact <a href="mailto:support@bitmark.com">Bitmark support</a> to create a developer account and get an API token.</p>
+<p>The installation includes a sample configuration which has some embedded instructions for quick setup, and only a few items near the beginning of the file need to be changed for basic use. The sample configuration could be found at:</p>
 
-<h2 id="configuring-the-sdk">Configuring the SDK</h2>
+<table>
+  <thead>
+    <tr>
+      <th>OS</th>
+      <th>Sample configuration file path</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>FreeBSD</td>
+      <td><code class="language-plaintext highlighter-rouge">/usr/local/etc/bitmarkd.sample</code></td>
+    </tr>
+    <tr>
+      <td>Ubuntu</td>
+      <td><code class="language-plaintext highlighter-rouge">/etc/bitmarkd.sample</code></td>
+    </tr>
+    <tr>
+      <td>macOS</td>
+      <td><code class="language-plaintext highlighter-rouge">/usr/local/etc/bitmarkd/bitmarkd.sample</code></td>
+    </tr>
+  </tbody>
+</table>
 
-<p>Before working with the Bitmark blockchain, configure the SDK for your API token and the Bitmark network that you’ll be using.</p>
+<p>Copy the sample configuration.</p>
 
-<ul class="uk-tab" data-uk-switcher="{connect:'#b14a31ff-8ce9-4756-a720-7b7c89c66f05'}">
-
-	<li class="uk-active"><a href="#">JS</a></li>
-
-	<li><a href="#">Swift</a></li>
-
-	<li><a href="#">Java</a></li>
-
-	<li><a href="#">Go</a></li>
-
-</ul>
-
-<ul id="b14a31ff-8ce9-4756-a720-7b7c89c66f05" class="uk-switcher uk-margin">
-
-	<li>
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">sdk</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">bitmark-sdk-js</span><span class="dl">'</span><span class="p">);</span>
-
-<span class="kd">const</span> <span class="nx">config</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="na">apiToken</span><span class="p">:</span> <span class="dl">"</span><span class="s2">api-token</span><span class="dl">"</span><span class="p">,</span>
-  <span class="na">network</span><span class="p">:</span> <span class="dl">"</span><span class="s2">testnet</span><span class="dl">"</span>
-<span class="p">};</span>
-
-<span class="nx">sdk</span><span class="p">.</span><span class="nx">init</span><span class="p">(</span><span class="nx">config</span><span class="p">);</span>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">cp</span> <span class="k">${</span><span class="nv">SAMPLE_CONFIGURATION_PATH</span><span class="k">}</span>  ~/.bitmarkd.conf
 </code></pre></div></div>
-</li>
 
-	<li>
-<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">import</span> <span class="kt">BitmarkSDK</span>
+<p>Edit the <code class="language-plaintext highlighter-rouge">bitmarkd.conf</code> to set up appropriate chain, cryptocurrencies addresses, IP addresses, and ports.</p>
 
-<span class="kt">BitmarkSDK</span><span class="o">.</span><span class="nf">initialize</span><span class="p">(</span><span class="nv">config</span><span class="p">:</span> <span class="kt">SDKConfig</span><span class="p">(</span><span class="nv">apiToken</span><span class="p">:</span> <span class="s">"api-token"</span><span class="p">,</span>
-                                        <span class="nv">network</span><span class="p">:</span> <span class="o">.</span><span class="n">testnet</span><span class="p">,</span>
-                                        <span class="nv">urlSession</span><span class="p">:</span> <span class="kt">URLSession</span><span class="o">.</span><span class="n">shared</span><span class="p">))</span>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="k">${</span><span class="nv">EDITOR</span><span class="k">}</span> ~/.bitmarkd.conf	
 </code></pre></div></div>
-</li>
 
-	<li>
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">final</span> <span class="nc">GlobalConfiguration</span><span class="o">.</span><span class="na">Builder</span> <span class="n">builder</span> <span class="o">=</span> <span class="nc">GlobalConfiguration</span><span class="o">.</span><span class="na">builder</span><span class="o">().</span><span class="na">withApiToken</span><span class="o">(</span><span class="s">"api-token"</span><span class="o">).</span><span class="na">withNetwork</span><span class="o">(</span><span class="nc">Network</span><span class="o">.</span><span class="na">LIVE_NET</span><span class="o">);</span>
-<span class="nc">BitmarkSDK</span><span class="o">.</span><span class="na">init</span><span class="o">(</span><span class="n">builder</span><span class="o">);</span>
+<p>Finally, start the program.</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>bitmarkd <span class="nt">--config-file</span><span class="o">=</span>~/.bitmarkd.conf start
 </code></pre></div></div>
-</li>
 
-	<li>
-<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="n">sdk</span> <span class="s">"github.com/bitmark/bitmark-inc/bitmark-sdk-go"</span>
+<p>For more information on <code class="language-plaintext highlighter-rouge">bitmarkd</code> sub-commands, run the following command:</p>
 
-<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
-	<span class="n">config</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="n">sdk</span><span class="o">.</span><span class="n">Config</span><span class="p">{</span>
-		<span class="n">APIToken</span><span class="o">:</span> <span class="s">"YOUR API TOKEN"</span><span class="p">,</span>
-		<span class="n">Network</span><span class="o">:</span>  <span class="n">sdk</span><span class="o">.</span><span class="n">Testnet</span><span class="p">,</span>
-		<span class="n">HTTPClient</span><span class="o">:</span> <span class="o">&amp;</span><span class="n">http</span><span class="o">.</span><span class="n">Client</span><span class="p">{</span>
-			<span class="n">Timeout</span><span class="o">:</span> <span class="m">10</span> <span class="o">*</span> <span class="n">time</span><span class="o">.</span><span class="n">Second</span><span class="p">,</span>
-		<span class="p">},</span>
-	<span class="p">}</span>
-	<span class="n">sdk</span><span class="o">.</span><span class="n">Init</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
-<span class="p">}</span>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>bitmarkd <span class="nt">--config-file</span><span class="o">=</span>~/.bitmarkd.conf <span class="nb">help</span>
 </code></pre></div></div>
-</li>
 
-</ul>
+<h2 id="setting-up-and-running-recorderd">Setting up and running recorderd</h2>
 
-<p>Each code example in the later sections presumes that the SDK is already correctly initialized.</p>
+<p><code class="language-plaintext highlighter-rouge">recorderd</code> is the mining program for the Bitmark Property System, which can optionally be run to support the Bitmark blockchain (and to earn bitmarks on blocks).</p>
+
+<p>Setting up <code class="language-plaintext highlighter-rouge">recorderd</code> is similar to setting up <code class="language-plaintext highlighter-rouge">bitmarkd</code>.</p>
+
+<p>First, setup and edit your configuration file. For mining using the local <code class="language-plaintext highlighter-rouge">bitmarkd</code>, the sample configuration should work without changes.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>OS</th>
+      <th>Sample configuration file path</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>FreeBSD</td>
+      <td><code class="language-plaintext highlighter-rouge">/usr/local/etc/recorderd.conf</code></td>
+    </tr>
+    <tr>
+      <td>Ubuntu</td>
+      <td><code class="language-plaintext highlighter-rouge">/etc/recorderd.conf</code></td>
+    </tr>
+    <tr>
+      <td>macOS</td>
+      <td><code class="language-plaintext highlighter-rouge">/usr/local/etc/recorderd/recorderd.conf</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Copy the sample configuration.</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">cp</span> <span class="k">${</span><span class="nv">SAMPLE_CONFIGURATION_PATH</span><span class="k">}</span>  ~/.recorderd.conf
+</code></pre></div></div>
+
+<p>Start the program.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ recorderd --config-file=~/.recorderd.conf start
+</code></pre></div></div>
+
+<p>For more information on <code class="language-plaintext highlighter-rouge">recorderd</code> sub-commands, run the following command:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>recorderd <span class="nt">--config-file</span><span class="o">=</span>~/.recorderd.conf <span class="nb">help</span>
+</code></pre></div></div>
 </div>
         
         <div class="col-md-3">

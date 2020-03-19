@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
-<meta name="keywords" content=" sdk, sdk doc">
-<title>Getting Started | Bitmark Documentation</title>
+<meta name="keywords" content=" sdk, web socket">
+<title>Receiving WebSocket Events | Bitmark Documentation</title>
 
 <link rel="stylesheet" href="/css/syntax.css">
 
@@ -142,7 +142,7 @@
 
 
 
-  <a class="email" title="Submit feedback" href="#" target="_blank" onclick="javascript:window.location='mailto:support@bitmark.com?subject=Bitmark Inc feedback&body=I have some feedback about the Getting Started page: ' + window.location.href;"><i class="fa fa-envelope-o"></i> Need help?</a>
+  <a class="email" title="Submit feedback" href="#" target="_blank" onclick="javascript:window.location='mailto:support@bitmark.com?subject=Bitmark Inc feedback&body=I have some feedback about the Receiving WebSocket Events page: ' + window.location.href;"><i class="fa fa-envelope-o"></i> Need help?</a>
 
 </li>
 
@@ -160,7 +160,7 @@
                                 searchInput: document.getElementById('search-input'),
                                 resultsContainer: document.getElementById('results-container'),
                                 dataSource: '/search.json',
-                                searchResultTemplate: '<li><a href="{url}" title="Getting Started">{title}</a></li>',
+                                searchResultTemplate: '<li><a href="{url}" title="Receiving WebSocket Events">{title}</a></li>',
                     noResultsText: 'No results found.',
                             limit: 10,
                             fuzzy: true,
@@ -367,7 +367,7 @@
         <!-- Content Column -->
         <div class="col-md-8" id="tg-sb-content">
             <!-- <div class="post-header">
-   <h1 class="post-title-main">Getting Started</h1>
+   <h1 class="post-title-main">Receiving WebSocket Events</h1>
 </div> -->
 
 
@@ -380,140 +380,141 @@
     
 
     <div class="row">
-        <div class="col-md-9 page-article"><h1 id="overview">Overview</h1>
+        <div class="col-md-9 page-article"><h1 id="receiving-websocket-events">Receiving WebSocket Events</h1>
+<p>Realtime event triggering is trending in modern application development. It helps application to always be up to date and so provides better user experiences.
+Bitmark SDK offers Web Socket event triggering so that the application can be notified immediately when anything changes.</p>
 
-<p>The Bitmark Property System is a universal property system that confers the same property rights to digital assets that have long existed for physical assets. The system records ownership claims for digital assets on the public Bitmark blockchain using digital property titles known as Bitmark certificates. These digital assets can be any sort of digital object, including files, applications, code, and data.</p>
+<h2 id="event">Event</h2>
+<ul>
+  <li>New block: Sent when the Bitmark blockchain has a new block.
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">blockNumber</code> : new block number</li>
+    </ul>
+  </li>
+  <li>Bitmark changed: Sent when users issue new bitmarks, receive new bitmarks, or send them to a new owner.
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">bitmarkId</code>: the id of the bitmark that changed</li>
+      <li><code class="language-plaintext highlighter-rouge">txId</code>: the corresponding transaction id</li>
+      <li><code class="language-plaintext highlighter-rouge">presence</code>: whether the bitmark is owned or not by the corresponding <code class="language-plaintext highlighter-rouge">Account</code></li>
+    </ul>
+  </li>
+  <li>New transfer offer: Sent when users receive new transfer offers, for two-signatures transfer.
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">bitmarkId</code>: the id of the bitmark that’s offered.</li>
+    </ul>
+  </li>
+  <li>New pending issuance: Sent when users issue new bitmarks.
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">bitmarkId</code> : the id of the bitmark that’s issuing.</li>
+    </ul>
+  </li>
+  <li>New pending transfer: Sent when a transfer occurs, to both sender and receiver.
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">txId</code>: the transaction id</li>
+      <li><code class="language-plaintext highlighter-rouge">owner</code>: the recipient of this transfer</li>
+      <li><code class="language-plaintext highlighter-rouge">prevTxId</code>: the previous transaction id</li>
+      <li><code class="language-plaintext highlighter-rouge">prevOwner</code>: the sender who made the transfer</li>
+    </ul>
+  </li>
+</ul>
 
-<p>In the digital world:</p>
+<p>Note: The attribute names could be different depending on the SDK used. This document refers specifically to the Java SDK.</p>
 
-<p><strong>digital property = digital asset + bitmark certificate (property rights)</strong></p>
+<h3 id="connectdisconnect">Connect/Disconnect</h3>
+<ul class="uk-tab" data-uk-switcher="{connect:'#50c6d9e1-5c86-4984-91f6-77dbe510038e'}">
 
-<p>You can work with the Bitmark blockchain to look up Bitmark certificates or even to register and transfer digital properties using the Bitmark SDK, a collection of libraries for different programming languages and mobile platforms. In addition to providing language-specific bindings to the Bitmark APIs, the SDK also simplifies local key management for signing and encryption.</p>
-
-<p>For simplicity, the term <em>Bitmark certificate</em> is shortened as <em>bitmark</em> in the SDK.</p>
-
-<h1 id="getting-started">Getting Started</h1>
-
-<h2 id="installing-sdk-packages">Installing SDK Packages</h2>
-
-<p>The Bitmark SDK can be installed for JavaScript, Swift, Java, or Go.</p>
-
-<ul class="uk-tab" data-uk-switcher="{connect:'#cca70a9e-8685-4089-9530-8c67e27d090c'}">
-
-	<li class="uk-active"><a href="#">JS</a></li>
+	<li class="uk-active"><a href="#">Java</a></li>
 
 	<li><a href="#">Swift</a></li>
 
-	<li><a href="#">Java</a></li>
+</ul>
 
-	<li><a href="#">Go</a></li>
+<ul id="50c6d9e1-5c86-4984-91f6-77dbe510038e" class="uk-switcher uk-margin">
+
+	<li>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">WebSocket</span><span class="o">.</span><span class="na">ConnectionEvent</span> <span class="n">connEvent</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">WebSocket</span><span class="o">.</span><span class="na">ConnectionEvent</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onConnected</span><span class="o">()</span> <span class="o">{</span>
+
+            <span class="o">}</span>
+
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onDisconnected</span><span class="o">()</span> <span class="o">{</span>
+
+            <span class="o">}</span>
+
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onConnectionError</span><span class="o">(</span><span class="nc">Throwable</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+
+            <span class="o">}</span>
+        <span class="o">}</span>
+<span class="nc">BitmarkWebSocket</span> <span class="n">ws</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BitmarkWebSocketService</span><span class="o">();</span>
+
+<span class="c1">// connect</span>
+<span class="n">ws</span><span class="o">.</span><span class="na">connect</span><span class="o">(</span><span class="n">authKeyPair</span><span class="o">);</span>
+
+<span class="c1">// disconnect</span>
+<span class="n">ws</span><span class="o">.</span><span class="na">disconnect</span><span class="o">();</span>
+</code></pre></div></div>
+</li>
+
+	<li>
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// TODO</span>
+</code></pre></div></div>
+</li>
 
 </ul>
 
-<ul id="cca70a9e-8685-4089-9530-8c67e27d090c" class="uk-switcher uk-margin">
+<h3 id="subscribeunsubscribe">Subscribe/Unsubscribe</h3>
+<ul class="uk-tab" data-uk-switcher="{connect:'#2c6f91ce-1d23-461d-9d8e-0ab757d8500c'}">
 
-	<li>
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">$</span> <span class="nx">npm</span> <span class="nx">install</span> <span class="nx">bitmark</span><span class="o">-</span><span class="nx">sdk</span><span class="o">-</span><span class="nx">js</span>
-</code></pre></div></div>
-</li>
-
-	<li>
-<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pod</span> <span class="err">'</span><span class="kt">BitmarkSDK</span><span class="err">'</span>
-</code></pre></div></div>
-</li>
-
-	<li>
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// From your build.gradle</span>
-<span class="n">repositories</span> <span class="o">{</span>
-    <span class="n">jcenter</span><span class="o">()</span>
-    <span class="n">maven</span> <span class="o">{</span> <span class="n">url</span> <span class="err">'</span><span class="nl">https:</span><span class="c1">//oss.sonatype.org/content/repositories/snapshots/' } // For snapshot version</span>
-<span class="o">}</span>
-
-<span class="n">dependencies</span> <span class="o">{</span>
-    <span class="n">implementation</span> <span class="err">'</span><span class="n">com</span><span class="o">.</span><span class="na">bitmark</span><span class="o">.</span><span class="na">sdk</span><span class="o">:</span><span class="n">java</span><span class="o">-</span><span class="nl">sdk:</span><span class="mf">2.1</span><span class="o">.</span><span class="mi">0</span><span class="err">'</span> <span class="c1">// Java SDK</span>
-    <span class="c1">// Or</span>
-    <span class="n">implementation</span> <span class="err">'</span><span class="n">com</span><span class="o">.</span><span class="na">bitmark</span><span class="o">.</span><span class="na">sdk</span><span class="o">:</span><span class="n">android</span><span class="o">-</span><span class="nl">sdk:</span><span class="mf">2.1</span><span class="o">.</span><span class="mi">0</span><span class="err">'</span> <span class="c1">// Android SDK</span>
-<span class="o">}</span>
-</code></pre></div></div>
-</li>
-
-	<li>
-<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">$</span> <span class="k">go</span> <span class="n">get</span> <span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">bitmark</span><span class="o">-</span><span class="n">inc</span><span class="o">/</span><span class="n">bitmark</span><span class="o">-</span><span class="n">sdk</span><span class="o">-</span><span class="k">go</span>
-</code></pre></div></div>
-</li>
-
-</ul>
-
-<h2 id="acquiring-an-api-token">Acquiring an API token</h2>
-
-<p>An API token is required to authenticate requests to the Bitmark API.</p>
-
-<p>Please contact <a href="mailto:support@bitmark.com">Bitmark support</a> to create a developer account and get an API token.</p>
-
-<h2 id="configuring-the-sdk">Configuring the SDK</h2>
-
-<p>Before working with the Bitmark blockchain, configure the SDK for your API token and the Bitmark network that you’ll be using.</p>
-
-<ul class="uk-tab" data-uk-switcher="{connect:'#b14a31ff-8ce9-4756-a720-7b7c89c66f05'}">
-
-	<li class="uk-active"><a href="#">JS</a></li>
+	<li class="uk-active"><a href="#">Java</a></li>
 
 	<li><a href="#">Swift</a></li>
 
-	<li><a href="#">Java</a></li>
-
-	<li><a href="#">Go</a></li>
-
 </ul>
 
-<ul id="b14a31ff-8ce9-4756-a720-7b7c89c66f05" class="uk-switcher uk-margin">
+<ul id="2c6f91ce-1d23-461d-9d8e-0ab757d8500c" class="uk-switcher uk-margin">
 
 	<li>
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">sdk</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">bitmark-sdk-js</span><span class="dl">'</span><span class="p">);</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// subscribe</span>
+<span class="n">ws</span><span class="o">.</span><span class="na">subscribeBitmarkChanged</span><span class="o">(</span>
+                <span class="n">address</span><span class="o">,</span>
+                <span class="k">new</span> <span class="nc">BitmarkWebSocket</span><span class="o">.</span><span class="na">BitmarkChangedEvent</span><span class="o">()</span> <span class="o">{</span>
 
-<span class="kd">const</span> <span class="nx">config</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="na">apiToken</span><span class="p">:</span> <span class="dl">"</span><span class="s2">api-token</span><span class="dl">"</span><span class="p">,</span>
-  <span class="na">network</span><span class="p">:</span> <span class="dl">"</span><span class="s2">testnet</span><span class="dl">"</span>
-<span class="p">};</span>
+                    <span class="nd">@Override</span>
+                    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onChanged</span><span class="o">(</span>
+                            <span class="nc">String</span> <span class="n">bitmarkId</span><span class="o">,</span>
+                            <span class="nc">String</span> <span class="n">txId</span><span class="o">,</span>
+                            <span class="kt">boolean</span> <span class="n">presence</span>
+                    <span class="o">)</span> <span class="o">{</span>
 
-<span class="nx">sdk</span><span class="p">.</span><span class="nx">init</span><span class="p">(</span><span class="nx">config</span><span class="p">);</span>
+                    <span class="o">}</span>
+
+                    <span class="nd">@Override</span>
+                    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onSubscribeSuccess</span><span class="o">(</span><span class="nc">SubscribeSuccessEvent</span> <span class="n">event</span><span class="o">)</span> <span class="o">{</span>
+
+                    <span class="o">}</span>
+
+                    <span class="nd">@Override</span>
+                    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onSubscribeError</span><span class="o">(</span><span class="nc">SubscribeErrorEvent</span> <span class="n">event</span><span class="o">)</span> <span class="o">{</span>
+
+                    <span class="o">}</span>
+                <span class="o">}</span>
+        <span class="o">);</span>
+
+<span class="c1">// unsubscribe</span>
+<span class="n">ws</span><span class="o">.</span><span class="na">unsubscribeBitmarkChanged</span><span class="o">(</span><span class="n">address</span><span class="o">);</span>
 </code></pre></div></div>
 </li>
 
 	<li>
-<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">import</span> <span class="kt">BitmarkSDK</span>
-
-<span class="kt">BitmarkSDK</span><span class="o">.</span><span class="nf">initialize</span><span class="p">(</span><span class="nv">config</span><span class="p">:</span> <span class="kt">SDKConfig</span><span class="p">(</span><span class="nv">apiToken</span><span class="p">:</span> <span class="s">"api-token"</span><span class="p">,</span>
-                                        <span class="nv">network</span><span class="p">:</span> <span class="o">.</span><span class="n">testnet</span><span class="p">,</span>
-                                        <span class="nv">urlSession</span><span class="p">:</span> <span class="kt">URLSession</span><span class="o">.</span><span class="n">shared</span><span class="p">))</span>
-</code></pre></div></div>
-</li>
-
-	<li>
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">final</span> <span class="nc">GlobalConfiguration</span><span class="o">.</span><span class="na">Builder</span> <span class="n">builder</span> <span class="o">=</span> <span class="nc">GlobalConfiguration</span><span class="o">.</span><span class="na">builder</span><span class="o">().</span><span class="na">withApiToken</span><span class="o">(</span><span class="s">"api-token"</span><span class="o">).</span><span class="na">withNetwork</span><span class="o">(</span><span class="nc">Network</span><span class="o">.</span><span class="na">LIVE_NET</span><span class="o">);</span>
-<span class="nc">BitmarkSDK</span><span class="o">.</span><span class="na">init</span><span class="o">(</span><span class="n">builder</span><span class="o">);</span>
-</code></pre></div></div>
-</li>
-
-	<li>
-<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="n">sdk</span> <span class="s">"github.com/bitmark/bitmark-inc/bitmark-sdk-go"</span>
-
-<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
-	<span class="n">config</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="n">sdk</span><span class="o">.</span><span class="n">Config</span><span class="p">{</span>
-		<span class="n">APIToken</span><span class="o">:</span> <span class="s">"YOUR API TOKEN"</span><span class="p">,</span>
-		<span class="n">Network</span><span class="o">:</span>  <span class="n">sdk</span><span class="o">.</span><span class="n">Testnet</span><span class="p">,</span>
-		<span class="n">HTTPClient</span><span class="o">:</span> <span class="o">&amp;</span><span class="n">http</span><span class="o">.</span><span class="n">Client</span><span class="p">{</span>
-			<span class="n">Timeout</span><span class="o">:</span> <span class="m">10</span> <span class="o">*</span> <span class="n">time</span><span class="o">.</span><span class="n">Second</span><span class="p">,</span>
-		<span class="p">},</span>
-	<span class="p">}</span>
-	<span class="n">sdk</span><span class="o">.</span><span class="n">Init</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
-<span class="p">}</span>
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// TODO</span>
 </code></pre></div></div>
 </li>
 
 </ul>
 
-<p>Each code example in the later sections presumes that the SDK is already correctly initialized.</p>
 </div>
         
         <div class="col-md-3">

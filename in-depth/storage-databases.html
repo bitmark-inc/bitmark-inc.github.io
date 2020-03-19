@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
-<meta name="keywords" content=" sdk, sdk doc">
-<title>Getting Started | Bitmark Documentation</title>
+<meta name="keywords" content=" node modules, storage">
+<title>Storage Databases | Bitmark Documentation</title>
 
 <link rel="stylesheet" href="/css/syntax.css">
 
@@ -142,7 +142,7 @@
 
 
 
-  <a class="email" title="Submit feedback" href="#" target="_blank" onclick="javascript:window.location='mailto:support@bitmark.com?subject=Bitmark Inc feedback&body=I have some feedback about the Getting Started page: ' + window.location.href;"><i class="fa fa-envelope-o"></i> Need help?</a>
+  <a class="email" title="Submit feedback" href="#" target="_blank" onclick="javascript:window.location='mailto:support@bitmark.com?subject=Bitmark Inc feedback&body=I have some feedback about the Storage Databases page: ' + window.location.href;"><i class="fa fa-envelope-o"></i> Need help?</a>
 
 </li>
 
@@ -160,7 +160,7 @@
                                 searchInput: document.getElementById('search-input'),
                                 resultsContainer: document.getElementById('results-container'),
                                 dataSource: '/search.json',
-                                searchResultTemplate: '<li><a href="{url}" title="Getting Started">{title}</a></li>',
+                                searchResultTemplate: '<li><a href="{url}" title="Storage Databases">{title}</a></li>',
                     noResultsText: 'No results found.',
                             limit: 10,
                             fuzzy: true,
@@ -282,7 +282,7 @@
           
           
           
-          <li><a title="Storage Databases" href="/in-depth/storage-databases"><b>Storage Databases</b></a></li>
+          <li class="active"><a title="Storage Databases" href="/in-depth/storage-databases"><b>Storage Databases</b></a></li>
           
           
           
@@ -367,7 +367,7 @@
         <!-- Content Column -->
         <div class="col-md-8" id="tg-sb-content">
             <!-- <div class="post-header">
-   <h1 class="post-title-main">Getting Started</h1>
+   <h1 class="post-title-main">Storage Databases</h1>
 </div> -->
 
 
@@ -380,140 +380,127 @@
     
 
     <div class="row">
-        <div class="col-md-9 page-article"><h1 id="overview">Overview</h1>
+        <div class="col-md-9 page-article"><h1 id="storage-databases">Storage Databases</h1>
 
-<p>The Bitmark Property System is a universal property system that confers the same property rights to digital assets that have long existed for physical assets. The system records ownership claims for digital assets on the public Bitmark blockchain using digital property titles known as Bitmark certificates. These digital assets can be any sort of digital object, including files, applications, code, and data.</p>
+<p>The <code class="language-plaintext highlighter-rouge">bitmarkd</code> program uses <a href="https://github.com/google/leveldb">LevelDB</a> as its storage backend. LevelDB is a fast key-value storage that doesn’t have the concept of logical tables found in traditional relational databases; instead, it partitions the key space by adding a prefix byte to each key. The key-value pairs with the same prefix correspond to a pool of data entries with the same attributes. The values to be stored are compactly serialized to reduce disk usage.</p>
 
-<p>In the digital world:</p>
+<p>There are two separate LevelDB databases under the data directory of <code class="language-plaintext highlighter-rouge">bitmarkd</code>: blocks DB and index DB.</p>
 
-<p><strong>digital property = digital asset + bitmark certificate (property rights)</strong></p>
+<h2 id="blocks-db">Blocks DB</h2>
 
-<p>You can work with the Bitmark blockchain to look up Bitmark certificates or even to register and transfer digital properties using the Bitmark SDK, a collection of libraries for different programming languages and mobile platforms. In addition to providing language-specific bindings to the Bitmark APIs, the SDK also simplifies local key management for signing and encryption.</p>
+<p><em>The blocks DB</em> keeps the raw block data.</p>
 
-<p>For simplicity, the term <em>Bitmark certificate</em> is shortened as <em>bitmark</em> in the SDK.</p>
+<table>
+  <thead>
+    <tr>
+      <th>pool name</th>
+      <th>prefix</th>
+      <th>key</th>
+      <th>value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Blocks</td>
+      <td>B</td>
+      <td>block number</td>
+      <td>block data</td>
+    </tr>
+    <tr>
+      <td>BlockHeaderHash</td>
+      <td>2</td>
+      <td>block number</td>
+      <td>block hash</td>
+    </tr>
+    <tr>
+      <td>BlockOwnerPayment</td>
+      <td>H</td>
+      <td>block number</td>
+      <td>acceptable cryptocurrencies in this block</td>
+    </tr>
+    <tr>
+      <td>BlockOwnerTxIndex</td>
+      <td>I</td>
+      <td>block foundation tx ID</td>
+      <td>block number</td>
+    </tr>
+  </tbody>
+</table>
 
-<h1 id="getting-started">Getting Started</h1>
+<h2 id="index-db">Index DB</h2>
 
-<h2 id="installing-sdk-packages">Installing SDK Packages</h2>
+<p><em>The index DB</em> is built based on the blocks DB, mainly to ensure efficient client queries.</p>
 
-<p>The Bitmark SDK can be installed for JavaScript, Swift, Java, or Go.</p>
+<table>
+  <thead>
+    <tr>
+      <th>pool name</th>
+      <th>prefix</th>
+      <th>key</th>
+      <th>value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Transactions</td>
+      <td>T</td>
+      <td>tx ID</td>
+      <td>the block number in which the tx was recorded + the tx record</td>
+    </tr>
+    <tr>
+      <td>Assets</td>
+      <td>A</td>
+      <td>asset ID</td>
+      <td>the block number in which the asset was recorded + the asset record</td>
+    </tr>
+    <tr>
+      <td>OwnerNextCount</td>
+      <td>N</td>
+      <td>account</td>
+      <td>next index value for this account in OwnerList</td>
+    </tr>
+    <tr>
+      <td>OwnerList</td>
+      <td>L</td>
+      <td>account + index</td>
+      <td>tx ID</td>
+    </tr>
+    <tr>
+      <td>OwnerTxIndex</td>
+      <td>D</td>
+      <td>account + tx ID</td>
+      <td>index of the tx in OwnerList</td>
+    </tr>
+    <tr>
+      <td>OwnerData</td>
+      <td>p</td>
+      <td>tx ID</td>
+      <td>detailed property info (could be asset, block, or share)</td>
+    </tr>
+    <tr>
+      <td>Shares</td>
+      <td>F</td>
+      <td>share ID</td>
+      <td>quantity of total shares + tx ID</td>
+    </tr>
+    <tr>
+      <td>ShareQuantity</td>
+      <td>Q</td>
+      <td>account + share ID</td>
+      <td>balance of shares for the account</td>
+    </tr>
+  </tbody>
+</table>
 
-<ul class="uk-tab" data-uk-switcher="{connect:'#cca70a9e-8685-4089-9530-8c67e27d090c'}">
+<p>The owner-related pools are interrelated.</p>
 
-	<li class="uk-active"><a href="#">JS</a></li>
+<h2 id="use-cases">Use Cases</h2>
 
-	<li><a href="#">Swift</a></li>
-
-	<li><a href="#">Java</a></li>
-
-	<li><a href="#">Go</a></li>
-
+<p>Possible use cases:</p>
+<ul>
+  <li>Given account and varying index, one can use <code class="language-plaintext highlighter-rouge">OwnerData[OwnerList[account+index]]</code> to iterate all bitmarks which belong to this account.</li>
+  <li>Given account and tx ID, <code class="language-plaintext highlighter-rouge">OwnerTxIndex[account+txID]</code> checks if an account owns a bitmark.</li>
 </ul>
-
-<ul id="cca70a9e-8685-4089-9530-8c67e27d090c" class="uk-switcher uk-margin">
-
-	<li>
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">$</span> <span class="nx">npm</span> <span class="nx">install</span> <span class="nx">bitmark</span><span class="o">-</span><span class="nx">sdk</span><span class="o">-</span><span class="nx">js</span>
-</code></pre></div></div>
-</li>
-
-	<li>
-<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pod</span> <span class="err">'</span><span class="kt">BitmarkSDK</span><span class="err">'</span>
-</code></pre></div></div>
-</li>
-
-	<li>
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// From your build.gradle</span>
-<span class="n">repositories</span> <span class="o">{</span>
-    <span class="n">jcenter</span><span class="o">()</span>
-    <span class="n">maven</span> <span class="o">{</span> <span class="n">url</span> <span class="err">'</span><span class="nl">https:</span><span class="c1">//oss.sonatype.org/content/repositories/snapshots/' } // For snapshot version</span>
-<span class="o">}</span>
-
-<span class="n">dependencies</span> <span class="o">{</span>
-    <span class="n">implementation</span> <span class="err">'</span><span class="n">com</span><span class="o">.</span><span class="na">bitmark</span><span class="o">.</span><span class="na">sdk</span><span class="o">:</span><span class="n">java</span><span class="o">-</span><span class="nl">sdk:</span><span class="mf">2.1</span><span class="o">.</span><span class="mi">0</span><span class="err">'</span> <span class="c1">// Java SDK</span>
-    <span class="c1">// Or</span>
-    <span class="n">implementation</span> <span class="err">'</span><span class="n">com</span><span class="o">.</span><span class="na">bitmark</span><span class="o">.</span><span class="na">sdk</span><span class="o">:</span><span class="n">android</span><span class="o">-</span><span class="nl">sdk:</span><span class="mf">2.1</span><span class="o">.</span><span class="mi">0</span><span class="err">'</span> <span class="c1">// Android SDK</span>
-<span class="o">}</span>
-</code></pre></div></div>
-</li>
-
-	<li>
-<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">$</span> <span class="k">go</span> <span class="n">get</span> <span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">bitmark</span><span class="o">-</span><span class="n">inc</span><span class="o">/</span><span class="n">bitmark</span><span class="o">-</span><span class="n">sdk</span><span class="o">-</span><span class="k">go</span>
-</code></pre></div></div>
-</li>
-
-</ul>
-
-<h2 id="acquiring-an-api-token">Acquiring an API token</h2>
-
-<p>An API token is required to authenticate requests to the Bitmark API.</p>
-
-<p>Please contact <a href="mailto:support@bitmark.com">Bitmark support</a> to create a developer account and get an API token.</p>
-
-<h2 id="configuring-the-sdk">Configuring the SDK</h2>
-
-<p>Before working with the Bitmark blockchain, configure the SDK for your API token and the Bitmark network that you’ll be using.</p>
-
-<ul class="uk-tab" data-uk-switcher="{connect:'#b14a31ff-8ce9-4756-a720-7b7c89c66f05'}">
-
-	<li class="uk-active"><a href="#">JS</a></li>
-
-	<li><a href="#">Swift</a></li>
-
-	<li><a href="#">Java</a></li>
-
-	<li><a href="#">Go</a></li>
-
-</ul>
-
-<ul id="b14a31ff-8ce9-4756-a720-7b7c89c66f05" class="uk-switcher uk-margin">
-
-	<li>
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">sdk</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">bitmark-sdk-js</span><span class="dl">'</span><span class="p">);</span>
-
-<span class="kd">const</span> <span class="nx">config</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="na">apiToken</span><span class="p">:</span> <span class="dl">"</span><span class="s2">api-token</span><span class="dl">"</span><span class="p">,</span>
-  <span class="na">network</span><span class="p">:</span> <span class="dl">"</span><span class="s2">testnet</span><span class="dl">"</span>
-<span class="p">};</span>
-
-<span class="nx">sdk</span><span class="p">.</span><span class="nx">init</span><span class="p">(</span><span class="nx">config</span><span class="p">);</span>
-</code></pre></div></div>
-</li>
-
-	<li>
-<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">import</span> <span class="kt">BitmarkSDK</span>
-
-<span class="kt">BitmarkSDK</span><span class="o">.</span><span class="nf">initialize</span><span class="p">(</span><span class="nv">config</span><span class="p">:</span> <span class="kt">SDKConfig</span><span class="p">(</span><span class="nv">apiToken</span><span class="p">:</span> <span class="s">"api-token"</span><span class="p">,</span>
-                                        <span class="nv">network</span><span class="p">:</span> <span class="o">.</span><span class="n">testnet</span><span class="p">,</span>
-                                        <span class="nv">urlSession</span><span class="p">:</span> <span class="kt">URLSession</span><span class="o">.</span><span class="n">shared</span><span class="p">))</span>
-</code></pre></div></div>
-</li>
-
-	<li>
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">final</span> <span class="nc">GlobalConfiguration</span><span class="o">.</span><span class="na">Builder</span> <span class="n">builder</span> <span class="o">=</span> <span class="nc">GlobalConfiguration</span><span class="o">.</span><span class="na">builder</span><span class="o">().</span><span class="na">withApiToken</span><span class="o">(</span><span class="s">"api-token"</span><span class="o">).</span><span class="na">withNetwork</span><span class="o">(</span><span class="nc">Network</span><span class="o">.</span><span class="na">LIVE_NET</span><span class="o">);</span>
-<span class="nc">BitmarkSDK</span><span class="o">.</span><span class="na">init</span><span class="o">(</span><span class="n">builder</span><span class="o">);</span>
-</code></pre></div></div>
-</li>
-
-	<li>
-<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="n">sdk</span> <span class="s">"github.com/bitmark/bitmark-inc/bitmark-sdk-go"</span>
-
-<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
-	<span class="n">config</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="n">sdk</span><span class="o">.</span><span class="n">Config</span><span class="p">{</span>
-		<span class="n">APIToken</span><span class="o">:</span> <span class="s">"YOUR API TOKEN"</span><span class="p">,</span>
-		<span class="n">Network</span><span class="o">:</span>  <span class="n">sdk</span><span class="o">.</span><span class="n">Testnet</span><span class="p">,</span>
-		<span class="n">HTTPClient</span><span class="o">:</span> <span class="o">&amp;</span><span class="n">http</span><span class="o">.</span><span class="n">Client</span><span class="p">{</span>
-			<span class="n">Timeout</span><span class="o">:</span> <span class="m">10</span> <span class="o">*</span> <span class="n">time</span><span class="o">.</span><span class="n">Second</span><span class="p">,</span>
-		<span class="p">},</span>
-	<span class="p">}</span>
-	<span class="n">sdk</span><span class="o">.</span><span class="n">Init</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
-<span class="p">}</span>
-</code></pre></div></div>
-</li>
-
-</ul>
-
-<p>Each code example in the later sections presumes that the SDK is already correctly initialized.</p>
 </div>
         
         <div class="col-md-3">

@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
-<meta name="keywords" content=" ">
-<title>Explore the Protocol Docs | Bitmark Documentation</title>
+<meta name="keywords" content=" sdk, migration">
+<title>Account Migration | Bitmark Documentation</title>
 
 <link rel="stylesheet" href="/css/syntax.css">
 
@@ -142,7 +142,7 @@
 
 
 
-  <a class="email" title="Submit feedback" href="#" target="_blank" onclick="javascript:window.location='mailto:support@bitmark.com?subject=Bitmark Inc feedback&body=I have some feedback about the Explore the Protocol Docs page: ' + window.location.href;"><i class="fa fa-envelope-o"></i> Need help?</a>
+  <a class="email" title="Submit feedback" href="#" target="_blank" onclick="javascript:window.location='mailto:support@bitmark.com?subject=Bitmark Inc feedback&body=I have some feedback about the Account Migration page: ' + window.location.href;"><i class="fa fa-envelope-o"></i> Need help?</a>
 
 </li>
 
@@ -160,7 +160,7 @@
                                 searchInput: document.getElementById('search-input'),
                                 resultsContainer: document.getElementById('results-container'),
                                 dataSource: '/search.json',
-                                searchResultTemplate: '<li><a href="{url}" title="Explore the Protocol Docs">{title}</a></li>',
+                                searchResultTemplate: '<li><a href="{url}" title="Account Migration">{title}</a></li>',
                     noResultsText: 'No results found.',
                             limit: 10,
                             fuzzy: true,
@@ -188,6 +188,168 @@
 <ul id="mysidebar" class="nav">
   <li class="sidebarTitle"> </li>
   
+  
+  
+  <li>
+      <a class="sidebar-title" title="Essentials" href="#">Essentials</a>
+      <ul class="sidebar-list">
+          
+          
+          
+          <li><a title="Installation" href="/essentials/installation"><b>Installation</b></a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Register data" href="/essentials/register-data"><b>Register data</b></a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Control access" href="/essentials/control-access"><b>Control access</b></a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Transfer rights" href="/essentials/transfer-rights"><b>Transfer rights</b></a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Share rights" href="/essentials/share-rights"><b>Share rights</b></a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Query the Registry" href="/essentials/query-the-registry"><b>Query the Registry</b></a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Run a Node" href="/essentials/run-a-node"><b>Run a Node</b></a></li>
+          
+          
+          
+          
+      </ul>
+   </li>
+     
+      
+  
+  <li>
+      <a class="sidebar-title" title="In-Depth" href="#">In-Depth</a>
+      <ul class="sidebar-list">
+          
+          
+          
+          <li><a title="Blockchain Overview" href="/in-depth/blockchain-overview"><b>Blockchain Overview</b></a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Block Validation and Synchronization" href="/in-depth/block-verification-and-synchronization"><b>Block Validation and Synchronization</b></a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Block Mining" href="/in-depth/block-mining"><b>Block Mining</b></a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Payment Verification" href="/in-depth/payment-verification"><b>Payment Verification</b></a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Storage Databases" href="/in-depth/storage-databases"><b>Storage Databases</b></a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Blockchain Security" href="/in-depth/blockchain-security"><b>Blockchain Security</b></a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="RPC Communication" href="/in-depth/rpc-communication"><b>RPC Communication</b></a></li>
+          
+          
+          
+          
+      </ul>
+   </li>
+     
+      
+  
+  <li>
+      <a class="sidebar-title" title="Meta" href="#">Meta</a>
+      <ul class="sidebar-list">
+          
+          
+          
+          <li><a title="Glossary" href="/meta/glossary"><b>Glossary</b></a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="White Papers" href="/meta/white-papers"><b>White Papers</b></a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Bitmark versus Ethereum" href="/meta/bitmark-eth-comparison"><b>Bitmark versus Ethereum</b></a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Contribute to the Protocol" href="/meta/contribute-to-the-protocol"><b>Contribute to the Protocol</b></a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="FAQ" href="/meta/bitmark-protocol-faq"><b>FAQ</b></a></li>
+          
+          
+          
+          
+      </ul>
+   </li>
+     
+      
+      
       <!-- if you aren't using the accordion, uncomment this block:
          <p class="external">
              <a href="#" id="collapseAll">Collapse All</a> | <a href="#" id="expandAll">Expand All</a>
@@ -205,7 +367,7 @@
         <!-- Content Column -->
         <div class="col-md-8" id="tg-sb-content">
             <!-- <div class="post-header">
-   <h1 class="post-title-main">Explore the Protocol Docs</h1>
+   <h1 class="post-title-main">Account Migration</h1>
 </div> -->
 
 
@@ -218,118 +380,54 @@
     
 
     <div class="row">
-        <div class="col-md-9 page-article">
-<h1 id="explore-the-protocol-docs">Explore the Protocol Docs</h1>
+        <div class="col-md-9 page-article"><h1 id="account-migration">Account migration</h1>
 
-<h2 id="blockchain-overview"><a href="/explore-the-protocol-docs/blockchain-overview">Blockchain Overview</a></h2>
+<p>Bitmark SDK provides <code class="language-plaintext highlighter-rouge">rekey</code> method to allow users to transfer all bitmarks from an <code class="language-plaintext highlighter-rouge">Account</code> to another one. This is helpful in case users want to migrate all their own bitmarks from old <code class="language-plaintext highlighter-rouge">Account</code> to another new one and keep the bitmarks provenance as well.</p>
 
-<ul>
-  <li><a href="/explore-the-protocol-docs/blockchain-overview#definitions">Definitions</a></li>
-  <li><a href="/explore-the-protocol-docs/blockchain-overview#transactions-asset-issue-and-transfer-records">Transactions: Asset, Issue and Transfer Records</a>
-    <ul>
-      <li><a href="/explore-the-protocol-docs/blockchain-overview#asset-record">Asset Record</a></li>
-      <li><a href="/explore-the-protocol-docs/blockchain-overview#issue-record">Issue Record</a></li>
-      <li><a href="/explore-the-protocol-docs/blockchain-overview#transfer-record">Transfer Record</a></li>
-    </ul>
-  </li>
-  <li><a href="/explore-the-protocol-docs/blockchain-overview#transactions-share">Transactions: Share</a>
-    <ul>
-      <li><a href="/explore-the-protocol-docs/blockchain-overview#share-balance-record">Share Balance Record</a></li>
-      <li><a href="/explore-the-protocol-docs/blockchain-overview#share-grant-record">Share Grant Record</a></li>
-      <li><a href="/explore-the-protocol-docs/blockchain-overview#share-swap-record">Share Swap Record</a></li>
-    </ul>
-  </li>
-  <li><a href="/explore-the-protocol-docs/blockchain-overview#transactions-block-ownership-record">Transactions: Block ownership record</a>
-    <ul>
-      <li><a href="/explore-the-protocol-docs/blockchain-overview#block-foundation-record">Block Foundation Record</a></li>
-      <li><a href="/explore-the-protocol-docs/blockchain-overview#block-owner-transfer-record">Block Owner Transfer Record</a></li>
-    </ul>
-  </li>
-  <li><a href="/explore-the-protocol-docs/blockchain-overview#blockchain-structure">Blockchain Structure</a>
-    <ul>
-      <li><a href="/explore-the-protocol-docs/blockchain-overview#block-header">Block Header</a></li>
-      <li><a href="/explore-the-protocol-docs/blockchain-overview#merkle-tree">Merkle Tree</a></li>
-      <li><a href="/explore-the-protocol-docs/blockchain-overview#block-hashing-argon2-difficulty-proof-of-work-">Block Hashing (Argon2, difficulty, proof of work ...)</a></li>
-    </ul>
-  </li>
+<p>The method takes different <code class="language-plaintext highlighter-rouge">Account</code> as source and destination one and return the collection of new transaction id when complete.</p>
+<ul class="uk-tab" data-uk-switcher="{connect:'#680feefa-b417-429b-906d-41f7beeeb255'}">
+
+	<li class="uk-active"><a href="#">Swift</a></li>
+
+	<li><a href="#">Java</a></li>
+
 </ul>
 
-<h2 id="block-validation-and-synchronization"><a href="/explore-the-protocol-docs/block-verification-and-synchronization#block-verification-and-synchronization">Block Validation and Synchronization</a></h2>
+<ul id="680feefa-b417-429b-906d-41f7beeeb255" class="uk-switcher uk-margin">
 
-<ul>
-  <li><a href="/explore-the-protocol-docs/block-verification-and-synchronization#block-structure">Block Structure</a></li>
-  <li><a href="/explore-the-protocol-docs/block-verification-and-synchronization#block-validation">Block Validation</a></li>
-  <li><a href="/explore-the-protocol-docs/block-verification-and-synchronization#block-synchronization">Block Synchronization</a>
-    <ul>
-      <li><a href="/explore-the-protocol-docs/block-verification-and-synchronization#proof-of-work">Proof of Work</a></li>
-      <li><a href="/explore-the-protocol-docs/block-verification-and-synchronization#majority-votes">Majority Votes</a></li>
-    </ul>
-  </li>
+	<li>
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">let</span> <span class="nv">source</span> <span class="o">=</span> <span class="k">try</span> <span class="kt">Account</span><span class="p">();</span>
+<span class="k">let</span> <span class="nv">destination</span> <span class="o">=</span> <span class="k">try</span> <span class="kt">Account</span><span class="p">();</span>
+
+<span class="k">let</span> <span class="p">(</span><span class="nv">account</span><span class="p">,</span> <span class="nv">bitmarkids</span><span class="p">)</span> <span class="o">=</span> <span class="kt">Migration</span><span class="o">.</span><span class="nf">rekey</span><span class="p">(</span><span class="nv">from</span><span class="p">:</span> <span class="n">source</span><span class="p">,</span> <span class="nv">to</span><span class="p">:</span> <span class="n">destination</span><span class="p">)</span> <span class="p">{</span> <span class="p">(</span><span class="n">txIds</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="k">in</span>
+    <span class="c1">// collection of new tx id is returned here</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">txIds</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div></div>
+</li>
+
+	<li>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Account</span> <span class="n">source</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Account</span><span class="o">();</span>
+<span class="nc">Account</span> <span class="n">destination</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Account</span><span class="o">();</span>
+<span class="nc">Migration</span><span class="o">.</span><span class="na">rekey</span><span class="o">(</span>
+                <span class="n">source</span><span class="o">,</span>
+                <span class="n">destination</span><span class="o">,</span>
+                <span class="k">new</span> <span class="nc">Callback1</span><span class="o">&lt;</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;&gt;()</span> <span class="o">{</span>
+                    <span class="nd">@Override</span>
+                    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onSuccess</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">txIds</span><span class="o">)</span> <span class="o">{</span>
+                        <span class="c1">// collection of new tx id is returned here</span>
+                    <span class="o">}</span>
+
+                    <span class="nd">@Override</span>
+                    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onError</span><span class="o">(</span><span class="nc">Throwable</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+                        <span class="c1">// handle error here</span>
+                    <span class="o">}</span>
+                <span class="o">}</span>
+        <span class="o">);</span>
+</code></pre></div></div>
+</li>
+
 </ul>
-
-<h2 id="block-mining"><a href="/explore-the-protocol-docs/block-mining">Block Mining</a></h2>
-
-<ul>
-  <li><a href="/explore-the-protocol-docs/block-mining#overview">Overview</a></li>
-  <li><a href="/explore-the-protocol-docs/block-mining#block-diagram">Block Diagram</a></li>
-  <li><a href="/explore-the-protocol-docs/block-mining#hashing">Hashing</a></li>
-  <li><a href="/explore-the-protocol-docs/block-mining#difficulty">Difficulty</a></li>
-  <li><a href="/explore-the-protocol-docs/block-mining#communication">Communication</a></li>
-  <li><a href="/explore-the-protocol-docs/block-mining#verification-and-broadcast">Verification and Broadcast</a></li>
-  <li><a href="/explore-the-protocol-docs/block-mining#reward">Reward</a></li>
-</ul>
-
-<h2 id="payment-verification"><a href="/explore-the-protocol-docs/payment-verification#payment-verification">Payment Verification</a></h2>
-
-<ul>
-  <li><a href="/explore-the-protocol-docs/payment-verification#overview">Overview</a></li>
-  <li><a href="/explore-the-protocol-docs/payment-verification#reservoir-module">Reservoir Module</a>
-    <ul>
-      <li><a href="/explore-the-protocol-docs/payment-verification#processing-a-new-transaction">Processing a New Transaction</a></li>
-      <li><a href="/explore-the-protocol-docs/payment-verification#generating-a-payment-id">Generating a Payment Id</a></li>
-      <li><a href="/explore-the-protocol-docs/payment-verification#changing-the-state-of-a-paid-transaction">Changing the State of a Paid Transaction</a></li>
-      <li><a href="/explore-the-protocol-docs/payment-verification#pending-and-verified-structures">Pending and Verified Structures</a></li>
-    </ul>
-  </li>
-  <li><a href="/explore-the-protocol-docs/payment-verification#payment-module">Payment Module</a>
-    <ul>
-      <li><a href="/explore-the-protocol-docs/payment-verification#using-rpc-apis">Using RPC APIs</a></li>
-      <li><a href="/explore-the-protocol-docs/payment-verification#using-discovery-service">Using Discovery Service</a></li>
-      <li><a href="/explore-the-protocol-docs/payment-verification#using-bitcoin-peer-to-peer-protocol-wip">Using Bitcoin Peer-to-Peer Protocol (WIP)</a></li>
-    </ul>
-  </li>
-</ul>
-
-<h2 id="storage-databases"><a href="/explore-the-protocol-docs/storage-databases">Storage Databases</a></h2>
-
-<ul>
-  <li><a href="/explore-the-protocol-docs/storage-databases#blocks-db">Blocks DB</a></li>
-  <li><a href="/explore-the-protocol-docs/storage-databases#index-db">Index DB</a></li>
-  <li><a href="/explore-the-protocol-docs/storage-databases#use-cases">Use Cases</a></li>
-</ul>
-
-<h2 id="blockchain-security"><a href="/explore-the-protocol-docs/blockchain-security">Blockchain Security</a></h2>
-
-<ul>
-  <li><a href="/explore-the-protocol-docs/blockchain-security#transactions">Transactions</a></li>
-  <li><a href="/explore-the-protocol-docs/blockchain-security#transaction-identifiers">Transaction Identifiers</a></li>
-  <li><a href="/explore-the-protocol-docs/blockchain-security#block-identifiers">Block Identifiers</a></li>
-  <li><a href="/explore-the-protocol-docs/blockchain-security#proof-of-work-and-difficulty">Proof of Work and Difficulty</a></li>
-</ul>
-
-<h2 id="rpc-communication"><a href="/explore-the-protocol-docs/rpc-communication">RPC Communication</a></h2>
-
-<ul>
-  <li><a href="/explore-the-protocol-docs/rpc-communication#overview">Overview</a></li>
-  <li><a href="/explore-the-protocol-docs/rpc-communication#rpc-flow">RPC Flow</a>
-    <ul>
-      <li><a href="/explore-the-protocol-docs/rpc-communication#initializing">Initializing</a></li>
-      <li><a href="/explore-the-protocol-docs/rpc-communication#processing-messages">Processing Messages</a></li>
-    </ul>
-  </li>
-</ul>
-
-<h2 id="glossary"><a href="/explore-the-protocol-docs/glossary">Glossary</a></h2>
 
 </div>
         

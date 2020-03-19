@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="keywords" content=" sdk, store seed">
+<title>Storing a Seed | Bitmark Documentation</title>
+
+<link rel="stylesheet" href="/css/syntax.css">
+
+<link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css">
+<!--<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">-->
+<link rel="stylesheet" href="/css/modern-business.css">
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="/css/bootstrap.min.3.3.7.css" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/customstyles.css">
+<link rel="stylesheet" href="/css/boxshadowproperties.css">
+<!-- most color styles are extracted out to here -->
+<link rel="stylesheet" href="/css/theme-blue.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="/js/jquery.navgoco.min.js"></script>
+
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<!-- Anchor.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.2.0/anchor.min.js"></script>
+<script src="/js/toc.js"></script>
+<script src="/js/customscripts.js"></script>
+
+<link rel="shortcut icon" href="/assets/images/favicon.ico">
+
+<link rel="stylesheet" href="/css/uikit.min.css" />
+<script src="/js/uikit.min.js"></script>
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<link rel="alternate" type="application/rss+xml" title="docs" href="/feed.xml">
+
+    <!-- <script>
+        $(document).ready(function() {
+            // Initialize navgoco with default options
+            $("#mysidebar").navgoco({
+                caretHtml: '',
+                accordion: false,
+                openClass: 'active', // open
+                save: false, // leave false or nav highlighting doesn't work right
+                cookie: {
+                    name: 'navgoco',
+                    expires: false,
+                    path: '/'
+                },
+                slide: {
+                    duration: 250,
+                    easing: 'swing'
+                }
+            });
+
+            // expand first level at indexes [0,3,7]
+            $("#mysidebar").navgoco('toggle', true, 0, 3, 7);
+
+            $("#collapseAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', false);
+            });
+
+            $("#expandAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', true);
+            });
+
+        });
+
+    </script> -->
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
+    <script>
+        $(document).ready(function() {
+            $("#tg-sb-link").click(function() {
+                // $("#tg-sb-sidebar").toggle();
+                $("#tg-sb-content").toggleClass('col-md-8');
+                $("#tg-sb-content").toggleClass('col-md-12');
+                $("#tg-sb-icon").toggleClass('fa-toggle-on');
+                $("#tg-sb-icon").toggleClass('fa-toggle-off');
+            });
+        });
+    </script>
+    
+
+</head>
+<body>
+<!-- Navigation -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container topnavlinks">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/index.html"><span class="projectTitle home-logo">Bitmark<!-- <img src="/assets/images/Bitmark_Logo-desktop_white.svg" alt="Bitmark logo"/> --><!-- Home --></span></a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <!-- toggle sidebar button -->
+                <!-- <li><a id="tg-sb-link" href="#"><i id="tg-sb-icon" class="fa fa-toggle-on"></i> Nav</a></li> -->
+                <!-- entries without drop-downs appear here -->
+
+
+
+
+                
+                
+                
+                <li><a href="https://registry.bitmark.com/" target="_blank" rel="noopener">Registry</a></li>
+                
+                
+                
+                <li><a href="https://bitmark.com/products/bitmark-protocol/faq/" target="_blank" rel="noopener">FAQ</a></li>
+                
+                
+                
+                <!-- entries with drop-downs appear here -->
+                <!-- conditional logic to control which topnav appears for the audience defined in the configuration file.-->
+                
+                <!-- 
+			<li>
+
+
+
+  <a class="email" title="Submit feedback" href="#" target="_blank" onclick="javascript:window.location='mailto:support@bitmark.com?subject=Bitmark Inc feedback&body=I have some feedback about the Storing a Seed page: ' + window.location.href;"><i class="fa fa-envelope-o"></i> Need help?</a>
+
+</li>
+
+		 -->
+                <!--comment out this block if you want to hide search-->
+                <li>
+                    <!--start search-->
+                    <div id="search-demo-container">
+                        <input type="text" id="search-input" placeholder="search...">
+                        <ul id="results-container"></ul>
+                    </div>
+                    <script src="/js/jekyll-search.js" type="text/javascript"></script>
+                    <script type="text/javascript">
+                            SimpleJekyllSearch.init({
+                                searchInput: document.getElementById('search-input'),
+                                resultsContainer: document.getElementById('results-container'),
+                                dataSource: '/search.json',
+                                searchResultTemplate: '<li><a href="{url}" title="Storing a Seed">{title}</a></li>',
+                    noResultsText: 'No results found.',
+                            limit: 10,
+                            fuzzy: true,
+                    })
+                    </script>
+                    <!--end search-->
+                </li>
+            </ul>
+        </div>
+        </div>
+        <!-- /.container -->
+</nav>
+
+<!-- Page Content -->
+<div class="container">
+  <div id="main">
+    <!-- Content Row -->
+    <div class="">
+        
+        
+            <!-- Sidebar Column -->
+            <div class="col-md-4" id="tg-sb-sidebar">
+                
+
+<ul id="mysidebar" class="nav">
+  <li class="sidebarTitle"> </li>
+  
+  
+  
+  <li>
+      <a class="sidebar-title" title="Essentials" href="#">Essentials</a>
+      <ul class="sidebar-list">
+          
+          
+          
+          <li><a title="Installation" href="/essentials/installation"><b>Installation</b></a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Register data" href="/essentials/register-data"><b>Register data</b></a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Control access" href="/essentials/control-access"><b>Control access</b></a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Transfer rights" href="/essentials/transfer-rights"><b>Transfer rights</b></a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Share rights" href="/essentials/share-rights"><b>Share rights</b></a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Query the Registry" href="/essentials/query-the-registry"><b>Query the Registry</b></a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Run a Node" href="/essentials/run-a-node"><b>Run a Node</b></a></li>
+          
+          
+          
+          
+      </ul>
+   </li>
+     
+      
+  
+  <li>
+      <a class="sidebar-title" title="In-Depth" href="#">In-Depth</a>
+      <ul class="sidebar-list">
+          
+          
+          
+          <li><a title="Blockchain Overview" href="/in-depth/blockchain-overview"><b>Blockchain Overview</b></a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Block Validation and Synchronization" href="/in-depth/block-verification-and-synchronization"><b>Block Validation and Synchronization</b></a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Block Mining" href="/in-depth/block-mining"><b>Block Mining</b></a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Payment Verification" href="/in-depth/payment-verification"><b>Payment Verification</b></a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Storage Databases" href="/in-depth/storage-databases"><b>Storage Databases</b></a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Blockchain Security" href="/in-depth/blockchain-security"><b>Blockchain Security</b></a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="RPC Communication" href="/in-depth/rpc-communication"><b>RPC Communication</b></a></li>
+          
+          
+          
+          
+      </ul>
+   </li>
+     
+      
+  
+  <li>
+      <a class="sidebar-title" title="Meta" href="#">Meta</a>
+      <ul class="sidebar-list">
+          
+          
+          
+          <li><a title="Glossary" href="/meta/glossary"><b>Glossary</b></a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="White Papers" href="/meta/white-papers"><b>White Papers</b></a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Bitmark versus Ethereum" href="/meta/bitmark-eth-comparison"><b>Bitmark versus Ethereum</b></a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Contribute to the Protocol" href="/meta/contribute-to-the-protocol"><b>Contribute to the Protocol</b></a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="FAQ" href="/meta/bitmark-protocol-faq"><b>FAQ</b></a></li>
+          
+          
+          
+          
+      </ul>
+   </li>
+     
+      
+      
+      <!-- if you aren't using the accordion, uncomment this block:
+         <p class="external">
+             <a href="#" id="collapseAll">Collapse All</a> | <a href="#" id="expandAll">Expand All</a>
+         </p>
+         -->
+</ul>
+
+<!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
+<script>$("li.active").parents('li').toggleClass("active");</script>
+
+            </div>
+            
+        
+
+        <!-- Content Column -->
+        <div class="col-md-8" id="tg-sb-content">
+            <!-- <div class="post-header">
+   <h1 class="post-title-main">Storing a Seed</h1>
+</div> -->
+
+
+
+<div class="post-content">
+
+   
+
+
+    
+
+    <div class="row">
+        <div class="col-md-9 page-article"><h1 id="storing-a-seed">Storing a Seed</h1>
+
+<p>Storing your <code class="language-plaintext highlighter-rouge">Account</code> using a mobile application is very important to ensure its security and to protect your user data against attackers. Bitmark SDK supports storing your Account seed securely in mobile applications on both the <strong>Android</strong> and <strong>iOS</strong> platforms.</p>
+
+<p><em>Unlike other SDK documents, which cover Go, Java, JavaScript, and Swift, this document only describes the SDK for mobile platforms: Java for Android and Swift for iOS.</em></p>
+
+<h2 id="android">Android</h2>
+
+<p>The Android Bitmark SDK  provides <code class="language-plaintext highlighter-rouge">KeyAuthenticationSpec.Builder</code> for storing and retrieving <code class="language-plaintext highlighter-rouge">Account</code> securely.</p>
+
+<p><code class="language-plaintext highlighter-rouge">KeyAuthenticationSpec.Builder</code> possesses the following attributes:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Attribute</th>
+      <th>Function</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">keyAlias</code></td>
+      <td><code class="language-plaintext highlighter-rouge">setKeyAlias(String</code>)</td>
+      <td>An alias representing the account. Each time you store an <code class="language-plaintext highlighter-rouge">Account</code>, you should use a different alias, even for the same <code class="language-plaintext highlighter-rouge">Account</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">isAuthenticationRequired</code></td>
+      <td><code class="language-plaintext highlighter-rouge">setAuthenticationRequired(boolean)</code></td>
+      <td>Whether authentication is required each time you store or retrieve the <code class="language-plaintext highlighter-rouge">Account</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">authenticationValidityDuration</code></td>
+      <td><code class="language-plaintext highlighter-rouge">setAuthenticationValidityDuration(int)</code></td>
+      <td>The time frame in seconds during which the <code class="language-plaintext highlighter-rouge">Account</code> will not need to be authenticated again. In this mode, the authentication method is always <strong>PIN/Password/Pattern</strong></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">useAlternativeAuthentication</code></td>
+      <td><code class="language-plaintext highlighter-rouge">setUseAlternativeAuthentication</code></td>
+      <td>Whether to use <strong>PIN/Password/Pattern</strong> as an alternative authentication method in case the device does not support biometric authentication</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">authenticationTitle</code></td>
+      <td><code class="language-plaintext highlighter-rouge">setAuthenticationTitle(String)</code></td>
+      <td>The title for the authentication dialog</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">authenticationDescription</code></td>
+      <td><code class="language-plaintext highlighter-rouge">setAuthenticationDescription(String)</code></td>
+      <td>The description for the authentication dialog</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The following <code class="language-plaintext highlighter-rouge">Exception</code>s might be thrown by <code class="language-plaintext highlighter-rouge">KeyAuthenticationSpec.Builder</code>:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Exception</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">AuthenticationException</code></td>
+      <td>This exception describes the corresponding behavior from users when they are authenticated</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">AuthenticationRequiredException</code></td>
+      <td>This exception is returned if users didn’t setup the authentication method in System Setting</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">HardwareNotSupportedException</code></td>
+      <td>This exception states that the device does not support the required hardware for authentication</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Storing your account</span>
+<span class="kd">final</span> <span class="nc">Account</span> <span class="n">account</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Account</span><span class="o">();</span>
+<span class="kd">final</span> <span class="nc">KeyAuthenticationSpec</span> <span class="n">spec</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">KeyAuthenticationSpec</span><span class="o">.</span><span class="na">Builder</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">())</span>
+                     <span class="o">.</span><span class="na">setKeyAlias</span><span class="o">(</span><span class="no">ENCRYPTION_KEY_ALIAS</span><span class="o">)</span>
+                     <span class="o">.</span><span class="na">setAuthenticationRequired</span><span class="o">(</span><span class="kc">true</span><span class="o">)</span>
+                     <span class="o">.</span><span class="na">setAuthenticationValidityDuration</span><span class="o">(</span><span class="mi">100</span><span class="o">)</span>
+                     <span class="o">.</span><span class="na">setAuthenticationTitle</span><span class="o">(</span><span class="s">"Title"</span><span class="o">)</span>
+                     <span class="o">.</span><span class="na">setAuthenticationDescription</span><span class="o">(</span><span class="s">"Description"</span><span class="o">)</span>
+                     <span class="o">.</span><span class="na">setUseAlternativeAuthentication</span><span class="o">(</span><span class="kc">true</span><span class="o">)</span>
+                     <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+
+<span class="n">account</span><span class="o">.</span><span class="na">saveToKeyStore</span><span class="o">(</span><span class="n">activity</span><span class="o">,</span> <span class="n">alias</span><span class="o">,</span> <span class="n">spec</span><span class="o">,</span> <span class="k">new</span> <span class="nc">Callback0</span><span class="o">()</span> <span class="o">{</span>
+                <span class="nd">@Override</span>
+                <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onSuccess</span><span class="o">()</span> <span class="o">{</span>
+
+                <span class="o">}</span>
+
+                <span class="nd">@Override</span>
+                <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onError</span><span class="o">(</span><span class="nc">Throwable</span> <span class="n">throwable</span><span class="o">)</span> <span class="o">{</span>
+
+                <span class="o">}</span>
+            <span class="o">});</span>
+
+<span class="c1">// Getting your account</span>
+<span class="kd">final</span> <span class="nc">KeyAuthenticationSpec</span> <span class="n">spec</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">KeyAuthenticationSpec</span><span class="o">.</span><span class="na">Builder</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">())</span>
+                      <span class="o">.</span><span class="na">setKeyAlias</span><span class="o">(</span><span class="no">ENCRYPTION_KEY_ALIAS</span><span class="o">)</span>
+                      <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+<span class="nc">Account</span><span class="o">.</span><span class="na">loadFromKeyStore</span><span class="o">(</span><span class="n">activity</span><span class="o">,</span> <span class="n">alias</span><span class="o">,</span> <span class="n">spec</span><span class="o">,</span> <span class="k">new</span> <span class="nc">Callback1</span><span class="o">&lt;</span><span class="nc">Account</span><span class="o">&gt;()</span> <span class="o">{</span>
+                <span class="nd">@Override</span>
+                <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onSuccess</span><span class="o">(</span><span class="nc">Account</span> <span class="n">account</span><span class="o">)</span> <span class="o">{</span>
+
+                <span class="o">}</span>
+
+                <span class="nd">@Override</span>
+                <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onError</span><span class="o">(</span><span class="nc">Throwable</span> <span class="n">throwable</span><span class="o">)</span> <span class="o">{</span>
+
+                <span class="o">}</span>
+            <span class="o">});</span>
+
+<span class="c1">// Deleting your account</span>
+<span class="kd">final</span> <span class="nc">KeyAuthenticationSpec</span> <span class="n">spec</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">KeyAuthenticationSpec</span><span class="o">.</span><span class="na">Builder</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">())</span>
+                                        <span class="o">.</span><span class="na">setKeyAlias</span><span class="o">(</span><span class="no">ENCRYPTION_KEY_ALIAS</span><span class="o">)</span>
+                                        <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+<span class="n">account</span><span class="o">.</span><span class="na">removeFromKeyStore</span><span class="o">(</span><span class="n">activity</span><span class="o">,</span> <span class="n">spec</span><span class="o">,</span> <span class="k">new</span> <span class="nc">Callback0</span><span class="o">()</span> <span class="o">{</span>
+                <span class="nd">@Override</span>
+                <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onSuccess</span><span class="o">()</span> <span class="o">{</span>
+
+                <span class="o">}</span>
+
+                <span class="nd">@Override</span>
+                <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onError</span><span class="o">(</span><span class="nc">Throwable</span> <span class="n">throwable</span><span class="o">)</span> <span class="o">{</span>
+
+                <span class="o">}</span>
+            <span class="o">});</span>
+
+</code></pre></div></div>
+
+<p>Bitmark Android SDK supports storing keys from Android <strong>API 23(M)</strong> and above because of the security level.</p>
+
+<p>Bitmark Android SDK would authenticate the user <strong>each time</strong> they use the key (depend on the <code class="language-plaintext highlighter-rouge">KeyAuthenticationSpec</code> setting) to protect the user against attackers. The SDK uses the Android Key Store system with a lot of security algorithm for protecting the user’s key.</p>
+
+<p><strong>NOTE</strong>:</p>
+
+<ul>
+  <li>You <strong>need</strong> to <code class="language-plaintext highlighter-rouge">extends StatefulActivity</code> in the host <code class="language-plaintext highlighter-rouge">Activity</code> you pass for storing, retrieving, or deleting the key.</li>
+  <li><strong>React Native</strong> is also supported as an <em>experimental</em> feature. You <strong>need</strong> to <code class="language-plaintext highlighter-rouge">extends StatefulReactActivity</code> in the host <code class="language-plaintext highlighter-rouge">Activity</code> you want to pass for storing, retrieving, or deleting the key.</li>
+  <li>We use Android Key store for securely storing the <code class="language-plaintext highlighter-rouge">Account</code> so that if the key used to encrypt <code class="language-plaintext highlighter-rouge">Account</code> is invalidated by some method, such as adding or removing the fingerprint, or even if the key is no longer available, some official <code class="language-plaintext highlighter-rouge">Exception</code> will be thrown. For more details, please visit <a href="https://developer.android.com/training/articles/keystore">Android’s article on keystore</a>.</li>
+</ul>
+
+<h2 id="ios">iOS</h2>
+
+<p>Bitmark Swift SDK uses iOS keychain to store bitmark accounts. To use this feature, on your app, you need to setup the keychain first.</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Parameter</td>
+      <td>Description</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">service</code></td>
+      <td>your keychain service name; dependent on what is configured in the entitlement file</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">alias</code></td>
+      <td>the key to save your account into keychain; default value is your account number</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Storing your account</span>
+<span class="k">try</span> <span class="n">account</span><span class="o">.</span><span class="nf">saveToKeychain</span><span class="p">(</span><span class="nv">service</span><span class="p">:</span> <span class="s">"com.bitmarksdk.example"</span><span class="p">,</span>
+                            <span class="nv">alias</span><span class="p">:</span> <span class="s">"bitmark-account"</span><span class="p">,</span>
+                            <span class="nv">requireAuthenticationWithMessage</span><span class="p">:</span> <span class="kc">nil</span><span class="p">)</span>
+
+<span class="c1">// Getting your account</span>
+<span class="k">try</span> <span class="kt">Account</span><span class="o">.</span><span class="nf">loadFromKeychain</span><span class="p">(</span><span class="nv">service</span><span class="p">:</span> <span class="s">"com.bitmarksdk.example"</span><span class="p">,</span>
+                                <span class="nv">alias</span><span class="p">:</span> <span class="s">"bitmark-account"</span><span class="p">,</span>
+                                <span class="nv">requireAuthenticationWithMessage</span><span class="p">:</span> <span class="kc">nil</span><span class="p">)</span>
+</code></pre></div></div>
+
+</div>
+        
+        <div class="col-md-3">
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+  // Handler for .ready() called.
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 10);
+  return false
+})
+
+});
+</script>
+
+<!-- <div id="toc" class="affix"></div> -->
+</div>
+        
+    </div>
+
+
+
+    <div class="tags">
+        
+    </div>
+
+
+
+
+</div>
+
+<!-- <hr class="shaded"/> -->
+
+<footer>
+            <div class="row">
+                <div class="col-lg-12 footer">
+               	&copy;2020 Bitmark Inc. All rights reserved.
+				<!-- <br/> Powered by <a href="https://jekyllrb.com/">Jekyll</a> -->
+<!-- <p><img src="/assets/images/company_logo.png" alt="Company logo"/></p>
+                </div>
+            </div> -->
+</footer>
+
+
+        </div>
+    <!-- /.row -->
+</div>
+<!-- /.container -->
+</div>
+<!-- /#main -->
+    </div>
+
+</body>
+
+</html>
