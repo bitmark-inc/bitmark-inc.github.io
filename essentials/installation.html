@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="keywords" content=" installation">
+<title>Installation | Bitmark Documentation</title>
+
+<link rel="stylesheet" href="/css/syntax.css">
+
+<link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css">
+<!--<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">-->
+<link rel="stylesheet" href="/css/modern-business.css">
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="/css/bootstrap.min.3.3.7.css" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/customstyles.css">
+<link rel="stylesheet" href="/css/boxshadowproperties.css">
+<!-- most color styles are extracted out to here -->
+<link rel="stylesheet" href="/css/theme-blue.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="/js/jquery.navgoco.min.js"></script>
+
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<!-- Anchor.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.2.0/anchor.min.js"></script>
+<script src="/js/toc.js"></script>
+<script src="/js/customscripts.js"></script>
+
+<link rel="shortcut icon" href="/assets/images/favicon.ico">
+
+<link rel="stylesheet" href="/css/uikit.min.css" />
+<script src="/js/uikit.min.js"></script>
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<link rel="alternate" type="application/rss+xml" title="docs" href="/feed.xml">
+
+    <!-- <script>
+        $(document).ready(function() {
+            // Initialize navgoco with default options
+            $("#mysidebar").navgoco({
+                caretHtml: '',
+                accordion: false,
+                openClass: 'active', // open
+                save: false, // leave false or nav highlighting doesn't work right
+                cookie: {
+                    name: 'navgoco',
+                    expires: false,
+                    path: '/'
+                },
+                slide: {
+                    duration: 250,
+                    easing: 'swing'
+                }
+            });
+
+            // expand first level at indexes [0,3,7]
+            $("#mysidebar").navgoco('toggle', true, 0, 3, 7);
+
+            $("#collapseAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', false);
+            });
+
+            $("#expandAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', true);
+            });
+
+        });
+
+    </script> -->
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
+    <script>
+        $(document).ready(function() {
+            $("#tg-sb-link").click(function() {
+                // $("#tg-sb-sidebar").toggle();
+                $("#tg-sb-content").toggleClass('col-md-8');
+                $("#tg-sb-content").toggleClass('col-md-12');
+                $("#tg-sb-icon").toggleClass('fa-toggle-on');
+                $("#tg-sb-icon").toggleClass('fa-toggle-off');
+            });
+        });
+    </script>
+    
+
+</head>
+<body>
+<!-- Navigation -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container topnavlinks">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/index.html"><span class="projectTitle home-logo">Bitmark<!-- <img src="/assets/images/Bitmark_Logo-desktop_white.svg" alt="Bitmark logo"/> --><!-- Home --></span></a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <!-- toggle sidebar button -->
+                <!-- <li><a id="tg-sb-link" href="#"><i id="tg-sb-icon" class="fa fa-toggle-on"></i> Nav</a></li> -->
+                <!-- entries without drop-downs appear here -->
+
+
+
+
+                
+                
+                
+                <li><a href="https://registry.bitmark.com/" target="_blank" rel="noopener">Registry</a></li>
+                
+                
+                
+                <li><a href="https://bitmark.com/products/bitmark-protocol/faq/" target="_blank" rel="noopener">FAQ</a></li>
+                
+                
+                
+                <!-- entries with drop-downs appear here -->
+                <!-- conditional logic to control which topnav appears for the audience defined in the configuration file.-->
+                
+                <!-- 
+			<li>
+
+
+
+  <a class="email" title="Submit feedback" href="#" target="_blank" onclick="javascript:window.location='mailto:support@bitmark.com?subject=Bitmark Inc feedback&body=I have some feedback about the Installation page: ' + window.location.href;"><i class="fa fa-envelope-o"></i> Need help?</a>
+
+</li>
+
+		 -->
+                <!--comment out this block if you want to hide search-->
+                <li>
+                    <!--start search-->
+                    <div id="search-demo-container">
+                        <input type="text" id="search-input" placeholder="search...">
+                        <ul id="results-container"></ul>
+                    </div>
+                    <script src="/js/jekyll-search.js" type="text/javascript"></script>
+                    <script type="text/javascript">
+                            SimpleJekyllSearch.init({
+                                searchInput: document.getElementById('search-input'),
+                                resultsContainer: document.getElementById('results-container'),
+                                dataSource: '/search.json',
+                                searchResultTemplate: '<li><a href="{url}" title="Installation">{title}</a></li>',
+                    noResultsText: 'No results found.',
+                            limit: 10,
+                            fuzzy: true,
+                    })
+                    </script>
+                    <!--end search-->
+                </li>
+            </ul>
+        </div>
+        </div>
+        <!-- /.container -->
+</nav>
+
+<!-- Page Content -->
+<div class="container">
+  <div id="main">
+    <!-- Content Row -->
+    <div class="">
+        
+        
+            <!-- Sidebar Column -->
+            <div class="col-md-4" id="tg-sb-sidebar">
+                
+
+<ul id="mysidebar" class="nav">
+  <li class="sidebarTitle"> </li>
+  
+  
+  
+  <li>
+      <a class="sidebar-title" title="Essentials" href="#">Essentials</a>
+      <ul class="sidebar-list">
+          
+          
+          
+          <li class="active"><a title="Installation" href="/essentials/installation"><b>Installation</b></a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Register data" href="/essentials/register-data"><b>Register data</b></a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Control access" href="/essentials/control-access"><b>Control access</b></a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Transfer rights" href="/essentials/transfer-rights"><b>Transfer rights</b></a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Share rights" href="/essentials/share-rights"><b>Share rights</b></a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Query the Registry" href="/essentials/query-the-registry"><b>Query the Registry</b></a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Run a Node" href="/essentials/run-a-node"><b>Run a Node</b></a></li>
+          
+          
+          
+          
+      </ul>
+   </li>
+     
+      
+  
+  <li>
+      <a class="sidebar-title" title="In-Depth" href="#">In-Depth</a>
+      <ul class="sidebar-list">
+          
+          
+          
+          <li><a title="Blockchain Overview" href="/in-depth/blockchain-overview"><b>Blockchain Overview</b></a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Block Validation and Synchronization" href="/in-depth/block-verification-and-synchronization"><b>Block Validation and Synchronization</b></a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Block Mining" href="/in-depth/block-mining"><b>Block Mining</b></a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Payment Verification" href="/in-depth/payment-verification"><b>Payment Verification</b></a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Storage Databases" href="/in-depth/storage-databases"><b>Storage Databases</b></a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Blockchain Security" href="/in-depth/blockchain-security"><b>Blockchain Security</b></a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="RPC Communication" href="/in-depth/rpc-communication"><b>RPC Communication</b></a></li>
+          
+          
+          
+          
+      </ul>
+   </li>
+     
+      
+  
+  <li>
+      <a class="sidebar-title" title="Meta" href="#">Meta</a>
+      <ul class="sidebar-list">
+          
+          
+          
+          <li><a title="Glossary" href="/meta/glossary"><b>Glossary</b></a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="White Papers" href="/meta/white-papers"><b>White Papers</b></a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Bitmark versus Ethereum" href="/meta/bitmark-eth-comparison"><b>Bitmark versus Ethereum</b></a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Contribute to the Protocol" href="/meta/contribute-to-the-protocol"><b>Contribute to the Protocol</b></a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="FAQ" href="/meta/bitmark-protocol-faq"><b>FAQ</b></a></li>
+          
+          
+          
+          
+      </ul>
+   </li>
+     
+      
+      
+      <!-- if you aren't using the accordion, uncomment this block:
+         <p class="external">
+             <a href="#" id="collapseAll">Collapse All</a> | <a href="#" id="expandAll">Expand All</a>
+         </p>
+         -->
+</ul>
+
+<!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
+<script>$("li.active").parents('li').toggleClass("active");</script>
+
+            </div>
+            
+        
+
+        <!-- Content Column -->
+        <div class="col-md-8" id="tg-sb-content">
+            <!-- <div class="post-header">
+   <h1 class="post-title-main">Installation</h1>
+</div> -->
+
+
+
+<div class="post-content">
+
+   
+
+
+    
+
+    <div class="row">
+        <div class="col-md-9 page-article"><h1 id="installation">Installation</h1>
+
+<p>Users can interact with the Bitmark System using</p>
+
+<ul>
+  <li>The Bitmark SDK</li>
+  <li>The Bitmark CLI.</li>
+</ul>
+
+<h2 id="sdk-installation-and-configuration">SDK Installation and Configuration</h2>
+<p>The Bitmark SDK enables data registration, rights transfer, and registry querying in the Bitmark property system. The SDK’s simplified interface allows developers to easily build on the core Bitmark infrastructure by reading from and writing to the Bitmark blockchain.</p>
+
+<h3 id="install-sdk-packages">Install SDK Packages</h3>
+
+<p>The SDK can be installed for JavaScript, Swift, Java, or Go.</p>
+
+<ul class="uk-tab" data-uk-switcher="{connect:'#0e3f3e8a-5dd0-4b2f-86e8-676de7ad06e9'}">
+
+	<li class="uk-active"><a href="#">JS</a></li>
+
+	<li><a href="#">Swift</a></li>
+
+	<li><a href="#">Java</a></li>
+
+	<li><a href="#">Go</a></li>
+
+</ul>
+
+<ul id="0e3f3e8a-5dd0-4b2f-86e8-676de7ad06e9" class="uk-switcher uk-margin">
+
+	<li>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">$</span> <span class="nx">npm</span> <span class="nx">install</span> <span class="nx">bitmark</span><span class="o">-</span><span class="nx">sdk</span><span class="o">-</span><span class="nx">js</span>
+</code></pre></div></div>
+</li>
+
+	<li>
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pod</span> <span class="err">'</span><span class="kt">BitmarkSDK</span><span class="err">'</span>
+</code></pre></div></div>
+</li>
+
+	<li>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// From your build.gradle</span>
+<span class="n">repositories</span> <span class="o">{</span>
+    <span class="n">jcenter</span><span class="o">()</span>
+    <span class="n">maven</span> <span class="o">{</span> <span class="n">url</span> <span class="err">'</span><span class="nl">https:</span><span class="c1">//oss.sonatype.org/content/repositories/snapshots/' } // For snapshot version</span>
+<span class="o">}</span>
+
+<span class="n">dependencies</span> <span class="o">{</span>
+    <span class="n">implementation</span> <span class="err">'</span><span class="n">com</span><span class="o">.</span><span class="na">bitmark</span><span class="o">.</span><span class="na">sdk</span><span class="o">:</span><span class="n">java</span><span class="o">-</span><span class="nl">sdk:</span><span class="mf">2.1</span><span class="o">.</span><span class="mi">0</span><span class="err">'</span> <span class="c1">// Java SDK</span>
+    <span class="c1">// Or</span>
+    <span class="n">implementation</span> <span class="err">'</span><span class="n">com</span><span class="o">.</span><span class="na">bitmark</span><span class="o">.</span><span class="na">sdk</span><span class="o">:</span><span class="n">android</span><span class="o">-</span><span class="nl">sdk:</span><span class="mf">2.1</span><span class="o">.</span><span class="mi">0</span><span class="err">'</span> <span class="c1">// Android SDK</span>
+<span class="o">}</span>
+</code></pre></div></div>
+</li>
+
+	<li>
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">$</span> <span class="k">go</span> <span class="n">get</span> <span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">bitmark</span><span class="o">-</span><span class="n">inc</span><span class="o">/</span><span class="n">bitmark</span><span class="o">-</span><span class="n">sdk</span><span class="o">-</span><span class="k">go</span>
+</code></pre></div></div>
+</li>
+
+</ul>
+
+<h3 id="acquiring-an-api-token">Acquiring an API token</h3>
+
+<p>An API token is required to authenticate requests to the Bitmark API.</p>
+
+<p>Please contact <a href="mailto:support@bitmark.com">Bitmark support</a> to create a developer account and get an API token.</p>
+
+<h3 id="configuring-the-sdk">Configuring the SDK</h3>
+
+<p>Before working with the Bitmark blockchain, configure the SDK for your API token and the Bitmark network that you’ll be using.</p>
+
+<ul class="uk-tab" data-uk-switcher="{connect:'#98f69cd6-922e-4fb4-93a2-02cf21bf4eb0'}">
+
+	<li class="uk-active"><a href="#">JS</a></li>
+
+	<li><a href="#">Swift</a></li>
+
+	<li><a href="#">Java</a></li>
+
+	<li><a href="#">Go</a></li>
+
+</ul>
+
+<ul id="98f69cd6-922e-4fb4-93a2-02cf21bf4eb0" class="uk-switcher uk-margin">
+
+	<li>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">sdk</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">bitmark-sdk-js</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">config</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">apiToken</span><span class="p">:</span> <span class="dl">"</span><span class="s2">api-token</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">network</span><span class="p">:</span> <span class="dl">"</span><span class="s2">testnet</span><span class="dl">"</span>
+<span class="p">};</span>
+
+<span class="nx">sdk</span><span class="p">.</span><span class="nx">init</span><span class="p">(</span><span class="nx">config</span><span class="p">);</span>
+</code></pre></div></div>
+</li>
+
+	<li>
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">import</span> <span class="kt">BitmarkSDK</span>
+
+<span class="kt">BitmarkSDK</span><span class="o">.</span><span class="nf">initialize</span><span class="p">(</span><span class="nv">config</span><span class="p">:</span> <span class="kt">SDKConfig</span><span class="p">(</span><span class="nv">apiToken</span><span class="p">:</span> <span class="s">"api-token"</span><span class="p">,</span>
+                                        <span class="nv">network</span><span class="p">:</span> <span class="o">.</span><span class="n">testnet</span><span class="p">,</span>
+                                        <span class="nv">urlSession</span><span class="p">:</span> <span class="kt">URLSession</span><span class="o">.</span><span class="n">shared</span><span class="p">))</span>
+</code></pre></div></div>
+</li>
+
+	<li>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">final</span> <span class="nc">GlobalConfiguration</span><span class="o">.</span><span class="na">Builder</span> <span class="n">builder</span> <span class="o">=</span> <span class="nc">GlobalConfiguration</span><span class="o">.</span><span class="na">builder</span><span class="o">().</span><span class="na">withApiToken</span><span class="o">(</span><span class="s">"api-token"</span><span class="o">).</span><span class="na">withNetwork</span><span class="o">(</span><span class="nc">Network</span><span class="o">.</span><span class="na">LIVE_NET</span><span class="o">);</span>
+<span class="nc">BitmarkSDK</span><span class="o">.</span><span class="na">init</span><span class="o">(</span><span class="n">builder</span><span class="o">);</span>
+</code></pre></div></div>
+</li>
+
+	<li>
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="n">sdk</span> <span class="s">"github.com/bitmark/bitmark-inc/bitmark-sdk-go"</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="n">config</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="n">sdk</span><span class="o">.</span><span class="n">Config</span><span class="p">{</span>
+		<span class="n">APIToken</span><span class="o">:</span> <span class="s">"YOUR API TOKEN"</span><span class="p">,</span>
+		<span class="n">Network</span><span class="o">:</span>  <span class="n">sdk</span><span class="o">.</span><span class="n">Testnet</span><span class="p">,</span>
+		<span class="n">HTTPClient</span><span class="o">:</span> <span class="o">&amp;</span><span class="n">http</span><span class="o">.</span><span class="n">Client</span><span class="p">{</span>
+			<span class="n">Timeout</span><span class="o">:</span> <span class="m">10</span> <span class="o">*</span> <span class="n">time</span><span class="o">.</span><span class="n">Second</span><span class="p">,</span>
+		<span class="p">},</span>
+	<span class="p">}</span>
+	<span class="n">sdk</span><span class="o">.</span><span class="n">Init</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div></div>
+</li>
+
+</ul>
+
+<h2 id="cli-installation-and-setup">CLI Installation and Setup</h2>
+
+<p>The Bitmark CLI is a command line interface which submits transactions to its connected Bitmark Node via RPC. CLI users are able to register data, transfer rights, share rights as well as query the registry by submitting corresponding transactions directly to the connected Node.</p>
+
+<h3 id="install-the-cli">Install the CLI</h3>
+
+<p>As the CLI needs to connect with a Node to communicate with the Bitmark Blockchain, the CLI installation is included in the Node installation.</p>
+
+<p>Refer <a href="/essentials/run-a-node">Run a node</a> section for the instructions.</p>
+
+<h3 id="install-the-bitmark-wallet-for-payment">Install the Bitmark wallet for payment</h3>
+
+<p>In the Bitmark Property System, only the first bitmark issuance of a registered data is free of charge. All the other transactions require transaction fees. Bitmark transaction fees can be paid in either Bitcoin (BTC) or Litecoin (LTC) cryptocurrencies. Because common wallets do not support attaching the Bitmark blockchain payment identifier to the BTC/LTC transactions, Bitmark provides an app called the Bitmark Wallet to pay for Bitmark transactions that come from the Bitmark CLI.</p>
+
+<p>The main actions required to use the Bitmark wallet are:</p>
+
+<ul>
+  <li>Installing the Bitmark Wallet.</li>
+  <li>Syncing the wallet with coins.</li>
+  <li>Running the wallet.</li>
+  <li>Acquiring testnet coins.</li>
+</ul>
+
+<p>Prerequisites</p>
+
+<ul>
+  <li>Git must be installed.</li>
+  <li>Go must be installed.</li>
+  <li>Python3 must be installed.</li>
+  <li><code class="language-plaintext highlighter-rouge">bitcoind</code>/<code class="language-plaintext highlighter-rouge">litecoind</code> must be installed.</li>
+</ul>
+
+<p><br /></p>
+
+<p>Install the Bitmark wallet</p>
+
+<ul class="uk-tab" data-uk-switcher="{connect:'#a083fd87-1996-4b2f-a6db-f7c8463b68cd'}">
+
+	<li class="uk-active"><a href="#">Command</a></li>
+
+</ul>
+
+<ul id="a083fd87-1996-4b2f-a6db-f7c8463b68cd" class="uk-switcher uk-margin">
+
+	<li>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Clone the Bitmark Wallet</span>
+<span class="nv">$git</span> clone https://github.com/bitmark-inc/bitmark-wallet.git
+
+<span class="c"># Install the wallet</span>
+<span class="nv">$cd</span> bitmark-wallet/command/bitmark-wallet
+<span class="nv">$go</span> <span class="nb">install</span>
+
+<span class="c"># Create the Bitmark Wallet's config file</span>
+<span class="nv">$ </span><span class="nb">mkdir</span> ~/.config/bitmark-wallet
+<span class="nv">$ </span><span class="nb">touch</span> ~/.config/bitmark-wallet/bitmark-wallet.conf
+</code></pre></div></div>
+</li>
+
+</ul>
+
+<p><br /></p>
+
+<p>Connect with bitcoind and litecoind by enabling RPC</p>
+
+<ul class="uk-tab" data-uk-switcher="{connect:'#a4571aaa-2f6d-422d-b366-c6f64e8d35bd'}">
+
+	<li class="uk-active"><a href="#">bitcoin.conf</a></li>
+
+	<li><a href="#">litecoin.conf</a></li>
+
+	<li><a href="#">bitmark-wallet.conf</a></li>
+
+</ul>
+
+<ul id="a4571aaa-2f6d-422d-b366-c6f64e8d35bd" class="uk-switcher uk-margin">
+
+	<li>
+<div class="language-conf highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># RPC server port
+</span><span class="n">rpcport</span> = <span class="m">18443</span>
+<span class="n">rpcbind</span> = <span class="m">127</span>.<span class="m">0</span>.<span class="m">0</span>.<span class="m">1</span>
+<span class="n">rpcbind</span> = [::<span class="m">1</span>]
+
+<span class="c"># RPC configuration
+</span><span class="n">rpcthreads</span> = <span class="m">20</span>
+<span class="c">#rpcssl = 1
+</span><span class="n">rpcallowip</span> = <span class="m">127</span>.<span class="m">0</span>.<span class="m">0</span>.<span class="m">1</span>
+<span class="n">rpcallowip</span> = [::<span class="m">1</span>]
+
+<span class="c"># authentication
+</span><span class="n">rpcauth</span>=<span class="n">cotzntmnxllhcpsshvdzzuue</span>:<span class="m">1</span><span class="n">c1671f8ffbdd8d845688dc450d2c4e1</span>$<span class="n">ec4723c3a7c29d072c40749017d4d326576c68264595355fac8816d525220f7a</span>
+</code></pre></div></div>
+</li>
+
+	<li>
+<div class="language-conf highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># RPC server port
+</span><span class="n">rpcport</span> = <span class="m">19443</span>
+<span class="n">rpcbind</span> = <span class="m">127</span>.<span class="m">0</span>.<span class="m">0</span>.<span class="m">1</span>
+<span class="n">rpcbind</span> = [::<span class="m">1</span>]
+
+<span class="c"># RPC configuration
+</span><span class="n">rpcthreads</span> = <span class="m">20</span>
+<span class="c">#rpcssl = 1
+</span><span class="n">rpcallowip</span> = <span class="m">127</span>.<span class="m">0</span>.<span class="m">0</span>.<span class="m">1</span>
+<span class="n">rpcallowip</span> = [::<span class="m">1</span>]
+
+<span class="c"># authentication
+</span><span class="n">rpcauth</span>=<span class="n">wzrhjmlikroaxjnckmgzcrfv</span>:<span class="m">37</span><span class="n">ff59f93e737d95f3cb15a4c5b81d</span>$<span class="n">ecf9e7d5ceaf79fa136865d950c64b88845582e78f4a7af5e8a1861ad8331f08</span>
+</code></pre></div></div>
+</li>
+
+	<li>
+<div class="language-conf highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">agent</span> {
+  <span class="n">btc</span>{
+      <span class="n">type</span> = <span class="s2">"daemon"</span>
+      <span class="n">node</span> = <span class="s2">"localhost:18443"</span>
+      <span class="n">user</span> = <span class="s2">"cotzntmnxllhcpsshvdzzuue"</span>
+      <span class="n">pass</span> = <span class="s2">"vN9v95_7qjWiHSMUx2QuriX6fUgjoPyZgJRm-1Og0-g="</span>
+  }
+  <span class="n">ltc</span> {
+    <span class="n">type</span> = <span class="s2">"daemon"</span>
+    <span class="n">node</span> = <span class="s2">"localhost:19443"</span>
+    <span class="n">user</span> = <span class="s2">"wzrhjmlikroaxjnckmgzcrfv"</span>
+    <span class="n">pass</span> = <span class="s2">"7iLL9pGM7W4LNQTjDmdYGj6mJ7nBFgYIix5OjRbR-v4="</span>
+  }
+}
+</code></pre></div></div>
+</li>
+
+</ul>
+
+<p><br /></p>
+
+<p>Run coin servers and Bitmark wallet</p>
+
+<ul class="uk-tab" data-uk-switcher="{connect:'#03dfec2c-31be-4565-ac4d-c1e78dfee370'}">
+
+	<li class="uk-active"><a href="#">Command</a></li>
+
+	<li><a href="#">Example</a></li>
+
+</ul>
+
+<ul id="03dfec2c-31be-4565-ac4d-c1e78dfee370" class="uk-switcher uk-margin">
+
+	<li>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Run bitcoind</span>
+<span class="nv">$ </span>bitcoind <span class="nt">-datadir</span><span class="o">=</span>&lt;bitcoind config <span class="nb">dir</span><span class="o">&gt;</span>
+
+<span class="c"># Run litecoind</span>
+<span class="nv">$ </span>litecoind <span class="nt">-datadir</span><span class="o">=</span>&lt;litecoind config <span class="nb">dir</span><span class="o">&gt;</span>
+
+<span class="c"># Initialize the Bitmark wallet</span>
+<span class="nv">$ </span>bitmark-wallet <span class="nt">--conf</span><span class="o">=</span>&lt;conf file&gt; init
+
+<span class="c"># Sync bitcoin</span>
+<span class="nv">$ </span>bitmark-wallet <span class="nt">--conf</span><span class="o">=</span>&lt;config file&gt; btc <span class="nb">sync</span> <span class="nt">--</span>&lt;network&gt;
+
+<span class="c"># Sync litecoin</span>
+<span class="nv">$ </span>bitmark-wallet <span class="nt">--conf</span><span class="o">=</span>&lt;config file&gt; ltc <span class="nb">sync</span> <span class="nt">--</span>&lt;network&gt;
+
+<span class="c"># Generate BTC address</span>
+<span class="nv">$ </span>bitmark-wallet <span class="nt">--conf</span><span class="o">=</span>&lt;config file&gt; btc newaddress <span class="nt">--</span>&lt;network&gt;
+
+<span class="c"># Generate LTC address</span>
+<span class="nv">$ </span>bitmark-wallet <span class="nt">--conf</span><span class="o">=</span>&lt;config file&gt; ltc newaddress <span class="nt">--</span>&lt;network&gt;
+</code></pre></div></div>
+</li>
+
+	<li>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Run bitcoind</span>
+<span class="nv">$ </span>bitcoind <span class="nt">-datadir</span><span class="o">=</span><span class="k">${</span><span class="nv">HOME</span><span class="k">}</span>/.config/bitcoin
+
+<span class="c"># Run litecoind</span>
+<span class="nv">$ </span>litecoind <span class="nt">-datadir</span><span class="o">=</span><span class="k">${</span><span class="nv">HOME</span><span class="k">}</span>/.config/litecoin
+
+<span class="c"># Initialize the Bitmark wallet</span>
+<span class="nv">$ </span>bitmark-wallet <span class="nt">--conf</span><span class="o">=</span><span class="k">${</span><span class="nv">HOME</span><span class="k">}</span>/.config/bitmark-wallet/test/bitmark-wallet.conf init
+
+<span class="c"># Sync bitcoin</span>
+bitmark-wallet <span class="nt">--conf</span><span class="o">=</span><span class="k">${</span><span class="nv">HOME</span><span class="k">}</span>/.config/bitmark-wallet/test/bitmark-wallet.conf btc <span class="nb">sync</span> <span class="nt">--testnet</span>
+
+<span class="c"># Sync litecoin</span>
+bitmark-wallet <span class="nt">--conf</span><span class="o">=</span><span class="k">${</span><span class="nv">HOME</span><span class="k">}</span>/.config/bitmark-wallet/test/bitmark-wallet.conf ltc <span class="nb">sync</span> <span class="nt">--testnet</span>
+
+<span class="c"># Generate BTC address</span>
+<span class="nv">$ </span>bitmark-wallet <span class="nt">--conf</span><span class="o">=</span><span class="k">${</span><span class="nv">HOME</span><span class="k">}</span>/.config/bitmark-wallet/test/bitmark-wallet.conf btc newaddress <span class="nt">--testnet</span>
+
+<span class="c"># Generate LTC address</span>
+<span class="nv">$ </span>bitmark-wallet <span class="nt">--conf</span><span class="o">=</span><span class="k">${</span><span class="nv">HOME</span><span class="k">}</span>/.config/bitmark-wallet/test/bitmark-wallet.conf ltc newaddress <span class="nt">--testnet</span>
+
+</code></pre></div></div>
+</li>
+
+</ul>
+
+<p><br /></p>
+
+<h3 id="getting-testnet-coins">Getting testnet coins</h3>
+
+<p>To fund a mainnet wallet, you’ll need to send coins to the BTC or LTC address, but to fund a testnet wallet, you can simply request coins from a faucet.</p>
+
+<ul>
+  <li>
+    <p>Get some testnet ltc at https://faucet.xblau.com/</p>
+  </li>
+  <li>
+    <p>Get some testnet btc at https://coinfaucet.eu/en/btc-testnet/</p>
+  </li>
+</ul>
+</div>
+        
+        <div class="col-md-3">
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+  // Handler for .ready() called.
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 10);
+  return false
+})
+
+});
+</script>
+
+<!-- <div id="toc" class="affix"></div> -->
+</div>
+        
+    </div>
+
+
+
+    <div class="tags">
+        
+    </div>
+
+
+
+
+</div>
+
+<!-- <hr class="shaded"/> -->
+
+<footer>
+            <div class="row">
+                <div class="col-lg-12 footer">
+               	&copy;2020 Bitmark Inc. All rights reserved.
+				<!-- <br/> Powered by <a href="https://jekyllrb.com/">Jekyll</a> -->
+<!-- <p><img src="/assets/images/company_logo.png" alt="Company logo"/></p>
+                </div>
+            </div> -->
+</footer>
+
+
+        </div>
+    <!-- /.row -->
+</div>
+<!-- /.container -->
+</div>
+<!-- /#main -->
+    </div>
+
+</body>
+
+</html>
