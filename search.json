@@ -83,8 +83,8 @@
 {
 "title": "Bitmark versus Ethereum",
 "tags": "",
-"keywords": "ethereum, bitmarkvsethereum",
-"url": "/bitmark-appendix/bitmark-eth-comparison",
+"keywords": "ethereum, bitmark vs ethereum",
+"url": "/meta/bitmark-eth-comparison",
 "summary": ""
 }
 ,
@@ -94,8 +94,8 @@
 {
 "title": "Bitmark versus Ethereum",
 "tags": "",
-"keywords": "ethereum, bitmark vs ethereum",
-"url": "/meta/bitmark-eth-comparison",
+"keywords": "ethereum, bitmarkvsethereum",
+"url": "/bitmark-appendix/bitmark-eth-comparison",
 "summary": ""
 }
 ,
@@ -150,7 +150,7 @@
 "title": "Bitmark Shares",
 "tags": "",
 "keywords": "bitmark shares",
-"url": "/essentials/shares/bitmark-shares",
+"url": "/bitmark-appendix/bitmark-shares",
 "summary": ""
 }
 ,
@@ -161,7 +161,7 @@
 "title": "Bitmark Shares",
 "tags": "",
 "keywords": "bitmark shares",
-"url": "/bitmark-appendix/bitmark-shares",
+"url": "/essentials/shares/bitmark-shares",
 "summary": ""
 }
 ,
@@ -372,7 +372,7 @@
 "title": "Installation",
 "tags": "",
 "keywords": "installation",
-"url": "/essentials/Installation",
+"url": "/essentials/installation",
 "summary": ""
 }
 ,
@@ -449,7 +449,7 @@
 "title": "Payment Verification",
 "tags": "",
 "keywords": "payment, payment verification",
-"url": "/bitmark-references/bitmark-node-software/payment-verification",
+"url": "/in-depth/payment-verification",
 "summary": ""
 }
 ,
@@ -460,7 +460,7 @@
 "title": "Payment Verification",
 "tags": "",
 "keywords": "payment, payment verification",
-"url": "/in-depth/payment-verification",
+"url": "/bitmark-references/bitmark-node-software/payment-verification",
 "summary": ""
 }
 ,
@@ -493,7 +493,7 @@
 "title": "Queries",
 "tags": "",
 "keywords": "sdk, query",
-"url": "/essentials/sdk/query",
+"url": "/bitmark-references/bitmark-sdk/query",
 "summary": ""
 }
 ,
@@ -504,7 +504,7 @@
 "title": "Queries",
 "tags": "",
 "keywords": "sdk, query",
-"url": "/bitmark-references/bitmark-sdk/query",
+"url": "/essentials/sdk/query",
 "summary": ""
 }
 ,

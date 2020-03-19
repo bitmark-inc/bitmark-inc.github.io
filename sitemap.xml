@@ -50,13 +50,13 @@
   
   
   <url>
-    <loc>/bitmark-appendix/bitmark-eth-comparison</loc>
+    <loc>/meta/bitmark-eth-comparison</loc>
   </url>
   
   
   
   <url>
-    <loc>/meta/bitmark-eth-comparison</loc>
+    <loc>/bitmark-appendix/bitmark-eth-comparison</loc>
   </url>
   
   
@@ -86,13 +86,13 @@
   
   
   <url>
-    <loc>/essentials/shares/bitmark-shares</loc>
+    <loc>/bitmark-appendix/bitmark-shares</loc>
   </url>
   
   
   
   <url>
-    <loc>/bitmark-appendix/bitmark-shares</loc>
+    <loc>/essentials/shares/bitmark-shares</loc>
   </url>
   
   
@@ -208,7 +208,7 @@
   
   
   <url>
-    <loc>/essentials/Installation</loc>
+    <loc>/essentials/installation</loc>
   </url>
   
   
@@ -250,13 +250,13 @@
   
   
   <url>
-    <loc>/bitmark-references/bitmark-node-software/payment-verification</loc>
+    <loc>/in-depth/payment-verification</loc>
   </url>
   
   
   
   <url>
-    <loc>/in-depth/payment-verification</loc>
+    <loc>/bitmark-references/bitmark-node-software/payment-verification</loc>
   </url>
   
   
@@ -274,13 +274,13 @@
   
   
   <url>
-    <loc>/essentials/sdk/query</loc>
+    <loc>/bitmark-references/bitmark-sdk/query</loc>
   </url>
   
   
   
   <url>
-    <loc>/bitmark-references/bitmark-sdk/query</loc>
+    <loc>/essentials/sdk/query</loc>
   </url>
   
   
