@@ -14,7 +14,7 @@
   
   
   <url>
-    <loc>/bitmark-references/bitmark-sdk/account</loc>
+    <loc>/essentials/sdk/account</loc>
   </url>
   
   
@@ -26,7 +26,7 @@
   
   
   <url>
-    <loc>/bitmark-references/bitmark-sdk/action</loc>
+    <loc>/essentials/sdk/action</loc>
   </url>
   
   
@@ -50,13 +50,13 @@
   
   
   <url>
-    <loc>/read-our-papers/bitmark-eth-comparison</loc>
+    <loc>/bitmark-appendix/bitmark-eth-comparison</loc>
   </url>
   
   
   
   <url>
-    <loc>/bitmark-appendix/bitmark-eth-comparison</loc>
+    <loc>/meta/bitmark-eth-comparison</loc>
   </url>
   
   
@@ -74,7 +74,7 @@
   
   
   <url>
-    <loc>/browse-our-faq/bitmark-protocol-faq</loc>
+    <loc>/meta/bitmark-protocol-faq</loc>
   </url>
   
   
@@ -92,7 +92,7 @@
   
   
   <url>
-    <loc>/bitmark-appendix/bitmark-shares</loc>
+    <loc>/essentials/shares/bitmark-shares</loc>
   </url>
   
   
@@ -110,7 +110,7 @@
   
   
   <url>
-    <loc>/explore-the-protocol-docs/block-mining</loc>
+    <loc>/in-depth/block-mining</loc>
   </url>
   
   
@@ -122,19 +122,19 @@
   
   
   <url>
-    <loc>/explore-the-protocol-docs/block-verification-and-synchronization</loc>
+    <loc>/in-depth/block-verification-and-synchronization</loc>
   </url>
   
   
   
   <url>
-    <loc>/explore-the-protocol-docs/blockchain-overview</loc>
+    <loc>/in-depth/blockchain-overview</loc>
   </url>
   
   
   
   <url>
-    <loc>/explore-the-protocol-docs/blockchain-security</loc>
+    <loc>/in-depth/blockchain-security</loc>
   </url>
   
   
@@ -152,31 +152,31 @@
   
   
   <url>
-    <loc>/register-and-control-data/cli/bitmark-cli-command-reference</loc>
+    <loc>/essentials/cli/bitmark-cli-command-reference</loc>
   </url>
   
   
   
   <url>
-    <loc>/register-and-control-data/cli/cli-payment</loc>
+    <loc>/essentials/cli/cli-payment</loc>
   </url>
   
   
   
   <url>
-    <loc>/register-and-control-data/cli/cli-quick-setup</loc>
+    <loc>/essentials/cli/cli-quick-setup</loc>
   </url>
   
   
   
   <url>
-    <loc>/contribute-to-the-protocol</loc>
+    <loc>/meta/contribute-to-the-protocol</loc>
   </url>
   
   
   
   <url>
-    <loc>/register-and-control-data/control-access</loc>
+    <loc>/essentials/control-access</loc>
   </url>
   
   
@@ -190,19 +190,25 @@
   
   
   <url>
-    <loc>/register-and-control-data/getting-started</loc>
+    <loc>/essentials/sdk/getting-started</loc>
   </url>
   
   
   
   <url>
-    <loc>/explore-the-protocol-docs/glossary</loc>
+    <loc>/meta/glossary</loc>
   </url>
   
   
   
   <url>
     <loc>/index.html</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>/essentials/Installation</loc>
   </url>
   
   
@@ -220,7 +226,7 @@
   
   
   <url>
-    <loc>/bitmark-references/bitmark-sdk/migration</loc>
+    <loc>/essentials/sdk/migration</loc>
   </url>
   
   
@@ -250,7 +256,7 @@
   
   
   <url>
-    <loc>/explore-the-protocol-docs/payment-verification</loc>
+    <loc>/in-depth/payment-verification</loc>
   </url>
   
   
@@ -262,7 +268,7 @@
   
   
   <url>
-    <loc>/register-and-control-data/query-the-registry</loc>
+    <loc>/essentials/query-the-registry</loc>
   </url>
   
   
@@ -274,7 +280,7 @@
   
   
   <url>
-    <loc>/bitmark-references/bitmark-sdk/query</loc>
+    <loc>/essentials/sdk/query</loc>
   </url>
   
   
@@ -286,7 +292,7 @@
   
   
   <url>
-    <loc>/register-and-control-data/register-data</loc>
+    <loc>/essentials/register-data</loc>
   </url>
   
   
@@ -298,13 +304,13 @@
   
   
   <url>
-    <loc>/explore-the-protocol-docs/rpc-communication</loc>
+    <loc>/in-depth/rpc-communication</loc>
   </url>
   
   
   
   <url>
-    <loc>/register-and-control-data/run-a-node</loc>
+    <loc>/essentials/run-a-node</loc>
   </url>
   
   
@@ -318,7 +324,7 @@
   
   
   <url>
-    <loc>/register-and-control-data/share-rights</loc>
+    <loc>/essentials/share-rights</loc>
   </url>
   
   
@@ -332,7 +338,7 @@
   
   
   <url>
-    <loc>/explore-the-protocol-docs/storage-databases</loc>
+    <loc>/in-depth/storage-databases</loc>
   </url>
   
   
@@ -344,7 +350,7 @@
   
   
   <url>
-    <loc>/bitmark-references/bitmark-sdk/store-seed</loc>
+    <loc>/essentials/sdk/store-seed</loc>
   </url>
   
   
@@ -354,7 +360,7 @@
   
   
   <url>
-    <loc>/register-and-control-data/transfer-rights</loc>
+    <loc>/essentials/transfer-rights</loc>
   </url>
   
   
@@ -378,13 +384,13 @@
   
   
   <url>
-    <loc>/bitmark-references/bitmark-sdk/websocket</loc>
+    <loc>/essentials/sdk/websocket</loc>
   </url>
   
   
   
   <url>
-    <loc>/read-our-papers/white-papers</loc>
+    <loc>/meta/white-papers</loc>
   </url>
   
   
@@ -450,13 +456,19 @@
   
   
   <url>
-    <loc>/pages/browse-our-faq/</loc>
+    <loc>/pages/essentials/</loc>
   </url>
   
   
   
   <url>
-    <loc>/pages/explore-the-protocol-docs/</loc>
+    <loc>/pages/essentials/sdk/</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>/pages/in-depth/</loc>
   </url>
   
   
@@ -486,19 +498,7 @@
   
   
   <url>
-    <loc>/pages/read-our-papers/</loc>
-  </url>
-  
-  
-  
-  <url>
-    <loc>/pages/register-and-control-data/</loc>
-  </url>
-  
-  
-  
-  <url>
-    <loc>/pages/register-and-control-data/sdk/</loc>
+    <loc>/pages/meta/</loc>
   </url>
   
   
