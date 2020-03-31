@@ -7,7 +7,7 @@
 "title": "Account",
 "tags": "",
 "keywords": "account, sdk",
-"url": "/bitmark-references/bitmark-sdk/account",
+"url": "/essentials/sdk/account",
 "summary": ""
 }
 ,
@@ -18,18 +18,7 @@
 "title": "Account",
 "tags": "",
 "keywords": "account, sdk",
-"url": "/essentials/sdk/account",
-"summary": ""
-}
-,
-
-
-
-{
-"title": "Actions",
-"tags": "",
-"keywords": "action, sdk, register asset, issue bitmark, transfer bitmark",
-"url": "/bitmark-references/bitmark-sdk/action",
+"url": "/bitmark-references/bitmark-sdk/account",
 "summary": ""
 }
 ,
@@ -41,6 +30,17 @@
 "tags": "",
 "keywords": "action, sdk, register asset, issue bitmark, transfer bitmark",
 "url": "/essentials/sdk/action",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Actions",
+"tags": "",
+"keywords": "action, sdk, register asset, issue bitmark, transfer bitmark",
+"url": "/bitmark-references/bitmark-sdk/action",
 "summary": ""
 }
 ,
@@ -83,8 +83,8 @@
 {
 "title": "Bitmark versus Ethereum",
 "tags": "",
-"keywords": "ethereum, bitmark vs ethereum",
-"url": "/meta/bitmark-eth-comparison",
+"keywords": "ethereum, bitmarkvsethereum",
+"url": "/bitmark-appendix/bitmark-eth-comparison",
 "summary": ""
 }
 ,
@@ -94,8 +94,8 @@
 {
 "title": "Bitmark versus Ethereum",
 "tags": "",
-"keywords": "ethereum, bitmarkvsethereum",
-"url": "/bitmark-appendix/bitmark-eth-comparison",
+"keywords": "ethereum, bitmark vs ethereum",
+"url": "/meta/bitmark-eth-comparison",
 "summary": ""
 }
 ,
@@ -150,7 +150,7 @@
 "title": "Bitmark Shares",
 "tags": "",
 "keywords": "bitmark shares",
-"url": "/bitmark-appendix/bitmark-shares",
+"url": "/essentials/shares/bitmark-shares",
 "summary": ""
 }
 ,
@@ -161,7 +161,7 @@
 "title": "Bitmark Shares",
 "tags": "",
 "keywords": "bitmark shares",
-"url": "/essentials/shares/bitmark-shares",
+"url": "/bitmark-appendix/bitmark-shares",
 "summary": ""
 }
 ,
@@ -394,7 +394,7 @@
 "title": "Account Migration",
 "tags": "",
 "keywords": "sdk, migration",
-"url": "/bitmark-references/bitmark-sdk/migration",
+"url": "/essentials/sdk/migration",
 "summary": ""
 }
 ,
@@ -405,7 +405,7 @@
 "title": "Account Migration",
 "tags": "",
 "keywords": "sdk, migration",
-"url": "/essentials/sdk/migration",
+"url": "/bitmark-references/bitmark-sdk/migration",
 "summary": ""
 }
 ,
@@ -493,7 +493,7 @@
 "title": "Queries",
 "tags": "",
 "keywords": "sdk, query",
-"url": "/bitmark-references/bitmark-sdk/query",
+"url": "/essentials/sdk/query",
 "summary": ""
 }
 ,
@@ -504,7 +504,7 @@
 "title": "Queries",
 "tags": "",
 "keywords": "sdk, query",
-"url": "/essentials/sdk/query",
+"url": "/bitmark-references/bitmark-sdk/query",
 "summary": ""
 }
 ,
@@ -618,7 +618,7 @@
 "title": "Storing a Seed",
 "tags": "",
 "keywords": "sdk, store seed",
-"url": "/bitmark-references/bitmark-sdk/store-seed",
+"url": "/essentials/sdk/store-seed",
 "summary": ""
 }
 ,
@@ -629,7 +629,7 @@
 "title": "Storing a Seed",
 "tags": "",
 "keywords": "sdk, store seed",
-"url": "/essentials/sdk/store-seed",
+"url": "/bitmark-references/bitmark-sdk/store-seed",
 "summary": ""
 }
 ,
@@ -677,7 +677,7 @@
 "title": "Receiving WebSocket Events",
 "tags": "",
 "keywords": "sdk, web socket",
-"url": "/bitmark-references/bitmark-sdk/websocket",
+"url": "/essentials/sdk/websocket",
 "summary": ""
 }
 ,
@@ -688,7 +688,7 @@
 "title": "Receiving WebSocket Events",
 "tags": "",
 "keywords": "sdk, web socket",
-"url": "/essentials/sdk/websocket",
+"url": "/bitmark-references/bitmark-sdk/websocket",
 "summary": ""
 }
 ,

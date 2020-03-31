@@ -8,25 +8,25 @@
   
   
   <url>
-    <loc>/bitmark-references/bitmark-sdk/account</loc>
-  </url>
-  
-  
-  
-  <url>
     <loc>/essentials/sdk/account</loc>
   </url>
   
   
   
   <url>
-    <loc>/bitmark-references/bitmark-sdk/action</loc>
+    <loc>/bitmark-references/bitmark-sdk/account</loc>
   </url>
   
   
   
   <url>
     <loc>/essentials/sdk/action</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>/bitmark-references/bitmark-sdk/action</loc>
   </url>
   
   
@@ -50,13 +50,13 @@
   
   
   <url>
-    <loc>/meta/bitmark-eth-comparison</loc>
+    <loc>/bitmark-appendix/bitmark-eth-comparison</loc>
   </url>
   
   
   
   <url>
-    <loc>/bitmark-appendix/bitmark-eth-comparison</loc>
+    <loc>/meta/bitmark-eth-comparison</loc>
   </url>
   
   
@@ -86,13 +86,13 @@
   
   
   <url>
-    <loc>/bitmark-appendix/bitmark-shares</loc>
+    <loc>/essentials/shares/bitmark-shares</loc>
   </url>
   
   
   
   <url>
-    <loc>/essentials/shares/bitmark-shares</loc>
+    <loc>/bitmark-appendix/bitmark-shares</loc>
   </url>
   
   
@@ -220,13 +220,13 @@
   
   
   <url>
-    <loc>/bitmark-references/bitmark-sdk/migration</loc>
+    <loc>/essentials/sdk/migration</loc>
   </url>
   
   
   
   <url>
-    <loc>/essentials/sdk/migration</loc>
+    <loc>/bitmark-references/bitmark-sdk/migration</loc>
   </url>
   
   
@@ -274,13 +274,13 @@
   
   
   <url>
-    <loc>/bitmark-references/bitmark-sdk/query</loc>
+    <loc>/essentials/sdk/query</loc>
   </url>
   
   
   
   <url>
-    <loc>/essentials/sdk/query</loc>
+    <loc>/bitmark-references/bitmark-sdk/query</loc>
   </url>
   
   
@@ -344,13 +344,13 @@
   
   
   <url>
-    <loc>/bitmark-references/bitmark-sdk/store-seed</loc>
+    <loc>/essentials/sdk/store-seed</loc>
   </url>
   
   
   
   <url>
-    <loc>/essentials/sdk/store-seed</loc>
+    <loc>/bitmark-references/bitmark-sdk/store-seed</loc>
   </url>
   
   
@@ -378,13 +378,13 @@
   
   
   <url>
-    <loc>/bitmark-references/bitmark-sdk/websocket</loc>
+    <loc>/essentials/sdk/websocket</loc>
   </url>
   
   
   
   <url>
-    <loc>/essentials/sdk/websocket</loc>
+    <loc>/bitmark-references/bitmark-sdk/websocket</loc>
   </url>
   
   
