@@ -7,7 +7,7 @@
 "title": "Account",
 "tags": "",
 "keywords": "account, sdk",
-"url": "/essentials/sdk/account",
+"url": "/bitmark-references/bitmark-sdk/account",
 "summary": ""
 }
 ,
@@ -18,18 +18,7 @@
 "title": "Account",
 "tags": "",
 "keywords": "account, sdk",
-"url": "/bitmark-references/bitmark-sdk/account",
-"summary": ""
-}
-,
-
-
-
-{
-"title": "Actions",
-"tags": "",
-"keywords": "action, sdk, register asset, issue bitmark, transfer bitmark",
-"url": "/essentials/sdk/action",
+"url": "/essentials/sdk/account",
 "summary": ""
 }
 ,
@@ -41,6 +30,17 @@
 "tags": "",
 "keywords": "action, sdk, register asset, issue bitmark, transfer bitmark",
 "url": "/bitmark-references/bitmark-sdk/action",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Actions",
+"tags": "",
+"keywords": "action, sdk, register asset, issue bitmark, transfer bitmark",
+"url": "/essentials/sdk/action",
 "summary": ""
 }
 ,
@@ -150,7 +150,7 @@
 "title": "Bitmark Shares",
 "tags": "",
 "keywords": "bitmark shares",
-"url": "/essentials/shares/bitmark-shares",
+"url": "/bitmark-appendix/bitmark-shares",
 "summary": ""
 }
 ,
@@ -161,7 +161,7 @@
 "title": "Bitmark Shares",
 "tags": "",
 "keywords": "bitmark shares",
-"url": "/bitmark-appendix/bitmark-shares",
+"url": "/essentials/shares/bitmark-shares",
 "summary": ""
 }
 ,
@@ -205,7 +205,7 @@
 "title": "Block Validation and Synchronization",
 "tags": "",
 "keywords": "blockchain, verification, sync, synchronization",
-"url": "/in-depth/block-verification-and-synchronization",
+"url": "/bitmark-references/bitmark-node-software/block-verification-and-synchronization",
 "summary": ""
 }
 ,
@@ -216,7 +216,7 @@
 "title": "Block Validation and Synchronization",
 "tags": "",
 "keywords": "blockchain, verification, sync, synchronization",
-"url": "/bitmark-references/bitmark-node-software/block-verification-and-synchronization",
+"url": "/in-depth/block-verification-and-synchronization",
 "summary": ""
 }
 ,
@@ -394,7 +394,7 @@
 "title": "Account Migration",
 "tags": "",
 "keywords": "sdk, migration",
-"url": "/essentials/sdk/migration",
+"url": "/bitmark-references/bitmark-sdk/migration",
 "summary": ""
 }
 ,
@@ -405,7 +405,7 @@
 "title": "Account Migration",
 "tags": "",
 "keywords": "sdk, migration",
-"url": "/bitmark-references/bitmark-sdk/migration",
+"url": "/essentials/sdk/migration",
 "summary": ""
 }
 ,
@@ -449,7 +449,7 @@
 "title": "Payment Verification",
 "tags": "",
 "keywords": "payment, payment verification",
-"url": "/in-depth/payment-verification",
+"url": "/bitmark-references/bitmark-node-software/payment-verification",
 "summary": ""
 }
 ,
@@ -460,7 +460,7 @@
 "title": "Payment Verification",
 "tags": "",
 "keywords": "payment, payment verification",
-"url": "/bitmark-references/bitmark-node-software/payment-verification",
+"url": "/in-depth/payment-verification",
 "summary": ""
 }
 ,
@@ -493,7 +493,7 @@
 "title": "Queries",
 "tags": "",
 "keywords": "sdk, query",
-"url": "/essentials/sdk/query",
+"url": "/bitmark-references/bitmark-sdk/query",
 "summary": ""
 }
 ,
@@ -504,7 +504,7 @@
 "title": "Queries",
 "tags": "",
 "keywords": "sdk, query",
-"url": "/bitmark-references/bitmark-sdk/query",
+"url": "/essentials/sdk/query",
 "summary": ""
 }
 ,
@@ -537,7 +537,7 @@
 "title": "RPC Communication",
 "tags": "",
 "keywords": "rpc",
-"url": "/in-depth/rpc-communication",
+"url": "/bitmark-references/bitmark-node-software/rpc-communication",
 "summary": ""
 }
 ,
@@ -548,7 +548,7 @@
 "title": "RPC Communication",
 "tags": "",
 "keywords": "rpc",
-"url": "/bitmark-references/bitmark-node-software/rpc-communication",
+"url": "/in-depth/rpc-communication",
 "summary": ""
 }
 ,
@@ -618,7 +618,7 @@
 "title": "Storing a Seed",
 "tags": "",
 "keywords": "sdk, store seed",
-"url": "/essentials/sdk/store-seed",
+"url": "/bitmark-references/bitmark-sdk/store-seed",
 "summary": ""
 }
 ,
@@ -629,7 +629,7 @@
 "title": "Storing a Seed",
 "tags": "",
 "keywords": "sdk, store seed",
-"url": "/bitmark-references/bitmark-sdk/store-seed",
+"url": "/essentials/sdk/store-seed",
 "summary": ""
 }
 ,
@@ -677,7 +677,7 @@
 "title": "Receiving WebSocket Events",
 "tags": "",
 "keywords": "sdk, web socket",
-"url": "/essentials/sdk/websocket",
+"url": "/bitmark-references/bitmark-sdk/websocket",
 "summary": ""
 }
 ,
@@ -688,7 +688,7 @@
 "title": "Receiving WebSocket Events",
 "tags": "",
 "keywords": "sdk, web socket",
-"url": "/bitmark-references/bitmark-sdk/websocket",
+"url": "/essentials/sdk/websocket",
 "summary": ""
 }
 ,
